@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin — Barbarossa</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+
+<header class="site-header is-scrolled">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Barbarossa</a>
+    <span class="admin-badge">Espace admin</span>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <header class="page-header">
+    <div class="section-inner">
+      <p class="eyebrow">Espace privé</p>
+      <h1 class="page-title">Gérer les soirées</h1>
+      <p class="page-lede">Ajouter, modifier ou supprimer une soirée, et voir qui s'est inscrit.</p>
+    </div>
+  </header>
+
+  <section class="section" id="login-section">
+    <div class="section-inner">
+      <div class="admin-login-card">
+        <h2>Connexion</h2>
+        <form id="login-form">
+          <div class="field-row">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" autocomplete="username" required>
+          </div>
+          <div class="field-row">
+            <label for="login-password">Mot de passe</label>
+            <input type="password" id="login-password" autocomplete="current-password" required>
+          </div>
+          <button type="submit" class="btn btn-accent btn-block">Se connecter</button>
+          <p class="form-status" id="login-status" role="status" aria-live="polite"></p>
+        </form>
+        <p class="admin-hint">
+          Ce compte se crée une seule fois dans Supabase (Authentication → Users → Add user).
+          Voir le README pour la procédure complète.
+        </p>
+      </div>
+
+      <div id="config-notice" class="config-notice" hidden>
+        <p><strong>Supabase n'est pas encore configuré.</strong> Complétez <code>js/supabase-client.js</code> avec l'URL et la clé "anon" de votre projet (voir README).</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="dashboard-section" hidden>
+    <div class="section-inner">
+
+      <div class="admin-topbar">
+        <p class="admin-user">Connecté·e en tant que <strong id="admin-email"></strong></p>
+        <button type="button" class="btn btn-ghost btn-small" id="logout-btn">Se déconnecter</button>
+      </div>
+
+      <div class="admin-grid">
+
+        <div class="admin-form-card">
+          <h2 id="event-form-title">Nouvelle soirée</h2>
+          <form id="event-form">
+            <input type="hidden" id="event-id">
+            <div class="field-row">
+              <label for="event-title">Titre</label>
+              <input type="text" id="event-title" required>
+            </div>
+            <div class="field-row">
+              <label for="event-description">Description courte</label>
+              <textarea id="event-description" required></textarea>
+            </div>
+            <div class="field-grid">
+              <div class="field-row">
+                <label for="event-date">Date</label>
+                <input type="date" id="event-date" required>
+              </div>
+              <div class="field-row">
+                <label for="event-time">Heure</label>
+                <input type="time" id="event-time" required>
+              </div>
+            </div>
+            <div class="field-row">
+              <label for="event-accent">Visuel (couleur)</label>
+              <select id="event-accent">
+                <option value="gold">Or</option>
+                <option value="green">Vert</option>
+                <option value="terracotta">Terracotta</option>
+                <option value="olive">Olive</option>
+              </select>
+            </div>
+            <div class="form-submit-row">
+              <button type="submit" class="btn btn-accent" id="event-submit-btn">Ajouter la soirée</button>
+              <button type="button" class="btn btn-ghost" id="event-cancel-btn" hidden>Annuler</button>
+            </div>
+            <p class="form-status" id="event-form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <div class="admin-list-card">
+          <h2>Soirées programmées</h2>
+          <div id="admin-events-list"></div>
+          <p id="admin-events-empty" hidden class="section-note">Aucune soirée pour l'instant — ajoutez-en une.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="js/supabase-client.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
