@@ -261,17 +261,25 @@ p{ margin: 0; }
 .nav-link.is-current{ color: var(--ink); }
 .nav-link.is-current::after{ transform: scaleX(1); background: var(--green); }
 
+.header-actions{
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
 .nav-cta{
+  display: inline-flex;
+  align-items: center;
   color: var(--paper);
   background: var(--green);
   padding: .6em 1.3em;
   border-radius: var(--radius);
+  font-size: .84rem;
   text-transform: none;
   letter-spacing: .02em;
   font-weight: 600;
   transition: background var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
-.nav-cta::after{ display: none; }
 .nav-cta:hover{
   background: var(--green-deep);
   color: var(--paper);
