@@ -72,12 +72,19 @@ vers cette page).
 
 ## Design
 
-- **Palette** : anthracite sombre (`--ink`, `--ink-raised`) avec deux
-  accents — cuivre (`--copper`) pour les actions, or (`--gold`) pour les
-  détails et le survol. Tokens définis en haut de `css/style.css`.
-- **Typographie** : « Bodoni Moda » (serif à fort contraste) pour les
-  titres, « IBM Plex Sans » pour le texte courant. Chargées depuis Google
-  Fonts.
+Direction calibrée sur le site de Château de Berne (chateauberne.com),
+donné comme référence de style — un domaine provençal de luxe discret —
+adaptée à l'ambiance bar de nuit + galerie de Barbarossa.
+
+- **Palette** : anthracite chaud (`--ink`, `--ink-raised`) avec un seul
+  accent — un or mat (`--gold` / `--gold-deep` pour les boutons), repris
+  directement du ton signature de la référence plutôt qu'un cuivre vif.
+  Tokens définis en haut de `css/style.css`.
+- **Typographie** : « Spectral » (serif élégante) pour les titres,
+  « Karla » pour le texte courant — les deux polices réellement utilisées
+  par la référence. Chargées depuis Google Fonts.
+- **Espacements** : échelle généreuse (`--space-*`), sections plus aérées
+  qu'avant, pour retrouver le calme et la respiration de la référence.
 - **Animations** : apparition en fondu au scroll (`.reveal`, via
   `IntersectionObserver` dans `js/script.js`, désactivée si
   `prefers-reduced-motion`), survols sur boutons/liens/cartes, menu mobile
