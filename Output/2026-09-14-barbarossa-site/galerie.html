@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galerie — Barbarossa</title>
+<meta name="description" content="La galerie d'art de Barbarossa à Salernes : une exposition différente chaque mois, entre les mains d'un artiste local.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Barbarossa</a>
+
+    <nav class="nav-desktop" aria-label="Navigation principale">
+      <a href="index.html" class="nav-link">Accueil</a>
+      <a href="soirees.html" class="nav-link">Soirées</a>
+      <a href="galerie.html" class="nav-link is-current">Galerie</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="reservation.html" class="nav-link nav-cta">Réserver</a>
+    </nav>
+
+    <button type="button" class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="nav-backdrop" id="nav-backdrop"></div>
+<div class="mobile-nav" id="mobile-nav">
+  <nav aria-label="Navigation mobile">
+    <a href="index.html">Accueil</a>
+    <a href="soirees.html">Soirées</a>
+    <a href="galerie.html" class="is-current">Galerie</a>
+    <a href="contact.html">Contact</a>
+    <a href="reservation.html" class="btn btn-accent">Réserver une table</a>
+  </nav>
+</div>
+
+<main id="contenu">
+
+  <header class="page-header">
+    <div class="section-inner">
+      <p class="eyebrow reveal">L'espace expo</p>
+      <h1 class="page-title reveal">Barbarossa est aussi une galerie</h1>
+      <p class="page-lede reveal">
+        Un mur d'exposition tourne chaque mois entre les mains d'un artiste local — peinture,
+        photographie, illustration. On boit un verre, on regarde, on discute avec l'artiste
+        les soirs de vernissage.
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="section-inner">
+
+      <div class="current-show reveal">
+        <span class="current-show-tag">Exposition en cours</span>
+        <h3>« [Titre de l'exposition] » — [Nom de l'artiste]</h3>
+        <p>[Quelques lignes de présentation de l'exposition et de l'artiste à compléter.]</p>
+      </div>
+
+      <div class="gallery-grid reveal-group">
+        <figure class="frame frame-1 reveal" style="--i:0"><figcaption><span class="frame-title">Œuvre à venir</span><span class="frame-meta">Technique · Artiste</span></figcaption></figure>
+        <figure class="frame frame-2 reveal" style="--i:1"><figcaption><span class="frame-title">Œuvre à venir</span><span class="frame-meta">Technique · Artiste</span></figcaption></figure>
+        <figure class="frame frame-3 reveal" style="--i:2"><figcaption><span class="frame-title">Œuvre à venir</span><span class="frame-meta">Technique · Artiste</span></figcaption></figure>
+        <figure class="frame frame-4 reveal" style="--i:3"><figcaption><span class="frame-title">Œuvre à venir</span><span class="frame-meta">Technique · Artiste</span></figcaption></figure>
+        <figure class="frame frame-5 reveal" style="--i:4"><figcaption><span class="frame-title">Œuvre à venir</span><span class="frame-meta">Technique · Artiste</span></figcaption></figure>
+        <figure class="frame frame-6 reveal" style="--i:5"><figcaption><span class="frame-title">Œuvre à venir</span><span class="frame-meta">Technique · Artiste</span></figcaption></figure>
+      </div>
+
+      <p class="gallery-cta reveal">
+        Vous êtes artiste et souhaitez exposer chez Barbarossa ?
+        <a href="mailto:contact@barbarossa-salernes.fr" class="link">Écrivez-nous</a>.
+      </p>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="section-inner footer-inner">
+    <div class="footer-brand">
+      <span class="logo logo-footer">Barbarossa</span>
+      <p>Bar à thèmes &amp; galerie d'art<br>Salernes, Var</p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Plan du site">
+      <a href="index.html">Accueil</a>
+      <a href="soirees.html">Soirées à thème</a>
+      <a href="galerie.html">Galerie</a>
+      <a href="reservation.html">Réservation</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="footer-meta">
+      <div class="socials">
+        <a href="#" aria-label="Instagram de Barbarossa">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook de Barbarossa">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M14 21v-8h3l.5-4H14V7c0-1.2.4-2 2.2-2H18V1.2C17.6 1.1 16.4 1 15 1c-3 0-4.7 1.8-4.7 5v2H7v4h3.3v8H14Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <p class="copyright">© <span id="year"></span> Barbarossa</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
