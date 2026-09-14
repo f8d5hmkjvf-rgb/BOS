@@ -73,18 +73,20 @@ vers cette page).
 ## Design
 
 Direction calibrée sur le site de Château de Berne (chateauberne.com),
-donné comme référence de style — un domaine provençal de luxe discret —
-adaptée à l'ambiance bar de nuit + galerie de Barbarossa.
+donné comme référence de style — un domaine provençal clair et lumineux
+(pierre, crème, vert forêt, tomettes terracotta), pas un thème sombre.
 
-- **Palette** : anthracite chaud (`--ink`, `--ink-raised`) avec un seul
-  accent — un or mat (`--gold` / `--gold-deep` pour les boutons), repris
-  directement du ton signature de la référence plutôt qu'un cuivre vif.
-  Tokens définis en haut de `css/style.css`.
+- **Palette** : fond crème/pierre (`--paper`, `--card`) avec deux accents
+  puisés dans la vraie identité de la référence — un vert forêt profond
+  (`--green`, logo de Château de Berne) pour les boutons/icônes/nav, et un
+  or mat (`--gold`) en touche secondaire pour les liens et les italiques.
+  Une pointe de terracotta (`--terracotta`) évoque les tomettes. Tokens
+  définis en haut de `css/style.css`.
 - **Typographie** : « Spectral » (serif élégante) pour les titres,
   « Karla » pour le texte courant — les deux polices réellement utilisées
   par la référence. Chargées depuis Google Fonts.
-- **Espacements** : échelle généreuse (`--space-*`), sections plus aérées
-  qu'avant, pour retrouver le calme et la respiration de la référence.
+- **Espacements** : échelle généreuse (`--space-*`), sections aérées, pour
+  retrouver le calme de la référence.
 - **Animations** : apparition en fondu au scroll (`.reveal`, via
   `IntersectionObserver` dans `js/script.js`, désactivée si
   `prefers-reduced-motion`), survols sur boutons/liens/cartes, menu mobile
