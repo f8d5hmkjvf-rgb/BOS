@@ -4,14 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Soirées à thème — Barbarossa</title>
-<meta name="description" content="Le programme des soirées à thème de Barbarossa à Salernes : vernissages, cocktails du monde, concerts et brunchs d'expo. Inscrivez-vous pour recevoir un rappel.">
+<meta name="description" content="Le programme des soirées à thème de Barbarossa à Salernes : vernissages, cocktails du monde, concerts et brunchs d'expo. Inscrivez-vous en ligne via Eventbrite.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="css/style.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 </head>
 <body>
 
@@ -56,8 +55,8 @@
       <h1 class="page-title reveal">Des soirées qui ont une couleur</h1>
       <p class="page-lede reveal">
         Chez Barbarossa, chaque soir de la semaine a son ambiance : vernissages, vinyles,
-        cocktails de saison, concerts et brunchs d'expo. Inscrivez-vous à une soirée pour
-        recevoir un rappel par email la veille.
+        cocktails de saison, concerts et brunchs d'expo. Inscrivez-vous en ligne — la
+        billetterie est gérée par Eventbrite.
       </p>
     </div>
   </header>
@@ -72,15 +71,44 @@
         </div>
       </div>
 
-      <div class="events-list" id="events-list"></div>
+      <div class="events-list">
 
-      <p class="section-note" id="events-empty" hidden>
-        Aucune soirée programmée pour l'instant — revenez bientôt, ou suivez nos réseaux.
-      </p>
+        <article class="event-card reveal" data-eventbrite-id="VOTRE-ID-EVENTBRITE-1">
+          <div class="event-visual event-visual-gold" aria-hidden="true"></div>
+          <div class="event-body">
+            <p class="event-day">Jeudi 24 septembre · 19h00</p>
+            <h3 class="event-name">Vernissage &amp; Vinyles</h3>
+            <p class="event-desc">Lancement d'une nouvelle exposition, DJ set vinyle et premier verre offert aux curieux.</p>
+            <button type="button" class="btn btn-accent btn-small" data-eventbrite-trigger>S'inscrire</button>
+          </div>
+        </article>
 
-      <div class="config-notice" id="events-config-notice" hidden>
-        <p>Le calendrier n'est pas encore branché à sa base de données. Voir le README (section Supabase) pour finaliser la configuration.</p>
+        <article class="event-card reveal" data-eventbrite-id="VOTRE-ID-EVENTBRITE-2">
+          <div class="event-visual event-visual-terracotta" aria-hidden="true"></div>
+          <div class="event-body">
+            <p class="event-day">Samedi 26 septembre · 20h30</p>
+            <h3 class="event-name">Nuit Barbarossa</h3>
+            <p class="event-desc">Notre grande soirée à thème mensuelle : déguisements, concert live et scénographie complète du bar.</p>
+            <button type="button" class="btn btn-accent btn-small" data-eventbrite-trigger>S'inscrire</button>
+          </div>
+        </article>
+
+        <article class="event-card reveal" data-eventbrite-id="VOTRE-ID-EVENTBRITE-3">
+          <div class="event-visual event-visual-green" aria-hidden="true"></div>
+          <div class="event-body">
+            <p class="event-day">Dimanche 27 septembre · 11h00</p>
+            <h3 class="event-name">Brunch &amp; Palette</h3>
+            <p class="event-desc">Brunch face aux œuvres exposées, avec un atelier peinture ouvert à tous en fin de matinée.</p>
+            <button type="button" class="btn btn-accent btn-small" data-eventbrite-trigger>S'inscrire</button>
+          </div>
+        </article>
+
       </div>
+
+      <p class="section-note reveal">
+        Programmation à ajuster selon vos événements Eventbrite — voir le README
+        (section "Eventbrite") pour connecter chaque bouton à son vrai événement.
+      </p>
 
       <div class="cta-banner reveal">
         <div>
@@ -124,42 +152,8 @@
   </div>
 </footer>
 
-<!-- ============ REGISTRATION MODAL ============ -->
-<dialog id="registration-modal" class="registration-modal">
-  <button class="modal-close" data-close-modal aria-label="Fermer">
-    <svg viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5 5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-  </button>
-
-  <h2>Je m'inscris</h2>
-  <p class="modal-sub" id="modal-event-title"></p>
-
-  <form id="registration-form">
-    <input type="hidden" id="reg-event-id">
-
-    <div class="field-row">
-      <label for="reg-first-name">Prénom</label>
-      <input type="text" id="reg-first-name" name="first_name" autocomplete="given-name" required>
-    </div>
-
-    <div class="field-row">
-      <label for="reg-email">Email</label>
-      <input type="email" id="reg-email" name="email" autocomplete="email" required>
-    </div>
-
-    <div class="field-row">
-      <label for="reg-phone">Téléphone <span class="optional-tag">(optionnel)</span></label>
-      <input type="tel" id="reg-phone" name="phone" autocomplete="tel">
-    </div>
-
-    <button type="submit" class="btn btn-accent btn-large btn-block">Confirmer mon inscription</button>
-    <p class="modal-alt">Un rappel par email vous sera envoyé 24h avant la soirée.</p>
-
-    <p class="form-status" id="registration-status" role="status" aria-live="polite"></p>
-  </form>
-</dialog>
-
-<script src="js/supabase-client.js"></script>
+<script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
 <script src="js/script.js"></script>
-<script src="js/soirees.js"></script>
+<script src="js/eventbrite.js"></script>
 </body>
 </html>

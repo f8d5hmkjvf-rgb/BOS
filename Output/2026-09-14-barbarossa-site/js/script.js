@@ -59,35 +59,28 @@
   }
 
   /* ============ SCROLL REVEAL ============ */
-  var revealIo = null;
-  if (!reduceMotion && "IntersectionObserver" in window) {
-    revealIo = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            revealIo.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
-    );
+  var revealEls = document.querySelectorAll(".reveal");
+  if (revealEls.length) {
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      revealEls.forEach(function (el) { el.classList.add("is-visible"); });
+    } else {
+      var io = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+      );
+      revealEls.forEach(function (el, i) {
+        el.style.setProperty("--i", i % 6);
+        io.observe(el);
+      });
+    }
   }
-
-  // Exposed so pages that inject content after load (e.g. events fetched
-  // from Supabase on soirees.html) can register their new .reveal elements.
-  window.observeReveal = function (els) {
-    els.forEach(function (el, i) {
-      if (reduceMotion || !revealIo) {
-        el.classList.add("is-visible");
-        return;
-      }
-      el.style.setProperty("--i", i % 6);
-      revealIo.observe(el);
-    });
-  };
-
-  window.observeReveal(document.querySelectorAll(".reveal"));
 
   /* ============ RESERVATION FORM (reservation.html) ============ */
   var form = document.getElementById("reservation-form");

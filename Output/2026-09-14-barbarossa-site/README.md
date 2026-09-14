@@ -16,14 +16,11 @@ python3 -m http.server 8000
 ## Pages
 
 - `index.html` — Accueil (hero, présentation bar + galerie, teasers)
-- `soirees.html` — Soirées à thème : calendrier des événements à venir,
-  chargé en direct depuis Supabase, avec inscription par soirée
+- `soirees.html` — Soirées à thème : programme des événements, chaque
+  soirée reliée à son inscription Eventbrite
 - `galerie.html` — Galerie (exposition en cours + œuvres)
 - `reservation.html` — Réservation (formulaire complet)
 - `contact.html` — Contact & infos pratiques (adresse, horaires, carte)
-- `admin.html` — Espace privé (protégé par mot de passe) pour gérer les
-  soirées et voir les inscrits — **non listé dans le menu**, à garder pour
-  vous (voir section Supabase ci-dessous)
 
 Chaque page partage le même header (navigation + bouton "Réserver" mis en
 avant), le même footer, et les mêmes `css/style.css` / `js/script.js`.
@@ -46,8 +43,9 @@ Placeholders à remplacer (recherchez-les dans les fichiers `.html`) :
 - **Photos** : le hero et la galerie utilisent des textures/couleurs
   générées en CSS en attendant de vraies photos du bar et des œuvres
   exposées. Remplacer les blocs `.frame` (galerie) par de vraies images.
-- **Soirées** : ne se modifient plus dans le HTML — elles se gèrent depuis
-  `admin.html` une fois Supabase configuré (voir plus bas).
+- **Soirées** (`soirees.html`) : les 3 cartes sont un exemple — à ajuster
+  (titre, description, date/heure, couleur du visuel) et à relier à un
+  vrai événement Eventbrite via `data-eventbrite-id` (voir plus bas).
 
 ## Réservation en ligne
 
@@ -73,133 +71,77 @@ formulaire dans `reservation.html` par l'iframe ou le widget fourni par cet
 outil, et de garder les boutons "Réserver" tels quels (ils pointent tous
 vers cette page).
 
-## Calendrier des soirées & inscriptions (Supabase)
+## Inscriptions aux soirées (Eventbrite)
 
-La page `soirees.html` affiche les événements à venir depuis une base
-Supabase (gratuite), permet au public de s'inscrire, et un rappel par
-email part automatiquement 24h avant chaque soirée. `admin.html` est
-l'interface privée pour gérer tout ça.
+Chaque carte de `soirees.html` a un bouton "S'inscrire" qui ouvre le
+**checkout Eventbrite intégré** (une fenêtre modale fournie par
+Eventbrite, pas un formulaire à nous) : billetterie, paiement éventuel,
+et liste des inscrits sont entièrement gérés par Eventbrite. Barbarossa
+crée et modifie ses événements directement depuis son tableau de bord
+Eventbrite — il n'y a plus de base de données ni de page admin à
+maintenir sur ce site.
 
-**Choix fait pendant la construction :** le formulaire d'inscription
-demande un **email obligatoire** (plutôt que "téléphone ou email" au
-choix), parce que le rappel automatique n'existe pour l'instant que par
-email — un inscrit qui n'aurait laissé qu'un numéro ne recevrait jamais
-rien. Le téléphone reste un champ optionnel, utile si vous voulez
-rappeler quelqu'un vous-même. Le SMS (Twilio) n'est pas branché : c'est
-un service payant, à ajouter plus tard si besoin — voir tout en bas.
+### 1. Créer l'événement sur Eventbrite
 
-### 1. Créer le projet Supabase (5 min)
+Dans votre compte organisateur Eventbrite : créez l'événement (titre,
+date, heure, places, prix ou gratuit). Une fois publié, récupérez son
+**ID numérique** — visible dans l'URL de la page de gestion de
+l'événement (`.../events/1234567890/manage`) ou dans *Order options →
+Embed a checkout button* qui donne directement l'ID à utiliser.
 
-1. Allez sur [supabase.com](https://supabase.com), créez un compte gratuit.
-2. "New project" → choisissez un nom, un mot de passe de base de données
-   (à garder de côté), une région proche (Europe).
-3. Une fois le projet créé, ouvrez **SQL Editor** (menu de gauche) → *New
-   query*, collez tout le contenu de `supabase/schema.sql` de ce dossier,
-   et cliquez *Run*. Ça crée les tables `events` et `registrations` avec
-   les bonnes règles de sécurité.
-4. Allez dans **Project Settings → API** : notez l'**URL** du projet et la
-   clé **`anon` `public`**.
+### 2. Connecter la carte du site à cet événement
 
-### 2. Brancher le site à Supabase
+Dans `soirees.html`, chaque soirée est un bloc :
 
-Ouvrez `js/supabase-client.js` et remplacez :
-
-```js
-window.SUPABASE_URL = "https://VOTRE-PROJET.supabase.co";
-window.SUPABASE_ANON_KEY = "VOTRE-ANON-KEY";
+```html
+<article class="event-card reveal" data-eventbrite-id="VOTRE-ID-EVENTBRITE-1">
+  <div class="event-visual event-visual-gold"></div>
+  <div class="event-body">
+    <p class="event-day">Jeudi 24 septembre · 19h00</p>
+    <h3 class="event-name">Vernissage &amp; Vinyles</h3>
+    <p class="event-desc">Lancement d'une nouvelle exposition...</p>
+    <button type="button" class="btn btn-accent btn-small" data-eventbrite-trigger>S'inscrire</button>
+  </div>
+</article>
 ```
 
-par les deux valeurs notées à l'étape précédente. C'est la seule
-modification nécessaire pour que `soirees.html` et `admin.html`
-fonctionnent (formulaire public + interface de gestion). La clé `anon`
-est faite pour être publique — elle n'autorise que ce que les règles du
-fichier `schema.sql` permettent.
+Remplacez `VOTRE-ID-EVENTBRITE-1` par le vrai ID Eventbrite de la soirée,
+et le contenu texte (jour/heure, titre, description) pour qu'il
+corresponde à l'événement. Le bouton "S'inscrire" se connecte alors
+automatiquement au checkout de cet événement — rien d'autre à toucher.
 
-### 3. Créer votre compte admin
+Tant qu'un ID commence encore par `VOTRE-ID`, le bouton correspondant
+reste désactivé (grisé) plutôt que de mener nulle part.
 
-Toujours dans Supabase : **Authentication → Users → Add user**, entrez
-votre email et un mot de passe. C'est ce compte qui se connecte sur
-`admin.html`. Il n'y a pas d'inscription publique à cette page — un seul
-compte (le vôtre) suffit.
+Pour ajouter ou retirer une soirée : dupliquez ou supprimez un bloc
+`<article class="event-card">` entier. `event-visual-gold` peut devenir
+`event-visual-green`, `event-visual-terracotta` ou `event-visual-olive`
+pour varier les couleurs des visuels (définies dans `css/style.css`).
 
-Ouvrez ensuite `admin.html` dans le navigateur, connectez-vous, et
-ajoutez vos premières soirées (titre, description, date, heure, couleur
-du visuel). Elles apparaissent aussitôt sur `soirees.html`.
+### 3. Vérifier que tout marche
 
-### 4. Activer les rappels automatiques par email
+Ouvrez `soirees.html`, cliquez sur "S'inscrire" pour un événement
+connecté : la fenêtre de paiement Eventbrite doit s'ouvrir par-dessus la
+page. Sur un ID encore placeholder, le bouton doit rester grisé.
 
-**a) Créer un compte Resend** (gratuit jusqu'à 3 000 emails/mois) sur
-[resend.com](https://resend.com), récupérez une clé API
-(*API Keys → Create API Key*).
+### Limites à connaître
 
-**b) Déployer la fonction de rappel.** Elle est déjà écrite
-(`supabase/functions/send-reminders/index.ts`) — il faut juste l'envoyer
-sur votre projet avec la CLI Supabase :
-
-```bash
-npm install -g supabase
-supabase login
-supabase link --project-ref VOTRE-REF-DE-PROJET   # visible dans l'URL du dashboard
-supabase secrets set RESEND_API_KEY=re_votre_cle
-supabase secrets set REMINDER_FROM="Barbarossa <resa@votredomaine.fr>"
-supabase functions deploy send-reminders
-```
-
-Sans domaine email vérifié dans Resend, utilisez temporairement
-`REMINDER_FROM="Barbarossa <onboarding@resend.dev>"` (adresse de test
-fournie par Resend) — les emails partiront, juste avec cet expéditeur
-générique en attendant de vérifier votre propre domaine dans Resend.
-
-**c) Planifier l'envoi quotidien.** Dans Supabase : **Database →
-Extensions**, activez `pg_cron` et `pg_net`. Puis, dans le **SQL
-Editor**, une dernière requête (remplacez les deux `<...>`) :
-
-```sql
-select cron.schedule(
-  'send-event-reminders',
-  '0 10 * * *', -- tous les jours à 10h UTC (~12h en France)
-  $$
-  select net.http_post(
-    url := 'https://<VOTRE-REF-DE-PROJET>.supabase.co/functions/v1/send-reminders',
-    headers := jsonb_build_object(
-      'Authorization', 'Bearer <VOTRE-SERVICE-ROLE-KEY>',
-      'Content-Type', 'application/json'
-    ),
-    body := '{}'::jsonb
-  );
-  $$
-);
-```
-
-La clé `service_role` se trouve au même endroit que la clé `anon`
-(*Project Settings → API*) — gardez-la secrète, elle ne va nulle part
-dans le code du site, seulement dans cette requête SQL exécutée une
-fois.
-
-C'est tout : chaque jour, la fonction cherche les soirées du lendemain et
-envoie un email aux inscrits qui n'en ont pas encore reçu.
-
-### Et le SMS ?
-
-Pas branché pour l'instant — Twilio (le service qui permettrait d'envoyer
-des SMS) est payant dès le premier message, contrairement à Resend qui
-est gratuit sur ce volume. Si vous voulez l'ajouter plus tard, la même
-fonction `send-reminders` peut être étendue pour appeler l'API Twilio en
-plus de Resend, à condition d'avoir un compte Twilio et un budget SMS.
-
-### Vérifier que tout marche
-
-- `admin.html` : connectez-vous, ajoutez une soirée avec la date
-  d'aujourd'hui ou demain pour tester rapidement.
-- `soirees.html` : la soirée doit apparaître ; inscrivez-vous avec une
-  vraie adresse email à vous.
-- Pour tester le rappel sans attendre le cron (la fonction refuse les
-  requêtes sans authentification, un simple lien dans le navigateur ne
-  suffit pas) :
-  ```bash
-  supabase functions invoke send-reminders
-  ```
-  Si une soirée est prévue demain, l'email de rappel part immédiatement.
+- **Pas de synchronisation automatique.** Ce site n'appelle pas l'API de
+  lecture d'Eventbrite (ça demanderait un serveur intermédiaire pour ne
+  pas exposer de clé privée côté navigateur) : si vous changez une date
+  ou un titre sur Eventbrite, pensez à faire pareil dans `soirees.html`.
+- **La fenêtre de paiement est celle d'Eventbrite**, hébergée par eux
+  dans un cadre isolé (iframe) : on ne peut pas en recolorer l'intérieur
+  depuis ce site. Ce qu'on contrôle entièrement, c'est le bouton
+  "S'inscrire" lui-même (déjà dans le style du site) — pour un rendu
+  d'ensemble plus personnalisé, Eventbrite permet d'ajuster la couleur
+  de marque dans les paramètres de la page organisateur (*Manage
+  events → Organization settings → Branding*), qui se répercute sur la
+  fenêtre de checkout.
+- **Plus de rappel automatique 24h avant** (fonctionnalité de l'ancienne
+  version Supabase) : Eventbrite envoie ses propres emails de
+  confirmation et de rappel aux inscrits, configurables depuis son
+  tableau de bord (*Manage → Emails*).
 
 ## Design
 
@@ -232,17 +174,12 @@ Vercel, GitHub Pages, ou n'importe quel hébergement mutualisé classique
 ## Structure
 
 ```
-index.html                              Accueil
-soirees.html                            Soirées à thème (calendrier + inscription)
-galerie.html                            Galerie
-reservation.html                        Réservation
-contact.html                            Contact & infos pratiques
-admin.html                              Espace privé : gérer soirées + inscrits
-css/style.css                           Styles partagés (mobile-first)
-js/script.js                            Nav mobile, header au scroll, reveal au scroll
-js/supabase-client.js                   Config + client Supabase (URL/clé à renseigner)
-js/soirees.js                           Chargement des événements + inscription
-js/admin.js                             Connexion admin + gestion des soirées/inscrits
-supabase/schema.sql                     Tables + règles de sécurité (à exécuter une fois)
-supabase/functions/send-reminders/      Fonction d'envoi des rappels (email, via Resend)
+index.html          Accueil
+soirees.html        Soirées à thème (programme + inscription Eventbrite)
+galerie.html        Galerie
+reservation.html    Réservation
+contact.html        Contact & infos pratiques
+css/style.css       Styles partagés (mobile-first)
+js/script.js        Nav mobile, header au scroll, reveal au scroll, formulaire réservation
+js/eventbrite.js    Connecte chaque bouton "S'inscrire" au widget de checkout Eventbrite
 ```
