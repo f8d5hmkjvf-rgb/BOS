@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ma carte de fidélité — Barbarossa</title>
+<meta name="description" content="La carte de fidélité Barbarossa : inscrivez-vous en quelques secondes et suivez vos points vers votre prochaine consommation offerte.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Barbarossa</a>
+
+    <nav class="nav-desktop" aria-label="Navigation principale">
+      <a href="index.html" class="nav-link">Accueil</a>
+      <a href="soirees.html" class="nav-link">Soirées</a>
+      <a href="galerie.html" class="nav-link">Galerie</a>
+      <a href="carte.html" class="nav-link is-current">Carte</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="reservation.html" class="nav-cta">Réserver</a>
+      <button type="button" class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="nav-backdrop" id="nav-backdrop"></div>
+<div class="mobile-nav" id="mobile-nav">
+  <nav aria-label="Navigation mobile">
+    <a href="index.html">Accueil</a>
+    <a href="soirees.html">Soirées</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="carte.html" class="is-current">Carte</a>
+    <a href="contact.html">Contact</a>
+    <a href="reservation.html" class="btn btn-accent">Réserver une table</a>
+  </nav>
+</div>
+
+<main id="contenu">
+
+  <header class="page-header">
+    <div class="section-inner">
+      <p class="eyebrow reveal">Fidélité</p>
+      <h1 class="page-title reveal">Ta carte Barbarossa</h1>
+      <p class="page-lede reveal">
+        Chaque consommation validée au bar ajoute un point à ta carte.
+        Une fois le compte plein, la suivante est offerte.
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="section-inner">
+
+      <!-- ---- Formulaire d'inscription (visible si pas de carte) ---- -->
+      <div class="loyalty-signup reveal" id="signup-panel">
+        <h2>Créer ma carte</h2>
+        <p class="modal-sub">Prénom et numéro de téléphone suffisent — ta carte est prête en 5 secondes.</p>
+
+        <form id="signup-form">
+          <div class="field-row">
+            <label for="signup-first-name">Prénom</label>
+            <input type="text" id="signup-first-name" autocomplete="given-name" required>
+          </div>
+          <div class="field-row">
+            <label for="signup-phone">Téléphone</label>
+            <input type="tel" id="signup-phone" autocomplete="tel" required>
+          </div>
+          <button type="submit" class="btn btn-accent btn-large btn-block">Créer ma carte</button>
+          <p class="form-status" id="signup-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="config-notice" id="loyalty-config-notice" hidden>
+          <p>La carte de fidélité n'est pas encore branchée à sa base de données. Voir le README (section "Carte de fidélité") pour finaliser la configuration.</p>
+        </div>
+      </div>
+
+      <!-- ---- Carte du client (visible une fois inscrit) ---- -->
+      <div class="loyalty-card-wrap reveal" id="card-panel" hidden>
+
+        <div class="loyalty-card">
+          <div class="loyalty-card-top">
+            <span class="loyalty-card-brand">Barbarossa</span>
+            <span class="loyalty-card-label">Carte fidélité</span>
+          </div>
+          <p class="loyalty-card-name" id="card-first-name"></p>
+
+          <div class="loyalty-progress" id="card-progress" aria-hidden="true"></div>
+          <p class="loyalty-progress-label" id="card-progress-label"></p>
+        </div>
+
+        <div class="loyalty-reward-banner" id="reward-banner" hidden>
+          🎉 Consommation offerte débloquée — montre cet écran au bar !
+        </div>
+
+        <div class="loyalty-qr-block">
+          <div id="qr-code" class="loyalty-qr"></div>
+          <div class="loyalty-qr-actions">
+            <button type="button" class="btn btn-ghost btn-small" id="download-qr-btn">Télécharger le QR code</button>
+            <p class="loyalty-qr-hint">Garde ce lien ou ce QR code précieusement : ils sont ta carte. Montre-les au bar à chaque visite.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="section-inner footer-inner">
+    <div class="footer-brand">
+      <span class="logo logo-footer">Barbarossa</span>
+      <p>Bar à thèmes &amp; galerie d'art<br>Salernes, Var</p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Plan du site">
+      <a href="index.html">Accueil</a>
+      <a href="soirees.html">Soirées à thème</a>
+      <a href="galerie.html">Galerie</a>
+      <a href="carte.html">Carte fidélité</a>
+      <a href="reservation.html">Réservation</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="footer-meta">
+      <div class="socials">
+        <a href="#" aria-label="Instagram de Barbarossa">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook de Barbarossa">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M14 21v-8h3l.5-4H14V7c0-1.2.4-2 2.2-2H18V1.2C17.6 1.1 16.4 1 15 1c-3 0-4.7 1.8-4.7 5v2H7v4h3.3v8H14Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <p class="copyright">© <span id="year"></span> Barbarossa</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/loyalty-config.js"></script>
+<script src="js/script.js"></script>
+<script src="js/loyalty-card.js"></script>
+</body>
+</html>

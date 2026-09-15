@@ -123,6 +123,8 @@ p{ margin: 0; }
 
 /* ============ BUTTONS ============ */
 
+.btn[hidden]{ display: none; }
+
 .btn{
   display: inline-flex;
   align-items: center;
@@ -936,6 +938,275 @@ p{ margin: 0; }
 .event-body .btn{ align-self: flex-start; }
 .event-body .btn:disabled{ opacity: .5; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
 
+/* ============ GENERIC: CONFIG NOTICE ============ */
+
+.config-notice{
+  margin-top: var(--space-6);
+  padding: var(--space-5);
+  background: var(--paper-2);
+  border: 1px dashed var(--line-2);
+  border-radius: var(--radius);
+  color: var(--ink-soft);
+  font-size: .92rem;
+}
+.config-notice code{
+  background: var(--paper);
+  padding: .1em .4em;
+  border-radius: 2px;
+  font-size: .9em;
+}
+
+/* ============ GENERIC: STAFF LOGIN ============ */
+
+.admin-badge{
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--green);
+  border: 1px solid var(--line-2);
+  padding: .3em .8em;
+  border-radius: var(--radius);
+}
+
+.admin-login-card{
+  max-width: 380px;
+  margin: 0 auto;
+  padding: var(--space-6);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.admin-login-card h2{ font-size: 1.4rem; margin-bottom: var(--space-4); }
+.admin-login-card .field-row{ margin-bottom: var(--space-4); }
+.admin-hint{ margin-top: var(--space-4); font-size: .82rem; color: var(--ink-dim); }
+
+.admin-topbar{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--line);
+}
+.admin-user{ font-size: .92rem; color: var(--ink-soft); }
+.admin-topbar-actions{ display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+.admin-list-card{
+  padding: var(--space-6);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+/* ============ LOYALTY: SIGNUP ============ */
+
+.loyalty-signup{
+  max-width: 420px;
+  margin: 0 auto;
+  padding: var(--space-6);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.loyalty-signup h2{ font-size: 1.5rem; }
+.loyalty-signup .field-row{ margin-bottom: var(--space-4); }
+
+/* ============ LOYALTY: CARD ============ */
+
+.loyalty-card-wrap{
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.loyalty-card{
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-6);
+  border-radius: 12px;
+  background:
+    radial-gradient(ellipse 140% 100% at 0% 0%, rgba(156,124,63,.35), transparent 55%),
+    linear-gradient(155deg, #2c4a34 0%, #1a2f20 100%);
+  color: var(--paper);
+  box-shadow: 0 20px 40px rgba(29,51,35,.35);
+}
+.loyalty-card::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(217,201,163,.25);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.loyalty-card-top{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+}
+.loyalty-card-brand{
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+}
+.loyalty-card-label{
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #d9c9a3;
+}
+
+.loyalty-card-name{
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  margin: 0 0 var(--space-5);
+}
+
+.loyalty-progress{
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: var(--space-3);
+}
+.loyalty-dot{
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(217,201,163,.55);
+  background: transparent;
+}
+.loyalty-dot.is-filled{
+  background: #d9c9a3;
+  border-color: #d9c9a3;
+  box-shadow: 0 0 0 3px rgba(217,201,163,.18);
+}
+
+.loyalty-progress-label{
+  font-size: .88rem;
+  color: rgba(247,242,230,.85);
+}
+
+.loyalty-reward-banner{
+  padding: var(--space-4) var(--space-5);
+  background: linear-gradient(120deg, rgba(169,96,60,.16), rgba(169,96,60,.04));
+  border: 1px solid rgba(169,96,60,.4);
+  border-radius: var(--radius);
+  font-weight: 600;
+  color: var(--ink);
+  text-align: center;
+}
+
+.loyalty-qr-block{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  text-align: center;
+}
+.loyalty-qr{ max-width: 100%; font-size: .85rem; color: var(--ink-soft); word-break: break-word; }
+.loyalty-qr img, .loyalty-qr canvas{ display: block; margin: 0 auto; border-radius: 4px; }
+.loyalty-qr-actions{ display: flex; flex-direction: column; align-items: center; gap: var(--space-3); }
+.loyalty-qr-hint{ font-size: .82rem; color: var(--ink-dim); max-width: 32em; }
+
+/* ============ LOYALTY: STAFF SCAN ============ */
+
+.scan-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.scan-panel{
+  padding: var(--space-6);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.scan-panel h2{ font-size: 1.2rem; margin-bottom: var(--space-4); }
+.scan-panel .field-row{ margin-bottom: var(--space-4); }
+
+.scan-video-wrap{
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--ink);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+}
+.scan-video-wrap video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.scan-video-frame{
+  position: absolute;
+  inset: 12%;
+  border: 2px solid rgba(217,201,163,.8);
+  border-radius: 8px;
+  pointer-events: none;
+}
+.scan-hint{ margin-top: var(--space-3); font-size: .85rem; color: var(--ink-soft); text-align: center; }
+
+.customer-result{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  margin-bottom: var(--space-4);
+}
+.customer-result-name{ font-family: var(--font-display); font-size: 1.4rem; margin: 0; }
+.customer-result-points{ margin: .2rem 0 0; color: var(--ink-soft); }
+
+.reward-alert{
+  padding: var(--space-5) var(--space-6);
+  background: linear-gradient(120deg, rgba(169,96,60,.16), rgba(169,96,60,.04));
+  border: 1px solid rgba(169,96,60,.4);
+  border-radius: var(--radius);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+.reward-alert p{ font-weight: 600; margin: 0; }
+
+/* ============ LOYALTY: ADMIN LIST ============ */
+
+.loyalty-search-row{ max-width: 320px; margin-bottom: var(--space-5); }
+
+.loyalty-table-wrap{ overflow-x: auto; }
+.loyalty-table{ min-width: 560px; }
+.loyalty-table th, .loyalty-table td{ white-space: nowrap; }
+
+.loyalty-badge{
+  display: inline-block;
+  font-size: .68rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: .15em .55em;
+  border-radius: 20px;
+  vertical-align: middle;
+}
+.loyalty-badge-ready{ background: rgba(156,124,63,.18); color: #7a5f2e; }
+.loyalty-badge-soon{ background: rgba(44,74,52,.12); color: var(--green); }
+
 /* ============================================
    TABLET / DESKTOP
    ============================================ */
@@ -962,6 +1233,8 @@ p{ margin: 0; }
   .reservation-layout{ grid-template-columns: minmax(240px, 320px) 1fr; }
   .field-grid{ grid-template-columns: 1fr 1fr; }
   .field-grid .field-row.is-full{ grid-column: 1 / -1; }
+
+  .scan-grid{ grid-template-columns: 1fr 1fr; align-items: start; }
 }
 
 @media (min-width: 1024px){

@@ -19,8 +19,14 @@ python3 -m http.server 8000
 - `soirees.html` — Soirées à thème : programme des événements, chaque
   soirée reliée à son inscription Eventbrite
 - `galerie.html` — Galerie (exposition en cours + œuvres)
+- `carte.html` — Carte de fidélité : inscription client + affichage de
+  la carte (QR code, points)
 - `reservation.html` — Réservation (formulaire complet)
 - `contact.html` — Contact & infos pratiques (adresse, horaires, carte)
+- `loyalty-scan.html` — Espace staff (protégé) : scanner une carte,
+  ajouter un point — **non listé dans le menu**
+- `loyalty-admin.html` — Espace propriétaire (protégé) : liste des
+  clients fidélité — **non listé dans le menu**
 
 Chaque page partage le même header (navigation + bouton "Réserver" mis en
 avant), le même footer, et les mêmes `css/style.css` / `js/script.js`.
@@ -143,6 +149,87 @@ page. Sur un ID encore placeholder, le bouton doit rester grisé.
   confirmation et de rappel aux inscrits, configurables depuis son
   tableau de bord (*Manage → Emails*).
 
+## Carte de fidélité (Supabase)
+
+Trois pages travaillent ensemble :
+
+- `carte.html` (public) — un client entre prénom + téléphone une seule
+  fois, obtient un QR code et un lien personnels ("sa carte"), et revoit
+  sa progression à chaque visite du lien.
+- `loyalty-scan.html` (staff, protégé par mot de passe) — scanne le QR
+  code du client (caméra du téléphone) ou le cherche par numéro, ajoute
+  un point d'un clic, et affiche une alerte quand la récompense se
+  débloque.
+- `loyalty-admin.html` (propriétaire, même mot de passe) — liste tous
+  les clients avec leurs points et leur dernière visite, pour repérer
+  les habitués.
+
+**Choix faits pendant la construction :**
+- **Pas de mot de passe côté client** : la carte s'ouvre via un lien/QR
+  personnel (un identifiant aléatoire, impossible à deviner), pas un
+  compte avec mot de passe — ça reste un geste de 5 secondes au comptoir.
+  La contrepartie : celui qui a le lien voit la carte. Ne le partagez pas,
+  et ne l'indexez pas (le fichier n'est de toute façon listé nulle part).
+- **Personne (même le staff) ne peut lister tous les numéros de
+  téléphone via l'API publique** : la base est verrouillée pour que le
+  site ne puisse lire/écrire un profil qu'à travers des fonctions
+  précises (voir `supabase/loyalty-schema.sql`), jamais en vrac.
+- **Seuil de récompense** réglable à un seul endroit : `js/loyalty-config.js`
+  (`LOYALTY_REWARD_THRESHOLD`, 8 par défaut).
+
+### 1. Base de données
+
+Si vous avez déjà un projet Supabase pour ce site (voir une éventuelle
+section précédente de ce README), réutilisez-le : ouvrez **SQL Editor**
+→ *New query*, collez tout `supabase/loyalty-schema.sql`, et cliquez
+*Run*. Sinon, créez un projet gratuit sur [supabase.com](https://supabase.com)
+d'abord, puis faites la même chose.
+
+Dans **Project Settings → API**, notez l'**URL** du projet et la clé
+**`anon` `public`**.
+
+### 2. Brancher le site
+
+Ouvrez `js/loyalty-config.js` et remplacez :
+
+```js
+window.SUPABASE_URL = "https://VOTRE-PROJET.supabase.co";
+window.SUPABASE_ANON_KEY = "VOTRE-ANON-KEY";
+```
+
+par les valeurs notées à l'étape précédente, et ajustez
+`LOYALTY_REWARD_THRESHOLD` si 8 points ne convient pas.
+
+### 3. Créer le compte staff
+
+**Authentication → Users → Add user** dans Supabase : un email + mot de
+passe, partagé par l'équipe. C'est ce compte qui ouvre `loyalty-scan.html`
+et `loyalty-admin.html` — pas d'inscription publique à ces pages.
+
+### 4. Vérifier que tout marche
+
+- Sur `carte.html`, créez une carte de test (votre prénom, votre numéro).
+- Sur `loyalty-scan.html`, connectez-vous, cherchez ce numéro, cliquez
+  "+ 1 point" plusieurs fois jusqu'au seuil — l'alerte de récompense doit
+  apparaître, et "Marquer la récompense utilisée" doit remettre les
+  points à zéro.
+- Sur `loyalty-admin.html`, ce client doit apparaître dans la liste avec
+  ses points et la date du jour en "dernière visite".
+- Scanner un vrai QR code demande d'ouvrir `loyalty-scan.html` sur un
+  téléphone/une tablette (accès caméra) et d'autoriser la caméra au
+  premier essai.
+
+### Limites à connaître
+
+- Le lien/QR de la carte n'est pas un compte : quelqu'un qui le
+  retrouve (capture d'écran partagée, téléphone perdu) peut voir les
+  points, mais ne peut rien modifier (l'ajout de points est réservé au
+  staff connecté). Un client qui perd son lien peut simplement être
+  recherché par téléphone depuis `loyalty-scan.html`.
+- Comme pour le calendrier Eventbrite, le scan caméra a besoin de
+  `https://` (ou `localhost` en test) pour accéder à la caméra — ça
+  fonctionne nativement sur n'importe quel hébergement web standard.
+
 ## Design
 
 Direction calibrée sur le site de Château de Berne (chateauberne.com),
@@ -174,12 +261,20 @@ Vercel, GitHub Pages, ou n'importe quel hébergement mutualisé classique
 ## Structure
 
 ```
-index.html          Accueil
-soirees.html        Soirées à thème (programme + inscription Eventbrite)
-galerie.html        Galerie
-reservation.html    Réservation
-contact.html        Contact & infos pratiques
-css/style.css       Styles partagés (mobile-first)
-js/script.js        Nav mobile, header au scroll, reveal au scroll, formulaire réservation
-js/eventbrite.js    Connecte chaque bouton "S'inscrire" au widget de checkout Eventbrite
+index.html                     Accueil
+soirees.html                   Soirées à thème (programme + inscription Eventbrite)
+galerie.html                   Galerie
+carte.html                     Carte de fidélité (inscription + QR code du client)
+reservation.html               Réservation
+contact.html                   Contact & infos pratiques
+loyalty-scan.html              Espace staff : scanner/chercher un client, ajouter un point
+loyalty-admin.html             Espace propriétaire : liste des clients fidélité
+css/style.css                  Styles partagés (mobile-first)
+js/script.js                   Nav mobile, header au scroll, reveal au scroll, formulaire réservation
+js/eventbrite.js               Connecte chaque bouton "S'inscrire" au widget de checkout Eventbrite
+js/loyalty-config.js           Config Supabase + seuil de récompense (fidélité)
+js/loyalty-card.js             Logique de carte.html (inscription, QR code, progression)
+js/loyalty-scan.js             Logique de loyalty-scan.html (auth, caméra, recherche, +1 point)
+js/loyalty-admin.js            Logique de loyalty-admin.html (auth, liste, recherche)
+supabase/loyalty-schema.sql    Tables + fonctions sécurisées de la fidélité (à exécuter une fois)
 ```

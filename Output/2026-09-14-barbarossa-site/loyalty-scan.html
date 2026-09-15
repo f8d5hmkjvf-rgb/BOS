@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Scan fidélité — Barbarossa</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.js"></script>
+</head>
+<body>
+
+<header class="site-header is-scrolled">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Barbarossa</a>
+    <span class="admin-badge">Scan fidélité</span>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <header class="page-header">
+    <div class="section-inner">
+      <p class="eyebrow">Espace privé</p>
+      <h1 class="page-title">Scanner une carte</h1>
+      <p class="page-lede">Scanne le QR code du client, ou cherche-le par téléphone, pour ajouter un point.</p>
+    </div>
+  </header>
+
+  <section class="section" id="login-section">
+    <div class="section-inner">
+      <div class="admin-login-card">
+        <h2>Connexion</h2>
+        <form id="login-form">
+          <div class="field-row">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" autocomplete="username" required>
+          </div>
+          <div class="field-row">
+            <label for="login-password">Mot de passe</label>
+            <input type="password" id="login-password" autocomplete="current-password" required>
+          </div>
+          <button type="submit" class="btn btn-accent btn-block">Se connecter</button>
+          <p class="form-status" id="login-status" role="status" aria-live="polite"></p>
+        </form>
+        <p class="admin-hint">Compte créé une fois dans Supabase (Authentication → Users → Add user). Voir le README.</p>
+      </div>
+
+      <div id="config-notice" class="config-notice" hidden>
+        <p><strong>Supabase n'est pas encore configuré.</strong> Complétez <code>js/loyalty-config.js</code> (voir README).</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="scan-section" hidden>
+    <div class="section-inner">
+
+      <div class="admin-topbar">
+        <p class="admin-user">Connecté·e en tant que <strong id="staff-email"></strong></p>
+        <div class="admin-topbar-actions">
+          <a href="loyalty-admin.html" class="btn btn-ghost btn-small">Liste des clients</a>
+          <button type="button" class="btn btn-ghost btn-small" id="logout-btn">Se déconnecter</button>
+        </div>
+      </div>
+
+      <div class="scan-grid">
+
+        <div class="scan-panel">
+          <h2>Scanner</h2>
+          <div class="scan-video-wrap">
+            <video id="scan-video" playsinline muted></video>
+            <div class="scan-video-frame" aria-hidden="true"></div>
+          </div>
+          <button type="button" class="btn btn-accent btn-block" id="camera-btn">Activer la caméra</button>
+          <p class="scan-hint" id="scan-hint"></p>
+        </div>
+
+        <div class="scan-panel">
+          <h2>Ou chercher par téléphone</h2>
+          <form id="phone-lookup-form">
+            <div class="field-row">
+              <label for="lookup-phone">Numéro de téléphone</label>
+              <input type="tel" id="lookup-phone" autocomplete="tel">
+            </div>
+            <button type="submit" class="btn btn-ghost btn-block">Chercher</button>
+          </form>
+          <p class="form-status" id="lookup-status" role="status" aria-live="polite"></p>
+        </div>
+
+      </div>
+
+      <div class="customer-result" id="customer-result" hidden>
+        <div class="customer-result-info">
+          <p class="customer-result-name" id="result-name"></p>
+          <p class="customer-result-points" id="result-points"></p>
+        </div>
+        <button type="button" class="btn btn-accent btn-large" id="add-point-btn">+ 1 point</button>
+      </div>
+
+      <div class="reward-alert" id="reward-alert" hidden>
+        <p id="reward-alert-text"></p>
+        <button type="button" class="btn btn-accent" id="redeem-btn">Marquer la récompense utilisée</button>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<script src="js/loyalty-config.js"></script>
+<script src="js/loyalty-scan.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Clients fidélité — Barbarossa</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+
+<header class="site-header is-scrolled">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Barbarossa</a>
+    <span class="admin-badge">Clients fidélité</span>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <header class="page-header">
+    <div class="section-inner">
+      <p class="eyebrow">Espace privé</p>
+      <h1 class="page-title">Clients fidélité</h1>
+      <p class="page-lede">Points, dernière visite, récompenses — de quoi repérer vos habitués.</p>
+    </div>
+  </header>
+
+  <section class="section" id="login-section">
+    <div class="section-inner">
+      <div class="admin-login-card">
+        <h2>Connexion</h2>
+        <form id="login-form">
+          <div class="field-row">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" autocomplete="username" required>
+          </div>
+          <div class="field-row">
+            <label for="login-password">Mot de passe</label>
+            <input type="password" id="login-password" autocomplete="current-password" required>
+          </div>
+          <button type="submit" class="btn btn-accent btn-block">Se connecter</button>
+          <p class="form-status" id="login-status" role="status" aria-live="polite"></p>
+        </form>
+        <p class="admin-hint">Même compte que la page de scan.</p>
+      </div>
+
+      <div id="config-notice" class="config-notice" hidden>
+        <p><strong>Supabase n'est pas encore configuré.</strong> Complétez <code>js/loyalty-config.js</code> (voir README).</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="list-section" hidden>
+    <div class="section-inner">
+
+      <div class="admin-topbar">
+        <p class="admin-user">Connecté·e en tant que <strong id="staff-email"></strong></p>
+        <div class="admin-topbar-actions">
+          <a href="loyalty-scan.html" class="btn btn-ghost btn-small">Scanner une carte</a>
+          <button type="button" class="btn btn-ghost btn-small" id="logout-btn">Se déconnecter</button>
+        </div>
+      </div>
+
+      <div class="field-row loyalty-search-row">
+        <label for="search-input">Chercher un client</label>
+        <input type="search" id="search-input" placeholder="Prénom ou téléphone...">
+      </div>
+
+      <div class="admin-list-card">
+        <div class="loyalty-table-wrap">
+          <table class="hours-table loyalty-table">
+            <thead>
+              <tr>
+                <th>Client</th>
+                <th>Téléphone</th>
+                <th>Points</th>
+                <th>Récompenses</th>
+                <th>Dernière visite</th>
+              </tr>
+            </thead>
+            <tbody id="customers-tbody"></tbody>
+          </table>
+        </div>
+        <p id="customers-empty" hidden class="section-note">Aucun client pour l'instant.</p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<script src="js/loyalty-config.js"></script>
+<script src="js/loyalty-admin.js"></script>
+</body>
+</html>
