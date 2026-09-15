@@ -1,6 +1,19 @@
 (function () {
   "use strict";
 
+  /* ============ ALWAYS START A NEW PAGE AT THE TOP ============
+     Some browsers (mobile Safari/Chrome especially) restore the scroll
+     position of the previous page when navigating to a new one, which
+     makes a link to a fresh page land halfway or fully scrolled down.
+     Force every navigation to start at the top instead. */
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+  window.scrollTo(0, 0);
+  window.addEventListener("pageshow", function () {
+    window.scrollTo(0, 0);
+  });
+
   /* ---- Config -----------------------------------------------------
      Adresse email qui recevra les demandes de réservation (page
      reservation.html). Remplacez-la par la vraie adresse du bar.
