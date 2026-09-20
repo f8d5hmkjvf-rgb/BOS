@@ -25,4 +25,4 @@ Robin seul, sur toutes les étapes (sourcing, annonces, expédition, SAV).
 Comptes Instagram + Facebook existants (Verhalt Cercle). Capacité interne à monter un site rapidement via l'agence web.
 
 ## Fournisseurs / Sourcing
-**Non stabilisé.** Décrit successivement comme "réseau perso" puis "enchères peu connues avec trouvailles très rares" (donc pas répétable). Sans un fournisseur fiable et récurrent pour des bases/boîtiers de mod, il n'y a pas de volume possible, donc rien à automatiser. **Priorité #1 avant tout le reste.**
+Robin confirme avoir un fournisseur fiable permettant de recommander en quantité (5-20+ pièces) sans problème, prix stable ~30€/pièce même en volume. Reste à vérifier dans la pratique (premières commandes en volume) mais débloque en théorie le passage à l'échelle.
