@@ -25,3 +25,7 @@ Nom provisoire : ECOM SPRINT 30.
 ## À clarifier
 - Marge nette des boutiques, niche de la boutique 1.
 - Audience TikTok existante, budget, temps dispo, statut juridique.
+
+## Outils (budget 0 €)
+- Site de vente + hébergement formation + paiement : Systeme.io (plan gratuit).
+- Trafic : TikTok organique. Communauté : Telegram. Tout gratuit.

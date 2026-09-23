@@ -2,7 +2,12 @@
 
 *Préliminaire — 23/09/2026 (onboarding en cours)*
 
-## Bottleneck #1 — Validation : personne n'a encore payé
+## Bottleneck #1 — Incohérence à clarifier : CA déclaré 3-10k€/jour mais 0 € de budget
+- Impact : toute la formation repose sur « la méthode de mes 2 boutiques ». Si les chiffres ne sont pas exacts ou pas à lui, l'offre devient trompeuse et s'effondre au premier « montre tes chiffres ».
+- Hypothèses : marge nulle/négative, cash ailleurs (associé, stock, dettes), boutiques pas à lui, chiffres = objectif.
+- Réponse : demander la vérité sans jugement ; angle « build in public » si les preuves ne tiennent pas.
+
+## #1 bis — Validation : personne n'a encore payé
 - Impact : risque de construire 12h de vidéo pour une offre non validée.
 - Preuves : projet au stade d'idée, pas d'audience ni de préventes connues.
 - Cause : réflexe « construire d'abord ».
