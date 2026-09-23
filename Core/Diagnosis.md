@@ -8,8 +8,9 @@
 - Cause : réflexe « construire d'abord ».
 - Réponse : prévente fondateurs à 97 € avec Module 0-1 seulement.
 
-## #2 — Crédibilité à établir (à confirmer)
-- Si l'entrepreneur n'a pas de résultats e-com propres, l'angle « build in public » devient la stratégie de contenu.
+## #2 — Pas encore d'audience (à confirmer)
+- Crédibilité : RÉSOLU — 2 boutiques à 3-10k€/jour de CA. Atout majeur.
+- Reste à construire l'audience TikTok/Telegram.
 
 ## #3 — Risque de conformité
 - Envie de « promettre des résultats rapides » → risque légal (pratique commerciale trompeuse) + bannissement TikTok. Recadré vers des promesses de jalons.

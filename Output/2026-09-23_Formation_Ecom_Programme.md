@@ -1,19 +1,31 @@
-# Formation E-commerce — Programme complet (V1)
+# Formation E-commerce Google Ads — Programme complet (V2)
 
-*Créé le 23/09/2026 — nom de marque provisoire : **ECOM SPRINT 30** (à changer quand tu veux)*
+*Créé le 23/09/2026 — V2 : repositionné sur Google Ads (la méthode réelle de Robin : 2 boutiques, 3 000 à 10 000 €/jour de CA cumulé)*
+*Nom provisoire : **GOOGLE ECOM SPRINT** (à changer quand tu veux)*
+
+## 0. Le positionnement : l'e-commerce par Google, pas par TikTok
+
+90 % des formations e-com FR enseignent le dropshipping TikTok/Meta Ads, et leurs élèves se battent tous sur les mêmes produits. La tienne enseigne **ce que tu fais vraiment : des boutiques qui vendent via Google Shopping / Search**, où l'acheteur *cherche déjà* le produit.
+
+- Trafic d'intention (il tape « abri de jardin 3x2 ») plutôt que trafic d'impulsion (il scrolle)
+- Produits durables (jardin, maison, équipement) plutôt que des produits qui sont viraux 3 semaines
+- Moins dépendant de la créa vidéo → plus accessible pour quelqu'un qui ne veut pas se filmer
+- **La preuve, c'est toi** : 2 boutiques qui tournent, chiffres réels
+
+Tu fais la promo sur TikTok, mais tu enseignes Google. C'est ton angle unique : *« Pendant que tout le monde se bat sur TikTok Ads, moi je fais 5 000 €/jour avec Google. Je te montre. »*
 
 ---
 
 ## 1. La promesse (le cœur de l'offre)
 
-> **« En 30 jours, tu passes de zéro à une boutique en ligne live, avec ton premier produit testé en publicité — étape par étape, sans jamais être seul. »**
+> **« En 30 jours, tu lances ta boutique et tes premières campagnes Google Shopping — avec la méthode exacte de mes 2 boutiques. Étape par étape, sans jamais être seul. »**
 
 Pourquoi cette promesse et pas « fais 10k€/mois en 30 jours » :
 - **Elle est tenable** → l'élève qui suit le programme l'atteint à coup sûr. Élèves qui atteignent la promesse = témoignages = ventes.
 - **Elle est légale** → promettre des revenus que tu ne peux pas garantir = pratique commerciale trompeuse (Code de la consommation, jusqu'à 300 000 € d'amende). Et TikTok supprime les vidéos / bannit les comptes qui font du « get rich quick ».
 - **Elle attire les bons clients** → ceux qui veulent bosser, pas ceux qui veulent un bouton magique (et qui demandent un remboursement à J+10).
 
-La vitesse est promise sur **les étapes** (boutique live en 10 jours, premiers tests en 20 jours) — pas sur le compte en banque. C'est ça qui rend la promesse à la fois excitante ET crédible.
+La vitesse est promise sur **les étapes** (boutique live en 12 jours, premières campagnes Google en 25 jours) — pas sur le compte en banque. C'est ça qui rend la promesse à la fois excitante ET crédible.
 
 ---
 
@@ -24,8 +36,8 @@ La vitesse est promise sur **les étapes** (boutique live en 10 jours, premiers 
 | 🥉 **Fondations** | J3 | Son modèle choisi + son calculateur de rentabilité rempli | Capture de son calculateur |
 | 🥈 **Produit trouvé** | J7 | 1 produit validé (score ≥ 7/10 sur la grille) + fournisseur trouvé | Son produit + son score |
 | 🥇 **Boutique live** | J12 | Boutique Shopify en ligne, paiement fonctionnel, pages légales OK | Lien de sa boutique |
-| 🏆 **Contenu prêt** | J16 | 5 créas vidéo prêtes à publier | Sa meilleure créa |
-| 💎 **Premier test** | J25 | Produit testé (organique + ads), chiffres lus, décision prise (couper / garder / scaler) | Son tableau de KPIs |
+| 🏆 **Flux prêt** | J16 | Merchant Center validé + flux produit optimisé | Capture « produits approuvés » |
+| 💎 **Premières ventes Google** | J25 | Campagne Shopping live, chiffres lus, décision prise (couper / garder / scaler) | Son tableau de KPIs |
 
 Chaque jalon = un badge / rôle sur le Telegram. Ça crée la chaîne de dopamine et l'émulation de groupe.
 
@@ -49,7 +61,7 @@ Chaque jalon = un badge / rôle sur le Telegram. Ça crée la chaîne de dopamin
 ### MODULE 1 — Les fondations (J1-J3) · *~1h15*
 **Objectif :** choisir son modèle et comprendre les maths AVANT de dépenser 1 €.
 1. Les 3 modèles : dropshipping, marque (private label), print-on-demand — lequel pour toi — 12 min
-2. Généraliste vs mono-produit vs niche : pourquoi on commence mono-produit — 10 min
+2. Généraliste vs mono-produit vs boutique de niche : pourquoi la niche gagne sur Google — 10 min
 3. **Les maths qui sauvent ton compte en banque** : marge, coût d'acquisition, point mort, ROAS de break-even — 20 min
 4. Le calculateur de rentabilité (template fourni) : on le remplit ensemble — 15 min
 5. Le statut juridique : micro-entreprise, en 20 min, étape par étape — 12 min
@@ -63,9 +75,9 @@ Chaque jalon = un badge / rôle sur le Telegram. Ça crée la chaîne de dopamin
 ### MODULE 2 — Trouver LE produit (J3-J7) · *~1h45*
 **Objectif :** un produit validé par des données, pas par l'intuition.
 1. Les 8 critères d'un produit gagnant (effet waouh, problème résolu, marge x3, pas en magasin…) — 15 min
-2. Méthode 1 : TikTok (Creative Center, hashtags, commentaires « c'est où ? ») — 15 min
-3. Méthode 2 : bibliothèques publicitaires (Meta Ad Library, TikTok Top Ads) — 15 min
-4. Méthode 3 : les marketplaces (Amazon best-sellers, AliExpress, tendances) — 12 min
+2. Méthode 1 : la demande qui existe déjà (Google Trends, Keyword Planner, volumes de recherche) — 15 min
+3. Méthode 2 : espionner Google Shopping (qui vend quoi, à quel prix, combien de marchands) — 15 min
+4. Méthode 3 : les niches « durables » (jardin, maison, animaux…) — pourquoi mes boutiques y sont — 12 min
 5. Méthode 4 : l'IA comme chercheur de produits (prompts fournis) — 12 min
 6. **La grille de validation /10** : on score 3 produits en direct — 15 min
 7. Trouver et tester un fournisseur (AliExpress, CJ, agents) : délais, qualité, commande d'échantillon — 15 min
@@ -94,38 +106,36 @@ Chaque jalon = un badge / rôle sur le Telegram. Ça crée la chaîne de dopamin
 
 ---
 
-### MODULE 4 — Les créas qui arrêtent le scroll (J12-J16) · *~1h30*
-**Objectif :** 5 vidéos prêtes à publier.
-1. Pourquoi la créa = 80 % du résultat en 2026 — 8 min
-2. Les 5 formats qui marchent (démo, avant/après, problème-solution, UGC, réaction) — 15 min
-3. **Les hooks** : les 3 premières secondes, 50 hooks prêts à l'emploi — 15 min
-4. Écrire ses scripts avec l'IA (template + prompts) — 12 min
-5. Filmer avec son téléphone : lumière, cadrage, son — 12 min
-6. Monter vite sur CapCut — 15 min
-7. Trouver des créateurs UGC pas chers (et quoi leur demander) — 10 min
+### MODULE 4 — Google Merchant Center & le flux produit (J12-J16) · *~1h30*
+**Objectif :** des produits approuvés et un flux qui ressort dans les recherches.
+1. Pourquoi le flux produit = 80 % de la performance sur Google Shopping — 8 min
+2. Créer et valider son compte Merchant Center (vérification, pages obligatoires) — 15 min
+3. Connecter Shopify ↔ Google (app Google & YouTube) — 10 min
+4. **Les titres produits qui rankent** : la formule de mes boutiques — 15 min
+5. Optimiser le flux avec l'IA : titres, descriptions, catégories en masse (prompts fournis) — 15 min
+6. Corriger les refus et suspensions Merchant Center (les 10 cas classiques) — 15 min
+7. Avis, prix, livraison : les signaux qui font monter ton annonce — 12 min
 
-**Livrable :** 5 vidéos montées.
-**Ressources :** banque de 50 hooks, template de script, brief UGC.
+**Livrable :** 100 % des produits approuvés dans Merchant Center.
+**Ressources :** formule de titres, prompts d'optimisation de flux, checklist anti-suspension.
 
 ---
 
-### MODULE 5 — Le trafic (J16-J25) · *~2h30*
-**Objectif :** mettre son produit devant des acheteurs et récolter des vraies données.
-**Partie A — Organique (0 €)**
-1. Créer et lancer un compte TikTok dédié à la boutique — 10 min
-2. La routine de publication (2-3 vidéos/jour pendant 10 jours) — 12 min
-3. Lire ses stats TikTok : ce qui signifie « produit validé » — 10 min
-
-**Partie B — Publicité payante**
-4. TikTok Ads ou Meta Ads : lequel choisir pour ton produit — 10 min
-5. Installer le pixel et le suivi des conversions (pas à pas) — 15 min
-6. **La structure de test** : combien de pubs, quel budget, combien de jours — 20 min
+### MODULE 5 — Google Ads : les campagnes qui vendent (J16-J25) · *~2h45*
+**Objectif :** des campagnes rentables, avec la structure exacte de mes boutiques.
+1. Shopping, Performance Max, Search : quoi utiliser et quand — 15 min
+2. Installer le suivi des conversions (Google Ads + GA4) sans erreur — 15 min
+3. **Ma structure de campagne** (écran partagé sur mon vrai compte) — 25 min
+4. Budgets de départ, stratégies d'enchères, ROAS cible — 15 min
+5. Mots-clés négatifs : le levier qui sauve ton budget — 12 min
+6. Segmenter ses produits : gagnants / zombies / budget-brûleurs — 15 min
 7. Lancer sa première campagne en direct — 20 min
 8. **Les règles de décision** : quand couper, quand garder, quand augmenter — 15 min
-9. Les erreurs qui brûlent le budget — 10 min
+9. Les erreurs qui brûlent le budget sur Google — 10 min
+10. Bonus : TikTok organique en complément (0 €) — 12 min
 
-**Livrable :** 1 test complet réalisé (organique + ads) avec ses chiffres.
-**Ressources :** tableau de suivi des KPIs, arbre de décision couper/garder/scaler.
+**Livrable :** 1 campagne Shopping/PMax live avec ses premiers chiffres.
+**Ressources :** template de structure de campagne, liste de 500 mots-clés négatifs, tableau de suivi KPIs, arbre de décision.
 
 ---
 
@@ -160,12 +170,14 @@ Chaque jalon = un badge / rôle sur le Telegram. Ça crée la chaîne de dopamin
 | Calculateur de rentabilité | Google Sheets |
 | Grille de validation produit /10 | Google Sheets |
 | 150+ prompts IA (recherche, copy, scripts, SAV) | Google Doc |
-| Banque de 50 hooks + templates de scripts | Google Doc |
+| Formule de titres + prompts d'optimisation de flux | Google Doc |
+| Structure de campagne + 500 mots-clés négatifs | Google Sheets |
 | Templates de pages légales + page produit | Google Doc |
 | Tableau de suivi KPIs + arbre de décision | Google Sheets |
 | Communauté Telegram + défis hebdo | Telegram |
 | Live Q&A hebdo | Live Telegram |
 | Review de boutiques en live | Live Telegram |
+| Audit de comptes Google Ads en live | Live Telegram |
 
 ---
 
@@ -197,9 +209,11 @@ Benchmarks marché FR : les formations e-com se vendent entre 197 € et 2 000 �
 
 | Offre | Prix | Contenu |
 |---|---|---|
-| **Fondateurs (prévente)** | 97 € — 50 places | Tout le pack + accès à vie + tu construis la formation avec eux |
-| **Lancement** | 197 € | Formation + Telegram privé + lives |
-| **Plus tard (avec coaching)** | 497 €+ | + appel individuel + review perso de boutique |
+| **Fondateurs (prévente)** | 197 € — 50 places | Tout le pack + accès à vie + tu construis la formation avec eux |
+| **Lancement** | 397 € | Formation + Telegram privé + lives |
+| **Plus tard (avec coaching)** | 997 €+ | + audit perso de son compte Google Ads + appel individuel |
+
+*Prix remontés en V2 : tu as des preuves réelles et une méthode rare (Google). Pas besoin de te brader.*
 
 La prévente à 97 € sert à **valider que les gens paient AVANT de tourner les 12h de vidéo.** Tu tournes le Module 0 et 1, tu vends, et tu livres un module par semaine aux fondateurs. Si personne n'achète, tu as perdu 1 semaine au lieu de 2 mois.
 
@@ -220,5 +234,6 @@ La prévente à 97 € sert à **valider que les gens paient AVANT de tourner le
 
 **Autorisé et puissant :**
 - Montrer tes propres chiffres réels (CA **et** dépenses)
-- Le « build in public » : « Je lance une boutique de zéro devant vous, jour par jour »
+- Le « build in public » : « Je lance une 3e boutique de zéro devant vous, jour par jour »
+- Screen de ton Google Ads / Shopify **avec CA, dépenses pub et marge** — c'est ton arme n°1, personne d'autre ne peut le faire
 - Les jalons de l'élève : « Boutique live en 12 jours » ← ça, tu peux le promettre
