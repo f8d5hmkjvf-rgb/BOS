@@ -1,21 +1,14 @@
 # Diagnostic
 
-*Préliminaire — 23/09/2026 (onboarding en cours)*
+*23/09/2026*
 
-## Bottleneck #1 — Incohérence à clarifier : CA déclaré 3-10k€/jour mais 0 € de budget
-- Impact : toute la formation repose sur « la méthode de mes 2 boutiques ». Si les chiffres ne sont pas exacts ou pas à lui, l'offre devient trompeuse et s'effondre au premier « montre tes chiffres ».
-- Hypothèses : marge nulle/négative, cash ailleurs (associé, stock, dettes), boutiques pas à lui, chiffres = objectif.
-- Réponse : demander la vérité sans jugement ; angle « build in public » si les preuves ne tiennent pas.
+## Bottleneck #1 — Aucune compétence/résultat à vendre
+- Impact : une formation e-com sans résultats = promesse impossible à tenir, remboursements, perte de crédibilité, risque légal (pratique commerciale trompeuse).
+- Preuves : Robin confirme n'avoir « rien du tout ».
+- Réponse : acquérir un vrai résultat (build in public) ou vendre un service faisable tout de suite.
 
-## #1 bis — Validation : personne n'a encore payé
-- Impact : risque de construire 12h de vidéo pour une offre non validée.
-- Preuves : projet au stade d'idée, pas d'audience ni de préventes connues.
-- Cause : réflexe « construire d'abord ».
-- Réponse : prévente fondateurs à 97 € avec Module 0-1 seulement.
+## #2 — Objectif flou (« le plus gros, le plus vite »)
+- À chiffrer avec un premier palier réaliste.
 
-## #2 — Pas encore d'audience (à confirmer)
-- Crédibilité : RÉSOLU — 2 boutiques à 3-10k€/jour de CA. Atout majeur.
-- Reste à construire l'audience TikTok/Telegram.
-
-## #3 — Risque de conformité
-- Envie de « promettre des résultats rapides » → risque légal (pratique commerciale trompeuse) + bannissement TikTok. Recadré vers des promesses de jalons.
+## #3 — 0 € de budget
+- Pas bloquant pour TikTok/Telegram/services ; léger frein pour l'e-com (quelques euros d'outils).

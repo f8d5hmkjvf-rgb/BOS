@@ -1,31 +1,15 @@
 # Business
 
-*Stade : pré-lancement — mis à jour le 23/09/2026*
+*Stade : pré-lancement, phase Find — 23/09/2026*
 
-## Existant (preuves)
-- Boutique 1 : campagnes Google Ads — 2 000 à 6 000 €/jour de CA (niche à préciser).
-- Boutique 2 : jardin — 1 000 à 4 000 €/jour de CA.
-- Canal maîtrisé : Google Ads (Shopping/Search). Marges nettes : inconnues.
+## Situation
+- Pas de business, pas de boutique, pas de résultats e-com, 0 € de budget.
+- Idée de départ : vendre une formation e-commerce faite avec l'IA (type Ecom Boss), promo TikTok + Telegram.
+- Problème : on ne peut pas vendre honnêtement une méthode qu'on n'a pas appliquée.
 
-## Projet
-Formation e-commerce en ligne (inspiration : Ecom Boss / Gaspard Grosjean — mais marque et contenu propres).
-Nom provisoire : ECOM SPRINT 30.
+## Pistes proposées
+- A (recommandée) : build in public — lancer sa propre boutique de zéro avec l'IA sur TikTok/Telegram, construire l'audience, vendre un produit une fois des résultats réels obtenus.
+- B : service rémunéré avec l'IA pour des commerces locaux (cash plus rapide).
 
-## Offre (V1 proposée)
-- Positionnement V2 : e-commerce via Google Ads (différenciant vs formations TikTok/Meta).
-- Promesse : boutique + premières campagnes Google Shopping en 30 jours, avec la méthode de ses 2 boutiques.
-- 7 modules, ~50 leçons, templates + prompts IA, Telegram privé, lives hebdo.
-- Prix proposés : prévente fondateurs 197 € (50 places) → 397 € au lancement → 997 €+ avec audit/coaching.
-- Programme complet : `Output/2026-09-23_Formation_Ecom_Programme.md`
-
-## Marketing
-- Canal prévu : TikTok (organique) → canal Telegram public → offre.
-- Hébergement de la formation : « Google » (à préciser).
-
-## À clarifier
-- Marge nette des boutiques, niche de la boutique 1.
-- Audience TikTok existante, budget, temps dispo, statut juridique.
-
-## Outils (budget 0 €)
-- Site de vente + hébergement formation + paiement : Systeme.io (plan gratuit).
-- Trafic : TikTok organique. Communauté : Telegram. Tout gratuit.
+## Outils (0 €)
+- TikTok, Telegram, Systeme.io (plan gratuit), IA.

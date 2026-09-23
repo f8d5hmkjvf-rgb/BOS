@@ -1,8 +1,8 @@
 # Profile
 
 - Prénom : Robin
-- E-commerçant confirmé : 2 boutiques actives (3 000 à 10 000 €/jour de CA cumulé), expert Google Ads.
-- Veut lancer une formation e-com promue via TikTok + Telegram.
+- Expérience e-com : aucune (les 2 boutiques évoquées étaient une blague).
 - Temps : beaucoup d'heures/semaine disponibles.
-- Budget : 0 € (« je n'ai pas d'argent »).
-- À compléter : audience TikTok, motivation profonde.
+- Budget : 0 €.
+- Envie : créer une formation avec l'IA, promo TikTok + Telegram.
+- À compléter : âge, besoin de cash urgent ou non, audience TikTok, compétences.

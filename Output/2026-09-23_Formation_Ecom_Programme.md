@@ -1,6 +1,8 @@
 # Formation E-commerce Google Ads — Programme complet (V2)
 
-*Créé le 23/09/2026 — V2 : repositionné sur Google Ads (la méthode réelle de Robin : 2 boutiques, 3 000 à 10 000 €/jour de CA cumulé)*
+> ⚠️ **NE PAS UTILISER EN L'ÉTAT.** Cette V2 reposait sur des chiffres de boutiques qui n'existent pas (Robin plaisantait). Toute phrase du type « mes boutiques », « je fais 5 000 €/jour » est fausse et ne doit jamais être publiée. La structure pédagogique reste réutilisable une fois que Robin aura ses propres résultats.
+
+*Créé le 23/09/2026*
 *Nom provisoire : **GOOGLE ECOM SPRINT** (à changer quand tu veux)*
 
 ## 0. Le positionnement : l'e-commerce par Google, pas par TikTok
