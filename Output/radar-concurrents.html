@@ -51,6 +51,8 @@
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
+@media (max-width: 520px) { .hide-sm { display: none; } }
 body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 h1, h2, h3 { font-family: var(--font-heading); font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
 a { color: var(--primary); text-decoration: none; }
@@ -173,6 +175,69 @@ textarea { min-height: 160px; resize: vertical; }
 .modal-actions { display: flex; justify-content: flex-end; gap: 10px; flex-wrap: wrap; }
 .toast { position: fixed; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); left: 50%; transform: translateX(-50%); background: var(--fg); color: var(--bg); padding: 10px 18px; border-radius: var(--r-full); font-weight: 600; font-size: 14px; z-index: 60; }
 .confirm-row { display: flex; gap: 6px; align-items: center; }
+
+/* ===== Téléphone ===== */
+.tab svg { display: none; }
+.you { font-size: 11px; font-weight: 700; background: var(--primary); color: #fff; padding: 2px 8px; border-radius: var(--r-full); margin-left: 6px; vertical-align: middle; }
+@media (max-width: 640px) {
+  body { font-size: 15px; padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+  .nav { min-height: 58px; }
+  .logo { font-size: 18px; gap: 8px; }
+  .logo svg { width: 30px; height: 30px; }
+  .logo .tag { font-size: 10px; padding: 3px 8px; }
+  .intro { padding-block: 20px 8px; gap: 10px; }
+  .intro h1 { font-size: 26px; }
+  .intro p { font-size: 14px; }
+  .kpis { gap: 8px; }
+  .kpi { padding: 10px 12px; border-radius: var(--r-sm); }
+  .kpi .v { font-size: 20px; }
+  .kpi .l { font-size: 11.5px; line-height: 1.3; }
+  /* Onglets = barre d'app fixée en bas */
+  .tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; margin: 0; border: none; border-top: 1px solid var(--border); background: var(--header-bg); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; padding: 6px 4px calc(6px + env(safe-area-inset-bottom, 0px)); overflow: visible; }
+  .tab { display: grid; justify-items: center; gap: 2px; border: none; padding: 6px 2px; font-size: 11.5px; position: relative; min-height: 52px; border-radius: var(--r-md); }
+  .tab svg { display: block; width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .tab[aria-selected="true"] { background: var(--tint-primary); }
+  .tab .count { position: absolute; top: 2px; left: calc(50% + 6px); margin: 0; font-size: 10px; padding: 0 6px; background: var(--primary); color: #fff; }
+  .tab .long { display: none; }
+  #tab-fiches, #tab-compare, #tab-signaux, #tab-ia { padding-top: 20px; }
+  /* Filtres = rangée qui défile */
+  .toolbar { margin-inline: -16px; }
+  .filters { flex-wrap: nowrap; overflow-x: auto; padding-inline: 16px; scrollbar-width: none; }
+  .filters::-webkit-scrollbar { display: none; }
+  .chip-btn { flex: none; padding: 8px 14px; }
+  .grid { gap: 14px; padding-bottom: 24px; }
+  .card { padding: 18px; border-radius: var(--r-md); gap: 12px; }
+  .card:hover { transform: none; }
+  .card-head h3 { font-size: 18px; }
+  .facts { padding: 10px; gap: 6px; }
+  .facts b { font-size: 14px; line-height: 1.25; }
+  .facts span { font-size: 10px; }
+  .links a { padding: 8px 12px; font-size: 13px; }
+  .btn-ghost { padding: 10px 12px; font-size: 14px; }
+  /* Comparatif = cartes empilées */
+  .table-wrap { overflow: visible; border: none; background: none; }
+  table, tbody, tr, td { display: block; min-width: 0; width: 100%; }
+  thead { display: none; }
+  tr { background: var(--card); border: 1px solid var(--border); border-radius: var(--r-md); padding: 12px 14px; margin-bottom: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; }
+  tr.me { border-color: var(--primary); background: var(--tint-primary); }
+  tr.me td { background: none; }
+  td { padding: 0; border: none; font-size: 14px; }
+  td.name { grid-column: 1 / -1; font-family: var(--font-heading); font-weight: 700; font-size: 16px; }
+  td[data-l]::before { content: attr(data-l); display: block; font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 600; }
+  td[data-l="Cible"] { grid-column: 1 / -1; }
+  .insight { padding: 16px; margin-bottom: 24px; }
+  .panel { padding: 18px; border-radius: var(--r-md); }
+  .ai-grid { gap: 14px; padding-bottom: 24px; }
+  .feed { padding-bottom: 24px; }
+  /* Évite le zoom auto d'iOS */
+  input, select, textarea { font-size: 16px; padding: 12px; }
+  /* Formulaire = feuille plein écran */
+  .modal { padding: 0; place-items: end stretch; }
+  .modal-card { width: 100%; max-height: 92vh; border-radius: var(--r-lg) var(--r-lg) 0 0; padding: 20px 16px 0; }
+  .modal-actions { position: sticky; bottom: 0; background: var(--card); padding: 12px 0 calc(12px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--border); }
+  .modal-actions .btn { flex: 1; padding: 13px; }
+  .toast { bottom: calc(86px + env(safe-area-inset-bottom, 0px)); }
+}
 </style>
 
 <header class="site-header">
@@ -181,7 +246,7 @@ textarea { min-height: 160px; resize: vertical; }
       <svg viewBox="0 0 512 512" aria-hidden="true"><defs><linearGradient id="lg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6366F1"/><stop offset="100%" stop-color="#059669"/></linearGradient></defs><rect width="512" height="512" rx="112" fill="url(#lg)"/><path d="M 158 118 C 280 70, 380 110, 372 132" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-dasharray="2 22" opacity="0.7"/><path d="M 158 118 L 158 362 L 344 362" fill="none" stroke="#fff" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/><circle cx="372" cy="132" r="46" fill="#fff"/><circle cx="372" cy="132" r="18" fill="#1E1B4B"/></svg>
       Louis<span>IA</span> <span class="tag">Radar</span>
     </a>
-    <button class="btn btn-primary btn-sm" id="addBtn" type="button">+ Ajouter un concurrent</button>
+    <button class="btn btn-primary btn-sm" id="addBtn" type="button" aria-label="Ajouter un concurrent">+ Ajouter<span class="hide-sm">&nbsp;un concurrent</span></button>
   </div>
 </header>
 
@@ -199,10 +264,10 @@ textarea { min-height: 160px; resize: vertical; }
   </section>
 
   <nav class="tabs" role="tablist">
-    <button class="tab" role="tab" data-tab="fiches" aria-selected="true">Fiches <span class="count" id="cFiches">0</span></button>
-    <button class="tab" role="tab" data-tab="compare" aria-selected="false">Comparatif</button>
-    <button class="tab" role="tab" data-tab="signaux" aria-selected="false">Signaux <span class="count" id="cSignaux">0</span></button>
-    <button class="tab" role="tab" data-tab="ia" aria-selected="false">Analyse IA</button>
+    <button class="tab" role="tab" data-tab="fiches" aria-selected="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M7 9h10M7 13h6"/></svg><span class="tl">Fiches</span><span class="count" id="cFiches">0</span></button>
+    <button class="tab" role="tab" data-tab="compare" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span class="tl">Comparatif</span></button>
+    <button class="tab" role="tab" data-tab="signaux" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3M18 12h3M16.3 7.7l2.1-2.1"/><circle cx="12" cy="14" r="4"/></svg><span class="tl">Signaux</span><span class="count" id="cSignaux">0</span></button>
+    <button class="tab" role="tab" data-tab="ia" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M18 16l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg><span class="tl"><span class="long">Analyse </span>IA</span></button>
   </nav>
 
   <section id="tab-fiches">
@@ -370,7 +435,7 @@ function renderGrid() {
 function renderCompare() {
   const rows = [LOUIS, ...[...comps].sort((a, b) => (a.priceMonthly ?? 1e9) - (b.priceMonthly ?? 1e9))];
   $("#cmpBody").innerHTML = rows.map((c, i) => `
-    <tr class="${i === 0 ? "me" : ""}"><td>${esc(c.name)}</td><td class="num">${eur(c.priceMonthly)}</td><td class="num">${c.setupFee == null ? (i === 0 ? "Sur devis" : "–") : eur(c.setupFee)}</td><td>${esc(c.commitment || "?")}</td><td>${esc(c.ordering || "?")}</td><td>${esc(c.target || "")}</td></tr>`).join("");
+    <tr class="${i === 0 ? "me" : ""}"><td class="name">${esc(c.name)}${i === 0 ? ' <span class="you">Toi</span>' : ""}</td><td class="num" data-l="Prix / mois">${eur(c.priceMonthly)}</td><td class="num" data-l="Création">${c.setupFee == null ? (i === 0 ? "Sur devis" : "–") : eur(c.setupFee)}</td><td data-l="Engagement">${esc(c.commitment || "?")}</td><td data-l="Commande">${esc(c.ordering || "?")}</td><td data-l="Cible">${esc(c.target || "")}</td></tr>`).join("");
   const priced = comps.filter(c => typeof c.priceMonthly === "number").length;
   $("#insight").innerHTML = comps.length ? `
     <h3>Ce que le tableau dit</h3>
@@ -398,6 +463,7 @@ document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () =>
   document.querySelectorAll(".tab").forEach(x => x.setAttribute("aria-selected", String(x === t)));
   ["fiches", "compare", "signaux", "ia"].forEach(k => $("#tab-" + k).hidden = k !== t.dataset.tab);
   try { localStorage.setItem("radar-tab", t.dataset.tab); } catch {}
+  if (matchMedia("(max-width: 640px)").matches && window.scrollY > $("#tab-fiches").parentElement.querySelector(".intro").offsetHeight) window.scrollTo({ top: $("#tab-" + t.dataset.tab).offsetTop - 60 });
 }));
 try { const saved = localStorage.getItem("radar-tab"); if (saved) document.querySelector(`.tab[data-tab="${saved}"]`)?.click(); } catch {}
 
