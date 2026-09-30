@@ -1,0 +1,548 @@
+<title>Radar Louis IA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Layout: même système que louis-ia.com. Barre en verre, contenu centré 1200px, cartes blanches à bordure indigo pâle. */
+:root {
+  --primary: #6366F1;
+  --primary-dark: #4F46E5;
+  --accent: #059669;
+  --bg: #FFFFFF;
+  --surface: #F5F3FF;
+  --card: #FFFFFF;
+  --fg: #1E1B4B;
+  --muted: #6B7280;
+  --muted-bg: #EBEFF9;
+  --border: #E0E7FF;
+  --danger: #DC2626;
+  --warn: #B45309;
+  --header-bg: rgba(255,255,255,0.75);
+  --tint-primary: rgba(99,102,241,0.12);
+  --tint-accent: rgba(5,150,105,0.12);
+  --tint-danger: rgba(220,38,38,0.10);
+  --tint-warn: rgba(180,83,9,0.12);
+  --shadow-md: 0 8px 24px rgba(30,27,75,0.08);
+  --shadow-lg: 0 16px 48px rgba(30,27,75,0.12);
+  --font-heading: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Open Sans', 'Segoe UI', system-ui, sans-serif;
+  --r-sm: 8px; --r-md: 14px; --r-lg: 22px; --r-full: 999px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --primary: #818CF8; --primary-dark: #6366F1; --accent: #34D399;
+    --bg: #0F0D2E; --surface: #17143F; --card: #1B1848; --fg: #EEF0FF;
+    --muted: #A5A8C8; --muted-bg: #242060; --border: #2E2A6B; --danger: #F87171; --warn: #FBBF24;
+    --header-bg: rgba(15,13,46,0.8);
+    --tint-primary: rgba(129,140,248,0.18); --tint-accent: rgba(52,211,153,0.16);
+    --tint-danger: rgba(248,113,113,0.16); --tint-warn: rgba(251,191,36,0.16);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.35); --shadow-lg: 0 16px 48px rgba(0,0,0,0.45);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --primary: #818CF8; --primary-dark: #6366F1; --accent: #34D399;
+  --bg: #0F0D2E; --surface: #17143F; --card: #1B1848; --fg: #EEF0FF;
+  --muted: #A5A8C8; --muted-bg: #242060; --border: #2E2A6B; --danger: #F87171; --warn: #FBBF24;
+  --header-bg: rgba(15,13,46,0.8);
+  --tint-primary: rgba(129,140,248,0.18); --tint-accent: rgba(52,211,153,0.16);
+  --tint-danger: rgba(248,113,113,0.16); --tint-warn: rgba(251,191,36,0.16);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.35); --shadow-lg: 0 16px 48px rgba(0,0,0,0.45);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-family: var(--font-heading); font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+.wrap { max-width: 1200px; margin: 0 auto; padding-inline: 24px; }
+@media (max-width: 600px) { .wrap { padding-inline: 16px; } }
+
+.site-header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--header-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 68px; }
+.logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-heading); font-weight: 800; font-size: 20px; color: var(--fg); }
+.logo:hover { text-decoration: none; }
+.logo span { color: var(--primary); }
+.logo svg { width: 34px; height: 34px; flex: none; }
+.logo .tag { font-size: 12px; font-weight: 600; color: var(--primary); background: var(--muted-bg); padding: 4px 10px; border-radius: var(--r-full); letter-spacing: 0.04em; text-transform: uppercase; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-heading); font-weight: 600; font-size: 14px; padding: 11px 22px; border-radius: var(--r-full); border: 2px solid transparent; cursor: pointer; transition: transform .2s, box-shadow .2s, background .2s, border-color .2s, color .2s; white-space: nowrap; }
+.btn:disabled { opacity: .55; cursor: not-allowed; transform: none !important; }
+.btn-primary { background: var(--primary); color: #fff; box-shadow: var(--shadow-md); }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.btn-accent { background: var(--accent); color: #fff; box-shadow: var(--shadow-md); }
+.btn-accent:hover { transform: translateY(-2px); }
+.btn-outline { background: transparent; border-color: var(--border); color: var(--fg); }
+.btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+.btn-sm { padding: 7px 14px; font-size: 13px; }
+.btn-ghost { background: none; border: none; color: var(--muted); padding: 6px 10px; font-size: 13px; }
+.btn-ghost:hover { color: var(--primary); }
+
+.intro { padding-block: 40px 24px; display: grid; gap: 14px; }
+.eyebrow { justify-self: start; display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-heading); font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--primary); background: var(--muted-bg); padding: 7px 14px; border-radius: var(--r-full); }
+.eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(1.3); } }
+.intro h1 { font-size: clamp(28px, 4.2vw, 42px); }
+.text-gradient { background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.intro p { color: var(--muted); max-width: 640px; margin: 0; font-size: 16px; }
+
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 860px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); padding: 18px 20px; display: grid; gap: 2px; }
+.kpi .v { font-family: var(--font-heading); font-size: 28px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.kpi .l { color: var(--muted); font-size: 13px; }
+
+.tabs { display: flex; gap: 6px; margin-block: 28px 20px; border-bottom: 1px solid var(--border); overflow-x: auto; }
+.tab { background: none; border: none; border-bottom: 3px solid transparent; padding: 10px 14px; font-family: var(--font-heading); font-weight: 600; font-size: 14px; color: var(--muted); cursor: pointer; white-space: nowrap; }
+.tab[aria-selected="true"] { color: var(--primary); border-bottom-color: var(--primary); }
+.tab .count { font-size: 12px; background: var(--muted-bg); color: var(--primary); padding: 1px 8px; border-radius: var(--r-full); margin-left: 6px; }
+
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip-btn { border: 1px solid var(--border); background: var(--card); padding: 6px 14px; border-radius: var(--r-full); font-size: 13px; font-weight: 600; cursor: pointer; color: var(--fg); }
+.chip-btn[aria-pressed="true"] { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 20px; padding-bottom: 48px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 24px; display: grid; gap: 14px; align-content: start; min-width: 0; transition: transform .2s, box-shadow .2s, border-color .2s; }
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--primary); }
+.card-head { display: flex; justify-content: space-between; gap: 12px; align-items: start; }
+.card-head h3 { font-size: 19px; }
+.card-head .cat { color: var(--muted); font-size: 13px; }
+.pill { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: var(--r-full); white-space: nowrap; text-transform: uppercase; letter-spacing: .04em; }
+.t-haute { background: var(--tint-danger); color: var(--danger); }
+.t-moyenne { background: var(--tint-warn); color: var(--warn); }
+.t-faible { background: var(--tint-accent); color: var(--accent); }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; background: var(--surface); border-radius: var(--r-md); padding: 12px; }
+.facts div { display: grid; min-width: 0; }
+.facts b { font-family: var(--font-heading); font-size: 16px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.facts span { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.lists { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 12px; font-size: 13.5px; }
+@media (max-width: 420px) { .lists { grid-template-columns: 1fr; } }
+.lists h4 { margin: 0 0 4px; font-family: var(--font-heading); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+.lists ul { margin: 0; padding-left: 16px; }
+.lists .plus h4 { color: var(--accent); }
+.lists .minus h4 { color: var(--danger); }
+.angle { background: var(--tint-primary); border-radius: var(--r-md); padding: 12px 14px; font-size: 14px; }
+.angle strong { font-family: var(--font-heading); color: var(--primary); display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
+.links { display: flex; flex-wrap: wrap; gap: 6px; }
+.links a { font-size: 12.5px; font-weight: 600; border: 1px solid var(--border); padding: 4px 10px; border-radius: var(--r-full); color: var(--fg); }
+.links a:hover { border-color: var(--primary); color: var(--primary); text-decoration: none; }
+.card-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 10px; flex-wrap: wrap; }
+
+.table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--r-lg); background: var(--card); margin-bottom: 20px; }
+table { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 14px; }
+th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { font-family: var(--font-heading); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); background: var(--surface); }
+td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.me td { background: var(--tint-primary); font-weight: 600; }
+tr:last-child td { border-bottom: none; }
+.insight { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 20px 22px; display: grid; gap: 6px; margin-bottom: 48px; }
+.insight h3 { font-size: 17px; }
+.insight p { margin: 0; color: var(--muted); max-width: 72ch; }
+
+.feed { display: grid; gap: 12px; padding-bottom: 48px; }
+.sig { display: grid; grid-template-columns: 110px minmax(0,1fr) auto; gap: 16px; align-items: start; background: var(--card); border: 1px solid var(--border); border-radius: var(--r-md); padding: 14px 18px; }
+@media (max-width: 560px) { .sig { grid-template-columns: 1fr; gap: 6px; } }
+.sig time { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 13px; }
+.sig .who { font-family: var(--font-heading); font-weight: 600; }
+.sig .kind { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: var(--r-full); background: var(--muted-bg); color: var(--primary); margin-left: 6px; text-transform: uppercase; }
+.sig p { margin: 2px 0 0; font-size: 14px; overflow-wrap: anywhere; }
+
+.panel { background: var(--card); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 24px; display: grid; gap: 14px; min-width: 0; }
+.ai-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 20px; padding-bottom: 48px; }
+@media (max-width: 860px) { .ai-grid { grid-template-columns: 1fr; } }
+.panel h3 { font-size: 18px; }
+.panel .sub { color: var(--muted); margin: 0; font-size: 14px; }
+label { font-size: 13px; font-weight: 600; display: grid; gap: 6px; }
+input, select, textarea { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 10px 12px; font-size: 14px; }
+textarea { min-height: 160px; resize: vertical; }
+.row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); gap: 12px; }
+.out { background: var(--surface); border-radius: var(--r-md); padding: 16px; font-size: 14px; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 60px; }
+.out.empty { color: var(--muted); }
+.note { font-size: 13px; color: var(--muted); }
+.msg-box { background: var(--tint-accent); border-radius: var(--r-md); padding: 14px; font-size: 14px; white-space: pre-wrap; }
+
+.empty-state { grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 48px 16px; border: 2px dashed var(--border); border-radius: var(--r-lg); }
+
+.modal { position: fixed; inset: 0; background: rgba(15,13,46,.55); display: grid; place-items: center; padding: 16px; z-index: 50; }
+.modal-card { background: var(--card); border-radius: var(--r-lg); padding: 24px; width: min(640px, 100%); max-height: 90vh; overflow-y: auto; display: grid; gap: 14px; box-shadow: var(--shadow-lg); }
+.modal-actions { display: flex; justify-content: flex-end; gap: 10px; flex-wrap: wrap; }
+.toast { position: fixed; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); left: 50%; transform: translateX(-50%); background: var(--fg); color: var(--bg); padding: 10px 18px; border-radius: var(--r-full); font-weight: 600; font-size: 14px; z-index: 60; }
+.confirm-row { display: flex; gap: 6px; align-items: center; }
+</style>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="logo" href="https://louis-ia.com" target="_blank" rel="noopener">
+      <svg viewBox="0 0 512 512" aria-hidden="true"><defs><linearGradient id="lg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6366F1"/><stop offset="100%" stop-color="#059669"/></linearGradient></defs><rect width="512" height="512" rx="112" fill="url(#lg)"/><path d="M 158 118 C 280 70, 380 110, 372 132" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-dasharray="2 22" opacity="0.7"/><path d="M 158 118 L 158 362 L 344 362" fill="none" stroke="#fff" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/><circle cx="372" cy="132" r="46" fill="#fff"/><circle cx="372" cy="132" r="18" fill="#1E1B4B"/></svg>
+      Louis<span>IA</span> <span class="tag">Radar</span>
+    </a>
+    <button class="btn btn-primary btn-sm" id="addBtn" type="button">+ Ajouter un concurrent</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="intro">
+    <span class="eyebrow"><span class="dot"></span>Veille concurrentielle</span>
+    <h1>Ce que font tes concurrents, <span class="text-gradient">en un coup d'œil</span></h1>
+    <p>Prix, offres, engagements et signaux publics des acteurs qui vendent des sites aux commerces. Chaque fiche finit par un angle pour les battre en rendez-vous.</p>
+    <div class="kpis">
+      <div class="kpi"><span class="v" id="kCount">–</span><span class="l">Concurrents suivis</span></div>
+      <div class="kpi"><span class="v" id="kMedian">–</span><span class="l">Prix d'entrée médian / mois</span></div>
+      <div class="kpi"><span class="v" id="kHigh">–</span><span class="l">Menaces élevées</span></div>
+      <div class="kpi"><span class="v" id="kSignals">–</span><span class="l">Signaux sur 30 jours</span></div>
+    </div>
+  </section>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" data-tab="fiches" aria-selected="true">Fiches <span class="count" id="cFiches">0</span></button>
+    <button class="tab" role="tab" data-tab="compare" aria-selected="false">Comparatif</button>
+    <button class="tab" role="tab" data-tab="signaux" aria-selected="false">Signaux <span class="count" id="cSignaux">0</span></button>
+    <button class="tab" role="tab" data-tab="ia" aria-selected="false">Analyse IA</button>
+  </nav>
+
+  <section id="tab-fiches">
+    <div class="toolbar">
+      <div class="filters" id="filters">
+        <button class="chip-btn" aria-pressed="true" data-f="all">Tous</button>
+        <button class="chip-btn" aria-pressed="false" data-f="haute">Menace élevée</button>
+        <button class="chip-btn" aria-pressed="false" data-f="Agence / abonnement">Agences</button>
+        <button class="chip-btn" aria-pressed="false" data-f="Commande en ligne resto">Commande resto</button>
+        <button class="chip-btn" aria-pressed="false" data-f="Local">Locaux</button>
+      </div>
+    </div>
+    <div class="grid" id="grid"><div class="empty-state" id="loading">Chargement des fiches concurrents…</div></div>
+  </section>
+
+  <section id="tab-compare" hidden>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Acteur</th><th>Prix d'entrée / mois</th><th>Frais de création</th><th>Engagement</th><th>Commande en ligne</th><th>Cible</th></tr></thead>
+      <tbody id="cmpBody"></tbody>
+    </table></div>
+    <div class="insight" id="insight"></div>
+  </section>
+
+  <section id="tab-signaux" hidden>
+    <form class="panel" id="sigForm" style="margin-bottom:16px">
+      <h3>Noter un signal</h3>
+      <div class="row">
+        <label>Concurrent<select id="sigWho" required></select></label>
+        <label>Type<select id="sigKind"><option>Prix</option><option>Offre</option><option>Pub</option><option>Avis</option><option>Contenu</option><option>Recrutement</option></select></label>
+        <label>Date<input type="date" id="sigDate" required></label>
+      </div>
+      <label>Ce que tu as vu<input id="sigNote" required maxlength="400" placeholder="Ex. : nouvelle offre à 49 €/mois sans engagement sur la page d'accueil"></label>
+      <label>Lien source (facultatif)<input id="sigSrc" type="url" placeholder="https://"></label>
+      <div><button class="btn btn-primary btn-sm" type="submit">Ajouter le signal</button></div>
+    </form>
+    <div class="feed" id="feed"></div>
+  </section>
+
+  <section id="tab-ia" hidden>
+    <div class="ai-grid">
+      <div class="panel">
+        <h3>Décortiquer un concurrent</h3>
+        <p class="sub">Ouvre le site du concurrent, copie le texte de sa page d'accueil ou de tarifs, colle-le ici. L'IA en tire son offre, ses prix, ses failles et un angle d'attaque pour toi.</p>
+        <label>Fiche à enrichir<select id="aiWho"></select></label>
+        <label>Texte copié depuis son site<textarea id="aiText" placeholder="Colle ici le texte de la page (titres, offres, prix, garanties…)"></textarea></label>
+        <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-primary btn-sm" id="aiRun" type="button">Analyser</button><button class="btn btn-outline btn-sm" id="aiStop" type="button" hidden>Arrêter</button></div>
+        <div class="out empty" id="aiOut">Le résultat apparaîtra ici.</div>
+        <div id="aiSaveRow" hidden><button class="btn btn-accent btn-sm" id="aiSave" type="button">Enregistrer dans la fiche</button></div>
+      </div>
+      <div class="panel">
+        <h3>Brief de la semaine</h3>
+        <p class="sub">L'IA relit toutes les fiches et les signaux, puis te donne 3 actions concrètes pour décrocher des clients face à ces concurrents.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-primary btn-sm" id="briefRun" type="button">Générer le brief</button><button class="btn btn-outline btn-sm" id="briefStop" type="button" hidden>Arrêter</button></div>
+        <div class="out empty" id="briefOut">Aucun brief généré pour l'instant.</div>
+      </div>
+    </div>
+    <p class="note" id="aiUnavailable" hidden>L'analyse IA n'est pas disponible dans cette vue. Ouvre l'app depuis claude.ai en étant connecté.</p>
+  </section>
+</main>
+
+<div class="modal" id="modal" hidden>
+  <form class="modal-card" id="compForm">
+    <h3 id="modalTitle">Nouveau concurrent</h3>
+    <div class="row">
+      <label>Nom<input id="fName" required maxlength="80"></label>
+      <label>Site web<input id="fUrl" placeholder="exemple.fr" maxlength="200"></label>
+    </div>
+    <div class="row">
+      <label>Catégorie<select id="fCat"><option>Agence / abonnement</option><option>Commande en ligne resto</option><option>Local</option><option>Plateforme DIY</option><option>Freelance</option></select></label>
+      <label>Menace<select id="fThreat"><option value="haute">Élevée</option><option value="moyenne">Moyenne</option><option value="faible">Faible</option></select></label>
+      <label>Commande en ligne<select id="fOrder"><option>Oui</option><option>Non</option><option>Option</option><option>?</option></select></label>
+    </div>
+    <div class="row">
+      <label>Prix d'entrée €/mois<input id="fPrice" type="number" min="0" step="0.01"></label>
+      <label>Frais de création €<input id="fSetup" type="number" min="0" step="1"></label>
+      <label>Engagement<input id="fCommit" placeholder="12 mois" maxlength="60"></label>
+    </div>
+    <label>Précision sur le prix<input id="fPriceNote" maxlength="160" placeholder="HT, gamme de prix…"></label>
+    <label>Cible<input id="fTarget" maxlength="160"></label>
+    <label>Forces (une par ligne)<textarea id="fPlus" style="min-height:80px"></textarea></label>
+    <label>Faiblesses (une par ligne)<textarea id="fMinus" style="min-height:80px"></textarea></label>
+    <label>Angle pour les battre<textarea id="fAngle" style="min-height:70px"></textarea></label>
+    <label>Source<input id="fSource" maxlength="300"></label>
+    <div class="modal-actions">
+      <button class="btn btn-outline btn-sm" type="button" id="cancelBtn">Annuler</button>
+      <button class="btn btn-primary btn-sm" type="submit">Enregistrer</button>
+    </div>
+  </form>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const eur = (n) => n == null || n === "" ? "Sur devis" : Number(n).toLocaleString("fr-FR", { maximumFractionDigits: 2 }) + " €";
+const THREAT = { haute: "Menace élevée", moyenne: "Menace moyenne", faible: "Menace faible" };
+
+// Référence Louis IA, reprise du site louis-ia.com
+const LOUIS = { name: "Louis IA", priceMonthly: null, setupFee: null, commitment: "Non affiché", ordering: "Option", target: "Restaurants, boutiques, artisans, services" };
+
+let db = null, sample = null, canWrite = true;
+let comps = [], signals = [], filter = "all", editingId = null, lastAi = null;
+
+function toast(t) { const el = $("#toast"); el.textContent = t; el.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => el.hidden = true, 2600); }
+function domainOf(u) { try { return new URL(/^https?:/.test(u) ? u : "https://" + u).hostname.replace(/^www\./, ""); } catch { return ""; } }
+
+function linksFor(c) {
+  const q = encodeURIComponent(c.name), d = domainOf(c.url || "");
+  const L = [];
+  if (d) L.push(["Site", "https://" + d]);
+  L.push(["Pubs Meta", "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=FR&q=" + q + "&search_type=keyword_unordered"]);
+  if (d) L.push(["Pubs Google", "https://adstransparency.google.com/?region=FR&domain=" + encodeURIComponent(d)]);
+  L.push(["Avis Google", "https://www.google.com/search?q=" + q + "+avis"]);
+  if (d) L.push(["Pages indexées", "https://www.google.com/search?q=site%3A" + encodeURIComponent(d)]);
+  L.push(["LinkedIn", "https://www.linkedin.com/search/results/all/?keywords=" + q]);
+  return L.map(([t, h]) => `<a href="${esc(h)}" target="_blank" rel="noopener">${t}</a>`).join("");
+}
+
+function renderKpis() {
+  $("#kCount").textContent = comps.length;
+  const prices = comps.map(c => c.priceMonthly).filter(p => typeof p === "number").sort((a, b) => a - b);
+  let med = "–";
+  if (prices.length) { const m = Math.floor(prices.length / 2); med = eur(prices.length % 2 ? prices[m] : (prices[m - 1] + prices[m]) / 2); }
+  $("#kMedian").textContent = med;
+  $("#kHigh").textContent = comps.filter(c => c.threat === "haute").length;
+  const cut = Date.now() - 30 * 864e5;
+  $("#kSignals").textContent = signals.filter(s => new Date(s.date).getTime() >= cut).length;
+  $("#cFiches").textContent = comps.length;
+  $("#cSignaux").textContent = signals.length;
+}
+
+function renderGrid() {
+  const g = $("#grid");
+  const list = comps.filter(c => filter === "all" || c.threat === filter || c.category === filter);
+  if (!comps.length) { g.innerHTML = `<div class="empty-state">Aucun concurrent suivi pour l'instant.<br>Clique sur « Ajouter un concurrent » pour créer ta première fiche.</div>`; return; }
+  if (!list.length) { g.innerHTML = `<div class="empty-state">Aucune fiche dans ce filtre.</div>`; return; }
+  g.innerHTML = list.map(c => `
+    <article class="card">
+      <div class="card-head">
+        <div><h3>${esc(c.name)}</h3><div class="cat">${esc(c.category)}${c.target ? " · " + esc(c.target) : ""}</div></div>
+        <span class="pill t-${esc(c.threat)}">${THREAT[c.threat] || ""}</span>
+      </div>
+      <div class="facts">
+        <div><b>${eur(c.priceMonthly)}</b><span>/ mois</span></div>
+        <div><b>${c.setupFee == null ? "–" : eur(c.setupFee)}</b><span>Création</span></div>
+        <div><b>${esc(c.commitment || "?")}</b><span>Engagement</span></div>
+      </div>
+      ${c.priceNote ? `<div class="note">${esc(c.priceNote)}</div>` : ""}
+      <div class="lists">
+        <div class="plus"><h4>Forces</h4><ul>${(c.strengths || []).map(s => `<li>${esc(s)}</li>`).join("") || "<li>À compléter</li>"}</ul></div>
+        <div class="minus"><h4>Failles</h4><ul>${(c.weaknesses || []).map(s => `<li>${esc(s)}</li>`).join("") || "<li>À compléter</li>"}</ul></div>
+      </div>
+      ${c.angle ? `<div class="angle"><strong>Ton angle</strong>${esc(c.angle)}</div>` : ""}
+      ${c.pitch ? `<div class="msg-box">${esc(c.pitch)}</div>` : ""}
+      <div class="links">${linksFor(c)}</div>
+      <div class="card-foot">
+        <span>Mis à jour le ${new Date(c.updatedAt || Date.now()).toLocaleDateString("fr-FR")}${c.source ? " · " + esc(c.source) : ""}</span>
+        <span class="confirm-row" data-id="${esc(c.id)}">
+          ${canWrite ? `<button class="btn-ghost" data-act="edit">Modifier</button><button class="btn-ghost" data-act="del">Supprimer</button>` : ""}
+        </span>
+      </div>
+    </article>`).join("");
+}
+
+function renderCompare() {
+  const rows = [LOUIS, ...[...comps].sort((a, b) => (a.priceMonthly ?? 1e9) - (b.priceMonthly ?? 1e9))];
+  $("#cmpBody").innerHTML = rows.map((c, i) => `
+    <tr class="${i === 0 ? "me" : ""}"><td>${esc(c.name)}</td><td class="num">${eur(c.priceMonthly)}</td><td class="num">${c.setupFee == null ? (i === 0 ? "Sur devis" : "–") : eur(c.setupFee)}</td><td>${esc(c.commitment || "?")}</td><td>${esc(c.ordering || "?")}</td><td>${esc(c.target || "")}</td></tr>`).join("");
+  const priced = comps.filter(c => typeof c.priceMonthly === "number").length;
+  $("#insight").innerHTML = comps.length ? `
+    <h3>Ce que le tableau dit</h3>
+    <p>${priced} concurrent${priced > 1 ? "s" : ""} sur ${comps.length} affiche${priced > 1 ? "nt" : ""} un prix d'entrée. Louis IA n'en affiche aucun. Un commerçant qui compare voit un chiffre chez eux et un formulaire chez toi. Afficher un prix « à partir de » te met dans la comparaison au lieu de t'en sortir.</p>` : "";
+}
+
+function renderFeed() {
+  const opts = comps.map(c => `<option>${esc(c.name)}</option>`).join("");
+  $("#sigWho").innerHTML = opts;
+  $("#aiWho").innerHTML = `<option value="">Nouveau concurrent</option>` + comps.map(c => `<option value="${esc(c.id)}">${esc(c.name)}</option>`).join("");
+  const f = $("#feed");
+  if (!signals.length) { f.innerHTML = `<div class="empty-state">Aucun signal noté. Dès que tu vois un changement chez un concurrent (prix, pub, nouvelle offre), note-le ici.</div>`; return; }
+  f.innerHTML = [...signals].sort((a, b) => String(b.date).localeCompare(String(a.date))).map(s => `
+    <div class="sig">
+      <time>${new Date(s.date).toLocaleDateString("fr-FR", { day: "2-digit", month: "short", year: "numeric" })}</time>
+      <div><span class="who">${esc(s.competitor)}</span><span class="kind">${esc(s.kind)}</span><p>${esc(s.note)}</p>${s.source ? `<a href="${esc(s.source)}" target="_blank" rel="noopener" class="note">Source</a>` : ""}</div>
+      ${canWrite ? `<button class="btn-ghost" data-sig="${esc(s.id)}">Retirer</button>` : "<span></span>"}
+    </div>`).join("");
+}
+
+function renderAll() { renderKpis(); renderGrid(); renderCompare(); renderFeed(); }
+
+// Onglets
+document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => {
+  document.querySelectorAll(".tab").forEach(x => x.setAttribute("aria-selected", String(x === t)));
+  ["fiches", "compare", "signaux", "ia"].forEach(k => $("#tab-" + k).hidden = k !== t.dataset.tab);
+  try { localStorage.setItem("radar-tab", t.dataset.tab); } catch {}
+}));
+try { const saved = localStorage.getItem("radar-tab"); if (saved) document.querySelector(`.tab[data-tab="${saved}"]`)?.click(); } catch {}
+
+$("#filters").addEventListener("click", e => {
+  const b = e.target.closest(".chip-btn"); if (!b) return;
+  filter = b.dataset.f;
+  document.querySelectorAll("#filters .chip-btn").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+  renderGrid();
+});
+
+// Formulaire concurrent
+const lines = (v) => v.split("\n").map(s => s.trim()).filter(Boolean);
+const num = (v) => v === "" ? null : Number(v);
+function openModal(c) {
+  editingId = c?.id || null;
+  $("#modalTitle").textContent = c ? "Modifier " + c.name : "Nouveau concurrent";
+  $("#fName").value = c?.name || ""; $("#fUrl").value = c?.url || "";
+  $("#fCat").value = c?.category || "Local"; $("#fThreat").value = c?.threat || "moyenne"; $("#fOrder").value = c?.ordering || "?";
+  $("#fPrice").value = c?.priceMonthly ?? ""; $("#fSetup").value = c?.setupFee ?? ""; $("#fCommit").value = c?.commitment || "";
+  $("#fPriceNote").value = c?.priceNote || ""; $("#fTarget").value = c?.target || "";
+  $("#fPlus").value = (c?.strengths || []).join("\n"); $("#fMinus").value = (c?.weaknesses || []).join("\n");
+  $("#fAngle").value = c?.angle || ""; $("#fSource").value = c?.source || "";
+  $("#modal").hidden = false; $("#fName").focus();
+}
+$("#addBtn").addEventListener("click", () => openModal(null));
+$("#cancelBtn").addEventListener("click", () => $("#modal").hidden = true);
+$("#modal").addEventListener("click", e => { if (e.target.id === "modal") $("#modal").hidden = true; });
+document.addEventListener("keydown", e => { if (e.key === "Escape") $("#modal").hidden = true; });
+
+$("#compForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  if (!db) return toast("Enregistrement indisponible dans cette vue");
+  const prev = comps.find(c => c.id === editingId) || {};
+  const data = { ...prev, name: $("#fName").value.trim(), url: $("#fUrl").value.trim(), category: $("#fCat").value, threat: $("#fThreat").value,
+    ordering: $("#fOrder").value, priceMonthly: num($("#fPrice").value), setupFee: num($("#fSetup").value), commitment: $("#fCommit").value.trim(),
+    priceNote: $("#fPriceNote").value.trim(), target: $("#fTarget").value.trim(), strengths: lines($("#fPlus").value), weaknesses: lines($("#fMinus").value),
+    angle: $("#fAngle").value.trim(), source: $("#fSource").value.trim(), updatedAt: new Date().toISOString() };
+  delete data.id;
+  try {
+    if (editingId) await db.collection("competitors").doc(editingId).set(data);
+    else await db.collection("competitors").add(data);
+    $("#modal").hidden = true; toast("Fiche enregistrée");
+  } catch (err) { toast(err?.code === "invalid_argument" ? "Tu n'as pas le droit de modifier ces fiches" : "Échec de l'enregistrement, réessaie"); }
+});
+
+$("#grid").addEventListener("click", async e => {
+  const btn = e.target.closest("button[data-act]"); if (!btn) return;
+  const row = btn.closest("[data-id]"), id = row.dataset.id, c = comps.find(x => x.id === id);
+  if (btn.dataset.act === "edit") return openModal({ ...c });
+  if (btn.dataset.act === "del") {
+    row.innerHTML = `Supprimer ? <button class="btn-ghost" data-act="yes" style="color:var(--danger)">Oui</button><button class="btn-ghost" data-act="no">Non</button>`;
+    return;
+  }
+  if (btn.dataset.act === "no") return renderGrid();
+  if (btn.dataset.act === "yes") { try { await db.collection("competitors").doc(id).delete(); toast("Fiche supprimée"); } catch { toast("Suppression impossible"); } }
+});
+
+// Signaux
+$("#sigDate").value = new Date().toISOString().slice(0, 10);
+$("#sigForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  if (!db) return toast("Enregistrement indisponible dans cette vue");
+  try {
+    await db.collection("signals").add({ competitor: $("#sigWho").value, kind: $("#sigKind").value, date: $("#sigDate").value, note: $("#sigNote").value.trim(), source: $("#sigSrc").value.trim(), createdAt: new Date().toISOString() });
+    $("#sigNote").value = ""; $("#sigSrc").value = ""; toast("Signal ajouté");
+  } catch { toast("Échec de l'enregistrement"); }
+});
+$("#feed").addEventListener("click", async e => {
+  const b = e.target.closest("button[data-sig]"); if (!b) return;
+  try { await db.collection("signals").doc(b.dataset.sig).delete(); toast("Signal retiré"); } catch { toast("Impossible de retirer ce signal"); }
+});
+
+// IA
+const aiErr = (e) => ({ not_granted: "Tu as refusé l'accès à Claude pour cette page.", rate_limited: "Trop de demandes d'un coup. Réessaie dans quelques minutes.", invalid_json: "La réponse n'était pas lisible. Relance l'analyse.", prompt_too_large: "Texte trop long. Colle seulement la page d'accueil ou de tarifs.", session_expired: "Reconnecte-toi à claude.ai puis réessaie.", refused: "Claude n'a pas voulu traiter ce texte. Essaie avec un autre extrait." }[e?.code] || "L'analyse a échoué. Réessaie.");
+let aiCtl = null, briefCtl = null;
+
+$("#aiRun").addEventListener("click", async () => {
+  const text = $("#aiText").value.trim();
+  if (text.length < 80) return toast("Colle au moins quelques phrases du site");
+  const who = comps.find(c => c.id === $("#aiWho").value);
+  aiCtl = new AbortController();
+  $("#aiRun").disabled = true; $("#aiStop").hidden = false; $("#aiSaveRow").hidden = true;
+  const out = $("#aiOut"); out.classList.remove("empty"); out.textContent = "Analyse en cours…";
+  const prompt = `Tu aides Robin, fondateur de Louis IA (agence qui crée des sites web sur mesure pour restaurants, boutiques, artisans et services, avec en option commande en ligne, paiement, tableau de bord, automatisations et optimisation de fiche Google ; livraison en 3 jours à 2 semaines ; prix sur devis).
+Voici le texte copié depuis le site d'un concurrent${who ? " (" + who.name + ")" : ""}. Analyse-le et réponds UNIQUEMENT avec un objet JSON de cette forme :
+{"name": string, "target": string, "priceMonthly": number|null, "setupFee": number|null, "commitment": string, "priceNote": string, "strengths": [3 chaînes courtes], "weaknesses": [3 chaînes courtes, failles exploitables par Louis IA], "angle": "une phrase : comment Louis IA se différencie face à ce concurrent en rendez-vous", "pitch": "un message de prospection de 4 phrases max, en tutoiement ou vouvoiement adapté, qu'un commerçant client de ce concurrent recevrait de Louis IA"}
+Mets null pour un prix absent du texte. N'invente aucun chiffre.
+
+TEXTE DU SITE :
+${text.slice(0, 12000)}`;
+  try {
+    const r = await sample.json(prompt, { signal: aiCtl.signal });
+    lastAi = r;
+    out.textContent = `${r.name || who?.name || "Concurrent"}\nCible : ${r.target || "?"}\nPrix : ${eur(r.priceMonthly)} / mois · création ${r.setupFee == null ? "?" : eur(r.setupFee)} · engagement ${r.commitment || "?"}\n\nForces :\n- ${(r.strengths || []).join("\n- ")}\n\nFailles :\n- ${(r.weaknesses || []).join("\n- ")}\n\nTon angle : ${r.angle || ""}\n\nMessage de prospection :\n${r.pitch || ""}`;
+    $("#aiSaveRow").hidden = !canWrite || !db;
+  } catch (e) { out.textContent = e?.code === "cancelled" ? "Analyse arrêtée." : aiErr(e); }
+  finally { $("#aiRun").disabled = false; $("#aiStop").hidden = true; }
+});
+$("#aiStop").addEventListener("click", () => aiCtl?.abort());
+
+$("#aiSave").addEventListener("click", async () => {
+  if (!lastAi || !db) return;
+  const id = $("#aiWho").value, prev = comps.find(c => c.id === id);
+  const pick = (k) => lastAi[k] ?? prev?.[k] ?? null;
+  const data = { ...(prev || { category: "Local", threat: "moyenne", ordering: "?", url: "" }),
+    name: prev?.name || lastAi.name || "Concurrent", target: pick("target") || "", priceMonthly: typeof lastAi.priceMonthly === "number" ? lastAi.priceMonthly : (prev?.priceMonthly ?? null),
+    setupFee: typeof lastAi.setupFee === "number" ? lastAi.setupFee : (prev?.setupFee ?? null), commitment: pick("commitment") || "", priceNote: pick("priceNote") || "",
+    strengths: lastAi.strengths || prev?.strengths || [], weaknesses: lastAi.weaknesses || prev?.weaknesses || [], angle: pick("angle") || "", pitch: lastAi.pitch || "",
+    source: "Analyse IA du site", updatedAt: new Date().toISOString() };
+  delete data.id;
+  try {
+    if (prev) await db.collection("competitors").doc(id).set(data); else await db.collection("competitors").add(data);
+    toast("Fiche mise à jour"); $("#aiSaveRow").hidden = true;
+  } catch { toast("Échec de l'enregistrement"); }
+});
+
+$("#briefRun").addEventListener("click", async () => {
+  briefCtl = new AbortController();
+  $("#briefRun").disabled = true; $("#briefStop").hidden = false;
+  const out = $("#briefOut"); out.classList.remove("empty"); out.textContent = "Réflexion en cours…";
+  const data = JSON.stringify({ louisIA: LOUIS, concurrents: comps.map(({ id, updatedAt, ...c }) => c), signaux: signals.slice(-30).map(({ id, createdAt, ...s }) => s) });
+  const prompt = `Tu es le COO de Louis IA, agence de Robin (étudiant, 1 client, environ 2 h par semaine, a du mal à trouver des clients). Louis IA crée des sites pour commerces locaux avec commande, paiement, automatisations, fiches Google. Voici la veille concurrentielle en JSON.
+Écris un brief en français, direct, sans jargon, en texte simple sans Markdown :
+1. Ce que la concurrence fait (2 phrases).
+2. La faille la plus exploitable pour Louis IA (2 phrases).
+3. Trois actions concrètes à faire cette semaine pour signer un client, chacune faisable en moins de 30 minutes, avec la cible exacte (type de commerce) et le message ou l'argument à utiliser.
+
+DONNÉES :
+${data}`;
+  try { await sample(prompt, { signal: briefCtl.signal, onText: ({ text }) => out.textContent = text }); }
+  catch (e) { out.textContent = e?.text || (e?.code === "cancelled" ? "Brief arrêté." : aiErr(e)); }
+  finally { $("#briefRun").disabled = false; $("#briefStop").hidden = true; }
+});
+$("#briefStop").addEventListener("click", () => briefCtl?.abort());
+
+// Données
+renderKpis(); renderCompare(); renderFeed();
+(async () => {
+  const cl = window.claude;
+  if (!cl?.use) { $("#loading").textContent = "Ouvre cette app depuis claude.ai pour voir et enregistrer tes fiches."; $("#aiUnavailable").hidden = false; document.querySelectorAll("#aiRun,#briefRun").forEach(b => b.disabled = true); return; }
+  cl.use("sample").then(s => { sample = s; if (!s) { $("#aiUnavailable").hidden = false; document.querySelectorAll("#aiRun,#briefRun").forEach(b => b.disabled = true); } });
+  cl.use("user").then(async u => { if (!u) return; const w = await u.can?.("data.write"); if (w === false) { canWrite = false; $("#addBtn").hidden = true; $("#sigForm").hidden = true; renderAll(); } });
+  db = await cl.use("db");
+  if (!db) { $("#loading").textContent = "Connecte-toi à claude.ai pour voir tes fiches concurrents."; return; }
+  db.collection("competitors").onSnapshot(s => { comps = s.docs.map(d => ({ id: d.id, ...d.data() })); renderAll(); }, () => toast("Connexion aux fiches perdue, recharge la page"));
+  db.collection("signals").onSnapshot(s => { signals = s.docs.map(d => ({ id: d.id, ...d.data() })); renderAll(); }, () => {});
+})();
+</script>
