@@ -12,3 +12,4 @@ Prochaine action : story d'intérêt dans les groupes.
 - Logo v3 retenu (néon sunset + 2 palmiers) : Canva media MAHXJ6gQP9E.
 - Robin trouve le logo néon trop moche → veut texte seul, police jeune, pas de 83. 2 versions : chrome Y2K (MAHXJ2iH0bA), gothique streetwear (MAHXJysmmag).
 - Recolorations du chrome : rose/bleu/violet (MAHXJyt37X4), violet/vert/bleu holo (MAHXJ_RHIZU). Gothique rejeté.
+- Logo chrome sur fond dégradé rose/violet/bleu : MAHXJ80bnK0.
