@@ -2,6 +2,9 @@
 
 **Stade :** pré-lancement (idée, rien de concret encore).
 
+## Marque
+**RIVIERA HOUSE** (choisi le 2026-10-05). Pseudos visés : @rivierahouse83 / @rivierahouse.83 sur Instagram, TikTok, Snap. Univers : Côte d'Azur, sunset, chic. Pas de références à l'alcool.
+
 ## Concept
 Promoteur de soirées pour les jeunes de Lorgues et des alentours. Il n'y a pas de boîte à Lorgues. Il existe des concepts nationaux de soirées ados 13-17 sans alcool (Teens Party, Teenage Party), mais rien d'équivalent repéré autour de Draguignan.
 

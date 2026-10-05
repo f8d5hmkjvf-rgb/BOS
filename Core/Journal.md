@@ -8,3 +8,4 @@ Décisions :
 - Salle municipale par la procédure normale (mère DGS : pas de passe-droit).
 Premiers chiffres : coûts d'environ 900 €, point mort à environ 90 billets à 10 €.
 Prochaine action : story d'intérêt dans les groupes.
+- Marque choisie : RIVIERA HOUSE. Logo lancé sur Canva.
