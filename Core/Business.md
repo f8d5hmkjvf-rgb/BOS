@@ -17,6 +17,7 @@ Promoteur de soirées pour les jeunes de Lorgues et des alentours. Il n'y a pas 
 - Plus tard : des soirées 18+ avec un bar tenu par quelqu'un qui a la licence restent possibles.
 
 ## Offre (hypothèse v1)
+- **Thème soirée 1 : NEON NIGHT** (fluo, UV, bracelets lumineux), choisi par BOS parce qu'il ne dépend pas de la date ; Robin peut changer.
 - Billets par paliers (prix ronds) : Early 10 € (**30 premiers**, recommandé), prévente 15 €, sur place 20 €.
 - Bar sans alcool (softs, energy drinks, mocktails, snacks), acheté environ 0,50 € et revendu 2 à 3 €.
 - Argument : « la soirée où tes parents disent oui ».

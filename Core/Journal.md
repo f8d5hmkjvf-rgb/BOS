@@ -32,3 +32,4 @@ Prochaine action : story d'intérêt dans les groupes.
 - Benchmark Purple House (06) analysé → idées : thème par soirée, boisson offerte avant une heure donnée, style musical sur l'affiche.
 - Recherche de salles : meilleures pistes = partenariat avec une discothèque (ex. Apokalypse, Les Arcs) + salles municipales des villages. Bastides et golfs trop chers pour la soirée 1. Output/2026-10-05_recherche_salles.md
 - Idée de Robin : révélations par paliers d'abonnés. Validée, avec dates de secours pour ne pas bloquer.
+- Story du palier 100 créée (thème NEON NIGHT + barre vers 150) : Output/2026-10-05_story_palier_100_theme.png
