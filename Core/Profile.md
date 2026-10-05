@@ -10,3 +10,4 @@
 - **Points de vigilance :** tentation de « s'arranger » via la mairie (risque de conflit d'intérêts pour sa mère) ; tolérance vis-à-vis de l'alcool apporté par les mineurs ; objectif flou (« le plus possible »).
 - **Peurs / blocages :** pas encore exprimés.
 - **Préférences de style :** messages très courts, ton jeune et naturel, pas trop d'infos. Il n'aime pas les textes génériques : proposer plusieurs styles et le laisser choisir.
+- **Veut rester anonyme auprès des lycéens pour l'instant** (2026-10-05). Tout passe par @rivierahouse83, rien depuis son compte perso. La mairie et les prestataires connaissent son identité (obligatoire). À surveiller : nom affiché sur la billetterie (utiliser le nom commercial RIVIERA HOUSE).
