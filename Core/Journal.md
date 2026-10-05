@@ -38,3 +38,4 @@ Prochaine action : story d'intérêt dans les groupes.
 - Story du palier 100 en version vote (WHITE PARTY vs Y2K) : Output/2026-10-05_story_palier_100_vote.png
 - Vote du palier 100 : WHITE PARTY (blanc, UV, bracelets) vs THROWBACK 2016.
 - Story teaser « À 100 abonnés un truc sort » à poster le 06/10 : Output/2026-10-06_story_teaser_100.png
+- Fin de session (05/10, ~23 h). Prochaines étapes : story teaser + infos de sa mère sur les salles demain.
