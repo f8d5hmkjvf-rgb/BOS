@@ -13,3 +13,4 @@
 ## Résultats
 | Date | Action | Résultat |
 |---|---|---|
+| 2026-10-05 | Création Insta + post + 80 abonnements | ~30 abonnés rapidement |
