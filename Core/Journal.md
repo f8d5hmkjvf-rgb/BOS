@@ -31,3 +31,4 @@ Prochaine action : story d'intérêt dans les groupes.
 - 22:30 : premiers DM envoyés. Première réponse : une lycéenne (297 abonnés) a partagé le compte et a « hâte de savoir ce que c'est ». Le teaser marche. Idée : programme ambassadeurs (accès prioritaire aux billets à 10 € pour ceux qui partagent).
 - Benchmark Purple House (06) analysé → idées : thème par soirée, boisson offerte avant une heure donnée, style musical sur l'affiche.
 - Recherche de salles : meilleures pistes = partenariat avec une discothèque (ex. Apokalypse, Les Arcs) + salles municipales des villages. Bastides et golfs trop chers pour la soirée 1. Output/2026-10-05_recherche_salles.md
+- Idée de Robin : révélations par paliers d'abonnés. Validée, avec dates de secours pour ne pas bloquer.

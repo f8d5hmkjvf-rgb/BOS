@@ -15,3 +15,13 @@
 | Date | Action | Résultat |
 |---|---|---|
 | 2026-10-05 | Création Insta + post + 80 abonnements | ~30 abonnés rapidement |
+
+## Stratégie de lancement : révélations par paliers (idée de Robin, 2026-10-05)
+| Palier | Révélation | Échéance de secours |
+|---|---|---|
+| 100 abonnés | Le thème de la 1ʳᵉ soirée | 12 oct |
+| 150 | Style musical + boisson offerte avant 21 h | 17 oct |
+| 200 | La date | 24 oct |
+| 250 | Le lieu (salle signée obligatoire) | 31 oct |
+| 300 | Ouverture billetterie, 30 places à 10 € | 7 nov (au plus tard) |
+Règle : on révèle au premier des deux (palier atteint OU date de secours).
