@@ -9,3 +9,4 @@
 - **Forces :** fait partie de la cible (lycéens) ; sait faire tourner l'info dans les groupes (Snap/Insta/WhatsApp) ; déterminé ; mère DGS à la mairie de Lorgues (connaît les procédures).
 - **Points de vigilance :** tentation de « s'arranger » via la mairie (risque de conflit d'intérêts pour sa mère) ; tolérance vis-à-vis de l'alcool apporté par les mineurs ; objectif flou (« le plus possible »).
 - **Peurs / blocages :** pas encore exprimés.
+- **Préférences de style :** messages très courts, ton jeune et naturel, pas trop d'infos. Il n'aime pas les textes génériques : proposer plusieurs styles et le laisser choisir.
