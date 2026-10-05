@@ -23,3 +23,8 @@
 ## #5 — Risque de conflit d'intérêts (mère DGS)
 - **Impact :** risque juridique pour sa mère, et la salle pourrait lui être refusée ou retirée.
 - **Étape :** passer par la procédure normale ; sa mère donne seulement des infos publiques.
+
+## #6 — Peur du jugement (mindset) — ajouté 2026-10-05
+- **Impact :** faible pour l'instant, puisque l'anonymat permet d'agir quand même. Risque plus tard : éviter les actions visibles (le soir J, la révélation, les partenaires).
+- **Preuves :** veut rester anonyme « par peur de ce que les gens vont dire ».
+- **Réponse :** utiliser l'anonymat comme filet de sécurité et ne pas forcer la révélation. Exposition progressive : révéler seulement après une soirée réussie. Surveiller si la peur bloque des actions concrètes.

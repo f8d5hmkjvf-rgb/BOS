@@ -23,3 +23,4 @@ Prochaine action : story d'intérêt dans les groupes.
 - Compte @rivierahouse83 créé, post de lancement publié.
 - Abonné à 80 lycéens → ~30 abonnés rapidement (≈ 37 % de retour, très bon signal).
 - Prochaine étape : demande de salle à la mairie (lettre rédigée par BOS).
+- Robin avoue sa peur du jugement → on garde l'anonymat comme filet de sécurité.
