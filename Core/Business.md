@@ -17,7 +17,7 @@ Promoteur de soirées pour les jeunes de Lorgues et des alentours. Il n'y a pas 
 - Plus tard : des soirées 18+ avec un bar tenu par quelqu'un qui a la licence restent possibles.
 
 ## Offre (hypothèse v1)
-- Billet en prévente 10 €, 15 € sur place.
+- Billets par paliers (prix ronds) : Early 10 € (50 premiers), prévente 15 €, sur place 20 €. Moyenne ~13 € par billet.
 - Bar sans alcool (softs, energy drinks, mocktails, snacks), acheté environ 0,50 € et revendu 2 à 3 €.
 - Argument : « la soirée où tes parents disent oui ».
 
