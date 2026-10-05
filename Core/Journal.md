@@ -10,3 +10,4 @@ Premiers chiffres : coûts d'environ 900 €, point mort à environ 90 billets �
 Prochaine action : story d'intérêt dans les groupes.
 - Marque choisie : RIVIERA HOUSE. Logo lancé sur Canva.
 - Logo v3 retenu (néon sunset + 2 palmiers) : Canva media MAHXJ6gQP9E.
+- Robin trouve le logo néon trop moche → veut texte seul, police jeune, pas de 83. 2 versions : chrome Y2K (MAHXJ2iH0bA), gothique streetwear (MAHXJysmmag).
