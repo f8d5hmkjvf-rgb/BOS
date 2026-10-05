@@ -30,3 +30,8 @@ Promoteur de soirées pour les jeunes de Lorgues et des alentours. Il n'y a pas 
 
 ## Finances
 Aucun revenu pour l'instant. Budget détaillé : Output/2026-10-05_budget_soiree_1.md. Plan B recommandé : charges fixes ~950 €, point mort ~82 personnes, ~+900 € net à 150 personnes (après URSSAF et SACEM).
+
+## Concurrence / benchmarks
+- **@purplehouse.event** (Alpes-Maritimes) : modèle proche, ça marche (160 likes, 95 partages sur un post).
+  - Ce qu'ils font : un thème par soirée (« F*CK SCHOOL – le dernier plein air », calé sur la rentrée) ; une incitation à arriver tôt (« conso offerte avant 21:30 ») ; le style musical écrit sur l'affiche (« 2016 songs – rap US – commerciale ») ; date, lieu et horaires en très gros ; promo lancée ~9 jours avant ; reels avec des sons tendance.
+  - À ne pas copier : visuels avec mégots et gobelets (image alcool), fin à 2 h (incompatible avec des 15-18 ans).
