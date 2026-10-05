@@ -17,3 +17,4 @@ Prochaine action : story d'intérêt dans les groupes.
 - Visuel story d'intérêt créé : Output/2026-10-05_story_interet_riviera_house.png (à poster + sticker sondage).
 - Pricing décidé : 10 € early (50 premiers) / 15 € prévente / 20 € sur place. Story mise à jour avec « billets dès 10 € ».
 - Story 2 (sondage, grande zone libre) : Output/2026-10-05_story_sondage_riviera_house.png
+- Post Insta de lancement : Output/2026-10-05_post_insta_lancement.png
