@@ -34,3 +34,4 @@ Prochaine action : story d'intérêt dans les groupes.
 - Idée de Robin : révélations par paliers d'abonnés. Validée, avec dates de secours pour ne pas bloquer.
 - Story du palier 100 créée (thème NEON NIGHT + barre vers 150) : Output/2026-10-05_story_palier_100_theme.png
 - Bracelets fluo : ~6-9 € le lot de 100 → ~15-20 € pour 200 (déjà inclus dans le poste « divers » de 50 €).
+- Thèmes recherchés → reco : WHITE PARTY × UV (soirée 1) ou UGLY SWEATER si décembre ; faire voter les abonnés au palier 100.
