@@ -25,7 +25,7 @@ Promoteur de soirées pour les jeunes de Lorgues et des alentours. Il n'y a pas 
 - **Budget :** 150 €.
 - **Salle :** à trouver. Les salles privées coûtent 1 100 à 3 600 €, trop cher. Cible : salle municipale (Lorgues ou communes voisines).
 - **DJ :** un DJ lycéen ou pas cher, à trouver.
-- **Juridique :** autorisé à être commerçant. SIRET / micro-entreprise : à vérifier.
+- **Juridique :** autorisé à être commerçant. **A déjà une micro-entreprise (agence digitale).** Plan : y ajouter une activité « organisation d'événements » + le nom commercial RIVIERA HOUSE (modification gratuite sur formalites.entreprises.gouv.fr). Cotisations URSSAF ≈ 21 % du CA billets (services) et ≈ 12 % du CA bar (vente) : à intégrer dans le calcul du net.
 - **Réseau :** groupes lycéens ; mère DGS de la mairie de Lorgues. Elle ne doit pas traiter le dossier elle-même (conflit d'intérêts), mais elle peut renseigner sur la procédure.
 
 ## Finances

@@ -26,3 +26,4 @@ Prochaine action : story d'intérêt dans les groupes.
 - Robin avoue sa peur du jugement → on garde l'anonymat comme filet de sécurité.
 - Robin veut déléguer au maximum le soir J (anonymat) et sécuriser le cash → plan v1 : Output/2026-10-05_plan_soir_J_delegation.md
 - Robin ne veut pas de structure (« comme un anniversaire »), veut payer un DJ de 15-16 ans 50 € en liquide (pareil pour le staff), et hésite à ne pas faire de bar (« chacun ramène ses boissons »). BOS recommande : micro-entreprise gratuite et fermable sans frais, staff majeur et déclaré, pas de boissons extérieures et un mini-bar de canettes. Décision : en attente.
+- Robin a déjà une micro-entreprise (agence digitale) → ajouter l'activité événementielle + le nom commercial RIVIERA HOUSE.
