@@ -47,3 +47,4 @@ Prochaine action : story d'intérêt dans les groupes.
 - 21:54 : 153 abonnés (palier 150 atteint en ~48 h). Bio et nom du compte contiennent 🍾🥂 → conseil de les remplacer (la mairie verra le compte).
 - Robin a contacté de lui-même une salle à Lorgues (« Aera MP », nom à confirmer) par message. En attente de réponse.
 - Robin annonce que les mineurs pourront ramener leur alcool. BOS pose la limite et propose les options A/B.
+- Sujet alcool reporté par Robin (« on en reparlera ») : reste ouvert et bloquant avant de signer une salle. Idée de Robin : partenariat avec un lycéen influent de Draguignan (TikTokeur, connu, fait des soirées). Validée : levier trafic n°1.
