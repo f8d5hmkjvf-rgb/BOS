@@ -44,3 +44,4 @@ Prochaine action : story d'intérêt dans les groupes.
 - Palier des 100 abonnés atteint (en moins de 24 h). Story du vote envoyée (WHITE PARTY vs THROWBACK 2016).
 - 16:20 : story du vote postée (sondage « Quel thème ? 🍾🥂 » WHITE PARTY / 2016, musique ajoutée). Rappel fait : éviter les emojis d'alcool à l'avenir.
 - ~18:30 : 63 votes pour 94 vues en 2 h (67 % de participation, très élevé). Signal de demande fort. Le bottleneck devient la SALLE.
+- 21:54 : 153 abonnés (palier 150 atteint en ~48 h). Bio et nom du compte contiennent 🍾🥂 → conseil de les remplacer (la mairie verra le compte).
