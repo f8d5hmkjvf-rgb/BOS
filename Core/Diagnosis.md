@@ -2,7 +2,13 @@
 
 **Phase :** Find → validation (pré-lancement).
 
-## Bottleneck #1 — Demande pas encore validée
+## ~~Bottleneck #1 — Demande pas encore validée~~ → premier signal fort le 06/10 (100 abonnés en < 24 h, 67 % de votes sur la story). À confirmer par les préventes.
+
+## Bottleneck #1 (06/10) — Pas de salle
+- Bloque la date, la billetterie et donc le cash.
+- Étape : infos de sa mère sur les salles de Lorgues + contacter la discothèque + mairies des villages.
+
+## (ancien) Demande pas encore validée
 - **Impact :** sans préventes, pas de cash pour payer la salle et la sécurité (budget de 150 € contre environ 900 € de coûts).
 - **Preuves :** aucune liste d'intérêt, aucun billet vendu.
 - **Cause :** pré-lancement, normal.
