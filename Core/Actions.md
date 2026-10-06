@@ -28,4 +28,5 @@
 | Date | Action | Résultat |
 |---|---|---|
 | 2026-10-05 | Création Insta + post + 80 abonnements | ~30 abonnés rapidement |
+| 2026-10-06 | Palier 100 abonnés | Atteint en < 24 h → vote du thème lancé |
 | 2026-10-05 | Premiers DM | 1ʳᵉ réponse : une lycéenne (297 abonnés) a partagé le compte |
