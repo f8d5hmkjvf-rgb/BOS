@@ -36,3 +36,7 @@ Aucun revenu pour l'instant. Budget détaillé : Output/2026-10-05_budget_soiree
 - **@purplehouse.event** (Alpes-Maritimes) : modèle proche, ça marche (160 likes, 95 partages sur un post).
   - Ce qu'ils font : un thème par soirée (« F*CK SCHOOL – le dernier plein air », calé sur la rentrée) ; une incitation à arriver tôt (« conso offerte avant 21:30 ») ; le style musical écrit sur l'affiche (« 2016 songs – rap US – commerciale ») ; date, lieu et horaires en très gros ; promo lancée ~9 jours avant ; reels avec des sons tendance.
   - À ne pas copier : visuels avec mégots et gobelets (image alcool), fin à 2 h (incompatible avec des 15-18 ans).
+
+
+## Marketing / partenaires
+- Influenceur local visé (lycéen à Draguignan) : ~23 000 abonnés TikTok, ~5 M likes. Proposition : invitation + places pour ses potes + « hosted by » + code promo avec commission de 1-2 €/billet. Idée : lui faire annoncer la date (palier 200) en exclusivité. Si il demande un fixe : max ~100-150 € pour une vidéo dédiée.
