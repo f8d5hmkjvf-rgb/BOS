@@ -34,3 +34,9 @@
 - **Impact :** faible pour l'instant, puisque l'anonymat permet d'agir quand même. Risque plus tard : éviter les actions visibles (le soir J, la révélation, les partenaires).
 - **Preuves :** veut rester anonyme « par peur de ce que les gens vont dire ».
 - **Réponse :** utiliser l'anonymat comme filet de sécurité et ne pas forcer la révélation. Exposition progressive : révéler seulement après une soirée réussie. Surveiller si la peur bloque des actions concrètes.
+
+## ⚠️ Point bloquant (06/10) — Robin veut autoriser les mineurs à ramener leur alcool
+- Position de BOS : non négociable pour un public 15-18 ans. Risque pénal et civil pour Robin (et potentiellement pour sa mère), refus de la salle et de l'assurance, un seul incident tue le business.
+- BOS ne rédigera pas de message aux salles/mairie affirmant « aucun alcool toléré » si ce n'est pas la réalité.
+- Options proposées : (A) 15-18 ans sans alcool, contrôlé ; (B) basculer vers des soirées 18+ dans un lieu avec licence.
+- Creuser la vraie peur derrière : « sans alcool, personne ne viendra » ?
