@@ -48,3 +48,4 @@ Prochaine action : story d'intérêt dans les groupes.
 - Robin a contacté de lui-même une salle à Lorgues (« Aera MP », nom à confirmer) par message. En attente de réponse.
 - Robin annonce que les mineurs pourront ramener leur alcool. BOS pose la limite et propose les options A/B.
 - Sujet alcool reporté par Robin (« on en reparlera ») : reste ouvert et bloquant avant de signer une salle. Idée de Robin : partenariat avec un lycéen influent de Draguignan (TikTokeur, connu, fait des soirées). Validée : levier trafic n°1.
+- Robin envisage d'élargir à 15-22 ans. BOS déconseille le mélange (alcool, écart d'âge, parents, salles) et propose de garder une seule cible, avec éventuellement une 2ᵉ gamme 18+ séparée plus tard. Question posée : pourquoi ce changement ?
