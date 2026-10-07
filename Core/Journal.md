@@ -53,3 +53,4 @@ Prochaine action : story d'intérêt dans les groupes.
 
 ## 2026-10-07
 - Des abonnés réclament la suite (palier 150). Story 150 créée : soft offert avant 21 h + playlist faite par les abonnés (sticker Question). Prochain secret à 200 laissé volontairement flou (pas de date promise tant que la salle n'est pas signée).
+- Piste Barbarossa (Salernes) trouvée par Robin : bar lounge fermé dim-mar, grande salle + terrasse. Conseil : y aller en personne.

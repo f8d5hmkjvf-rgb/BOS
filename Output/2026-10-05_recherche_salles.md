@@ -10,3 +10,7 @@
 | 6 | Bastides (Capelier, Fangouse…) | 30-80 | 1 800 à 15 900 € | ❌ Trop cher, trop petit |
 
 Sources : abcsalles.com, 1001salles.com, justacote.com, kactus.com, privateaser.com, mariages.net
+
+
+## Ajout 07/10 — Barbarossa (Salernes)
+Lounge bar rétro + galerie, 1531 route de Draguignan, 83690 Salernes. 06 64 00 32 68. Ouvert mer-jeu 17h-23h, ven-sam 17h-1h, **fermé dim-mar**. Terrasse, concerts, événements. Note 4,8/5. Piste « bar en basse saison » : la salle contre le CA du bar (softs). Créneaux possibles : dimanche fin d'après-midi, ou soirée creuse d'hiver. Démarche : y aller en personne un mercredi ou jeudi vers 17 h.
