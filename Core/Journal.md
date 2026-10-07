@@ -57,3 +57,4 @@ Prochaine action : story d'intérêt dans les groupes.
 - Robin choisit 20 h - 3 h (BOS conseillait 1 h maximum). Décision de Robin, suivie en signalant : coût +~250 € (DJ et sécurité sur 7 h), risque de refus de salle (le Barbarossa ferme à 1 h) et de refus des parents des 15-16 ans.
 - Horaires revus par Robin : ouverture 21 h, DJ de 21 h 30 à 2 h. Conséquence : « soft offert avant 21 h » devient « avant 21 h 30 » (à corriger dans les prochaines comms).
 - Guide « codes du milieu de la nuit » (modèles économiques, entrée, légal, risques illégaux et protections) : Output/2026-10-07_codes_milieu_de_la_nuit.md
+- Décision : 10 € pour les 20 premiers billets, soft offert aux 30 premiers arrivés.
