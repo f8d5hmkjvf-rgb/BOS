@@ -55,3 +55,4 @@ Prochaine action : story d'intérêt dans les groupes.
 - Des abonnés réclament la suite (palier 150). Story 150 créée : soft offert avant 21 h + playlist faite par les abonnés (sticker Question). Prochain secret à 200 laissé volontairement flou (pas de date promise tant que la salle n'est pas signée).
 - Piste Barbarossa (Salernes) trouvée par Robin : bar lounge fermé dim-mar, grande salle + terrasse. Conseil : y aller en personne.
 - Robin choisit 20 h - 3 h (BOS conseillait 1 h maximum). Décision de Robin, suivie en signalant : coût +~250 € (DJ et sécurité sur 7 h), risque de refus de salle (le Barbarossa ferme à 1 h) et de refus des parents des 15-16 ans.
+- Horaires revus par Robin : ouverture 21 h, DJ de 21 h 30 à 2 h. Conséquence : « soft offert avant 21 h » devient « avant 21 h 30 » (à corriger dans les prochaines comms).
