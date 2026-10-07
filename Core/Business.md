@@ -35,6 +35,7 @@ Aucun revenu pour l'instant. Budget détaillé : Output/2026-10-05_budget_soiree
 ## Concurrence / benchmarks
 - **@purplehouse.event** (Alpes-Maritimes) : modèle proche, ça marche (160 likes, 95 partages sur un post).
   - Ce qu'ils font : un thème par soirée (« F*CK SCHOOL – le dernier plein air », calé sur la rentrée) ; une incitation à arriver tôt (« conso offerte avant 21:30 ») ; le style musical écrit sur l'affiche (« 2016 songs – rap US – commerciale ») ; date, lieu et horaires en très gros ; promo lancée ~9 jours avant ; reels avec des sons tendance.
+  - 07/10 : 2 526 abonnés, 14 publications, depuis 2023. Canal de diffusion Insta « Purple Family » (486 membres) : idée à reprendre (« Riviera Family »). Bio orientée alcool (« lendemains compliqués »), cible probablement 18+.
   - À ne pas copier : visuels avec mégots et gobelets (image alcool), fin à 2 h (incompatible avec des 15-18 ans).
 
 

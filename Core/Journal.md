@@ -60,3 +60,4 @@ Prochaine action : story d'intérêt dans les groupes.
 - Décision : 10 € pour les 20 premiers billets, soft offert aux 30 premiers arrivés.
 - Affiche « La première soirée arrive » sans aucun chiffre (prix, date, quantités) : Output/2026-10-07_affiche_premiere_soiree.png
 - Story du palier 150 v2, sans « 21 h » ni nombre : Output/2026-10-07_story_palier_150_v2.png. La story « première soirée arrive » est gardée pour plus tard (doublon sur le soft).
+- Robin veut écrire à Purple House pour demander des conseils. Message rédigé (2 questions précises). Idée : canal de diffusion « Riviera Family ».
