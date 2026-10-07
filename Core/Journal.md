@@ -50,3 +50,6 @@ Prochaine action : story d'intérêt dans les groupes.
 - Sujet alcool reporté par Robin (« on en reparlera ») : reste ouvert et bloquant avant de signer une salle. Idée de Robin : partenariat avec un lycéen influent de Draguignan (TikTokeur, connu, fait des soirées). Validée : levier trafic n°1.
 - Robin envisage d'élargir à 15-22 ans. BOS déconseille le mélange (alcool, écart d'âge, parents, salles) et propose de garder une seule cible, avec éventuellement une 2ᵉ gamme 18+ séparée plus tard. Question posée : pourquoi ce changement ?
 - Fin de session 06/10. Décisions en suspens : cible (15-18 ou 15-20) et alcool. À reprendre demain.
+
+## 2026-10-07
+- Des abonnés réclament la suite (palier 150). Story 150 créée : soft offert avant 21 h + playlist faite par les abonnés (sticker Question). Prochain secret à 200 laissé volontairement flou (pas de date promise tant que la salle n'est pas signée).
