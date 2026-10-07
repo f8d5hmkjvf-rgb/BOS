@@ -40,3 +40,8 @@
 - BOS ne rédigera pas de message aux salles/mairie affirmant « aucun alcool toléré » si ce n'est pas la réalité.
 - Options proposées : (A) 15-18 ans sans alcool, contrôlé ; (B) basculer vers des soirées 18+ dans un lieu avec licence.
 - Creuser la vraie peur derrière : « sans alcool, personne ne viendra » ?
+
+## 🚨 Nouveau bottleneck #1 (07/10) — Pas de capacité juridique
+- Robin a 15 ans et n'est pas émancipé : il ne peut pas organiser officiellement, signer avec une salle ou un prestataire, ni encaisser en son nom.
+- Options : (A) un adulte (parent hors mairie, proche) devient l'organisateur officiel et Robin gère la marque et la com ; (B) partenariat avec le lieu (ex. Barbarossa) : le lieu organise officiellement (licence, assurance), Robin apporte le public et la marque et touche une part ; (C) attendre ses 16 ans, pas réaliste.
+- À ne plus faire : se présenter comme émancipé ou comme majeur auprès des salles, de la mairie ou des prestataires.

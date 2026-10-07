@@ -61,3 +61,4 @@ Prochaine action : story d'intérêt dans les groupes.
 - Affiche « La première soirée arrive » sans aucun chiffre (prix, date, quantités) : Output/2026-10-07_affiche_premiere_soiree.png
 - Story du palier 150 v2, sans « 21 h » ni nombre : Output/2026-10-07_story_palier_150_v2.png. La story « première soirée arrive » est gardée pour plus tard (doublon sur le soft).
 - Robin veut écrire à Purple House pour demander des conseils. Message rédigé (2 questions précises). Idée : canal de diffusion « Riviera Family ».
+- 07/10 : Robin révèle qu'il a 15 ans et n'est pas émancipé. Plan à revoir : il faut un adulte organisateur ou un partenariat avec le lieu.

@@ -1,7 +1,7 @@
 # Profile
 
 - **Prénom :** Robin
-- **Âge :** 16 ans, lycéen. **Mineur émancipé**, autorisé par le juge à être commerçant.
+- **Âge : 15 ans (16 ans dans ~3 mois, vers janvier 2027), lycéen. PAS émancipé** (correction faite par Robin le 07/10 ; il avait dit 16 ans + émancipé). Donc il ne peut pas signer seul de contrats (salle, sécu, assurance), ni être commerçant. L'existence de la micro-entreprise « agence digitale » est à vérifier (impossible en son nom à 15 ans sans émancipation).
 - **Lieu :** Lorgues (83, Var). 1 lycée à Lorgues + plusieurs à moins de 20 min (Draguignan, etc.).
 - **Temps dispo :** 1h à 2h par jour après les cours.
 - **Expérience :** aucune en organisation d'événements. A déjà été à des soirées chez des gens.
