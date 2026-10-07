@@ -58,3 +58,4 @@ Prochaine action : story d'intérêt dans les groupes.
 - Horaires revus par Robin : ouverture 21 h, DJ de 21 h 30 à 2 h. Conséquence : « soft offert avant 21 h » devient « avant 21 h 30 » (à corriger dans les prochaines comms).
 - Guide « codes du milieu de la nuit » (modèles économiques, entrée, légal, risques illégaux et protections) : Output/2026-10-07_codes_milieu_de_la_nuit.md
 - Décision : 10 € pour les 20 premiers billets, soft offert aux 30 premiers arrivés.
+- Affiche « La première soirée arrive » sans aucun chiffre (prix, date, quantités) : Output/2026-10-07_affiche_premiere_soiree.png
