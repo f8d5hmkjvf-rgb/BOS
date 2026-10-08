@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soins & tarifs — Douce Heure Pour Soi</title>
+<meta name="description" content="Carte des soins et tarifs de Douce Heure Pour Soi, esthéticienne au Cannet-des-Maures (83340).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="logo">Douce Heure <span>Pour Soi</span></a>
+    <ul id="menu"><li><a href="index.html">Accueil</a></li><li><a href="soins.html" class="active">Soins & tarifs</a></li><li><a href="mariees.html">Mariées</a></li><li><a href="contact.html">Contact</a></li></ul>
+    <a href="tel:+33688040203" class="btn">Réserver</a>
+    <button class="burger" aria-label="Menu" aria-controls="menu" aria-expanded="false" onclick="var m=document.getElementById('menu');m.classList.toggle('open');this.setAttribute('aria-expanded',m.classList.contains('open'))">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">Carte des soins</div>
+    <h1>Soins &amp; tarifs</h1>
+    <p>Une carte pensée pour prendre soin de vous de la tête aux pieds. Chaque soin s'adapte à votre peau et à vos envies.</p>
+  </div>
+</section>
+<section>
+  <div class="wrap" style="max-width:860px">
+    <div class="chips"><a href="#visage">Soins du visage</a><a href="#regard">Regard</a><a href="#mains">Mains & pieds</a><a href="#massages">Massages</a><a href="#epilations">Épilations</a><a href="#maquillage">Maquillage</a></div>
+    
+    <div class="menu-cat" id="visage">
+      <header class="cat-head"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="10" r="7"/><path d="M9 9h.01M15 9h.01M9.5 13a3.5 3.5 0 0 0 5 0"/></svg></div><h2>Soins du visage</h2></header>
+      <p>Nettoyer, hydrater, illuminer : un soin adapté à votre type de peau.</p>
+      <ul class="menu-list"><li><span>Soin du visage</span><span>dès 39 €</span></li><li><span>Nettoyage de peau en profondeur</span><span>sur demande</span></li><li><span>Soin hydratant & éclat</span><span>sur demande</span></li></ul>
+    </div>
+    <div class="menu-cat" id="regard">
+      <header class="cat-head"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="2.5"/></svg></div><h2>Regard</h2></header>
+      <p>Pour un regard intense, du plus naturel au plus sophistiqué.</p>
+      <ul class="menu-list"><li><span>Extensions de cils</span><span>dès 10 €</span></li><li><span>Rehaussement de cils</span><span>sur demande</span></li><li><span>Restructuration des sourcils</span><span>sur demande</span></li><li><span>Teinture cils / sourcils</span><span>sur demande</span></li></ul>
+    </div>
+    <div class="menu-cat" id="mains">
+      <header class="cat-head"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 21V10a2 2 0 1 1 4 0v4M12 12V8a2 2 0 1 1 4 0v6M16 12a2 2 0 1 1 4 0v3a6 6 0 0 1-6 6h-2"/></svg></div><h2>Mains & pieds</h2></header>
+      <p>Des ongles soignés et des mains et pieds tout doux.</p>
+      <ul class="menu-list"><li><span>Manucure</span><span>dès 25 €</span></li><li><span>Pose de vernis</span><span>sur demande</span></li><li><span>Beauté des pieds</span><span>sur demande</span></li></ul>
+    </div>
+    <div class="menu-cat" id="massages">
+      <header class="cat-head"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c3 4 5 7 5 10a5 5 0 0 1-10 0c0-3 2-6 5-10z"/></svg></div><h2>Massages</h2></header>
+      <p>Une pause de détente profonde pour le corps et l'esprit.</p>
+      <ul class="menu-list"><li><span>Massage aux huiles essentielles</span><span>dès 35 €</span></li><li><span>Massage californien</span><span>sur demande</span></li><li><span>Soin du corps</span><span>dès 40 €</span></li></ul>
+    </div>
+    <div class="menu-cat" id="epilations">
+      <header class="cat-head"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l6-6M14 4l6 6-8 8-6-6 8-8z"/></svg></div><h2>Épilations</h2></header>
+      <p>Une peau nette et douce, visage et corps.</p>
+      <ul class="menu-list"><li><span>Sourcils / lèvre / menton</span><span>sur demande</span></li><li><span>Aisselles / maillot</span><span>sur demande</span></li><li><span>Demi-jambes / jambes complètes</span><span>sur demande</span></li></ul>
+    </div>
+    <div class="menu-cat" id="maquillage">
+      <header class="cat-head"><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 6.9H22l-6 4.6 2.3 7L12 16l-6.3 4.5 2.3-7-6-4.6h7.6z"/></svg></div><h2>Maquillage</h2></header>
+      <p>Sublimer vos traits pour toutes les occasions.</p>
+      <ul class="menu-list"><li><span>Maquillage jour</span><span>dès 15 €</span></li><li><span>Maquillage soirée / événement</span><span>sur demande</span></li><li><span>Maquillage mariée (avec essai)</span><span>dès 30 €</span></li></ul>
+    </div>
+    <p class="note">Tarifs indicatifs, susceptibles d'évoluer. Contactez-nous pour la carte complète et les forfaits.</p>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <div class="eyebrow">Rendez-vous</div>
+    <h2>Un soin vous fait envie ?</h2>
+    <p>Appelez pour réserver ou pour être conseillée sur le soin le plus adapté.</p>
+    <div class="cta-row">
+      <a href="tel:+33688040203" class="btn">Appeler · 06 88 04 02 03</a>
+      <a href="contact.html" class="btn ghost">Plan d'accès</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <nav class="footer-nav"><a href="index.html">Accueil</a><a href="soins.html">Soins & tarifs</a><a href="mariees.html">Mariées</a><a href="contact.html">Contact</a></nav>
+  © 2026 Douce Heure Pour Soi · Esthéticienne au Cannet-des-Maures (Var) · <a href="tel:+33688040203">06 88 04 02 03</a>
+</footer>
+
+<a href="tel:+33688040203" class="btn callbar">📞 Prendre rendez-vous</a>
+
+</body>
+</html>
