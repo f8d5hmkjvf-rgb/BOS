@@ -8,3 +8,4 @@
 ## 2026-10-09
 - Explication détaillée du modèle conciergerie (20 % commission). Flyer A5 créé sur Canva : https://canva.link/o5iifgi3kjfp683
 - Action : remplacer nom/tel/email, imprimer 30 flyers, distribuer une rue de Lorgues ce week-end
+- Flyer Canva jugé « moche, trop IA » : refait en sobre/élégant (PDF A5 dans project-files/maison-avalia)
