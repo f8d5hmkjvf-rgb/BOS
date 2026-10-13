@@ -65,3 +65,6 @@ Prochaine action : story d'intérêt dans les groupes.
 
 ## 2026-10-10
 - Compte inactif depuis quelques jours → story de relance « Ça prépare du lourd » + curseur emoji (aucune promesse précise) : Output/2026-10-10_story_relance.png
+
+## 2026-10-13
+- Robin annonce qu'il fera les soirées « tout au black », avec vente d'alcool sur place (public mineur, lui-même a 15 ans). BOS ne peut pas l'accompagner sur ce projet sous cette forme. La porte reste ouverte : version légale (option B avec un lieu partenaire, sans alcool pour les mineurs) ou tout autre projet. Infos de sécurité d'urgence transmises.

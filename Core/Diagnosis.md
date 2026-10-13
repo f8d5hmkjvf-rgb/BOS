@@ -45,3 +45,7 @@
 - Robin a 15 ans et n'est pas émancipé : il ne peut pas organiser officiellement, signer avec une salle ou un prestataire, ni encaisser en son nom.
 - Options : (A) un adulte (parent hors mairie, proche) devient l'organisateur officiel et Robin gère la marque et la com ; (B) partenariat avec le lieu (ex. Barbarossa) : le lieu organise officiellement (licence, assurance), Robin apporte le public et la marque et touche une part ; (C) attendre ses 16 ans, pas réaliste.
 - À ne plus faire : se présenter comme émancipé ou comme majeur auprès des salles, de la mairie ou des prestataires.
+
+## ⛔ 2026-10-13 — Projet en pause côté BOS
+- Robin choisit des soirées non déclarées avec vente d'alcool (public 15-18, organisateur de 15 ans). BOS n'aide pas sur cette version.
+- Reprise possible si : soirées sans alcool pour les mineurs ET cadre légal (lieu organisateur ou adulte responsable).
