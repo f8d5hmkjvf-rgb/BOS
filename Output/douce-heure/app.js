@@ -1,6 +1,13 @@
 (function(){
   var $ = function(id){ return document.getElementById(id); };
 
+  // Chaque nouvelle page s'ouvre en haut
+  try{ if('scrollRestoration' in history) history.scrollRestoration='manual'; }catch(e){}
+  var toTop=function(){ window.scrollTo({top:0, left:0, behavior:'instant'}); document.documentElement.scrollTop=0; document.body.scrollTop=0; };
+  toTop();
+  window.addEventListener('load', function(){ toTop(); setTimeout(toTop, 60); });
+  window.addEventListener('pageshow', function(e){ if(e.persisted) toTop(); });
+
   // Menu mobile
   var sheet = $('sheet'), burger = $('burger');
   function openMenu(o){
