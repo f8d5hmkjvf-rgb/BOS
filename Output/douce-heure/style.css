@@ -340,6 +340,11 @@ a.uni{display:grid}
 .uni{transition:transform .2s}
 .uni:hover{transform:translateY(-3px)}
 
+/* En-tête collé tout en haut : on remplit aussi la zone de l'encoche / barre de l'app */
+header.top{background:color-mix(in srgb, var(--mist) 96%, transparent)}
+header.top::before{content:""; position:absolute; left:0; right:0; bottom:100%; height:0; background:var(--mist); pointer-events:none}
+header.top.stuck::before{height:calc(env(safe-area-inset-top, 0px) + 2px)}
+
 /* Ajustements mobile */
 .brand span{white-space:nowrap}
 @media (max-width:420px){ header.top .brand span{font-size:1rem} header.top .brand svg{width:24px; height:24px} }

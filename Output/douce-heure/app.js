@@ -8,6 +8,14 @@
   window.addEventListener('load', function(){ toTop(); setTimeout(toTop, 60); });
   window.addEventListener('pageshow', function(e){ if(e.persisted) toTop(); });
 
+  // En-tête : remplit la zone au-dessus quand il est collé en haut
+  var hdr=document.querySelector('header.top');
+  if(hdr){
+    var proto=document.querySelector('.proto');
+    var stick=function(){ hdr.classList.toggle('stuck', window.scrollY > (proto ? proto.offsetHeight : 0) + 1); };
+    window.addEventListener('scroll', stick, {passive:true}); stick();
+  }
+
   // Menu mobile
   var sheet = $('sheet'), burger = $('burger');
   function openMenu(o){
