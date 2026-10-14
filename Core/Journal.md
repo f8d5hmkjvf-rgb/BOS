@@ -5,3 +5,4 @@
 - BOS a construit la maquette mobile du site (carte des tarifs, réservation démo, cadran « une heure pour soi »). Photos pas encore reçues.
 - Photos reçues (mariée/bouquet, nude laiteux, nail art orange) + Insta @verodhps → intégrées à la maquette (hero, prestations, galerie Réalisations).
 - Robin veut un site multi-pages (pas one-page) → maquette refaite en 6 pages : accueil, prestations, réalisations, institut, contact, réserver.
+- Retour Robin : plus interactif + rose et blanc → palette rose/blanc, quiz « quel soin pour vous », galerie plein écran, réserver depuis la carte, indicateur ouvert/fermé.
