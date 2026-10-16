@@ -74,3 +74,4 @@ Prochaine action : story d'intérêt dans les groupes.
 - Beau-père de Robin : a une société, pas de lieu, prêt à en parler. Fiche projet préparée pour lui : Output/2026-10-16_projet_riviera_house_pour_beau-pere.md
 - 16/10 : Robin annonce un pivot de cible : étudiants (majeurs) au lieu des 15-18 ans. À analyser : taille du marché local, alcool via un lieu licencié, place de Robin (15 ans) dans des soirées majeures, audience Insta actuelle composée de lycéens.
 - Robin confirme le pivot étudiants : « on a déjà le public ». BOS accompagne la version 18+ légale (lieu licencié, contrôle des pièces d'identité).
+- Public étudiant annoncé : 100-200 personnes. Budget version étudiante : point mort ~47, ~1 180 € net à 150 (avant partage). Output/2026-10-16_budget_soiree_etudiante.md
