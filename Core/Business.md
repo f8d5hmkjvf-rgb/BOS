@@ -8,7 +8,10 @@
 ## Concept
 Promoteur de soirées pour les jeunes de Lorgues et des alentours. Il n'y a pas de boîte à Lorgues. Il existe des concepts nationaux de soirées ados 13-17 sans alcool (Teens Party, Teenage Party), mais rien d'équivalent repéré autour de Draguignan.
 
-## Persona (recommandé)
+## Persona — PIVOT 16/10 : étudiants / 18+ (Robin dit avoir déjà le public, via son beau-père)
+Conditions : soirées strictement 18+ (contrôle d'identité), bar géré par un lieu licencié, société du beau-père organisatrice. Robin (15 ans) : marque et com, présent seulement accompagné, jamais au bar.
+
+## Persona (ancien, 15-18)
 15-18 ans, lycéens de Lorgues + villes à moins de 20 min. Robin voulait viser « tous les jeunes ». BOS recommande de commencer par les 15-18 ans : c'est là qu'il a son avantage, et mélanger mineurs et majeurs pose problème avec l'alcool.
 
 ## Cadre alcool (non négociable)
