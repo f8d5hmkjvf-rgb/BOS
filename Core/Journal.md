@@ -68,3 +68,6 @@ Prochaine action : story d'intérêt dans les groupes.
 
 ## 2026-10-13
 - Robin annonce qu'il fera les soirées « tout au black », avec vente d'alcool sur place (public mineur, lui-même a 15 ans). BOS ne peut pas l'accompagner sur ce projet sous cette forme. La porte reste ouverte : version légale (option B avec un lieu partenaire, sans alcool pour les mineurs) ou tout autre projet. Infos de sécurité d'urgence transmises.
+
+## 2026-10-16
+- Robin : « j'ai changé d'avis ». Reprise du projet en version légale : le lieu organise (licence, assurance, responsabilité), pas d'alcool pour les mineurs, Robin apporte la marque et le public et touche ~50 % de l'entrée.

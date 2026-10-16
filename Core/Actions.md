@@ -1,5 +1,10 @@
 # Actions
 
+**Focus (16/10) : signer un lieu partenaire en option B (le lieu organise, Robin touche ~50 % de l'entrée, zéro alcool pour les mineurs).**
+1. **Aller au Barbarossa (mer/jeu 17 h) avec le pitch option B.**
+2. **Après accord oral : envoyer le modèle d'accord écrit (BOS le rédige).**
+3. Relancer la salle de Lorgues contactée le 06/10.
+
 **Focus : atteindre 100 abonnés et sécuriser une salle pour la 1ʳᵉ soirée (28/11 ou 5/12).**
 
 ## À faire au retour de Robin (07/10)
