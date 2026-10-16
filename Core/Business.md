@@ -23,6 +23,7 @@ Promoteur de soirées pour les jeunes de Lorgues et des alentours. Il n'y a pas 
 - Argument : « la soirée où tes parents disent oui ».
 
 ## Ressources
+- **Beau-père (16/10) : a une société, pourrait être l'organisateur officiel (option A). Partage à définir.**
 - **Budget :** 150 €.
 - **Salle :** à trouver. Les salles privées coûtent 1 100 à 3 600 €, trop cher. Cible : salle municipale (Lorgues ou communes voisines).
 - **DJ :** un DJ lycéen ou pas cher, à trouver.

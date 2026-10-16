@@ -71,3 +71,4 @@ Prochaine action : story d'intérêt dans les groupes.
 
 ## 2026-10-16
 - Robin : « j'ai changé d'avis ». Reprise du projet en version légale : le lieu organise (licence, assurance, responsabilité), pas d'alcool pour les mineurs, Robin apporte la marque et le public et touche ~50 % de l'entrée.
+- Beau-père de Robin : a une société, pas de lieu, prêt à en parler. Fiche projet préparée pour lui : Output/2026-10-16_projet_riviera_house_pour_beau-pere.md
