@@ -78,3 +78,4 @@ Prochaine action : story d'intérêt dans les groupes.
 
 ## 2026-10-17
 - Story soirée étudiante 18+ pour le beau-père (bar sur place alcools/softs, 18+ et pièce d'identité, mention sanitaire Loi Évin) : Output/2026-10-17_story_soiree_etudiante.png
+- Story étudiante v2 : « 18+ » retiré des gros éléments, mention discrète « Réservé aux majeurs » gardée (non négociable avec alcool) : Output/2026-10-17_story_soiree_etudiante_v2.png
