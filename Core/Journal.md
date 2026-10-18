@@ -6,3 +6,6 @@
 - Photos reçues (mariée/bouquet, nude laiteux, nail art orange) + Insta @verodhps → intégrées à la maquette (hero, prestations, galerie Réalisations).
 - Robin veut un site multi-pages (pas one-page) → maquette refaite en 6 pages : accueil, prestations, réalisations, institut, contact, réserver.
 - Retour Robin : plus interactif + rose et blanc → palette rose/blanc, quiz « quel soin pour vous », galerie plein écran, réserver depuis la carte, indicateur ouvert/fermé.
+
+## 2026-10-18 (dimanche)
+- Toujours pas de réponse de Véronique (message vu le 14/10). Décision : relance lundi avec le lien de la maquette, sans attendre. En parallèle : ne pas dépendre d'un seul prospect.
