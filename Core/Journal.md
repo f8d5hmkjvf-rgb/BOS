@@ -82,3 +82,4 @@ Prochaine action : story d'intérêt dans les groupes.
 
 ## 2026-10-18
 - Fichier d'impression pour une bannière / toile de fond (format 3:2, 4500 × 3000 px, JPEG 1,7 Mo) : Output/2026-10-18_banniere_riviera_house_impression.jpg
+- Bannière HD 6000 × 4000 (logo agrandi par IA + netteté), 3,5 Mo : Output/2026-10-18_banniere_riviera_house_HD.jpg
