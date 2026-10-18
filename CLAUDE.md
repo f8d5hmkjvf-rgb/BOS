@@ -244,4 +244,4 @@ Répondre dans la même langue que l'entrepreneur utilise. Par défaut en franç
 
 ## Règles apprises
 
-- **Messages de prospection pour Robin :** ton sérieux et pro (pas de « wesh », pas trop d'emojis), écrit tout en minuscules comme un vrai SMS. Ne pas en faire trop dans le style « jeune ».
+- **Messages de prospection pour Robin :** ton sérieux et pro (pas de « wesh », pas trop d'emojis), écrit tout en minuscules comme un vrai SMS. Ne pas en faire trop dans le style « jeune ». Pas de rappels inutiles (ex : « on s'est vus à la soirée ») quand le contact connaît déjà Robin : aller droit au but.
