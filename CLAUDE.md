@@ -245,3 +245,4 @@ Répondre dans la même langue que l'entrepreneur utilise. Par défaut en franç
 ## Règles apprises
 
 - **Maquettes de sites clients : multi-pages par défaut** (Accueil, Prestations, Réalisations, À propos, Contact, Réserver), jamais en one-page. Un site multi-pages fait plus « vrai site » et justifie mieux le prix.
+- **Messages à envoyer aux prospects : courts** (3-4 lignes max, une seule demande). Robin préfère concis.
