@@ -88,3 +88,4 @@ Prochaine action : story d'intérêt dans les groupes.
 ## 2026-10-19
 - Palier 200 atteint. Story « 200 · Merci · La suite arrive » sans promesse (pas de date ni de lieu signés) : Output/2026-10-19_story_palier_200.png. Question ouverte : @rivierahouse83 reste-t-il le compte des soirées 15-18 sans alcool, à côté du projet étudiant 18+ ?
 - 2 stories « communiqué » façon Purple House (fond noir, texte) sans promesse de date : Output/2026-10-19_story_communique_1.png et _2.png
+- Version Halloween des communiqués (pas de soirée Halloween, première soirée très bientôt) : Output/2026-10-19_story_communique_halloween_1/2.png
