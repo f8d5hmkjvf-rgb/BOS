@@ -84,3 +84,6 @@ Prochaine action : story d'intérêt dans les groupes.
 - Fichier d'impression pour une bannière / toile de fond (format 3:2, 4500 × 3000 px, JPEG 1,7 Mo) : Output/2026-10-18_banniere_riviera_house_impression.jpg
 - Bannière HD 6000 × 4000 (logo agrandi par IA + netteté), 3,5 Mo : Output/2026-10-18_banniere_riviera_house_HD.jpg
 - Le site d'impression affiche 3000 × 2000 (image réduite) → version PNG exacte 3000 × 2000, nette, 3 Mo : Output/2026-10-18_banniere_riviera_house_3000x2000.png
+
+## 2026-10-19
+- Palier 200 atteint. Story « 200 · Merci · La suite arrive » sans promesse (pas de date ni de lieu signés) : Output/2026-10-19_story_palier_200.png. Question ouverte : @rivierahouse83 reste-t-il le compte des soirées 15-18 sans alcool, à côté du projet étudiant 18+ ?

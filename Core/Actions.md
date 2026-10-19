@@ -33,6 +33,7 @@
 ## Résultats
 | Date | Action | Résultat |
 |---|---|---|
+| 2026-10-19 | Palier 200 abonnés | Atteint |
 | 2026-10-05 | Création Insta + post + 80 abonnements | ~30 abonnés rapidement |
 | 2026-10-06 | Palier 150 abonnés | 153 abonnés à 21:54 |
 | 2026-10-06 | Palier 100 abonnés | Atteint en < 24 h → vote du thème lancé |
