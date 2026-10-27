@@ -6,6 +6,8 @@ _Focus : premier client payant de Bouclé_
 2. **Sophie, premier client payant** : offre fondateur 29 €/mois à vie, 1er mois offert. Message rédigé par BOS, envoyé par Robin.
 3. **Prospecter 10 traiteurs du Var** : liste et messages faits par BOS, envois par Robin, avec la vidéo en pièce jointe.
 4. Choisir et acheter le nom de domaine (Cloudflare).
+4 bis. **Mentions légales de Bouclé** : Robin donne ses infos légales (nom/raison sociale, statut, SIREN, adresse, e-mail), BOS les intègre. Obligatoire avant la mise en ligne.
+4 ter. Vérifier avec Robin l'origine des photos du site de Sophie (toutes à elle ?).
 5. Publier la story une fois l'appli en ligne.
 
 ## Résultats
