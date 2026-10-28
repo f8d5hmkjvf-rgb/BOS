@@ -1,0 +1,13 @@
+{
+  "id": "P063",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "Je fais mes devis et mes factures avec un outil gratuit et ça me va, je ne vois pas pourquoi je paierais 39 € par mois pour ça. Mes devis, je les fais après être passée voir le chantier, pas à partir d'un mail.",
+  "objection": "Les demandes que je reçois par mail sont souvent vagues, il faut que j'aille sur place mesurer avant de chiffrer. Une appli qui lit le mail ne va pas me faire gagner grand-chose, et 468 € par an pour remplacer un outil gratuit, non.",
+  "would_change_my_mind": "Que ce soit gratuit, ou à moins de 10 € par mois, avec des retours d'autres artisans que je connais qui s'en servent vraiment.",
+  "price_too_cheap": 3,
+  "price_cheap": 9,
+  "price_expensive": 20,
+  "price_too_expensive": 30
+}

@@ -1,0 +1,13 @@
+{
+  "id": "P100",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "timing",
+  "reason": "Je perds des clients parce que je réponds trop tard, ça je le sais. Mais là, je suis déjà débordée, et rien que de penser à saisir tout mon catalogue de prix, je me dis que je ne le ferai pas cette semaine, ni la suivante. Les 14 jours d'essai passeraient sans que j'aie rien configuré.",
+  "objection": "Je n'ai pas le temps de saisir tout mon catalogue de prix. Mes tarifs changent selon l'événement et le nombre d'invités, je ne suis pas sûre que ça rentre dans des cases. Et 39 € par mois pour un outil que je n'aurai peut-être pas le temps de lancer, ça fait cher pour mes revenus.",
+  "would_change_my_mind": "Que l'appli remplisse le catalogue toute seule à partir de mes anciens devis ou de mes mails, sans que je saisisse quoi que ce soit, ou que quelqu'un le fasse pour moi pendant l'essai.",
+  "price_too_cheap": 9,
+  "price_cheap": 19,
+  "price_expensive": 35,
+  "price_too_expensive": 59
+}

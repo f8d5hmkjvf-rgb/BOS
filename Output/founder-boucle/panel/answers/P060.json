@@ -1,0 +1,13 @@
+{
+  "id": "P060",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "Je fais déjà mes devis et mes factures avec Henrri, c'est gratuit et ça marche. 39 € par mois, ça fait 468 € par an pour gagner un peu de temps le dimanche soir, je ne vois pas pourquoi je paierais ça.",
+  "objection": "Henrri et Tiime sont gratuits, et mes demandes de devis sont rarement assez standard pour qu'une appli les lise toute seule. Je devrais de toute façon tout relire, et c'est une appli toute neuve sans aucun avis.",
+  "would_change_my_mind": "Un plan gratuit ou à moins de 10 € par mois, ou une vraie démonstration sur un de mes propres mails de clients qui me fait gagner une heure par semaine.",
+  "price_too_cheap": 3,
+  "price_cheap": 8,
+  "price_expensive": 15,
+  "price_too_expensive": 25
+}

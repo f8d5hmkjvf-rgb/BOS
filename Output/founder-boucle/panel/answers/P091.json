@@ -1,0 +1,13 @@
+{
+  "id": "P091",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "Je fais déjà mes devis et mes factures avec un outil gratuit, et 39 € par mois pour 2 à 5 demandes par semaine, ça fait cher pour gagner quelques minutes. Je ne vois pas pourquoi je sortirais la carte alors que Henrri ou Tiime ne me coûtent rien.",
+  "objection": "39 € par mois alors que Henrri ou Tiime sont gratuits, et en plus c'est une appli toute neuve sans aucun avis : si elle lit mal un mail et sort un devis faux, je perds du temps et je passe pour un amateur auprès de mon client.",
+  "would_change_my_mind": "Une version gratuite ou à moins de 10 € par mois, ou une preuve (avis, témoignage d'un traiteur ou d'un photographe) que ça me fait gagner assez de temps chaque semaine pour que ça se rembourse.",
+  "price_too_cheap": 4,
+  "price_cheap": 9,
+  "price_expensive": 15,
+  "price_too_expensive": 25
+}

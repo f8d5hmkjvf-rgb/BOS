@@ -1,0 +1,13 @@
+{
+  "id": "P082",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "Je facture déjà avec un outil gratuit, et 39 € par mois ça fait presque 470 € par an pour un truc que je peux faire à la main. Les devis, c'est surtout en haute saison que ça me prend du temps, le reste de l'année je ne vois pas pourquoi je paierais.",
+  "objection": "39 € par mois alors que Henrri ou Tiime sont gratuits. Et mes devis changent selon le nombre d'invités, la date, le lieu : je ne suis pas sûr qu'une appli lise bien tout ça, et une appli sans aucun avis, je ne prends pas le risque de lui confier mes demandes de clients.",
+  "would_change_my_mind": "Une formule gratuite ou à moins de 10 € par mois, ou un abonnement uniquement pour la haute saison, avec la preuve (avis ou exemple concret) que ça me sort un devis correct à partir d'un vrai mail de client.",
+  "price_too_cheap": 3,
+  "price_cheap": 9,
+  "price_expensive": 19,
+  "price_too_expensive": 29
+}

@@ -1,0 +1,13 @@
+{
+  "id": "P007",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "need",
+  "reason": "Je fais trois devis par mois, je les fais déjà à la main en dix minutes chacun, donc je n'ai pas besoin de payer 39 € par mois pour ça. Et je n'ai pas envie qu'une IA touche aux mails de mes clients.",
+  "objection": "Trois devis par mois, ça ne justifie pas un abonnement, et je ne fais pas confiance à une IA pour lire correctement la demande d'un client (une date, un nombre d'invités, une allergie) : si elle se trompe et que je rate une erreur, c'est moi qui passe pour une amateur.",
+  "would_change_my_mind": "Une version gratuite ou à quelques euros qui couvre mes trois devis par mois, avec des avis de vrais traiteurs ou photographes qui l'utilisent depuis plusieurs mois.",
+  "price_too_cheap": 3,
+  "price_cheap": 7,
+  "price_expensive": 15,
+  "price_too_expensive": 25
+}

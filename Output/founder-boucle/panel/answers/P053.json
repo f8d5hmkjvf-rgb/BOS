@@ -1,0 +1,13 @@
+{
+  "id": "P053",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "trust",
+  "reason": "Ça m'intéresse sur le papier parce que je réponds trop tard, mais une appli toute neuve sans aucun avis, je ne vais pas lui confier mes devis et mes factures. Et la moitié de mes demandes arrivent par téléphone ou par message, pas par mail, et je dois souvent passer sur place avant de chiffrer.",
+  "objection": "Et la facture électronique obligatoire, c'est géré ? Je ne vais pas basculer mes factures sur une appli de 2026 qui n'en dit rien, et si elle disparaît dans un an je perds tout mon catalogue et mon historique.",
+  "would_change_my_mind": "Une mention claire que la facturation est conforme à la facture électronique obligatoire, plus un collègue artisan qui l'utilise déjà et qui me dit que ça marche.",
+  "price_too_cheap": 9,
+  "price_cheap": 19,
+  "price_expensive": 39,
+  "price_too_expensive": 60
+}

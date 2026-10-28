@@ -1,0 +1,13 @@
+{
+  "id": "P017",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "trust",
+  "reason": "C'est vrai que je perds des clients parce que je réponds 3 ou 4 jours après, donc le problème, je le connais. Mais une appli toute neuve, sans aucun avis, je ne vais pas lui confier mes devis et mes clients, et je n'ai pas le temps de saisir tout mon catalogue pour un truc que je ne connais pas.",
+  "objection": "Qui est derrière ? Si ça ferme ou si personne ne répond au support, je fais comment avec mes devis et mes factures dedans ? Et 39 € par mois quand je sors 2 000 € par mois, pour une appli qui n'a pas un seul avis, c'est cher.",
+  "would_change_my_mind": "Des avis de traiteurs, photographes ou DJ qui s'en servent déjà, avec un vrai nom et un vrai visage derrière, et la possibilité de récupérer mes devis et factures si l'appli ferme.",
+  "price_too_cheap": 7,
+  "price_cheap": 15,
+  "price_expensive": 30,
+  "price_too_expensive": 50
+}

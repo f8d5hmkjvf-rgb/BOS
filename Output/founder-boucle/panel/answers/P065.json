@@ -1,0 +1,13 @@
+{
+  "id": "P065",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "J'ai 10 à 20 demandes de devis par mois, et la plupart sont sur mesure, donc je ne vois pas ce qu'un catalogue m'apporte. 39 € par mois, ça fait 468 € par an pour un truc que je fais déjà en 10 minutes avec un modèle Word ou Canva. Je résilie vite ce que je n'utilise pas assez.",
+  "objection": "Je n'ai pas le temps de saisir tout mon catalogue de prix, et mes devis changent d'un client à l'autre. Si je dois tout retoucher à la main, l'appli ne me fait rien gagner. Et pas un seul avis client pour me dire que ça marche.",
+  "would_change_my_mind": "Un tarif autour de 15 à 19 € par mois, ou une version gratuite limitée, et une démo où je vois un vrai mail de client devenir un devis correct sans que j'aie rien saisi avant.",
+  "price_too_cheap": 5,
+  "price_cheap": 10,
+  "price_expensive": 20,
+  "price_too_expensive": 30
+}

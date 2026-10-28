@@ -1,0 +1,13 @@
+{
+  "id": "P020",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "need",
+  "reason": "Je fais trois devis par mois, je n'en ai pas besoin. Je les fais sur un coin de table le soir, ça me prend un quart d'heure chacun, et payer 39 € par mois pour ça, c'est plus que ce que ça me coûte en temps.",
+  "objection": "Mon problème c'est pas de faire les devis, c'est que je réponds en retard parce que je suis sur les chantiers. Et pour 3 devis par mois, 39 € ça fait 13 € le devis, c'est cher. En plus une appli toute neuve sans aucun avis, je vais pas lui transférer mes mails de clients.",
+  "would_change_my_mind": "Un prix à 10 € par mois ou moins, ou un tarif à l'unité qui ne me fait payer que les mois où j'ai vraiment des devis, plus quelqu'un de mon métier que je connais qui me dit qu'il s'en sert.",
+  "price_too_cheap": 4,
+  "price_cheap": 9,
+  "price_expensive": 19,
+  "price_too_expensive": 29
+}

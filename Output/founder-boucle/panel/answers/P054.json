@@ -1,0 +1,13 @@
+{
+  "id": "P054",
+  "buys": true,
+  "purchases_first_month": 1,
+  "reason_code": "convenience",
+  "reason": "Mes devis, c'est le soir ou le dimanche, et c'est ça qui me pèse. Si ça me sort un devis avec MES prix à partir d'un mail, 39 € par mois, c'est vite rentabilisé. Je teste les 14 jours sans carte, et si le premier devis sur un vrai mail est bon, je prends l'abonnement.",
+  "objection": "Qui est derrière ? C'est une appli toute neuve, sans aucun avis. Si ça ferme ou que personne ne répond au support, je fais comment de mes devis et de mes factures ? Et la moitié de mes demandes arrivent par téléphone ou WhatsApp, pas par mail.",
+  "would_change_my_mind": "Voir que ça marche sur un de mes vrais mails pendant l'essai, pouvoir récupérer mon catalogue et mes devis en export si ça s'arrête, et savoir qui est derrière (un nom, un numéro, quelqu'un qui répond).",
+  "price_too_cheap": 9,
+  "price_cheap": 19,
+  "price_expensive": 49,
+  "price_too_expensive": 70
+}

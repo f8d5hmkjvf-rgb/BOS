@@ -1,0 +1,6 @@
+Bouclé : répondez à vos demandes de devis en quelques minutes, avec vos propres prix.
+Transférez le mail du client, ou collez son message WhatsApp ou SMS (ou dictez-le avec le micro de votre téléphone). L'appli prépare le devis à partir de votre catalogue de prix, jamais avec des prix inventés par l'IA. Rien ne part chez votre client sans votre validation. Devis accepté : facture en un clic, relances proposées, export de toutes vos factures à tout moment.
+Mise en route faite pour vous : envoyez 3 anciens devis ou votre fichier de prix, le fondateur crée votre catalogue et prépare votre premier devis avec vous. Un humain répond à vos questions sous 24 h ouvrées.
+24 € HT par mois, sans engagement : vous pouvez arrêter en basse saison. Offre fondateurs : 19 € HT par mois à vie et mise en route offerte, pour les 20 premiers clients, jusqu'au 31 décembre 2026. 14 jours d'essai sans carte bancaire, et premier mois payant remboursé sur simple demande si Bouclé ne vous a pas fait gagner de temps.
+Facture électronique obligatoire (septembre 2027 pour les petites entreprises) : Bouclé annoncera sa solution avant mars 2027 ; si elle ne vous convient pas, vous partez avec toutes vos factures exportées.
+Nouvelle appli française lancée en 2026, pas encore d'avis clients. Créée par Robin, qui répond lui-même.

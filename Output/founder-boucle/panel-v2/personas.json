@@ -1,0 +1,222 @@
+[
+ {
+  "id": "P001",
+  "name": "Nadia",
+  "age": 32,
+  "segment": "Créatif ou conseil (graphiste, coach, formateur, consultant), revenus en euros",
+  "income": 22000,
+  "behaviour": "Déjà équipé et fidèle",
+  "behaviour_how": "Paie déjà un logiciel de devis (Tolteck, Obat ou Abby payant) et déteste changer d'outil.",
+  "objection": "Encore un abonnement de plus",
+  "habit": "tu reçois 2 à 5 demandes de devis par semaine, surtout par mail et par message"
+ },
+ {
+  "id": "P002",
+  "name": "Darius",
+  "age": 38,
+  "segment": "Artisan du bâtiment (plombier, électricien, peintre, menuisier), revenus en euros",
+  "income": 63000,
+  "behaviour": "Déjà équipé et fidèle",
+  "behaviour_how": "Paie déjà un logiciel de devis (Tolteck, Obat ou Abby payant) et déteste changer d'outil.",
+  "objection": "Je fais trois devis par mois, je n'en ai pas besoin",
+  "habit": "tu fais tes devis le soir ou le dimanche"
+ },
+ {
+  "id": "P003",
+  "name": "Hana",
+  "age": 58,
+  "segment": "Événementiel (traiteur, photographe, DJ, fleuriste ou wedding planner), revenus en euros",
+  "income": 40000,
+  "behaviour": "Débordé, veut gagner du temps",
+  "behaviour_how": "Reçoit beaucoup de demandes, répond en retard et sait qu'il perd des clients à cause de ça.",
+  "objection": "Et si l'IA se trompe dans un devis envoyé à mon client ?",
+  "habit": "tu fais tes devis le soir ou le dimanche"
+ },
+ {
+  "id": "P004",
+  "name": "Declan",
+  "age": 45,
+  "segment": "Créatif ou conseil (graphiste, coach, formateur, consultant), revenus en euros",
+  "income": 49000,
+  "behaviour": "Déjà équipé et fidèle",
+  "behaviour_how": "Paie déjà un logiciel de devis (Tolteck, Obat ou Abby payant) et déteste changer d'outil.",
+  "objection": "Mes demandes arrivent surtout par téléphone ou WhatsApp, pas par mail",
+  "habit": "l'an dernier tu as perdu un client parce que tu as répondu trop tard"
+ },
+ {
+  "id": "P005",
+  "name": "Nia",
+  "age": 48,
+  "segment": "Services à domicile ou en extérieur (paysagiste, coiffeuse ou esthéticienne à domicile, nettoyage, déménagement), revenus en euros",
+  "income": 28000,
+  "behaviour": "Fait tout sur Word ou Excel",
+  "behaviour_how": "Fait ses devis à la main sur un modèle Word ou Excel, souvent le soir, et n'a jamais payé de logiciel.",
+  "objection": "Mes demandes arrivent surtout par téléphone ou WhatsApp, pas par mail",
+  "habit": "tu reçois 2 à 5 demandes de devis par semaine, surtout par mail et par message"
+ },
+ {
+  "id": "P006",
+  "name": "Raj",
+  "age": 24,
+  "segment": "Artisan du bâtiment (plombier, électricien, peintre, menuisier), revenus en euros",
+  "income": 61000,
+  "behaviour": "Méfiant envers l'IA",
+  "behaviour_how": "Pense que l'IA fait des erreurs et ne veut pas qu'une machine écrive à ses clients.",
+  "objection": "Encore un abonnement de plus",
+  "habit": "l'an dernier tu as perdu un client parce que tu as répondu trop tard"
+ },
+ {
+  "id": "P007",
+  "name": "Priya",
+  "age": 24,
+  "segment": "Événementiel (traiteur, photographe, DJ, fleuriste ou wedding planner), revenus en euros",
+  "income": 21000,
+  "behaviour": "Méfiant envers l'IA",
+  "behaviour_how": "Pense que l'IA fait des erreurs et ne veut pas qu'une machine écrive à ses clients.",
+  "objection": "Je fais trois devis par mois, je n'en ai pas besoin",
+  "habit": "ton comptable te réclame tes factures chaque trimestre"
+ },
+ {
+  "id": "P008",
+  "name": "Sana",
+  "age": 56,
+  "segment": "Artisan du bâtiment (plombier, électricien, peintre, menuisier), revenus en euros",
+  "income": 56000,
+  "behaviour": "Déjà équipé et fidèle",
+  "behaviour_how": "Paie déjà un logiciel de devis (Tolteck, Obat ou Abby payant) et déteste changer d'outil.",
+  "objection": "Encore un abonnement de plus",
+  "habit": "l'an dernier tu as perdu un client parce que tu as répondu trop tard"
+ },
+ {
+  "id": "P009",
+  "name": "Sam",
+  "age": 35,
+  "segment": "Événementiel (traiteur, photographe, DJ, fleuriste ou wedding planner), revenus en euros",
+  "income": 52000,
+  "behaviour": "Utilise un logiciel gratuit",
+  "behaviour_how": "Facture avec un outil gratuit (Henrri, Tiime ou Abby gratuit) et ne voit pas pourquoi payer.",
+  "objection": "Et si l'IA se trompe dans un devis envoyé à mon client ?",
+  "habit": "tu fais tes devis le soir ou le dimanche"
+ },
+ {
+  "id": "P010",
+  "name": "Farah",
+  "age": 34,
+  "segment": "Créatif ou conseil (graphiste, coach, formateur, consultant), revenus en euros",
+  "income": 55000,
+  "behaviour": "Utilise un logiciel gratuit",
+  "behaviour_how": "Facture avec un outil gratuit (Henrri, Tiime ou Abby gratuit) et ne voit pas pourquoi payer.",
+  "objection": "Je fais trois devis par mois, je n'en ai pas besoin",
+  "habit": "tu fais presque tout depuis ton téléphone"
+ },
+ {
+  "id": "P011",
+  "name": "Hamza",
+  "age": 26,
+  "segment": "Services à domicile ou en extérieur (paysagiste, coiffeuse ou esthéticienne à domicile, nettoyage, déménagement), revenus en euros",
+  "income": 31000,
+  "behaviour": "Utilise un logiciel gratuit",
+  "behaviour_how": "Facture avec un outil gratuit (Henrri, Tiime ou Abby gratuit) et ne voit pas pourquoi payer.",
+  "objection": "Et la facture électronique obligatoire, c'est géré ?",
+  "habit": "en haute saison tu reçois plus de 10 demandes de devis par semaine"
+ },
+ {
+  "id": "P012",
+  "name": "Gabriel",
+  "age": 47,
+  "segment": "Services à domicile ou en extérieur (paysagiste, coiffeuse ou esthéticienne à domicile, nettoyage, déménagement), revenus en euros",
+  "income": 17000,
+  "behaviour": "Fait tout sur Word ou Excel",
+  "behaviour_how": "Fait ses devis à la main sur un modèle Word ou Excel, souvent le soir, et n'a jamais payé de logiciel.",
+  "objection": "Et si l'IA se trompe dans un devis envoyé à mon client ?",
+  "habit": "tu réponds parfois 3 ou 4 jours après une demande"
+ },
+ {
+  "id": "P013",
+  "name": "Felix",
+  "age": 45,
+  "segment": "Services à domicile ou en extérieur (paysagiste, coiffeuse ou esthéticienne à domicile, nettoyage, déménagement), revenus en euros",
+  "income": 34000,
+  "behaviour": "Chasseur de bons plans",
+  "behaviour_how": "Compare les prix, attend les promos et résilie vite un abonnement.",
+  "objection": "Qui est derrière ? Si ça ferme ou si personne ne répond au support, je fais comment ?",
+  "habit": "tu fais presque tout depuis ton téléphone"
+ },
+ {
+  "id": "P014",
+  "name": "Zoe",
+  "age": 24,
+  "segment": "Événementiel (traiteur, photographe, DJ, fleuriste ou wedding planner), revenus en euros",
+  "income": 46000,
+  "behaviour": "Fait tout sur Word ou Excel",
+  "behaviour_how": "Fait ses devis à la main sur un modèle Word ou Excel, souvent le soir, et n'a jamais payé de logiciel.",
+  "objection": "Encore un abonnement de plus",
+  "habit": "en haute saison tu reçois plus de 10 demandes de devis par semaine"
+ },
+ {
+  "id": "P015",
+  "name": "Talia",
+  "age": 58,
+  "segment": "Créatif ou conseil (graphiste, coach, formateur, consultant), revenus en euros",
+  "income": 48000,
+  "behaviour": "Chasseur de bons plans",
+  "behaviour_how": "Compare les prix, attend les promos et résilie vite un abonnement.",
+  "objection": "Encore un abonnement de plus",
+  "habit": "tu fais tes devis le soir ou le dimanche"
+ },
+ {
+  "id": "P016",
+  "name": "Lina",
+  "age": 26,
+  "segment": "Artisan du bâtiment (plombier, électricien, peintre, menuisier), revenus en euros",
+  "income": 66000,
+  "behaviour": "Débordé, veut gagner du temps",
+  "behaviour_how": "Reçoit beaucoup de demandes, répond en retard et sait qu'il perd des clients à cause de ça.",
+  "objection": "Encore un abonnement de plus",
+  "habit": "tu reçois 2 à 5 demandes de devis par semaine, surtout par mail et par message"
+ },
+ {
+  "id": "P017",
+  "name": "Freya",
+  "age": 34,
+  "segment": "Événementiel (traiteur, photographe, DJ, fleuriste ou wedding planner), revenus en euros",
+  "income": 26000,
+  "behaviour": "Débordé, veut gagner du temps",
+  "behaviour_how": "Reçoit beaucoup de demandes, répond en retard et sait qu'il perd des clients à cause de ça.",
+  "objection": "Qui est derrière ? Si ça ferme ou si personne ne répond au support, je fais comment ?",
+  "habit": "tu réponds parfois 3 ou 4 jours après une demande"
+ },
+ {
+  "id": "P018",
+  "name": "Fatima",
+  "age": 57,
+  "segment": "Créatif ou conseil (graphiste, coach, formateur, consultant), revenus en euros",
+  "income": 32000,
+  "behaviour": "Fait tout sur Word ou Excel",
+  "behaviour_how": "Fait ses devis à la main sur un modèle Word ou Excel, souvent le soir, et n'a jamais payé de logiciel.",
+  "objection": "Et la facture électronique obligatoire, c'est géré ?",
+  "habit": "l'an dernier tu as perdu un client parce que tu as répondu trop tard"
+ },
+ {
+  "id": "P019",
+  "name": "Idris",
+  "age": 31,
+  "segment": "Artisan du bâtiment (plombier, électricien, peintre, menuisier), revenus en euros",
+  "income": 22000,
+  "behaviour": "Fait tout sur Word ou Excel",
+  "behaviour_how": "Fait ses devis à la main sur un modèle Word ou Excel, souvent le soir, et n'a jamais payé de logiciel.",
+  "objection": "Encore un abonnement de plus",
+  "habit": "l'an dernier tu as perdu un client parce que tu as répondu trop tard"
+ },
+ {
+  "id": "P020",
+  "name": "Jasper",
+  "age": 57,
+  "segment": "Services à domicile ou en extérieur (paysagiste, coiffeuse ou esthéticienne à domicile, nettoyage, déménagement), revenus en euros",
+  "income": 28000,
+  "behaviour": "Débordé, veut gagner du temps",
+  "behaviour_how": "Reçoit beaucoup de demandes, répond en retard et sait qu'il perd des clients à cause de ça.",
+  "objection": "Je fais trois devis par mois, je n'en ai pas besoin",
+  "habit": "tu réponds parfois 3 ou 4 jours après une demande"
+ }
+]

@@ -1,0 +1,13 @@
+{
+  "id": "P028",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "Mon modèle Word, je le connais par cœur et ça ne me coûte rien. 39 € par mois, ça fait 468 € par an pour un truc que je sais déjà faire le soir sur mon téléphone, et je n'ai jamais payé un logiciel de ma vie.",
+  "objection": "Si l'IA se trompe dans un devis et que ça part chez mon client, c'est moi qui passe pour un amateur. Ils disent que les prix viennent de mon catalogue, mais je n'ai aucun avis, aucun collègue qui l'utilise, et je dois tout saisir avant de voir si ça marche.",
+  "would_change_my_mind": "Un confrère traiteur ou photographe que je connais qui me dit qu'il l'utilise depuis des mois sans erreur, et un tarif autour de 15 à 20 € par mois.",
+  "price_too_cheap": 3,
+  "price_cheap": 9,
+  "price_expensive": 20,
+  "price_too_expensive": 30
+}

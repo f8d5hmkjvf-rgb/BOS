@@ -1,0 +1,13 @@
+{
+  "id": "P077",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "need",
+  "reason": "Mes demandes arrivent surtout par téléphone ou WhatsApp, pas par mail, donc je n'aurais presque rien à transférer à l'appli. Mon modèle Word me suffit et je n'ai jamais payé de logiciel.",
+  "objection": "Si la demande ne passe pas par mail, l'appli ne sert à rien pour moi. Et 39 € par mois, c'est cher pour quelqu'un qui fait ses devis gratuitement sur Word, surtout avec une appli toute neuve sans aucun avis.",
+  "would_change_my_mind": "Pouvoir y coller ou y transférer un message WhatsApp (ou dicter la demande après un appel) et obtenir le devis, avec un prix autour de 15 € par mois.",
+  "price_too_cheap": 5,
+  "price_cheap": 10,
+  "price_expensive": 20,
+  "price_too_expensive": 35
+}

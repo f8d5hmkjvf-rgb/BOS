@@ -1,0 +1,13 @@
+{
+  "id": "P098",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "convenience",
+  "reason": "Je testerais peut-être les 14 jours gratuits par curiosité, mais derrière il faut que je saisisse tout mon catalogue de prix et je n'ai pas ce temps-là. Et mes demandes arrivent surtout par téléphone ou SMS, pas par mail, donc je ne transférerais pas grand-chose.",
+  "objection": "Saisir tout mon catalogue de prix me prendrait des heures, et pour 39 € par mois sur une appli sans aucun avis, je ne vais pas y passer mes soirées. Je fais déjà mes devis avec ChatGPT et mon modèle habituel.",
+  "would_change_my_mind": "Que l'appli construise mon catalogue toute seule à partir de mes anciens devis et factures (PDF ou photos), pour que je sois prête en dix minutes, et que je voie de vrais avis d'artisans.",
+  "price_too_cheap": 9,
+  "price_cheap": 19,
+  "price_expensive": 35,
+  "price_too_expensive": 59
+}

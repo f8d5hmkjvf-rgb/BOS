@@ -1,0 +1,13 @@
+{
+  "id": "P015",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "Encore un abonnement, et à 39 € HT par mois ça fait 468 € par an pour un truc que je fais déjà avec mon modèle Word le soir ou le dimanche. Je fais quelques devis par mois et ils sont rarement les mêmes d'un client à l'autre, donc je ne vois pas ce que je gagnerais vraiment.",
+  "objection": "Mes devis sont sur mesure, pas une liste de prix fixe : je ne suis pas sûre que le catalogue saisi une fois colle à mon travail, et je paierais tous les mois pour un outil sans aucun avis client que je résilierais au bout de deux mois.",
+  "would_change_my_mind": "Une formule gratuite limitée à quelques devis par mois, ou un prix sous les 15 € HT par mois, avec des avis de vrais indépendants dans mon cas.",
+  "price_too_cheap": 5,
+  "price_cheap": 10,
+  "price_expensive": 20,
+  "price_too_expensive": 30
+}

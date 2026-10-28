@@ -1,0 +1,13 @@
+{
+  "id": "P092",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "need",
+  "reason": "Mes demandes arrivent par téléphone ou WhatsApp, pas par mail, donc je n'aurais presque rien à transférer à l'appli. Pour 39 € par mois je ne vais pas payer un outil qui ne touche qu'une petite part de mes demandes.",
+  "objection": "Si le client m'écrit sur WhatsApp ou m'appelle, je dois quand même retaper la demande à la main. Dans ce cas autant coller le message dans ChatGPT, qui me coûte moins cher. Et une appli toute neuve sans aucun avis, je ne mets pas mes tarifs et mes clients dedans les yeux fermés.",
+  "would_change_my_mind": "Que je puisse transférer un message WhatsApp ou dicter la demande à la voix, et pas seulement un mail. Je ferais alors l'essai gratuit de 14 jours sur de vrais devis.",
+  "price_too_cheap": 7,
+  "price_cheap": 15,
+  "price_expensive": 30,
+  "price_too_expensive": 50
+}

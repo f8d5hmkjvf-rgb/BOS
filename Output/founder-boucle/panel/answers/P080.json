@@ -1,0 +1,13 @@
+{
+  "id": "P080",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "trust",
+  "reason": "Je perds des chantiers parce que je réponds trop tard, ça c'est vrai, et 39 € ça ne me fait pas peur. Mais c'est une appli toute neuve sans aucun avis, et s'il faut que je saisisse tout mon catalogue en pleine saison alors que je suis déjà débordé, je vais le repousser et ne jamais m'y mettre.",
+  "objection": "Et la facture électronique obligatoire, c'est géré ? Ils disent que le devis devient une facture en un clic, mais rien ne dit que c'est conforme. Si je me mets là-dessus et que je dois tout refaire ailleurs dans un an, j'aurai perdu mon temps.",
+  "would_change_my_mind": "Une phrase claire qui dit que les factures sont conformes à la facture électronique obligatoire, plus un ou deux avis d'artisans comme moi (plombier, électricien) qui s'en servent déjà.",
+  "price_too_cheap": 9,
+  "price_cheap": 19,
+  "price_expensive": 49,
+  "price_too_expensive": 79
+}

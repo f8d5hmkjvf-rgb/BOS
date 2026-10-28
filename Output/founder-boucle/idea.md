@@ -1,0 +1,7 @@
+# Bouclé
+
+- **Ce que c'est** : une appli en ligne (abonnement) qui transforme les demandes de devis reçues par mail en devis prêts à envoyer, puis en factures conformes, avec les relances rédigées automatiquement.
+- **Pour qui** : les indépendants et TPE français (1 à 5 personnes) qui reçoivent des demandes de devis par mail : traiteurs, artisans du bâtiment, photographes, paysagistes, DJ, fleuristes, coiffeurs à domicile, graphistes…
+- **Ce qui est vendu, à quel prix** : abonnement 39 € HT par mois (ou 390 € HT par an), tarif fondateur 29 € HT par mois à vie pour les 10 premiers clients, 14 jours d'essai gratuit sans carte bancaire. Option envisagée : mise en route accompagnée à 149 € (une fois).
+- **Où et comment** : 100 % en ligne, France entière. Le pro transfère le mail de son client à son adresse Bouclé (ou programme un transfert automatique). L'IA lit la demande et choisit les prestations dans le catalogue du pro ; les prix viennent toujours de son catalogue, jamais de l'IA. Le pro relit, modifie, envoie le devis par mail, le transforme en facture en un clic, et Bouclé prépare les relances. Fonctionne sur ordinateur et téléphone.
+- **Budget et contraintes** : fondateur seul, 16 ans, environ 10 h par semaine, moins de 500 € de budget. Pas encore de statut juridique (mineur non émancipé : la micro-entreprise à son nom n'est pas possible). L'appli est construite et testée mais pas encore en ligne. 0 client payant.

@@ -1,0 +1,13 @@
+{
+  "id": "P018",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "Mes devis je les fais sur mon modèle Word le soir, ça marche, et je n'ai jamais payé un logiciel de ma vie. 39 € par mois, ça fait 468 € par an, c'est trop pour moi alors que je gagne 32 000 € et que j'ai déjà mon système.",
+  "objection": "Et la facture électronique obligatoire, c'est géré ? Là-dessus je ne vois rien, et je ne vais pas payer pour changer d'outil si je dois encore changer l'an prochain. En plus c'est une appli toute neuve sans aucun avis, je ne vais pas lui confier mes clients.",
+  "would_change_my_mind": "Que ce soit écrit noir sur blanc que la facture électronique obligatoire est prise en charge, que je puisse reprendre mes tarifs et mon modèle sans tout ressaisir, et un prix autour de 15 à 20 € par mois.",
+  "price_too_cheap": 4,
+  "price_cheap": 10,
+  "price_expensive": 20,
+  "price_too_expensive": 35
+}

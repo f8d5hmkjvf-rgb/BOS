@@ -1,0 +1,13 @@
+{
+  "id": "P062",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "need",
+  "reason": "Hors haute saison je fais trois devis par mois, je les écris en dix minutes depuis mon tel. Payer 39 € par mois pour ça, non, et je résilie toujours vite ce que je n'utilise pas assez.",
+  "objection": "Ça se rentabilise seulement si je fais des dizaines de devis. En dehors de la haute saison, 39 € HT par mois c'est cher pour le peu que j'en ferais, et il n'y a aucun avis client pour me prouver que l'appli lit bien les mails de mes clients.",
+  "would_change_my_mind": "Un tarif à partir de 15 € par mois, ou une formule gratuite jusqu'à quelques devis par mois, ou une formule payée seulement en haute saison que je peux couper l'hiver.",
+  "price_too_cheap": 5,
+  "price_cheap": 12,
+  "price_expensive": 22,
+  "price_too_expensive": 35
+}

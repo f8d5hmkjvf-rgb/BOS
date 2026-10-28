@@ -1,0 +1,13 @@
+{
+  "id": "P036",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "39 € par mois pour moi c'est beaucoup alors que Henrri et Tiime me font déjà mes factures gratuitement. Je gagne pas des mille et des cents, je ne vais pas ajouter un abonnement de plus.",
+  "objection": "Je paie déjà rien pour facturer. Gagner du temps sur les devis c'est bien en haute saison, mais 39 € tous les mois même en basse saison, quand j'ai presque pas de demandes, je trouve ça trop, surtout pour une appli toute nouvelle sans aucun avis.",
+  "would_change_my_mind": "Un plan gratuit ou à moins de 15 € par mois, ou un tarif qui ne se paie qu'en haute saison, avec la preuve que ça lit vraiment bien les mails de demandes de mariage ou d'événement.",
+  "price_too_cheap": 3,
+  "price_cheap": 9,
+  "price_expensive": 19,
+  "price_too_expensive": 29
+}

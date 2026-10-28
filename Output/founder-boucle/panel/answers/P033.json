@@ -1,0 +1,13 @@
+{
+  "id": "P033",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "Je fais déjà mes devis et mes factures avec un outil gratuit, alors 39 € par mois pour un truc de plus, non. Encore un abonnement, et à ce prix-là ça fait presque 470 € par an sur mes marges, pour quelque chose que je fais déjà à la main en dix minutes.",
+  "objection": "Je ne vois pas pourquoi payer 39 € alors que mes outils gratuits font déjà devis et factures. Mes demandes arrivent surtout au téléphone ou par SMS, pas toujours par mail bien rédigé, et une appli sans aucun avis clients, je ne la paie pas.",
+  "would_change_my_mind": "Une version gratuite qui tient vraiment la route pour mes devis, ou un prix autour de 10 € par mois avec des artisans du bâtiment qui disent qu'ils s'en servent.",
+  "price_too_cheap": 2,
+  "price_cheap": 5,
+  "price_expensive": 12,
+  "price_too_expensive": 20
+}

@@ -1,0 +1,13 @@
+{
+  "id": "P008",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "J'ai déjà mon logiciel de devis que je paie, j'y ai mes tarifs et mes habitudes, et je ne vais pas tout recommencer pour une appli toute neuve. Encore 39 € de plus par mois, non.",
+  "objection": "Encore un abonnement de plus, et il faudrait ressaisir mon catalogue et changer d'outil pour une appli qui vient de sortir, sans aucun avis. Si elle disparaît dans un an, je fais quoi de mes devis ?",
+  "would_change_my_mind": "Que ça se branche directement sur mon logiciel de devis actuel, sans rien ressaisir ni changer d'outil, et que des artisans comme moi me disent que ça marche vraiment.",
+  "price_too_cheap": 5,
+  "price_cheap": 12,
+  "price_expensive": 29,
+  "price_too_expensive": 45
+}

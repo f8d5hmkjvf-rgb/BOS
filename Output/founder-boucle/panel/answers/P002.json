@@ -1,0 +1,13 @@
+{
+  "id": "P002",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "J'ai déjà mon logiciel de devis que je paie, tout est dedans et je n'ai pas envie de changer d'outil pour trois devis par mois. Ça ne me fait pas gagner assez de temps pour que je m'embête à migrer.",
+  "objection": "Je paie déjà un logiciel de devis, je fais trois devis par mois, donc 39 € de plus ou un changement d'outil pour ça, non. Et une appli sans aucun avis client, je ne vais pas lui confier mes devis et mes factures.",
+  "would_change_my_mind": "Que ça se branche sur mon logiciel actuel sans rien ressaisir, ou que ça coûte beaucoup moins cher que ce que je paie déjà, et que des artisans comme moi l'utilisent depuis un moment.",
+  "price_too_cheap": 4,
+  "price_cheap": 10,
+  "price_expensive": 20,
+  "price_too_expensive": 30
+}

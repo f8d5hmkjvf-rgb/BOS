@@ -1,0 +1,13 @@
+{
+  "id": "P081",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "trust",
+  "reason": "Je m'abonne pas à un truc sans avis clients et sans savoir qui est derrière. Là c'est une appli lancée cette année, zéro avis, je sais pas qui répond si ça plante. Mes devis, c'est mon gagne-pain, je les mets pas dans un outil dont je sais rien.",
+  "objection": "Qui est derrière ? Si ça ferme ou si personne ne répond au support, je fais comment avec mes devis et mes factures dedans ?",
+  "would_change_my_mind": "Des avis de vrais artisans ou indépendants comme moi (pas des témoignages bidon), le nom et le visage de la personne derrière, et un moyen sûr de récupérer mes devis et mes clients si ça s'arrête.",
+  "price_too_cheap": 9,
+  "price_cheap": 19,
+  "price_expensive": 35,
+  "price_too_expensive": 55
+}

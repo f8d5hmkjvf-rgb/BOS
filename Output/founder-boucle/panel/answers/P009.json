@@ -1,0 +1,13 @@
+{
+  "id": "P009",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "Je fais déjà mes devis et mes factures avec des outils gratuits, ça me prend un peu de temps le dimanche mais ça marche. 39 € par mois, soit près de 470 € par an, pour gagner quelques minutes, je ne vois pas pourquoi je les sortirais.",
+  "objection": "Et si l'IA se trompe dans un devis et que je l'envoie à mon client sans voir l'erreur ? Je le relis le soir, fatigué, et c'est moi qui porte la faute, pas l'appli.",
+  "would_change_my_mind": "Un prix autour de 15 € par mois, et avoir vu pendant l'essai qu'un vrai mail de client donne un devis juste du premier coup.",
+  "price_too_cheap": 4,
+  "price_cheap": 9,
+  "price_expensive": 15,
+  "price_too_expensive": 25
+}

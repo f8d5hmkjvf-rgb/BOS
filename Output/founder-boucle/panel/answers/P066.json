@@ -1,0 +1,13 @@
+{
+  "id": "P066",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "trust",
+  "reason": "Je n'ai jamais payé un logiciel, mon modèle Word ça marche et c'est gratuit. Et là c'est une appli toute neuve sans aucun avis : si elle ferme ou si personne ne répond au support en plein mois de mariages, je me retrouve coincée avec mes devis dedans.",
+  "objection": "Qui est derrière ? Si ça ferme ou si personne ne répond au support, je fais comment avec mes catalogues et mes devis en cours ? Et mes devis de traiteur changent selon le nombre de convives, je ne suis pas sûre que ça comprenne ça.",
+  "would_change_my_mind": "Des avis ou témoignages de traiteurs ou d'autres pros de l'événementiel qui s'en servent depuis des mois, un vrai nom et un contact humain qui répond, et la possibilité de récupérer tous mes devis et mon catalogue en Excel si ça s'arrête.",
+  "price_too_cheap": 8,
+  "price_cheap": 15,
+  "price_expensive": 35,
+  "price_too_expensive": 60
+}

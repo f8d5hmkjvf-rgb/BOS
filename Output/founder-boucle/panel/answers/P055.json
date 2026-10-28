@@ -1,0 +1,13 @@
+{
+  "id": "P055",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "J'ai déjà mon logiciel de devis que je paie, mes tarifs sont dedans et ça marche. Changer d'outil pour un truc tout neuf sans aucun avis, non merci.",
+  "objection": "Je n'ai pas le temps de ressaisir tout mon catalogue de prix dans une nouvelle appli, et pour 39 € je paierais deux outils pour faire la même chose. Un truc qui vient de sortir, sans un seul avis client, je ne lui confie pas mes devis ni mes factures.",
+  "would_change_my_mind": "Que mon catalogue de prix s'importe tout seul depuis mon logiciel actuel, sans rien ressaisir, et que ça remplace mon abonnement pour moins cher que ce que je paie déjà.",
+  "price_too_cheap": 5,
+  "price_cheap": 12,
+  "price_expensive": 30,
+  "price_too_expensive": 45
+}

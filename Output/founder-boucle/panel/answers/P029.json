@@ -1,0 +1,13 @@
+{
+  "id": "P029",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "Mes devis, je les fais sur mon modèle Word le soir ou le dimanche, ça marche et ça me coûte rien. J'ai jamais payé un logiciel de ma vie, et 39 € par mois sur ce que je gagne, ça pèse : je préfère garder mon Word.",
+  "objection": "Et si l'IA se trompe dans un devis et que ça part chez mon client ? Même si je relis, le soir je suis fatigué, je peux laisser passer une erreur, et c'est moi qui passe pour un amateur devant un mariage ou un client important.",
+  "would_change_my_mind": "Voir un autre traiteur ou photographe que je connais s'en servir depuis plusieurs mois sans histoire d'erreur, et un prix autour de 10 à 15 € par mois.",
+  "price_too_cheap": 3,
+  "price_cheap": 9,
+  "price_expensive": 20,
+  "price_too_expensive": 35
+}

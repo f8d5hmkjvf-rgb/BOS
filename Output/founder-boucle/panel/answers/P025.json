@@ -1,0 +1,13 @@
+{
+  "id": "P025",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "need",
+  "reason": "Mes demandes arrivent par téléphone ou par WhatsApp, quasiment jamais par mail, donc il n'y a rien à transférer à leur adresse. Ça règle un problème que je n'ai pas vraiment, alors que mon vrai souci c'est de répondre vite aux appels et aux messages.",
+  "objection": "Si mes clients ne m'écrivent pas par mail, l'appli ne me sert à rien. Je ne vais pas recopier ou transférer à la main chaque demande WhatsApp juste pour avoir un devis, ça me ferait perdre du temps au lieu d'en gagner. Et 39 € de plus par mois pour une appli sans aucun avis, je me méfie.",
+  "would_change_my_mind": "Que je puisse lui envoyer la demande directement depuis WhatsApp ou par un message vocal (ou même que je lui dicte le chantier au téléphone) et qu'elle sorte le devis avec mes tarifs, avec quelques avis d'artisans comme moi.",
+  "price_too_cheap": 8,
+  "price_cheap": 15,
+  "price_expensive": 35,
+  "price_too_expensive": 60
+}

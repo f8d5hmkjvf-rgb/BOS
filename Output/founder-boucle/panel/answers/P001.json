@@ -1,0 +1,13 @@
+{
+  "id": "P001",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "J'ai déjà mon logiciel de devis que je paie et que je connais par cœur, et je n'ai que 2 à 5 demandes par semaine : je n'ai pas envie de changer d'outil ni d'ajouter 39 € de plus par mois pour gagner quelques minutes.",
+  "objection": "Encore un abonnement de plus, alors que j'ai déjà un outil de devis payant. Et une appli toute neuve sans aucun avis, je n'ai pas envie de lui confier mes clients et mon catalogue.",
+  "would_change_my_mind": "Que ça se branche directement sur mon outil de devis actuel (pas de double saisie ni de migration), ou que ça remplace mon abonnement actuel pour un prix équivalent, avec quelques avis de vrais indépendants.",
+  "price_too_cheap": 4,
+  "price_cheap": 9,
+  "price_expensive": 20,
+  "price_too_expensive": 30
+}

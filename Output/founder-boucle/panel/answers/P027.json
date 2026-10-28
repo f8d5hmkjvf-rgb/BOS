@@ -1,0 +1,13 @@
+{
+  "id": "P027",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "Encore un abonnement de plus, et à 39 € par mois ça fait presque 470 € par an alors que je facture déjà avec un outil gratuit. Mes devis, je les fais en dix minutes le soir, je ne vais pas payer pour ça avec ce que je gagne.",
+  "objection": "Je ne vois pas pourquoi payer 39 € alors que Henrri, Tiime ou Abby gratuit font le job. Mes demandes de devis arrivent surtout par téléphone ou par message, pas en mails bien rédigés à transférer, et une appli toute neuve sans aucun avis, je n'ai pas de raison de lui confier mes clients.",
+  "would_change_my_mind": "Une version gratuite ou à quelques euros par mois qui fait vraiment le devis à ma place, plus des avis de vrais artisans comme moi.",
+  "price_too_cheap": 2,
+  "price_cheap": 5,
+  "price_expensive": 12,
+  "price_too_expensive": 20
+}

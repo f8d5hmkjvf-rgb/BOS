@@ -1,0 +1,13 @@
+{
+  "id": "P070",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "39 € par mois alors que Henrri ou Tiime sont gratuits, non merci. Mes devis, je les fais déjà avec ce que j'ai, et je ne vais pas payer un abonnement pour ça.",
+  "objection": "Je paie 39 € par mois pour un truc nouveau sans aucun avis, alors que les gratuits font déjà devis et factures. Et je ne reçois pas assez de demandes par mail pour que ça vaille l'abonnement.",
+  "would_change_my_mind": "Une version gratuite qui tient vraiment la route, ou un prix autour de 10 € par mois, avec des avis de vrais artisans comme moi.",
+  "price_too_cheap": 3,
+  "price_cheap": 9,
+  "price_expensive": 20,
+  "price_too_expensive": 30
+}

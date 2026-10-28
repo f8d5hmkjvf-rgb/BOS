@@ -1,0 +1,13 @@
+{
+  "id": "P051",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "trust",
+  "reason": "Je ne veux pas qu'une machine lise les demandes de mes clients et prépare mes devis, l'IA ça fait des erreurs et c'est mon nom qui est dessus. Mes devis je les fais moi-même le soir, ça me prend pas si longtemps, et 39 € par mois pour ça c'est de l'argent que j'ai pas à lâcher.",
+  "objection": "Si l'appli se trompe sur une demande et que j'envoie un devis faux à un client sans m'en rendre compte, c'est moi qui passe pour un amateur. Et une appli toute nouvelle sans aucun avis, je ne la connais pas.",
+  "would_change_my_mind": "Que des artisans que je connais l'utilisent depuis un moment et me disent qu'elle ne se trompe pas, et un prix autour de 15 à 20 € par mois.",
+  "price_too_cheap": 5,
+  "price_cheap": 12,
+  "price_expensive": 22,
+  "price_too_expensive": 35
+}

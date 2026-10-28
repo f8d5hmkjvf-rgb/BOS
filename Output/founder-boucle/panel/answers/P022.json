@@ -1,0 +1,13 @@
+{
+  "id": "P022",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "Je n'ai jamais payé un logiciel de devis, mon modèle Word/Excel me suffit et Henrri ou Tiime sont gratuits. 39 € par mois, ça fait presque 470 € par an pour un truc que je fais déjà à la main, même si c'est long le soir.",
+  "objection": "Mes devis ne sont pas des produits à catalogue : un projet de graphisme ou une mission de conseil, je le chiffre au cas par cas. Je ne vois pas comment l'appli lirait ça correctement, et pour 39 € je ne veux pas relire et refaire chaque devis. En plus c'est une appli toute neuve sans aucun avis.",
+  "would_change_my_mind": "Un essai où je transfère un vrai mail de client et où le devis sort quasi juste du premier coup, avec un prix autour de 15 € par mois, ou une formule gratuite limitée à quelques devis par mois.",
+  "price_too_cheap": 5,
+  "price_cheap": 10,
+  "price_expensive": 20,
+  "price_too_expensive": 35
+}

@@ -1,0 +1,77 @@
+{
+ "business": "Bouclé (appli de devis et factures, abonnement mensuel)",
+ "unit": "client payant pendant un mois",
+ "price": 19.0,
+ "variable": [
+  {
+   "label": "IA Claude Sonnet 5.5 : ~40 devis par mois x ~0,03 € (estimation prudente)",
+   "cost": 1.2
+  },
+  {
+   "label": "Frais Stripe : 1,5 % + 0,25 € par paiement de 19 €",
+   "cost": 0.54
+  },
+  {
+   "label": "Envoi des mails et stockage (estimation, quasi nul au début)",
+   "cost": 0.1
+  },
+  {
+   "label": "Garantie 1er mois : 20 % x 19 € étalé sur 10 mois (hypothèse)",
+   "cost": 0.38
+  },
+  {
+   "label": "Cotisations sociales micro-entreprise : ~22 % du chiffre d'affaires (hypothèse, taux à confirmer)",
+   "cost": 4.18
+  }
+ ],
+ "fixed_monthly": [
+  {
+   "label": "Cloudflare Workers Paid (5 $)",
+   "cost": 4.6
+  },
+  {
+   "label": "Base Neon, offre payante dès les premiers clients (hypothèse prudente, ~19 $)",
+   "cost": 17.5
+  },
+  {
+   "label": "Nom de domaine (~15 € par an)",
+   "cost": 1.25
+  },
+  {
+   "label": "Compte bancaire pro (hypothèse)",
+   "cost": 5.0
+  }
+ ],
+ "startup": [
+  {
+   "label": "Crédit API Claude de départ",
+   "cost": 10
+  },
+  {
+   "label": "Test de publicité de lancement",
+   "cost": 100
+  },
+  {
+   "label": "Statut juridique : micro-entreprise portée par un parent (0 €) ; une SASU coûterait ~250 € de plus",
+   "cost": 0
+  }
+ ],
+ "days_per_month": 1,
+ "capacity_per_day": 2000,
+ "plan_per_day": 25,
+ "ramp_per_day": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  6,
+  7,
+  9,
+  10,
+  12,
+  13,
+  15
+ ],
+ "note": "Prix 19 € : tous les clients de l'année 1 (moins de 20) sont au tarif fondateur. Prix public 24 € ensuite."
+}

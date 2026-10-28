@@ -1,0 +1,13 @@
+{
+  "id": "P072",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "trust",
+  "reason": "Je ne m'abonne à rien sans avis clients et sans savoir qui est derrière, et là c'est une appli de 2026 sans aucun avis. Mes devis, c'est mon gagne-pain : je ne vais pas les confier à un outil que personne n'a encore éprouvé.",
+  "objection": "Qui est derrière ? Si l'appli ferme ou que personne ne répond au support, je fais comment avec mon catalogue et mes devis en cours ?",
+  "would_change_my_mind": "Des avis clients vérifiables de vrais indépendants comme moi, et une vraie personne identifiable derrière (nom, visage, société) avec un support qui répond, plus la possibilité d'exporter mes données si ça ferme.",
+  "price_too_cheap": 9,
+  "price_cheap": 19,
+  "price_expensive": 35,
+  "price_too_expensive": 60
+}

@@ -1,0 +1,13 @@
+{
+  "id": "P031",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "Je paie déjà mon logiciel de devis, mes modèles et mes clients sont dedans, et je n'ai que 2 à 5 demandes par semaine : le gain de temps ne vaut pas de changer d'outil ni de payer 39 € de plus par mois. Je ne vais même pas lancer l'essai gratuit, ça m'obligerait à tout ressaisir.",
+  "objection": "Et la facture électronique obligatoire, c'est géré ? Rien n'est dit là-dessus, et je ne vais pas migrer vers une appli toute neuve, sans aucun avis, qui ne couvre peut-être pas l'obligation de facturation électronique.",
+  "would_change_my_mind": "Une preuve claire que c'est conforme à la facture électronique obligatoire (plateforme agréée), un import de mon catalogue et de mes clients depuis mon logiciel actuel, et un tarif qui remplace mon abonnement au lieu de s'ajouter. Quelques avis de vrais clients m'aideraient aussi.",
+  "price_too_cheap": 7,
+  "price_cheap": 15,
+  "price_expensive": 29,
+  "price_too_expensive": 45
+}

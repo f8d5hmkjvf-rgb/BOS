@@ -1,0 +1,13 @@
+{
+  "id": "P023",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "Je paie déjà mon logiciel de devis, j'ai mes modèles et mes habitudes dedans, et changer d'outil me fait perdre un temps que je n'ai pas. Faire passer 39 € par mois de plus pour gagner quelques minutes sur des devis que je fais déjà, ça ne vaut pas le dérangement.",
+  "objection": "Et si l'IA se trompe dans un devis et que ça part chez mon client sans que je m'en rende compte ? Là c'est moi qui passe pour un amateur, pas l'appli. En plus c'est une appli toute neuve sans aucun avis, je ne vais pas lui confier ma facturation.",
+  "would_change_my_mind": "Que ça se branche sur mon logiciel de devis actuel sans rien ressaisir (import de mon catalogue et de mes clients), avec des avis de vrais indépendants après quelques mois d'usage, et à un prix proche de ce que je paie déjà.",
+  "price_too_cheap": 4,
+  "price_cheap": 10,
+  "price_expensive": 22,
+  "price_too_expensive": 35
+}

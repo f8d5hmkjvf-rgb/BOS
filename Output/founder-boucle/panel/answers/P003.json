@@ -1,0 +1,13 @@
+{
+  "id": "P003",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "trust",
+  "reason": "Je perds des clients parce que je réponds tard, donc le problème est réel pour moi. Mais je ne vais pas payer 39 € par mois une appli toute neuve, sans aucun avis, qui touche aux devis que j'envoie à mes clients. Je préfère attendre que quelqu'un d'autre ait essayé avant moi.",
+  "objection": "Et si l'IA se trompe dans un devis et que ça part chez mon client sans que je m'en rende compte, un soir de fatigue ? C'est moi qui passe pour une amateur, pas l'appli. Et saisir tout mon catalogue d'abord, ça me fait déjà peur en plein rush.",
+  "would_change_my_mind": "Voir un vrai exemple avec une demande de mail de traiteur ou d'événementiel (mariage, nombre de convives, options) transformée en devis correct, ou avoir l'avis d'une collègue du métier qui l'utilise depuis quelques mois. Que quelqu'un m'aide à saisir le catalogue pendant l'essai aiderait aussi.",
+  "price_too_cheap": 9,
+  "price_cheap": 19,
+  "price_expensive": 30,
+  "price_too_expensive": 55
+}

@@ -1,0 +1,13 @@
+{
+  "id": "P076",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "need",
+  "reason": "Mes demandes arrivent par téléphone ou WhatsApp, rarement par mail, donc l'appli ne servirait presque à rien chez moi. Et mes devis je les fais déjà avec un outil gratuit, je vois pas pourquoi je sortirais 39 € par mois.",
+  "objection": "Ça marche que si le client m'écrit par mail, et moi c'est 95 % téléphone et WhatsApp. Je vais pas payer 39 € par mois pour un outil qui lit des mails que je reçois presque pas, alors que Tiime ou Abby gratuit me suffisent.",
+  "would_change_my_mind": "Que je puisse envoyer un message WhatsApp ou un vocal à l'appli et qu'elle me sorte le devis, et que ce soit gratuit ou presque (moins de 10 € par mois).",
+  "price_too_cheap": 3,
+  "price_cheap": 5,
+  "price_expensive": 15,
+  "price_too_expensive": 25
+}

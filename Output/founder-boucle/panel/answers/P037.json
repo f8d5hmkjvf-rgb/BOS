@@ -1,0 +1,13 @@
+{
+  "id": "P037",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "need",
+  "reason": "Je fais trois devis par mois, mon modèle Word me suffit et je n'ai jamais payé un logiciel de ma vie. 39 € par mois, ça fait 468 € par an pour trois devis, c'est plus de 13 € le devis, je ne vois pas où est le gain.",
+  "objection": "Pour trois devis par mois je paie un abonnement toute l'année alors que mon modèle Word ne me coûte rien. Et une appli toute neuve sans aucun avis, je ne sais pas si elle sera encore là dans un an.",
+  "would_change_my_mind": "Une formule gratuite ou à moins de 10 € par mois pour les petits volumes comme le mien, ou un collègue artisan qui me dit qu'il s'en sert vraiment.",
+  "price_too_cheap": 3,
+  "price_cheap": 8,
+  "price_expensive": 15,
+  "price_too_expensive": 25
+}

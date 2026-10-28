@@ -1,0 +1,13 @@
+{
+  "id": "P039",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "trust",
+  "reason": "Le besoin existe, j'ai plus de 10 demandes de devis par semaine en haute saison. Mais je ne m'abonne à rien sans avis clients et sans savoir qui est derrière, et là il n'y a ni l'un ni l'autre : appli lancée en 2026, zéro avis.",
+  "objection": "Si l'IA se trompe dans un devis et que je l'envoie à un client sans m'en apercevoir, c'est moi qui passe pour un amateur, pas l'appli. Mes devis de traiteur ne sont pas de simples lignes de catalogue (nombre d'invités, déplacement, options), et je n'ai aucune preuve qu'elle comprend ce genre de mail.",
+  "would_change_my_mind": "Des avis vérifiables de pros de l'événementiel (traiteurs, photographes, DJ) qui s'en servent déjà, plus un nom et un visage derrière l'appli. Et pouvoir tester sur 3 ou 4 de mes vrais mails de demande pendant l'essai pour voir si les erreurs sont rares.",
+  "price_too_cheap": 12,
+  "price_cheap": 25,
+  "price_expensive": 59,
+  "price_too_expensive": 100
+}

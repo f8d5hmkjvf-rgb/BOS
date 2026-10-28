@@ -1,0 +1,41 @@
+{
+  "business": "Bouclé : appli en ligne qui transforme les demandes de devis reçues par mail en devis prêts à envoyer, puis en factures, avec relances",
+  "target": "Indépendants et TPE (1 à 5 personnes) en France, de métiers de services qui font des devis, qui parlent et écrivent en français et comptent en euros",
+  "where": "France entière, vente en ligne",
+  "age": [22, 60],
+  "segments": [
+    {"name": "Événementiel (traiteur, photographe, DJ, fleuriste ou wedding planner), revenus en euros", "share": 0.35, "income": [18000, 60000]},
+    {"name": "Artisan du bâtiment (plombier, électricien, peintre, menuisier), revenus en euros", "share": 0.30, "income": [22000, 70000]},
+    {"name": "Services à domicile ou en extérieur (paysagiste, coiffeuse ou esthéticienne à domicile, nettoyage, déménagement), revenus en euros", "share": 0.20, "income": [15000, 45000]},
+    {"name": "Créatif ou conseil (graphiste, coach, formateur, consultant), revenus en euros", "share": 0.15, "income": [18000, 55000]}
+  ],
+  "behaviours": [
+    {"name": "Fait tout sur Word ou Excel", "share": 0.20, "how": "Fait ses devis à la main sur un modèle Word ou Excel, souvent le soir, et n'a jamais payé de logiciel."},
+    {"name": "Utilise un logiciel gratuit", "share": 0.18, "how": "Facture avec un outil gratuit (Henrri, Tiime ou Abby gratuit) et ne voit pas pourquoi payer."},
+    {"name": "Débordé, veut gagner du temps", "share": 0.15, "how": "Reçoit beaucoup de demandes, répond en retard et sait qu'il perd des clients à cause de ça."},
+    {"name": "Déjà équipé et fidèle", "share": 0.12, "how": "Paie déjà un logiciel de devis (Tolteck, Obat ou Abby payant) et déteste changer d'outil."},
+    {"name": "Méfiant envers l'IA", "share": 0.10, "how": "Pense que l'IA fait des erreurs et ne veut pas qu'une machine écrive à ses clients."},
+    {"name": "Chasseur de bons plans", "share": 0.10, "how": "Compare les prix, attend les promos et résilie vite un abonnement."},
+    {"name": "Technophile", "share": 0.08, "how": "Teste volontiers les nouveaux outils et utilise déjà ChatGPT pour son travail."},
+    {"name": "Lit tous les avis", "share": 0.07, "how": "Ne s'abonne à rien sans avis clients et sans savoir qui est derrière l'entreprise."}
+  ],
+  "objections": [
+    "39 € par mois alors que Henrri ou Tiime sont gratuits",
+    "Je n'ai pas le temps de saisir tout mon catalogue de prix",
+    "Et si l'IA se trompe dans un devis envoyé à mon client ?",
+    "Qui est derrière ? Si ça ferme ou si personne ne répond au support, je fais comment ?",
+    "Mes demandes arrivent surtout par téléphone ou WhatsApp, pas par mail",
+    "Et la facture électronique obligatoire, c'est géré ?",
+    "Encore un abonnement de plus",
+    "Je fais trois devis par mois, je n'en ai pas besoin"
+  ],
+  "habits": [
+    "tu reçois 2 à 5 demandes de devis par semaine, surtout par mail et par message",
+    "tu fais tes devis le soir ou le dimanche",
+    "tu réponds parfois 3 ou 4 jours après une demande",
+    "tu fais presque tout depuis ton téléphone",
+    "ton comptable te réclame tes factures chaque trimestre",
+    "en haute saison tu reçois plus de 10 demandes de devis par semaine",
+    "l'an dernier tu as perdu un client parce que tu as répondu trop tard"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "P089",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "need",
+  "reason": "Franchement je fais trois devis par mois qui comptent vraiment, et chez moi chaque devis dépend du chantier : faut que j'aille voir sur place, un mail ne me dit pas tout. 39 € par mois pour ça, non.",
+  "objection": "Un devis dans mon métier, ça se chiffre après avoir vu le chantier, pas juste en lisant un mail. Et c'est une appli toute neuve sans aucun avis, je ne vais pas lui confier mes clients ni perdre une soirée à saisir tout mon catalogue pour 3 devis par mois.",
+  "would_change_my_mind": "Que ce soit gratuit ou autour de 10 euros par mois, et qu'un collègue artisan que je connais m'en dise du bien après l'avoir utilisé. Ou que ça reprenne mes devis déjà faits sans que je ressaisisse mes prix.",
+  "price_too_cheap": 5,
+  "price_cheap": 10,
+  "price_expensive": 20,
+  "price_too_expensive": 35
+}

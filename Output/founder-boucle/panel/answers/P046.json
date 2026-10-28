@@ -1,0 +1,13 @@
+{
+  "id": "P046",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "Je facture déjà avec un outil gratuit et ça me suffit, je ne vois pas pourquoi je sortirais 39 € par mois. Et je n'ai pas le temps de saisir tout mon catalogue de prix, j'ai déjà assez à faire avec les événements.",
+  "objection": "Saisir tout mon catalogue de prix, ça va me prendre des heures, et pour quoi, pour gagner quelques minutes sur des devis que je fais déjà avec mon logiciel gratuit ? Chaque prestation que je fais est différente, ce n'est pas du catalogue figé.",
+  "would_change_my_mind": "Que ce soit gratuit, ou que l'appli reprenne mon catalogue et mes anciens devis toute seule sans que j'aie rien à saisir, avec un vrai avis de collègues traiteurs ou photographes que je connais.",
+  "price_too_cheap": 5,
+  "price_cheap": 9,
+  "price_expensive": 19,
+  "price_too_expensive": 29
+}

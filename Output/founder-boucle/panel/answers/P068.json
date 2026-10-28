@@ -1,0 +1,13 @@
+{
+  "id": "P068",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "need",
+  "reason": "Je fais trois devis par mois, je n'en ai pas besoin. Mes devis et mes factures, je les fais déjà avec un outil gratuit, et 39 € par mois pour trois devis, ça fait plus de 13 € le devis.",
+  "objection": "Trois devis par mois, ça se fait à la main en dix minutes chacun. Je ne vais pas payer un abonnement pour ça alors que mon outil gratuit me suffit, et je n'ai aucun avis sur une appli toute nouvelle.",
+  "would_change_my_mind": "Une version gratuite ou à quelques euros pour les petits volumes, ou la preuve par d'autres traiteurs que ça me ferait gagner des clients que je perds en répondant trop tard.",
+  "price_too_cheap": 3,
+  "price_cheap": 9,
+  "price_expensive": 19,
+  "price_too_expensive": 29
+}

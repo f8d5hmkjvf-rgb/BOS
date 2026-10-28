@@ -1,0 +1,13 @@
+{
+  "id": "P010",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "need",
+  "reason": "Je fais trois devis par mois, je les fais déjà avec mon outil gratuit en dix minutes chacun. Payer 39 € par mois pour gagner un quart d'heure, ça n'a pas de sens pour moi.",
+  "objection": "Ça fait 13 € le devis pour moi, alors que mon outil gratuit fait déjà le travail. Et en plus je dois transférer des mails, alors que je fais tout depuis mon téléphone, et je n'ai aucun avis pour savoir si ça marche vraiment.",
+  "would_change_my_mind": "Une version gratuite ou à moins de 10 € par mois, utilisable à vie avec un petit volume de devis (genre jusqu'à 5 par mois).",
+  "price_too_cheap": 3,
+  "price_cheap": 7,
+  "price_expensive": 15,
+  "price_too_expensive": 25
+}

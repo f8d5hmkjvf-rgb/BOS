@@ -1,0 +1,13 @@
+{
+  "id": "P040",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "Mes devis, je les fais sur mon modèle Word le soir et ça marche, je n'ai jamais payé un logiciel de ma vie. 39 € par mois, c'est encore un abonnement de plus pour un truc que je fais déjà gratuitement.",
+  "objection": "Je gagne pas grand-chose, 39 € par mois ça fait 468 € par an pour remplacer mon Word qui me coûte rien. Et une appli toute neuve sans aucun avis, je sais pas si elle sera encore là dans un an avec mes devis dedans.",
+  "would_change_my_mind": "Un prix autour de 15 € par mois, ou une version gratuite pour quelques devis par mois, et voir un autre traiteur ou photographe qui s'en sert vraiment.",
+  "price_too_cheap": 3,
+  "price_cheap": 9,
+  "price_expensive": 19,
+  "price_too_expensive": 29
+}

@@ -1,0 +1,13 @@
+{
+  "id": "P030",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "Le gain de temps m'intéresse, je perds des clients parce que je réponds trop tard. Mais 39 € par mois, ça fait 468 € par an pour moi, alors que Henrri et Tiime sont gratuits et que mes devis de créa changent à chaque client, pas sûr que mon catalogue suffise.",
+  "objection": "Je paie 39 € par mois pour une appli toute neuve, sans aucun avis, alors que les concurrents ne coûtent rien. Et si je dois tout reprendre à la main parce que chaque projet est différent, je ne gagne rien.",
+  "would_change_my_mind": "Une formule gratuite limitée à quelques devis par mois pour tester sur mes vrais mails, ou un prix autour de 15 € par mois.",
+  "price_too_cheap": 5,
+  "price_cheap": 12,
+  "price_expensive": 22,
+  "price_too_expensive": 35
+}

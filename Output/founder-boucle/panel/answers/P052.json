@@ -1,0 +1,13 @@
+{
+  "id": "P052",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "trust",
+  "reason": "Je me méfie de l'IA : elle se trompe, et je ne veux pas qu'une machine écrive à mes clients à ma place. Et puis un devis, je le fais en dix minutes avec mon modèle, 39 € par mois pour ça, non.",
+  "objection": "Si elle lit mal la demande du client et que je laisse passer une erreur dans un devis ou une relance, c'est moi qui passe pour un amateur. Je relirais tout de toute façon, donc je ne gagne pas grand-chose.",
+  "would_change_my_mind": "Un artisan que je connais qui s'en sert depuis des mois et me dit que ça ne s'est jamais trompé, ou une version où l'IA ne rédige aucun message et où je garde la main sur tout, pour 10 à 15 € par mois.",
+  "price_too_cheap": 5,
+  "price_cheap": 10,
+  "price_expensive": 20,
+  "price_too_expensive": 35
+}

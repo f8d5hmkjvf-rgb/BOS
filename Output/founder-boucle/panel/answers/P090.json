@@ -1,0 +1,13 @@
+{
+  "id": "P090",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "convenience",
+  "reason": "Je n'ai déjà pas le temps de répondre à mes mails, alors saisir tout mon catalogue de prix avant de voir le moindre résultat, non. Et 39 € par mois, ça fait presque 470 € par an, c'est beaucoup pour moi pour 2 à 5 devis par semaine.",
+  "objection": "Mes devis sont rarement des lignes standard : un projet de graphisme ou une mission de conseil, je le chiffre au cas par cas. Je ne vois pas comment un catalogue saisi une fois peut suffire, et je crains de passer plus de temps à corriger qu'à écrire mon devis moi-même. Une appli toute neuve sans aucun avis, ça n'aide pas non plus.",
+  "would_change_my_mind": "Que l'appli lise mes anciens devis pour construire mon catalogue toute seule, que je voie un vrai devis fait à partir d'un de mes mails en moins de 10 minutes sans rien saisir, et un tarif autour de 15 à 20 € par mois.",
+  "price_too_cheap": 5,
+  "price_cheap": 12,
+  "price_expensive": 22,
+  "price_too_expensive": 35
+}

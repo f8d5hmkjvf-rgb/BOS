@@ -1,0 +1,13 @@
+{
+  "id": "P064",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "need",
+  "reason": "Mes demandes de devis arrivent par téléphone ou WhatsApp, quasiment jamais par mail, donc je n'aurais presque rien à transférer à l'appli. Pour 39 € par mois, ça ne me sert pas dans ma semaine normale.",
+  "objection": "Ça marche seulement si le client m'écrit par mail, et moi tout passe par le téléphone et WhatsApp. Et je réponds déjà aux mails avec 3 ou 4 jours de retard, donc je ne vais pas changer mes habitudes pour un outil de plus, d'une appli toute neuve sans aucun avis.",
+  "would_change_my_mind": "Que je puisse envoyer un message vocal, une photo ou un message WhatsApp à l'appli et qu'elle me sorte le devis avec mes tarifs.",
+  "price_too_cheap": 7,
+  "price_cheap": 15,
+  "price_expensive": 30,
+  "price_too_expensive": 50
+}

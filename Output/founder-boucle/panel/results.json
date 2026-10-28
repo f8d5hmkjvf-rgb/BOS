@@ -1,0 +1,289 @@
+{
+ "business": "Bouclé : appli en ligne qui transforme les demandes de devis reçues par mail en devis prêts à envoyer, puis en factures, avec relances",
+ "seed": 598555,
+ "dealt": 100,
+ "answered": 100,
+ "skipped": [],
+ "buys": 3,
+ "passes": 97,
+ "buy_rate": 0.03,
+ "by_segment": [
+  [
+   "Services à domicile ou en extérieur (paysagiste, coiffeuse ou esthéticienne à domicile, nettoyage, déménagement), revenus en euros",
+   20,
+   0.05
+  ],
+  [
+   "Artisan du bâtiment (plombier, électricien, peintre, menuisier), revenus en euros",
+   30,
+   0.03333333333333333
+  ],
+  [
+   "Événementiel (traiteur, photographe, DJ, fleuriste ou wedding planner), revenus en euros",
+   35,
+   0.02857142857142857
+  ],
+  [
+   "Créatif ou conseil (graphiste, coach, formateur, consultant), revenus en euros",
+   15,
+   0.0
+  ]
+ ],
+ "by_behaviour": [
+  [
+   "Technophile",
+   8,
+   0.25
+  ],
+  [
+   "Débordé, veut gagner du temps",
+   15,
+   0.06666666666666667
+  ],
+  [
+   "Déjà équipé et fidèle",
+   12,
+   0.0
+  ],
+  [
+   "Fait tout sur Word ou Excel",
+   20,
+   0.0
+  ],
+  [
+   "Méfiant envers l'IA",
+   10,
+   0.0
+  ],
+  [
+   "Utilise un logiciel gratuit",
+   18,
+   0.0
+  ],
+  [
+   "Chasseur de bons plans",
+   10,
+   0.0
+  ],
+  [
+   "Lit tous les avis",
+   7,
+   0.0
+  ]
+ ],
+ "by_income": [
+  [
+   "$30,000 to $43,000",
+   32,
+   0.0625
+  ],
+  [
+   "under $30,000",
+   33,
+   0.030303030303030304
+  ],
+  [
+   "$43,000 and up",
+   35,
+   0.0
+  ]
+ ],
+ "why_not": [
+  [
+   "habit",
+   25,
+   [
+    "J'ai déjà mon logiciel de devis que je paie et que je connais par cœur, et je n'ai que 2 à 5 demandes par semaine : je n'ai pas envie de changer d'outil ni d'ajouter 39 € de plus par mois pour gagner quelques minutes.",
+    "J'ai déjà mon logiciel de devis que je paie, tout est dedans et je n'ai pas envie de changer d'outil pour trois devis par mois. Ça ne me fait pas gagner assez de temps pour que je m'embête à migrer."
+   ],
+   [
+    "P001",
+    "P002"
+   ]
+  ],
+  [
+   "price",
+   24,
+   [
+    "Je fais déjà mes devis et mes factures avec des outils gratuits, ça me prend un peu de temps le dimanche mais ça marche. 39 € par mois, soit près de 470 € par an, pour gagner quelques minutes, je ne vois pas pourquoi je les sortirais.",
+    "Je fais déjà mes factures avec un outil gratuit (Abby, Tiime) et je ne vois pas pourquoi je sortirais 39 € HT par mois, soit près de 470 € par an, pour de la paperasse. Même avec dix demandes de devis par semaine en haute saison, je me débrouille et je peux essayer l'essai gratuit sans m'engager à rien."
+   ],
+   [
+    "P009",
+    "P011"
+   ]
+  ],
+  [
+   "trust",
+   23,
+   [
+    "Je perds des clients parce que je réponds tard, donc le problème est réel pour moi. Mais je ne vais pas payer 39 € par mois une appli toute neuve, sans aucun avis, qui touche aux devis que j'envoie à mes clients. Je préfère attendre que quelqu'un d'autre ait essayé avant moi.",
+    "J'ai déjà perdu un client parce que j'ai répondu trop tard, donc le problème est réel, mais je ne veux pas qu'une machine écrive à mes clients, surtout les relances. Et 39 € de plus par mois pour une appli toute neuve sans aucun avis, non."
+   ],
+   [
+    "P003",
+    "P006"
+   ]
+  ],
+  [
+   "need",
+   21,
+   [
+    "Mes demandes arrivent par téléphone et WhatsApp, pas par mail, donc un outil qui lit des mails transférés ne règle pas mon problème de réponse trop tardive. Et je paie déjà mon logiciel de devis, je n'ai aucune envie de changer ou d'empiler un deuxième abonnement.",
+    "Mes demandes de devis arrivent par téléphone et WhatsApp, pas par mail, donc je n'aurais presque rien à transférer. Et mon modèle Word, ça marche, je n'ai jamais payé de logiciel et je ne vais pas commencer pour 2 à 5 devis par semaine."
+   ],
+   [
+    "P004",
+    "P005"
+   ]
+  ],
+  [
+   "timing",
+   2,
+   [
+    "Je n'ai pas le temps de saisir tout mon catalogue de prix, et mes devis de traiteur changent selon le nombre d'invités et le menu, donc je ne suis pas sûre que ça rentre dans des cases. Je fais mes devis le soir ou le dimanche avec mon modèle actuel, ça me prend du temps mais ça ne me coûte rien.",
+    "Je perds des clients parce que je réponds trop tard, ça je le sais. Mais là, je suis déjà débordée, et rien que de penser à saisir tout mon catalogue de prix, je me dis que je ne le ferai pas cette semaine, ni la suivante. Les 14 jours d'essai passeraient sans que j'aie rien configuré."
+   ],
+   [
+    "P088",
+    "P100"
+   ]
+  ],
+  [
+   "convenience",
+   2,
+   [
+    "Je n'ai déjà pas le temps de répondre à mes mails, alors saisir tout mon catalogue de prix avant de voir le moindre résultat, non. Et 39 € par mois, ça fait presque 470 € par an, c'est beaucoup pour moi pour 2 à 5 devis par semaine.",
+    "Je testerais peut-être les 14 jours gratuits par curiosité, mais derrière il faut que je saisisse tout mon catalogue de prix et je n'ai pas ce temps-là. Et mes demandes arrivent surtout par téléphone ou SMS, pas par mail, donc je ne transférerais pas grand-chose."
+   ],
+   [
+    "P090",
+    "P098"
+   ]
+  ]
+ ],
+ "why_yes": [
+  [
+   "convenience",
+   2,
+   [
+    "Avec 2 à 5 demandes par semaine, je perds pas mal de temps à retaper les mêmes devis, et le fait que les prix viennent de mon catalogue et que je relise avant d'envoyer me rassure. 14 jours gratuits sans carte, je teste, et si les premiers devis tiennent la route je paie les 39 €.",
+    "Mes devis, c'est le soir ou le dimanche, et c'est ça qui me pèse. Si ça me sort un devis avec MES prix à partir d'un mail, 39 € par mois, c'est vite rentabilisé. Je teste les 14 jours sans carte, et si le premier devis sur un vrai mail est bon, je prends l'abonnement."
+   ],
+   [
+    "P050",
+    "P054"
+   ]
+  ],
+  [
+   "need",
+   1,
+   [
+    "Je rate des clients parce que je réponds trop tard, et un seul événement perdu me coûte bien plus que 39 € par mois. Comme c'est sans engagement et sans carte pour l'essai, je teste en vrai sur mes demandes et je paie si ça me fait gagner du temps."
+   ],
+   [
+    "P069"
+   ]
+  ]
+ ],
+ "flip": [
+  "Que ça se branche directement sur mon outil de devis actuel (pas de double saisie ni de migration), ou que ça remplace mon abonnement actuel pour un prix équivalent, avec quelques avis de vrais indépendants.",
+  "Que ça se branche sur mon logiciel actuel sans rien ressaisir, ou que ça coûte beaucoup moins cher que ce que je paie déjà, et que des artisans comme moi l'utilisent depuis un moment.",
+  "Voir un vrai exemple avec une demande de mail de traiteur ou d'événementiel (mariage, nombre de convives, options) transformée en devis correct, ou avoir l'avis d'une collègue du métier qui l'utilise depuis quelques mois. Que quelqu'un m'aide à saisir le catalogue pendant l'essai aiderait aussi.",
+  "Que ça marche directement depuis un message WhatsApp ou un appel (transférer ou dicter la demande) ET que ça remplace mon logiciel de devis actuel avec import de mon catalogue, pour un prix égal ou inférieur à ce que je paie déjà.",
+  "Que je puisse coller un message WhatsApp ou dicter ce que le client m'a dit au téléphone et avoir le devis prêt, avec un prix autour de 15 € par mois.",
+  "Voir des avis ou un artisan de mon métier que je connais qui s'en sert depuis des mois sans erreur, avec la garantie que rien ne part chez mon client sans que je l'aie validé et un prix plus bas.",
+  "Une version gratuite ou à quelques euros qui couvre mes trois devis par mois, avec des avis de vrais traiteurs ou photographes qui l'utilisent depuis plusieurs mois.",
+  "Que ça se branche directement sur mon logiciel de devis actuel, sans rien ressaisir ni changer d'outil, et que des artisans comme moi me disent que ça marche vraiment.",
+  "Un prix autour de 15 € par mois, et avoir vu pendant l'essai qu'un vrai mail de client donne un devis juste du premier coup.",
+  "Une version gratuite ou à moins de 10 € par mois, utilisable à vie avec un petit volume de devis (genre jusqu'à 5 par mois).",
+  "Une formule gratuite ou autour de 10 € par mois, avec écrit noir sur blanc que la facture électronique obligatoire est gérée.",
+  "Un prix autour de 10 € par mois ou une version gratuite, et pouvoir tester avec mes vrais tarifs et voir que le devis est juste avant que ça parte.",
+  "Des avis de vrais artisans comme moi qui l'utilisent depuis plusieurs mois.",
+  "Pouvoir essayer sur 3 de mes vraies demandes de devis et voir un devis correct sortir sans que je le retouche, avec un tarif nettement plus bas ou un abonnement que je peux suspendre hors saison.",
+  "Une formule gratuite limitée à quelques devis par mois, ou un prix sous les 15 € HT par mois, avec des avis de vrais indépendants dans mon cas.",
+  "Que ça lise aussi les demandes qui arrivent par SMS ou WhatsApp, pas seulement les mails transférés.",
+  "Des avis de traiteurs, photographes ou DJ qui s'en servent déjà, avec un vrai nom et un vrai visage derrière, et la possibilité de récupérer mes devis et factures si l'appli ferme.",
+  "Que ce soit écrit noir sur blanc que la facture électronique obligatoire est prise en charge, que je puisse reprendre mes tarifs et mon modèle sans tout ressaisir, et un prix autour de 15 à 20 € par mois.",
+  "Un prix autour de 15 € par mois, ou une formule gratuite limitée à quelques devis par mois pour que je teste en vrai sur mes chantiers.",
+  "Un prix à 10 € par mois ou moins, ou un tarif à l'unité qui ne me fait payer que les mois où j'ai vraiment des devis, plus quelqu'un de mon métier que je connais qui me dit qu'il s'en sert.",
+  "Une réponse claire, écrite noir sur blanc, que les factures sont conformes à la facturation électronique obligatoire, avec un prix autour de 15 € HT par mois.",
+  "Un essai où je transfère un vrai mail de client et où le devis sort quasi juste du premier coup, avec un prix autour de 15 € par mois, ou une formule gratuite limitée à quelques devis par mois.",
+  "Que ça se branche sur mon logiciel de devis actuel sans rien ressaisir (import de mon catalogue et de mes clients), avec des avis de vrais indépendants après quelques mois d'usage, et à un prix proche de ce que je paie déjà.",
+  "Une vraie version gratuite (même limitée à quelques devis par mois) ou un prix autour de 10 € par mois, avec des retours d'autres traiteurs ou photographes qui s'en servent déjà.",
+  "Que je puisse lui envoyer la demande directement depuis WhatsApp ou par un message vocal (ou même que je lui dicte le chantier au téléphone) et qu'elle sorte le devis avec mes tarifs, avec quelques avis d'artisans comme moi.",
+  "Un tarif autour de 15 € par mois avec import de mon catalogue et de mes clients depuis mon outil actuel, sans ressaisie, et quelques avis de vrais traiteurs ou photographes.",
+  "Une version gratuite ou à quelques euros par mois qui fait vraiment le devis à ma place, plus des avis de vrais artisans comme moi.",
+  "Un confrère traiteur ou photographe que je connais qui me dit qu'il l'utilise depuis des mois sans erreur, et un tarif autour de 15 à 20 € par mois.",
+  "Voir un autre traiteur ou photographe que je connais s'en servir depuis plusieurs mois sans histoire d'erreur, et un prix autour de 10 à 15 € par mois.",
+  "Une formule gratuite limitée à quelques devis par mois pour tester sur mes vrais mails, ou un prix autour de 15 € par mois.",
+  "Une preuve claire que c'est conforme à la facture électronique obligatoire (plateforme agréée), un import de mon catalogue et de mes clients depuis mon logiciel actuel, et un tarif qui remplace mon abonnement au lieu de s'ajouter. Quelques avis de vrais clients m'aideraient aussi.",
+  "Une mention claire que les factures sont conformes à la facture électronique obligatoire, quelques avis d'artisans comme moi, et la preuve que ça marche aussi avec mes demandes reçues par SMS ou WhatsApp.",
+  "Une version gratuite qui tient vraiment la route pour mes devis, ou un prix autour de 10 € par mois avec des artisans du bâtiment qui disent qu'ils s'en servent.",
+  "Un tarif autour de 15 € par mois, ou un plan gratuit limité à quelques devis par mois. Et des avis de traiteurs ou de photographes qui s'en servent vraiment.",
+  "Que mon logiciel actuel de devis soit remplacé en entier, devis, factures et import de mon catalogue compris, pour moins cher que ce que je paie aujourd'hui, avec des avis de plombiers ou d'électriciens que je connais.",
+  "Un plan gratuit ou à moins de 15 € par mois, ou un tarif qui ne se paie qu'en haute saison, avec la preuve que ça lit vraiment bien les mails de demandes de mariage ou d'événement.",
+  "Une formule gratuite ou à moins de 10 € par mois pour les petits volumes comme le mien, ou un collègue artisan qui me dit qu'il s'en sert vraiment.",
+  "Que ça marche directement avec un message WhatsApp ou une note vocale (je colle ou je dicte, le devis sort), avec mes prix à moi et rien d'envoyé sans que je valide, et que je voie des avis de traiteurs ou de photographes qui s'en servent déjà.",
+  "Des avis vérifiables de pros de l'événementiel (traiteurs, photographes, DJ) qui s'en servent déjà, plus un nom et un visage derrière l'appli. Et pouvoir tester sur 3 ou 4 de mes vrais mails de demande pendant l'essai pour voir si les erreurs sont rares.",
+  "Un prix autour de 15 € par mois, ou une version gratuite pour quelques devis par mois, et voir un autre traiteur ou photographe qui s'en sert vraiment.",
+  "Voir un autre artisan comme moi s'en servir pour de vrai (avis ou témoignage vérifiable), savoir qui est derrière, et pouvoir récupérer tous mes devis et mon catalogue en Word ou Excel si ça s'arrête. Et un prix plus proche de 15 à 20 € par mois.",
+  "Que l'appli reprenne mes clients et mon catalogue toute seule depuis mon outil actuel, que je voie des témoignages d'artisans comme moi, et que ça coûte pas plus que ce que je paie déjà (moins de 20 € par mois).",
+  "Une personne de mon métier, que je connais, qui me montre qu'elle s'en sert depuis une saison complète sans une seule erreur, et la garantie que rien ne part chez le client sans que je l'aie relu et validé moi-même.",
+  "Que ce soit écrit noir sur blanc que la facture électronique obligatoire est gérée (plateforme agréée), et un artisan que je connais qui s'en sert depuis plusieurs mois.",
+  "Que ce soit gratuit ou autour de 10 € par mois, ou qu'un autre artisan que je connais me dise que ça lui a fait gagner des soirées sur des vrais devis.",
+  "Que ce soit gratuit, ou que l'appli reprenne mon catalogue et mes anciens devis toute seule sans que j'aie rien à saisir, avec un vrai avis de collègues traiteurs ou photographes que je connais.",
+  "Que l'appli reprenne mes tarifs toute seule depuis mes anciens devis, sans que je ressaisisse quoi que ce soit, et qu'elle me coûte moins de 15 € par mois, ou que je voie un autre artisan qui s'en sert déjà.",
+  "Un prix autour de 15-20 € par mois, ou une formule gratuite pour un petit nombre de devis par mois, plus quelques avis de gens de mon métier qui disent qu'ils ont arrêté de perdre des clients en répondant plus vite.",
+  "Des avis de vrais traiteurs ou photographes qui s'en servent depuis des mois, et un prix autour de 15 € par mois.",
+  "Que des artisans que je connais l'utilisent depuis un moment et me disent qu'elle ne se trompe pas, et un prix autour de 15 à 20 € par mois.",
+  "Un artisan que je connais qui s'en sert depuis des mois et me dit que ça ne s'est jamais trompé, ou une version où l'IA ne rédige aucun message et où je garde la main sur tout, pour 10 à 15 € par mois.",
+  "Une mention claire que la facturation est conforme à la facture électronique obligatoire, plus un collègue artisan qui l'utilise déjà et qui me dit que ça marche.",
+  "Que mon catalogue de prix s'importe tout seul depuis mon logiciel actuel, sans rien ressaisir, et que ça remplace mon abonnement pour moins cher que ce que je paie déjà.",
+  "Que l'appli construise mon catalogue toute seule à partir de mes anciens devis (PDF ou mails) au lieu de me demander de tout ressaisir.",
+  "Des avis de traiteurs, photographes ou DJ qui l'utilisent vraiment, et un vrai visage avec un nom derrière l'appli. Idéalement aussi que l'appli importe mon catalogue à partir de mes anciens devis au lieu que je saisisse tout à la main.",
+  "Que quelqu'un me montre sur un de mes vrais devis que ça marche, avec mes tarifs repris depuis mon Excel sans que je retape tout, et que ça reste gratuit ou à moins de 15 € par mois.",
+  "Une version gratuite ou à moins de 10 € par mois qui me répond au client toute seule, vite, pour ne plus perdre un chantier comme l'an dernier.",
+  "Un plan gratuit ou à moins de 10 € par mois, ou une vraie démonstration sur un de mes propres mails de clients qui me fait gagner une heure par semaine.",
+  "Voir qu'un artisan de mon métier s'en sert déjà et que ça sort un devis correct à partir de mes vrais mails du premier coup, sans que je passe une soirée à remplir le catalogue. Un prix sous 20 € m'aiderait aussi.",
+  "Un tarif à partir de 15 € par mois, ou une formule gratuite jusqu'à quelques devis par mois, ou une formule payée seulement en haute saison que je peux couper l'hiver.",
+  "Que ce soit gratuit, ou à moins de 10 € par mois, avec des retours d'autres artisans que je connais qui s'en servent vraiment.",
+  "Que je puisse envoyer un message vocal, une photo ou un message WhatsApp à l'appli et qu'elle me sorte le devis avec mes tarifs.",
+  "Un tarif autour de 15 à 19 € par mois, ou une version gratuite limitée, et une démo où je vois un vrai mail de client devenir un devis correct sans que j'aie rien saisi avant.",
+  "Des avis ou témoignages de traiteurs ou d'autres pros de l'événementiel qui s'en servent depuis des mois, un vrai nom et un contact humain qui répond, et la possibilité de récupérer tous mes devis et mon catalogue en Excel si ça s'arrête.",
+  "Des avis vérifiables d'artisans de mon métier qui s'en servent depuis des mois, et savoir clairement qui est derrière (nom, visage, société, un numéro pour les joindre). Ensuite je testerais les 14 jours gratuits sur de vrais mails de clients.",
+  "Une version gratuite ou à quelques euros pour les petits volumes, ou la preuve par d'autres traiteurs que ça me ferait gagner des clients que je perds en répondant trop tard.",
+  "Une version gratuite qui tient vraiment la route, ou un prix autour de 10 € par mois, avec des avis de vrais artisans comme moi.",
+  "Des avis clients vérifiables de vrais indépendants comme moi, et une vraie personne identifiable derrière (nom, visage, société) avec un support qui répond, plus la possibilité d'exporter mes données si ça ferme.",
+  "Des avis vérifiables de traiteurs, photographes ou DJ qui l'utilisent déjà, plus savoir qui est derrière l'appli (un visage, un nom). Et un prix plus proche de 20 € par mois pour ce que les outils gratuits ne font pas.",
+  "Une mention claire que c'est conforme à la facture électronique obligatoire, quelques avis d'artisans comme moi, et un prix sous les 25 € HT par mois.",
+  "Une version gratuite ou à moins de 10 € par mois, ou si je passais à dix devis par mois et plus et que je perdais vraiment des soirées dessus.",
+  "Que je puisse envoyer un message WhatsApp ou un vocal à l'appli et qu'elle me sorte le devis, et que ce soit gratuit ou presque (moins de 10 € par mois).",
+  "Pouvoir y coller ou y transférer un message WhatsApp (ou dicter la demande après un appel) et obtenir le devis, avec un prix autour de 15 € par mois.",
+  "Une version gratuite ou à moins de 15 € par mois, avec des avis d'artisans comme moi qui disent que ça leur fait gagner du temps sans erreur.",
+  "Que ça se branche sur mon logiciel de devis actuel (je garde mon outil et mes clients, Bouclé ne fait que préparer le devis depuis le mail), avec un vrai nom et un visage derrière, un support qui répond, et quelques avis de gens de l'événementiel qui l'utilisent depuis des mois.",
+  "Une phrase claire qui dit que les factures sont conformes à la facture électronique obligatoire, plus un ou deux avis d'artisans comme moi (plombier, électricien) qui s'en servent déjà.",
+  "Des avis de vrais artisans ou indépendants comme moi (pas des témoignages bidon), le nom et le visage de la personne derrière, et un moyen sûr de récupérer mes devis et mes clients si ça s'arrête.",
+  "Une formule gratuite ou à moins de 10 € par mois, ou un abonnement uniquement pour la haute saison, avec la preuve (avis ou exemple concret) que ça me sort un devis correct à partir d'un vrai mail de client.",
+  "Un tarif au devis ou une formule à 10 € par mois maximum, et un client traiteur ou photographe qui me dit qu'il y a gagné du temps sur des devis aussi variables que les miens.",
+  "Que l'appli reprenne mon modèle de devis Word ou mon tableau Excel existant tout seul, sans que je ressaisisse quoi que ce soit, et qu'un prix autour de 15 à 20 € par mois me laisse tester sur de vraies demandes avant de payer.",
+  "Des avis de vrais indépendants comme moi, une équipe identifiable avec un vrai support qui répond, la garantie de pouvoir exporter mes devis et factures si ça s'arrête, et la certitude que rien ne part chez un client sans que je l'aie validé moi-même, relances comprises.",
+  "Une version gratuite ou à moins de 10 € par mois, avec des avis de vrais indépendants qui disent qu'ils gagnent du temps.",
+  "Une version gratuite ou à moins de 10 € par mois, ou un essai où je vois que le mail transféré devient un devis juste du premier coup avec mes tarifs, sans que j'aie à retoucher.",
+  "Que l'appli reprenne mes anciens devis (PDF ou Word) pour monter mon catalogue toute seule, sans que je ressaisisse quoi que ce soit, et un prix autour de 15 à 20 € par mois.",
+  "Que ce soit gratuit ou autour de 10 euros par mois, et qu'un collègue artisan que je connais m'en dise du bien après l'avoir utilisé. Ou que ça reprenne mes devis déjà faits sans que je ressaisisse mes prix.",
+  "Que l'appli lise mes anciens devis pour construire mon catalogue toute seule, que je voie un vrai devis fait à partir d'un de mes mails en moins de 10 minutes sans rien saisir, et un tarif autour de 15 à 20 € par mois.",
+  "Une version gratuite ou à moins de 10 € par mois, ou une preuve (avis, témoignage d'un traiteur ou d'un photographe) que ça me fait gagner assez de temps chaque semaine pour que ça se rembourse.",
+  "Que je puisse transférer un message WhatsApp ou dicter la demande à la voix, et pas seulement un mail. Je ferais alors l'essai gratuit de 14 jours sur de vrais devis.",
+  "Une formule vraiment gratuite ou à quelques euros par mois, ou la preuve par des artisans comme moi que ça me fait gagner des clients et pas seulement du temps.",
+  "Un collègue artisan que je connais qui s'en sert depuis plusieurs mois et qui me montre que ça ne se trompe pas, ou un prix bien plus bas et la garantie que rien ne part chez mon client sans que je l'aie relu.",
+  "Des avis ou des témoignages de traiteurs, photographes ou DJ qui l'utilisent depuis des mois, un vrai nom et un support joignable, et la possibilité de récupérer tous mes devis et mon catalogue si ça s'arrête. Ou un prix autour de 20 € par mois.",
+  "Voir l'appli transformer une vraie demande de mon mail en devis correct en quelques minutes, plus un retour d'un autre traiteur ou photographe qui l'utilise, et un prix autour de 15 à 20 € par mois ou une formule gratuite limitée.",
+  "Un prix sous 20 € par mois, ou une version gratuite limitée à quelques devis par mois, pour que je teste sur mes vraies demandes sans m'engager.",
+  "Que l'appli construise mon catalogue toute seule à partir de mes anciens devis et factures (PDF ou photos), pour que je sois prête en dix minutes, et que je voie de vrais avis d'artisans.",
+  "Que ça se branche sur mon outil actuel sans rien resaisir, ou qu'il remplace mon abonnement pour moins cher, avec quelques vrais avis de gens comme moi.",
+  "Que l'appli remplisse le catalogue toute seule à partir de mes anciens devis ou de mes mails, sans que je saisisse quoi que ce soit, ou que quelqu'un le fasse pour moi pendant l'essai."
+ ],
+ "purchases_first_month_per_buyer": 1.0,
+ "price_answers": 100
+}

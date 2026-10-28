@@ -1,0 +1,13 @@
+{
+  "id": "P079",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "Je paie déjà mon logiciel de devis et mes clients, mes tarifs et mes habitudes sont dedans. Je ne vais pas changer d'outil pour une appli toute neuve sans le moindre avis, même si l'idée de transférer le mail et d'avoir le devis prêt me parle, vu que j'ai déjà perdu un client en répondant trop tard.",
+  "objection": "Qui est derrière ? Appli lancée en 2026, zéro avis : si ça ferme ou si personne ne répond au support, je fais comment avec mes devis et mes factures ? Et je paie déjà un outil, je n'ai pas envie de payer deux abonnements ni de tout ressaisir.",
+  "would_change_my_mind": "Que ça se branche sur mon logiciel de devis actuel (je garde mon outil et mes clients, Bouclé ne fait que préparer le devis depuis le mail), avec un vrai nom et un visage derrière, un support qui répond, et quelques avis de gens de l'événementiel qui l'utilisent depuis des mois.",
+  "price_too_cheap": 8,
+  "price_cheap": 15,
+  "price_expensive": 30,
+  "price_too_expensive": 50
+}

@@ -1,0 +1,13 @@
+{
+  "id": "P047",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "Je fais déjà mes devis et mes factures avec un outil gratuit, alors 39 € par mois pour un truc de plus, je ne vois pas pourquoi je paierais. Et avant que ça me serve à quelque chose, il faudrait que je saisisse tout mon catalogue de prix, et ça, je n'ai pas le temps.",
+  "objection": "Je n'ai pas le temps de saisir tout mon catalogue de prix, et je paierais 39 € par mois pour ce que mon outil gratuit fait déjà à moitié. Une appli toute neuve, sans aucun avis, je n'ai aucune idée si ça tiendra dans un an.",
+  "would_change_my_mind": "Que l'appli reprenne mes tarifs toute seule depuis mes anciens devis, sans que je ressaisisse quoi que ce soit, et qu'elle me coûte moins de 15 € par mois, ou que je voie un autre artisan qui s'en sert déjà.",
+  "price_too_cheap": 3,
+  "price_cheap": 9,
+  "price_expensive": 19,
+  "price_too_expensive": 30
+}

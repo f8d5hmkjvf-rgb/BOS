@@ -1,0 +1,13 @@
+{
+  "id": "P024",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "39 € par mois, c'est presque 500 € par an alors que Henrri ou Tiime me font mes devis et mes factures gratuitement. Avec 22 000 € par an, je ne mets pas ça dans un outil juste pour gagner quelques minutes sur un mail.",
+  "objection": "Pourquoi je paierais 39 € alors que ce que j'utilise est gratuit ? En plus c'est une appli toute neuve sans aucun avis, je ne sais pas si elle sera encore là dans un an.",
+  "would_change_my_mind": "Une vraie version gratuite (même limitée à quelques devis par mois) ou un prix autour de 10 € par mois, avec des retours d'autres traiteurs ou photographes qui s'en servent déjà.",
+  "price_too_cheap": 3,
+  "price_cheap": 8,
+  "price_expensive": 15,
+  "price_too_expensive": 25
+}

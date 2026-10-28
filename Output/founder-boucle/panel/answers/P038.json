@@ -1,0 +1,13 @@
+{
+  "id": "P038",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "need",
+  "reason": "Mes demandes de devis arrivent surtout par téléphone et WhatsApp, pas par mail, donc je n'aurais presque rien à transférer à leur adresse. Et une appli toute neuve sans aucun avis, qui fait écrire une IA à mes clients, je n'y crois pas pour l'instant.",
+  "objection": "Ça ne colle pas à comment je travaille : 90 % de mes demandes sont des appels ou des messages WhatsApp, pas des mails. Et je ne veux pas qu'une machine écrive à mes clients ou se trompe sur un devis de mariage, surtout sans avis d'autres traiteurs.",
+  "would_change_my_mind": "Que ça marche directement avec un message WhatsApp ou une note vocale (je colle ou je dicte, le devis sort), avec mes prix à moi et rien d'envoyé sans que je valide, et que je voie des avis de traiteurs ou de photographes qui s'en servent déjà.",
+  "price_too_cheap": 5,
+  "price_cheap": 12,
+  "price_expensive": 22,
+  "price_too_expensive": 35
+}

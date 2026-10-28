@@ -1,0 +1,13 @@
+{
+  "id": "P073",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "trust",
+  "reason": "Je ne m'abonne à rien sans avis clients et sans savoir qui est derrière, et là il n'y a ni l'un ni l'autre. Et 39 € par mois alors que Henrri ou Tiime sont gratuits, avec mes 22 000 € par an, je ne vois pas pourquoi je prendrais le risque.",
+  "objection": "Une appli toute neuve, zéro avis, je ne sais pas qui est derrière, et qui me demande 39 € par mois pour faire des devis alors que d'autres outils sont gratuits. Si elle lit mal un mail en haute saison et que j'envoie un devis faux à un client, c'est moi qui perds la commande.",
+  "would_change_my_mind": "Des avis vérifiables de traiteurs, photographes ou DJ qui l'utilisent déjà, plus savoir qui est derrière l'appli (un visage, un nom). Et un prix plus proche de 20 € par mois pour ce que les outils gratuits ne font pas.",
+  "price_too_cheap": 5,
+  "price_cheap": 12,
+  "price_expensive": 22,
+  "price_too_expensive": 35
+}

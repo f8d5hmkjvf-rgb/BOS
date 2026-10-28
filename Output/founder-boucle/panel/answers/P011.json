@@ -1,0 +1,13 @@
+{
+  "id": "P011",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "Je fais déjà mes factures avec un outil gratuit (Abby, Tiime) et je ne vois pas pourquoi je sortirais 39 € HT par mois, soit près de 470 € par an, pour de la paperasse. Même avec dix demandes de devis par semaine en haute saison, je me débrouille et je peux essayer l'essai gratuit sans m'engager à rien.",
+  "objection": "Et la facture électronique obligatoire, c'est géré ? Si c'est pas clair, je paie 39 € pour un outil que je devrai quand même remplacer, alors que mes outils gratuits font déjà les factures. Et c'est une appli toute neuve, sans aucun avis.",
+  "would_change_my_mind": "Une formule gratuite ou autour de 10 € par mois, avec écrit noir sur blanc que la facture électronique obligatoire est gérée.",
+  "price_too_cheap": 4,
+  "price_cheap": 9,
+  "price_expensive": 19,
+  "price_too_expensive": 29
+}

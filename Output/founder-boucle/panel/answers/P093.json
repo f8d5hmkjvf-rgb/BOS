@@ -1,0 +1,13 @@
+{
+  "id": "P093",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "Je fais déjà mes devis et mes factures avec un outil gratuit, et ça me va. 39 € par mois pour gagner quelques minutes, je ne vois pas pourquoi je paierais, encore un abonnement de plus.",
+  "objection": "J'ai déjà un outil gratuit pour mes devis et mes factures, et 39 € par mois sur mes revenus, ça pèse. Je ne vois pas ce que ça m'apporte de plus qui vaille de payer.",
+  "would_change_my_mind": "Une formule vraiment gratuite ou à quelques euros par mois, ou la preuve par des artisans comme moi que ça me fait gagner des clients et pas seulement du temps.",
+  "price_too_cheap": 3,
+  "price_cheap": 8,
+  "price_expensive": 15,
+  "price_too_expensive": 25
+}

@@ -1,0 +1,13 @@
+{
+  "id": "P067",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "trust",
+  "reason": "Je ne m'abonne à rien sans avis clients et sans savoir qui est derrière, et là c'est une appli toute neuve, zéro avis, je ne sais pas qui la fait. Le besoin est réel en saison avec mes dix demandes de devis par semaine, mais ça touche mes clients, donc je ne prends pas le risque sur une inconnue.",
+  "objection": "Et si l'IA se trompe dans un devis qui part chez mon client ? Je lis tout, mais en pleine saison je relis vite, et une erreur de ligne ou de quantité c'est moi qui l'assume, pas l'appli. Et personne n'a encore testé ça, je n'ai aucun avis d'un autre artisan.",
+  "would_change_my_mind": "Des avis vérifiables d'artisans de mon métier qui s'en servent depuis des mois, et savoir clairement qui est derrière (nom, visage, société, un numéro pour les joindre). Ensuite je testerais les 14 jours gratuits sur de vrais mails de clients.",
+  "price_too_cheap": 5,
+  "price_cheap": 15,
+  "price_expensive": 40,
+  "price_too_expensive": 65
+}
