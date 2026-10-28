@@ -1,7 +1,15 @@
 # Actions
 
-_Focus : premier traiteur payant de Bouclé (mis à jour le 28/10/2026 après l'analyse complète, `Output/founder-boucle/`)_
+_Focus : Robin teste Bouclé seul pendant 1 mois (jusqu'au 28/11/2026) avant de décider de vendre. Pas de vente, pas d'encaissement pendant le test (décidé le 28/10)._
 
+1. **Version de test en ligne** : base Neon gratuite (10 min), puis import du dépôt sur Cloudflare (10 min). BOS guide pas à pas.
+2. **Tester sans IA** : catalogue avec les prix de Sophie, devis à la main, facture, relance, sur téléphone. Noter chaque blocage.
+3. **Clé IA** : compte Anthropic à faire créer par un parent (18 ans requis), ~5 € de crédit. Puis tester « Coller un message » sur 10 vraies demandes.
+4. Fin du test le 28/11 : on décide (vendre, corriger, ou changer). L'étape 0 (parent titulaire) seulement si on vend.
+
+_Plan de vente mis en pause (voir `Output/founder-boucle/launch.md`, dates décalées d'environ 3 semaines)._
+
+## Plan de vente (en pause)
 1. **Étape 0 : parler à tes parents** — à 16 ans, un parent doit porter l'activité (micro-entreprise à son nom, gratuite) avant le premier paiement. Toi : 1 conversation ; BOS prépare l'explication et guide la déclaration sur le guichet unique.
 2. **Mettre Bouclé en ligne** (Neon → Cloudflare → variables). Toi : ~15 min de clics, BOS guide.
 3. **Sophie, première utilisatrice** sur ses vraies demandes, au tarif fondateurs **19 € HT/mois à vie** (nouveau prix, remplace 29 €).

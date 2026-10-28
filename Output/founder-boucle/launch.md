@@ -1,5 +1,7 @@
 # Lancement de Bouclé
 
+> **Mise à jour du 28/10/2026** : Robin teste d'abord l'appli seul pendant 1 mois (jusqu'au 28 novembre). Les dates ci-dessous sont décalées d'environ 3 semaines et seront refixées à la fin du test.
+
 _Lancement public : **lundi 16 novembre 2026**. Rythme : 10 h par semaine, en dehors des cours. « BOS » = ce que je prépare pour toi ; « Robin » = ce que toi seul peux faire ; « Parent » = le parent titulaire._
 
 ## 1. Le test réel d'abord (avant toute dépense)

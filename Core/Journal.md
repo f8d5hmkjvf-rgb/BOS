@@ -16,3 +16,4 @@
 - Décisions proposées : cible traiteurs d'abord, 24 € HT/mois (fondateurs 19 € à vie, 20 places, jusqu'au 31/12/2026), mise en route faite par Robin, garantie 1er mois, lancement le 16/11/2026.
 - Re-test de l'offre sur 20 acheteurs simulés interrompu par la limite du forfait ; non relancé pour économiser le forfait de Robin.
 - Découvert : à 16 ans, un parent doit porter l'activité avant tout encaissement.
+- Robin préfère ne pas se précipiter : test seul pendant 1 mois (jusqu'au 28/11), sans clé IA pour l'instant. Lancement commercial décalé.
