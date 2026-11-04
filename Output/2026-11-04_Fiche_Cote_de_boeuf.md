@@ -30,3 +30,15 @@
 - Résultat (trop cuit / parfait / pas assez), croûte réussie ?
 - Ce que les invités ont dit
 - 2-3 photos : la croûte, le tranchage, l'intérieur
+
+---
+# Variante : côte de bœuf « os qui dépasse » (tomahawk / côte manchonnée) — cuisson inversée
+
+**Chez le boucher :** « un tomahawk » (os long ~20-30 cm) ou « une côte de bœuf manchonnée » (os gratté). 5-6 cm d'épaisseur, 1,2-1,5 kg = 3-4 pers.
+
+1. Sortir 1 h avant, sécher, saler au gros sel. Envelopper l'os qui dépasse dans du papier alu (il reste blanc).
+2. Zone indirecte (gaz : un côté éteint ; charbon : braises d'un seul côté), couvercle fermé, ~120-150 °C.
+3. Cuire doucement jusqu'à **45 °C à cœur** (saignant) / 50 °C (à point). Compter 30-60 min selon l'épaisseur — c'est la sonde qui décide.
+4. Saisie finale sur le plus chaud possible : 1-2 min par face + le gras du bord, jusqu'à belle croûte. Option : arroser au beurre moussant, ail écrasé, thym.
+5. Repos 5-8 min. Retirer l'alu de l'os.
+6. Service : présenter la pièce entière (photo), détacher la viande de l'os, trancher 1 cm, remettre les tranches le long de l'os. Fleur de sel, poivre, crème truffée ou beurre.
