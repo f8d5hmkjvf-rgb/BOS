@@ -12,7 +12,7 @@ Pré-lancement. Traiteur brasero premium, Haut-Var (83). Premières prestations 
 Mariages et gros événements (Signature), petits groupes (Essentielle), 6-12 pers en villa (Table du Chef, via Maison Avalia).
 
 ## Finances
-Budget matériel ~4 000 € (liste à 4 650 €, OFYR Classic Corten 85). Simulation 60 couverts côte de bœuf : ~1 360 € de coûts ; 65 €/pers ≈ 2 070 € net. Saison : 15/30/45 prestas → ≈ 7 k / 15,5 k / 25 k € de bénéfice. Prix de la viande à obtenir chez Krill.
+Budget matériel ~4 000 € (liste à 4 650 €, OFYR Classic Corten 85). Alternative Alibaba : brasero corten 80 cm à 340 $ (MOQ 2), coût rendu estimé ~650-750 €/u. Simulation 60 couverts côte de bœuf : ~1 360 € de coûts ; 65 €/pers ≈ 2 070 € net. Saison : 15/30/45 prestas → ≈ 7 k / 15,5 k / 25 k € de bénéfice. Prix de la viande à obtenir chez Krill.
 
 ## Réseau
 Maison Avalia (conciergerie de villas, Côte d'Azur), beau-père restaurateur. Contrainte : la tante, traiteur brasero → ne pas prendre sa clientèle.
