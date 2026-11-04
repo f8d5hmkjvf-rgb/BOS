@@ -19,3 +19,6 @@ Maison Avalia (conciergerie de villas, Côte d'Azur) : aucun contact ni lien, ju
 
 ## Points bloquants
 Transport (adulte + véhicule/remorque), interdictions de feu l'été (plancha gaz en plan B), alcool non vendable par Robin.
+
+## Concurrence
+- La Cuisine de Sophie (tante, Salernes) : brasero 90 € et 110 €/pers dès 50 convives, all inclusive, rayon 60 km. Même zone que Robin. Créneau libre : groupes < 30 pers. Détail : Output/2026-11-04_Comparaison_Cuisine_de_Sophie.md
