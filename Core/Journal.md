@@ -8,3 +8,5 @@
 - Nom : Robin rejette Maison Aro/Erre/Silex/Verdon et le format « Maison ». Veut un nom inventé de 3-4 lettres, sans « Maison ». Liste de ~100 noms proposée ; .fr libres : Fuec, Fuoc, Fioc, Igno, Ilza.
 - Pattern à surveiller : beaucoup de temps sur matériel/branding (panier Alibaba 15 articles), sonde pas encore commandée, tante et transport pas abordés.
 - Précision de Robin : aucun lien avec Maison Avalia, aucun client, jamais fait de presta. Projet au stade idée.
+- Alibaba : décision de n'acheter que les couteaux KEEMAKE (chef 8", chef 5", nakiri 7", + sujihiki si dispo). Reste du matériel → commande groupée en janvier, après le logo.
+- Comparaison avec la tante (La Cuisine de Sophie, Salernes, brasero 90-110 € dès 50 pers) : recommandation de se positionner sur les groupes < 30 pers, retirer la Signature. Carte v3 en attente de validation.
