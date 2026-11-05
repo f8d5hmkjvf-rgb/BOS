@@ -20,3 +20,4 @@
 - Mère fonctionnaire → micro-entreprise risquée (cumul d'activités). Nouvelle piste n°1 : la SARL restaurant du beau-père (mère associée à 10 %) porte l'activité traiteur, Robin salarié. SCI de la mère non utilisable (société civile). À valider : objet social, DDPP, assurance, TVA 10 %, partage des revenus, marque à Robin.
 - Mère travaille à la mairie (bonne relation avec le maire). Elle va sûrement envoyer la question au service RH (cumul d'activités). En parallèle : parler émancipation en famille.
 - Nom : Robin choisit « Maison Braséa » (maisonbrasea .fr et .com libres, aucune entreprise trouvée avec ce nom). Logo minimaliste style maisoneme → 3 pistes : Output/logos/brasea_v1.png
+- Nom validé : Maison Braséa (option A, avec « traiteur » partout).
