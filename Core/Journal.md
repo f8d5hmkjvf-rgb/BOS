@@ -10,3 +10,6 @@
 - Précision de Robin : aucun lien avec Maison Avalia, aucun client, jamais fait de presta. Projet au stade idée.
 - Alibaba : décision de n'acheter que les couteaux KEEMAKE (chef 8", chef 5", nakiri 7", + sujihiki si dispo). Reste du matériel → commande groupée en janvier, après le logo.
 - Comparaison avec la tante (La Cuisine de Sophie, Salernes, brasero 90-110 € dès 50 pers) : recommandation de se positionner sur les groupes < 30 pers, retirer la Signature. Carte v3 en attente de validation.
+
+## 2026-11-05
+- Question de Robin : cuisine perso acceptée ? → réponse : pas d'autorisation, simple déclaration DDPP (Cerfa 13984) ; cuisine d'habitation possible si règles d'hygiène respectées (règlement 852/2004, annexe II chap. III) ; cuisson faite sur place = peu de prépa à la maison. Proposition : mail à la DDPP du Var + plan B cuisine du beau-père / cuisine partagée.
