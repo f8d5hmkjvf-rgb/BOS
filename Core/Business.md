@@ -1,7 +1,7 @@
 # Business
 
 ## Statut
-Idée (stade 0) : aucun client, aucune prestation réalisée. Traiteur brasero premium, Haut-Var (83). Premières prestations visées en avril 2027. Micro-entreprise (mineur non émancipé, autorisation écrite des deux parents).
+Idée (stade 0) : aucun client, aucune prestation réalisée. Traiteur brasero premium, Haut-Var (83). Premières prestations visées en avril 2027. ⚠️ Statut : mineur non émancipé → micro-entreprise IMPOSSIBLE et activité commerciale interdite (service-public F31627). Piste : émancipation + autorisation d'être commerçant (juge des tutelles), à valider avec la CCI du Var.
 
 ## Offre
 - Positionnement : brasero haut de gamme, image sobre et élégante (référence Insta : maisoneme)
