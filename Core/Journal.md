@@ -21,3 +21,6 @@
 - Mère travaille à la mairie (bonne relation avec le maire). Elle va sûrement envoyer la question au service RH (cumul d'activités). En parallèle : parler émancipation en famille.
 - Nom : Robin choisit « Maison Braséa » (maisonbrasea .fr et .com libres, aucune entreprise trouvée avec ce nom). Logo minimaliste style maisoneme → 3 pistes : Output/logos/brasea_v1.png
 - Nom validé : Maison Braséa (option A, avec « traiteur » partout).
+
+## 2026-11-06
+- Robin : « je me disperse trop sur mes business, ça devient ennuyant, il y a toujours un truc qui bloque ». Méta-problème dispersion noté dans Diagnosis.md.
