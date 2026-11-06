@@ -59,7 +59,8 @@ export class HttpSaveAdapter implements SaveAdapter {
     const r = await fetch(`${this.base}/${encodeURIComponent(slot)}`);
     if (r.status === 404) return null;
     if (!r.ok) throw new Error(`Chargement serveur impossible (${r.status})`);
-    return validateSnapshot(await r.json());
+    const data = await r.json();
+    return data ? validateSnapshot(data) : null;
   }
 }
 

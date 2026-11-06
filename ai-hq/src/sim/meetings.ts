@@ -16,6 +16,13 @@ export interface Meeting {
   startedAtSec: number | null;
   /** Participant qui parle (rotation). */
   speaker: string | null;
+  /** Réunion réelle convoquée par l'orchestrateur (discussion IA). */
+  external?: boolean;
+  /** Répliques IA en attente d'être jouées dans la salle. */
+  queue?: { speaker: string; text: string }[];
+  playingUntil?: number;
+  /** L'orchestrateur a clos la discussion ; la réunion finit quand tout a été joué. */
+  ended?: boolean;
 }
 
 export const GATHER_LEAD_SEC = 6 * 60;

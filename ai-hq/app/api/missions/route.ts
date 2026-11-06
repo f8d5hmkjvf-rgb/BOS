@@ -1,27 +1,29 @@
 import { NextResponse } from "next/server";
-import { listMissions, upsertMission, VALID_STATUSES } from "@/server/missions";
-import type { RealWorkStatus } from "@/sim/types";
+import { ceo } from "@/orchestrator/agents";
+import { getContext, notConfigured, readJson, requireAdmin } from "@/server/context";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function GET() {
-  return NextResponse.json(listMissions());
+  const { store, missing } = await getContext();
+  if (!store) return notConfigured(missing);
+  return NextResponse.json(await store.listMissions(30));
 }
 
-/**
- * Point d'entrée pour l'orchestrateur RÉEL des agents IA : il publie ici le statut de ses
- * missions. La simulation ne fait que les afficher. Protégé par MISSIONS_TOKEN si défini.
- */
+/** L'entrepreneur confie un objectif en langage naturel à Gaspard. */
 export async function POST(req: Request) {
-  const token = process.env.MISSIONS_TOKEN;
-  if (token && req.headers.get("authorization") !== `Bearer ${token}`) return NextResponse.json({ error: "non autorisé" }, { status: 401 });
-  const body = (await req.json().catch(() => null)) as { agentId?: unknown; status?: unknown; taskTitle?: unknown } | null;
-  if (!body || typeof body.agentId !== "string" || !VALID_STATUSES.includes(body.status as RealWorkStatus))
-    return NextResponse.json({ error: "agentId et status requis" }, { status: 400 });
-  const m = await upsertMission({
-    agentId: body.agentId,
-    status: body.status as RealWorkStatus,
-    taskTitle: typeof body.taskTitle === "string" ? body.taskTitle.slice(0, 200) : null,
-  });
-  return NextResponse.json(m);
+  const denied = requireAdmin(req);
+  if (denied) return denied;
+  const { store, missing, cfg } = await getContext();
+  if (!store || missing.length) return notConfigured(missing);
+  const body = await readJson<{ goal?: unknown; budgetUsd?: unknown }>(req);
+  const goal = typeof body?.goal === "string" ? body.goal.trim() : "";
+  if (goal.length < 10) return NextResponse.json({ error: "Décrivez l'objectif en une phrase au moins (10 caractères)." }, { status: 400 });
+  if (goal.length > 8000) return NextResponse.json({ error: "Objectif trop long (8000 caractères max)." }, { status: 400 });
+  const budget = Number(body?.budgetUsd ?? cfg.missionBudgetUsd);
+  if (!Number.isFinite(budget) || budget <= 0 || budget > cfg.dailyBudgetUsd)
+    return NextResponse.json({ error: `Budget invalide : entre 0 et ${cfg.dailyBudgetUsd} USD (plafond quotidien).` }, { status: 400 });
+  const m = await store.createMission(goal, budget, ceo().id);
+  return NextResponse.json(m, { status: 201 });
 }

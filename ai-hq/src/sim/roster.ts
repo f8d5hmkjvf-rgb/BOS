@@ -29,7 +29,7 @@ export const DEPARTMENTS: Record<DepartmentId, { label: string; color: number }>
 
 /** L'équipe : 29 agents IA. Ordre = ordre d'attribution des bureaux. */
 const TEAM: [string, string, DepartmentId, ("ceo" | "lead")?][] = [
-  ["Ada", "CEO", "direction", "ceo"],
+  ["Gaspard", "CEO", "direction", "ceo"],
   ["Linus", "CTO", "tech", "lead"],
   ["Grace", "Ingénieure backend", "tech"],
   ["Alan", "Ingénieur frontend", "tech"],

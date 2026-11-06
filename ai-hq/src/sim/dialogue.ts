@@ -39,7 +39,7 @@ export class TemplateDialogueProvider implements DialogueProvider {
     if (c.sameDepartment && task) pool.push(`Je bosse sur « ${task} ».`, `Tu peux relire « ${task} » quand tu as 5 min ?`);
     if (c.speakerWork.status === "blocked" && task) pool.push(`Je suis bloqué sur « ${task} »…`, "J'attends un retour pour avancer.");
     if (c.speakerWork.status === "awaiting_approval") pool.push("J'attends une validation humaine avant d'aller plus loin.");
-    if (c.meetingSoon) pool.push("Tu viens à la réunion d'Ada ?", "On a un point tout à l'heure, non ?");
+    if (c.meetingSoon) pool.push("Tu viens à la réunion de Gaspard ?", "On a un point tout à l'heure, non ?");
     if (c.speakerStress > 0.65) pool.push("Grosse journée…", "Je suis sous l'eau aujourd'hui.");
     if (c.affinity > 0.5) pool.push("On déjeune ensemble demain ?", "Haha, toujours aussi drôle !");
     if (c.affinity < -0.3) pool.push("Hmm. D'accord.", "On en reparle plus tard.");

@@ -73,6 +73,19 @@ export class Grid {
     }
   }
 
+  /** Obstacles dynamiques non nuls : [index de case, compteur] (sauvegarde). */
+  dynamicEntries(): [number, number][] {
+    const out: [number, number][] = [];
+    for (let i = 0; i < this.dynamic.length; i++) if (this.dynamic[i]) out.push([i, this.dynamic[i]]);
+    return out;
+  }
+
+  restoreDynamic(entries: [number, number][]): void {
+    this.dynamic.fill(0);
+    for (const [i, n] of entries) if (i >= 0 && i < this.dynamic.length) this.dynamic[i] = n;
+    this.version++;
+  }
+
   hasDynamicObstacle(x: number, y: number): boolean {
     return this.inBounds(x, y) && this.dynamic[this.idx(x, y)] > 0;
   }

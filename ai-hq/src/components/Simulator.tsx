@@ -5,10 +5,11 @@ import type { Application } from "pixi.js";
 import { ACTIVITIES } from "@/sim/activities";
 import { formatClock, World, type SimEvent, type Speed } from "@/sim/engine";
 import { DEPARTMENTS } from "@/sim/roster";
-import type { SimIntent } from "@/sim/actionGate";
 import type { OfficeRenderer } from "@/render/renderer";
 import { FallbackSaveAdapter, HttpSaveAdapter, LocalStorageSaveAdapter } from "@/persistence/adapters";
 import type { RealWorkStatus } from "@/sim/types";
+import { OrchestratorSync } from "./sync";
+import { AgentAiCard, ApprovalsPanel, ConfigBanner, CostsPanel, GaspardPanel, useStatus } from "./Orchestrator";
 
 const NEED_LABELS: [keyof World["agents"][number]["needs"], string, boolean][] = [
   ["energy", "Énergie", false],
@@ -41,7 +42,6 @@ interface UiState {
   clock: string;
   day: number;
   events: SimEvent[];
-  intents: SimIntent[];
   occupancy: { toilets: number; coffee: number; meeting: string | null };
 }
 
@@ -54,10 +54,14 @@ export default function Simulator() {
   const [speed, setSpeedState] = useState<Speed>(1);
   const [debug, setDebug] = useState(false);
   const [selected, setSelected] = useState<string | null>(null);
-  const [ui, setUi] = useState<UiState>({ clock: "--:--", day: 1, events: [], intents: [], occupancy: { toilets: 0, coffee: 0, meeting: null } });
+  const [ui, setUi] = useState<UiState>({ clock: "--:--", day: 1, events: [], occupancy: { toilets: 0, coffee: 0, meeting: null } });
   const [, force] = useState(0);
   const [toast, setToast] = useState<string | null>(null);
   const [live, setLive] = useState(false);
+  const [tab, setTab] = useState<"qg" | "gaspard" | "validations" | "couts">("gaspard");
+  const [orchTick, setOrchTick] = useState(0);
+  const status = useStatus(orchTick);
+  const sync = useRef(new OrchestratorSync(() => worldRef.current));
 
   const notify = (msg: string) => {
     setToast(msg);
@@ -89,7 +93,16 @@ export default function Simulator() {
         return;
       }
       host.current.appendChild(app.canvas);
-      const world = new World({ seed: 42, startSec: 8.9 * 3600 });
+      let world = new World({ seed: 42, startSec: 8.9 * 3600 });
+      // Reprise de la dernière sauvegarde automatique (PostgreSQL, sinon navigateur).
+      try {
+        const snap = await saver.current.load("autosave");
+        if (snap && snap.seed === 42) world = World.restore(snap);
+      } catch {
+        /* pas de sauvegarde exploitable : nouvelle journée */
+      }
+      if (disposed) return;
+      world.proposeIntents = false; // les actions réelles passent par l'orchestrateur et ses validations
       world.setSpeed(1);
       worldRef.current = world;
       // Accès lecture pour les tests end-to-end et le débogage depuis la console.
@@ -128,6 +141,7 @@ export default function Simulator() {
           const a = r.pick(pickWorld(), e.clientX - rect.left, e.clientY - rect.top);
           opts.current.selected = a?.id ?? null;
           setSelected(a?.id ?? null);
+          if (a) setTab("qg");
         }
         drag = null;
       });
@@ -163,7 +177,6 @@ export default function Simulator() {
         clock: formatClock(w.sec),
         day: w.day + 1,
         events: w.events.slice(-14).reverse(),
-        intents: w.gate.all().slice(-6).reverse(),
         occupancy: { toilets: stalls, coffee: coffeeQ, meeting: meeting ? `${meeting.title} (${meeting.status === "gathering" ? "on s'installe" : "en cours"})` : null },
       });
       force((n) => n + 1);
@@ -171,23 +184,45 @@ export default function Simulator() {
     return () => clearInterval(id);
   }, []);
 
-  // Synchronisation temps réel des missions IA réelles (lecture seule pour la simulation).
+  // Flux temps réel de l'orchestrateur → animations du QG (lecture seule pour la simulation).
   useEffect(() => {
-    const es = new EventSource("/api/missions/stream");
-    const apply = (m: { agentId: string; status: RealWorkStatus; taskTitle: string | null }) => worldRef.current?.setRealWork(m.agentId, { status: m.status, taskTitle: m.taskTitle });
-    es.addEventListener("snapshot", (e) => {
-      setLive(true);
-      for (const m of JSON.parse((e as MessageEvent).data)) apply(m);
+    const es = new EventSource("/api/events");
+    let bump: ReturnType<typeof setTimeout> | undefined;
+    const refresh = () => {
+      clearTimeout(bump);
+      bump = setTimeout(() => setOrchTick((n) => n + 1), 400);
+    };
+    const kinds = ["snapshot", "task.updated", "mission.created", "mission.updated", "meeting.started", "meeting.line", "meeting.ended", "consult.started", "consult.line", "consult.ended", "approval.created", "approval.decided", "usage"];
+    for (const k of kinds)
+      es.addEventListener(k, (e) => {
+        setLive(true);
+        sync.current.handle(k, JSON.parse((e as MessageEvent).data));
+        if (k !== "meeting.line" && k !== "consult.line") refresh();
+      });
+    es.addEventListener("config", () => {
+      setLive(false);
+      es.close();
     });
-    es.addEventListener("mission", (e) => apply(JSON.parse((e as MessageEvent).data)));
     es.onerror = () => setLive(false);
-    return () => es.close();
+    return () => {
+      clearTimeout(bump);
+      es.close();
+    };
+  }, []);
+
+  // Sauvegarde automatique complète du QG toutes les 60 s.
+  useEffect(() => {
+    const id = setInterval(() => {
+      const w = worldRef.current;
+      if (w) void saver.current.save("autosave", w.snapshot()).catch(() => undefined);
+    }, 60_000);
+    return () => clearInterval(id);
   }, []);
 
   // Raccourcis clavier.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if ((e.target as HTMLElement)?.tagName === "INPUT") return;
+      if (["INPUT", "TEXTAREA", "SELECT"].includes((e.target as HTMLElement)?.tagName)) return;
       if (e.key === " ") {
         e.preventDefault();
         setSpeed(worldRef.current?.speed === 0 ? 1 : 0);
@@ -223,28 +258,16 @@ export default function Simulator() {
     const snap = await saver.current.load("default");
     if (!snap) return notify("Aucune sauvegarde trouvée");
     const w = World.restore(snap);
+    w.proposeIntents = false;
     w.setSpeed(speed);
     worldRef.current = w;
+    sync.current.reapply();
     notify(`Chargé (${saver.current.name})`);
-  };
-
-  const authorize = async (i: SimIntent) => {
-    const w = worldRef.current;
-    if (!w) return;
-    if (!window.confirm(`Autoriser cette action réelle ?\n\n${i.summary}`)) return;
-    const res = await w.gate.authorize(i.id, async (intent) => {
-      const r = await fetch("/api/intents", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ id: intent.id, agentId: intent.agentId, kind: intent.kind, summary: intent.summary, humanConfirmed: true }),
-      });
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-    });
-    notify(res.status === "executed" ? "Action autorisée et transmise" : `Échec : ${res.error}`);
   };
 
   const w = worldRef.current;
   const agent = w && selected ? w.byId.get(selected) : null;
+  const nameOf = (id: string) => w?.byId.get(id)?.name ?? id;
 
   return (
     <div className="shell">
@@ -274,7 +297,7 @@ export default function Simulator() {
           <button onClick={save}>Sauvegarder</button>
           <button onClick={load}>Charger</button>
           <span className={`live ${live ? "ok" : ""}`} title="Flux temps réel des missions">
-            {live ? "● missions en direct" : "○ hors ligne"}
+            {live ? "● orchestrateur en direct" : "○ orchestrateur hors ligne"}
           </span>
         </div>
       </header>
@@ -282,6 +305,26 @@ export default function Simulator() {
       <main className="main">
         <div className="stage" ref={host} aria-label="Vue isométrique du bureau" />
         <aside className="side">
+          <nav className="tabs" role="tablist" aria-label="Panneaux">
+            {(
+              [
+                ["gaspard", "Gaspard"],
+                ["validations", "Validations"],
+                ["qg", "QG"],
+                ["couts", "Coûts"],
+              ] as const
+            ).map(([id, label]) => (
+              <button key={id} role="tab" aria-selected={tab === id} className={tab === id ? "on" : ""} onClick={() => setTab(id)}>
+                {label}
+              </button>
+            ))}
+          </nav>
+          <ConfigBanner status={status} />
+          {tab === "gaspard" && <GaspardPanel status={status} refreshKey={orchTick} nameOf={nameOf} onError={notify} />}
+          {tab === "validations" && <ApprovalsPanel refreshKey={orchTick} nameOf={nameOf} onError={notify} />}
+          {tab === "couts" && <CostsPanel status={status} refreshKey={orchTick} nameOf={nameOf} onError={notify} />}
+          {tab === "qg" && (
+            <>
           {agent ? (
             <section className="card">
               <div className="row between">
@@ -335,6 +378,7 @@ export default function Simulator() {
                   <p className="muted mono">{agent.history.slice(-4).join("  ")}</p>
                 </details>
               )}
+              <AgentAiCard id={agent.id} nameOf={nameOf} />
               <details>
                 <summary>Relations les plus proches</summary>
                 <ul className="plain">
@@ -362,31 +406,6 @@ export default function Simulator() {
             </section>
           )}
 
-          <section className="card">
-            <h3>Actions réelles en attente d&apos;autorisation</h3>
-            {ui.intents.length === 0 ? (
-              <p className="muted small">Aucune. La simulation ne déclenche jamais d&apos;action externe seule.</p>
-            ) : (
-              <ul className="plain intents">
-                {ui.intents.map((i) => (
-                  <li key={i.id}>
-                    <span>{i.summary}</span>
-                    {i.status === "pending" ? (
-                      <span className="row">
-                        <button onClick={() => authorize(i)}>Autoriser</button>
-                        <button className="link" onClick={() => w?.gate.reject(i.id)}>
-                          Refuser
-                        </button>
-                      </span>
-                    ) : (
-                      <em className="muted"> — {i.status}</em>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </section>
-
           <section className="card grow">
             <h3>Journal</h3>
             <ul className="plain feed" aria-live="polite">
@@ -397,6 +416,8 @@ export default function Simulator() {
               ))}
             </ul>
           </section>
+            </>
+          )}
         </aside>
       </main>
       {toast && (

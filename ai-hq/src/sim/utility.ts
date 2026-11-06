@@ -67,7 +67,7 @@ export function scoreActivities(u: UtilityInput): UtilityScore[] {
   // Travail : socle stable, renforcé par une mission réelle en cours.
   add(
     "work",
-    0.32 + 0.22 * p.conscientiousness + (busy ? 0.18 : 0) - 0.18 * n.fatigue - 0.1 * n.stress * (blocked ? 1 : 0),
+    0.32 + 0.22 * p.conscientiousness + (busy ? 0.3 : 0) - 0.18 * n.fatigue - 0.1 * n.stress * (blocked ? 1 : 0),
     busy ? "mission réelle en cours" : "travail courant",
   );
 

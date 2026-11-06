@@ -8,7 +8,7 @@ export function validateSnapshot(raw: unknown): WorldSnapshot {
     if (typeof s[k] !== "number" || !Number.isFinite(s[k])) throw new Error(`Sauvegarde invalide : ${k}`);
     return s[k] as number;
   };
-  if (s.version !== SNAPSHOT_VERSION) throw new Error(`Version de sauvegarde non supportée : ${String(s.version)}`);
+  if (s.version !== SNAPSHOT_VERSION && s.version !== 1) throw new Error(`Version de sauvegarde non supportée : ${String(s.version)}`);
   num("seed");
   num("tick");
   num("day");
@@ -21,5 +21,10 @@ export function validateSnapshot(raw: unknown): WorldSnapshot {
     for (const k of ["x", "y"]) if (o[k] !== null && typeof o[k] !== "number") throw new Error("Sauvegarde invalide : position");
   }
   if (!Array.isArray(s.relationships)) throw new Error("Sauvegarde invalide : relations");
+  if (s.full !== undefined) {
+    const f = s.full as Record<string, unknown>;
+    for (const k of ["agents", "resources", "queues", "dynamic", "occ", "meetings", "lastArrivalDay"])
+      if (!f || !Array.isArray(f[k])) throw new Error(`Sauvegarde invalide : état complet (${k})`);
+  }
   return s as unknown as WorldSnapshot;
 }

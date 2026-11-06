@@ -1,9 +1,9 @@
 import type { NeedEffect } from "./needs";
 import type { AnimationId, ResourceType } from "./types";
 
-export type ActivityId = "work" | "toilet" | "coffee" | "water" | "eat" | "rest" | "socialize" | "meeting" | "leave";
+export type ActivityId = "work" | "toilet" | "coffee" | "water" | "eat" | "rest" | "socialize" | "meeting" | "consult" | "leave";
 
-export type StepTarget = { type: ResourceType } | { ownDesk: true } | { meetingSeat: true };
+export type StepTarget = { type: ResourceType } | { ownDesk: true } | { meetingSeat: true } | { consultWith: true };
 
 export interface StepDef {
   target: StepTarget;
@@ -92,6 +92,12 @@ export const ACTIVITIES: Record<ActivityId, ActivityDef> = {
     label: "est en réunion",
     failCooldown: 30,
     steps: [{ target: { meetingSeat: true }, anim: "meeting", duration: "until_released" }],
+  },
+  consult: {
+    id: "consult",
+    label: "va consulter un collègue",
+    failCooldown: 30,
+    steps: [{ target: { consultWith: true }, anim: "talk", duration: "until_released" }],
   },
   leave: {
     id: "leave",

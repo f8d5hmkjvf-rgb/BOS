@@ -63,6 +63,30 @@ const ACTIVITY_RESOURCE: Partial<Record<ActivityId, ResourceType>> = {
   socialize: "coffee_spot",
 };
 
+/** Consultation réelle entre deux agents, mise en scène au poste du collègue. */
+export interface Consult {
+  id: string;
+  from: string;
+  to: string;
+  queue: { speaker: string; text: string }[];
+  playingUntil: number;
+  /** L'agent a commencé à se déplacer. */
+  started: boolean;
+  /** L'orchestrateur a terminé l'échange. */
+  ended: boolean;
+  endedAt: number;
+}
+
+/** Durée d'affichage d'une réplique IA (ticks), selon sa longueur. */
+export function lineTicks(text: string): number {
+  return Math.max(80, Math.min(400, Math.round(text.length * 0.6)));
+}
+
+export function bubbleText(text: string, max = 170): string {
+  const t = text.replace(/\s+/g, " ").trim();
+  return t.length > max ? `${t.slice(0, max - 1)}…` : t;
+}
+
 const SOCIAL_PERFORMING: AnimationId[] = ["coffee_drink", "drink_water", "eat", "idle", "rest"];
 
 /**
@@ -90,9 +114,13 @@ export class World {
   meetings: Meeting[] = [];
   events: SimEvent[] = [];
   speed: Speed = 1;
-  private acc = 0;
-  private lastArrivalDay: Int32Array;
-  private adHocToday = false;
+  acc = 0;
+  lastArrivalDay: Int32Array;
+  adHocToday = false;
+  /** Consultations réelles entre agents (orchestrateur) en cours de mise en scène. */
+  consults: Record<string, Consult> = {};
+  /** Propose des intentions ActionGate depuis la simulation (désactivé quand l'orchestrateur réel est branché). */
+  proposeIntents = true;
   stats: WorldStats = { pathfinds: 0, pathFailures: 0, squeezes: 0, recoveries: 0, conversations: 0, queueAbandons: 0, maxStepMs: 0 };
 
   constructor(opts: WorldOptions = {}) {
@@ -165,6 +193,7 @@ export class World {
     this.rm.update(this.tick);
     this.rm.drainEvents();
     this.updateMeetings();
+    this.updateConsults();
     for (const a of this.agents) this.updateAgent(a);
     if (this.tick % SOCIAL_EVERY === 0) this.updateSocial();
     if (this.tick % NEEDS_EVERY === 0) this.updateNeeds();
@@ -341,7 +370,7 @@ export class World {
       if (a.mode === "conversation") a.bubble = { text: a.pendingLine.text, until: a.pendingLine.until };
       a.pendingLine = null;
     }
-    if (a.mode !== "off_duty" && (this.tick + a.index) % 20 === 0) this.maybeEscalate(a);
+    if (this.proposeIntents && a.mode !== "off_duty" && (this.tick + a.index) % 20 === 0) this.maybeEscalate(a);
     switch (a.mode) {
       case "off_duty":
         return this.updateOffDuty(a);
@@ -378,9 +407,19 @@ export class World {
     }
   }
 
+  /** Un vrai travail (mission, réunion IA, consultation) retient ou fait venir l'agent au bureau. */
+  mustBePresent(a: Agent): boolean {
+    if (a.realWork.status === "busy") return true;
+    if (this.meetings.some((m) => m.external && m.status !== "done" && m.status !== "cancelled" && m.participants.includes(a.id))) return true;
+    return Object.values(this.consults).some((c) => c.from === a.id || c.to === a.id);
+  }
+
   private updateOffDuty(a: Agent): void {
-    if (this.lastArrivalDay[a.index] === this.day) return;
-    if (this.sec < a.arrivalSec || this.hour >= a.leaveHour) return;
+    const forced = this.mustBePresent(a);
+    if (!forced) {
+      if (this.lastArrivalDay[a.index] === this.day) return;
+      if (this.sec < a.arrivalSec || this.hour >= a.leaveHour) return;
+    }
     const exit = this.map.exitTile;
     if (!this.ownTile(a, exit)) return; // l'entrée est occupée : on attend dehors
     this.lastArrivalDay[a.index] = this.day;
@@ -392,7 +431,7 @@ export class World {
     a.setMode("arriving", this.tick);
     const desk = this.rm.get(`desk:${a.id}`);
     this.navigate(a, desk.def.tile);
-    this.log("activity", `${a.name} arrive au bureau.`, [a.id]);
+    this.log("activity", forced ? `${a.name} arrive au bureau pour une mission.` : `${a.name} arrive au bureau.`, [a.id]);
   }
 
   private meetingFor(a: Agent): Meeting | null {
@@ -434,8 +473,14 @@ export class World {
     return best;
   }
 
+  private pendingConsult(a: Agent): Consult | null {
+    for (const c of Object.values(this.consults)) if (c.from === a.id && !c.started) return c;
+    return null;
+  }
+
   private decide(a: Agent): void {
     if (this.tick < a.nextDecisionTick) return;
+    if (this.pendingConsult(a) && a.task?.activity !== "consult") return this.startTask(a, "consult");
     const p = a.profile;
     const distance: Partial<Record<ActivityId, number>> = { work: this.distanceTo(a, "desk") };
     const queue: Partial<Record<ActivityId, number>> = {};
@@ -453,7 +498,7 @@ export class World {
       habits: p.habits,
       realWork: a.realWork,
       hour: this.hour,
-      leaveHour: a.leaveHour,
+      leaveHour: this.mustBePresent(a) ? Infinity : a.leaveHour,
       current: a.task?.activity ?? null,
       recentCoffees: a.recentCoffees,
       meetingPending: meeting !== null && a.task?.activity !== "meeting",
@@ -510,6 +555,7 @@ export class World {
     if (!t) return;
     const step = ACTIVITIES[t.activity].steps[t.step];
     if (t.phase === "performing" && step?.privacy) this.closePrivacy(a, t);
+    if (t.activity === "consult") for (const c of Object.values(this.consults)) if (c.from === a.id) c.started = false;
     if (t.resourceId) {
       this.rm.removeFromQueue(t.resourceId, a.id, false);
       this.rm.release(t.resourceId, a.id, this.tick);
@@ -581,6 +627,12 @@ export class World {
       this.rm.reserve(id, a.id, this.tick, 1e9);
       t.resourceId = id;
       goal = this.rm.get(id).def.tile;
+    } else if ("consultWith" in step.target) {
+      const c = this.pendingConsult(a) ?? Object.values(this.consults).find((x) => x.from === a.id) ?? null;
+      if (!c) return this.failTask(a, "consultation terminée");
+      c.started = true;
+      goal = this.consultSpot(a, c);
+      if (!goal) return this.failTask(a, "collègue injoignable");
     } else if ("meetingSeat" in step.target) {
       const m = this.meetingFor(a);
       if (!m) return this.failTask(a, "réunion terminée");
@@ -664,6 +716,8 @@ export class World {
     if (this.tick % 10 === a.index % 10) {
       const preemptible = t.activity === "work" || t.activity === "rest" || t.activity === "socialize" || t.activity === "water" || (t.activity === "coffee" && t.phase !== "performing");
       if (preemptible && this.meetingFor(a)) return this.startTask(a, "meeting");
+      if (preemptible && t.activity !== "consult" && this.pendingConsult(a)) return this.startTask(a, "consult");
+      if (a.realWork.status === "busy" && (t.activity === "rest" || t.activity === "socialize")) return this.startTask(a, "work");
       if (a.needs.bladder > 0.96 && t.activity !== "toilet" && !(t.phase === "performing" && step.privacy)) return this.startTask(a, "toilet");
     }
     switch (t.phase) {
@@ -722,6 +776,12 @@ export class World {
         }
         if (t.activity === "meeting") {
           a.setAnim("meeting", this.tick);
+          return;
+        }
+        if (t.activity === "consult") {
+          const c = Object.values(this.consults).find((x) => x.from === a.id);
+          const other = c ? this.byId.get(c.to) : null;
+          if (other && !other.hidden) a.dir = directionFrom(other.tile.x - a.tile.x, other.tile.y - a.tile.y, a.dir);
           return;
         }
         if (this.tick >= t.performUntil) this.completeStep(a);
@@ -873,6 +933,127 @@ export class World {
     }
   }
 
+  // ---------------------------------------------------------------- Orchestrateur réel → animations
+
+  /** Gaspard convoque une vraie réunion : les participants quittent leur bureau pour la salle Atlas. */
+  convokeMeeting(id: string, title: string, participants: string[]): void {
+    if (this.meetings.some((m) => m.id === id)) return;
+    for (const m of this.meetings) {
+      if (m.external || m.status === "done" || m.status === "cancelled") continue;
+      if (m.status === "gathering" || m.status === "in_progress") this.finishMeeting(m, "écourtée : Gaspard a besoin de la salle");
+      else if (m.startSec - this.sec < 3600) m.status = "cancelled";
+    }
+    const known = participants.filter((p) => this.byId.has(p));
+    this.meetings.push({
+      id,
+      title,
+      organizer: known[0] ?? participants[0],
+      participants: known,
+      startSec: this.sec,
+      durationSec: 1e9,
+      status: "gathering",
+      seats: {},
+      startedAtSec: null,
+      speaker: null,
+      external: true,
+      queue: [],
+      playingUntil: 0,
+      ended: false,
+    });
+    this.log("meeting", `${this.byId.get(known[0])?.name ?? "Gaspard"} convoque « ${title} » en salle Atlas (${known.map((p) => this.byId.get(p)!.name).join(", ")}).`, known);
+  }
+
+  meetingLine(id: string, speaker: string, text: string): void {
+    this.meetings.find((m) => m.id === id)?.queue?.push({ speaker, text });
+  }
+
+  endExternalMeeting(id: string): void {
+    const m = this.meetings.find((x) => x.id === id);
+    if (m) m.ended = true;
+  }
+
+  /** Un agent va réellement consulter un collègue : il se rend à son poste et ils échangent. */
+  startConsult(id: string, from: string, to: string): void {
+    if (this.consults[id] || !this.byId.has(from) || !this.byId.has(to)) return;
+    this.consults[id] = { id, from, to, queue: [], playingUntil: 0, started: false, ended: false, endedAt: 0 };
+  }
+
+  consultLine(id: string, speaker: string, text: string): void {
+    this.consults[id]?.queue.push({ speaker, text });
+  }
+
+  endConsult(id: string): void {
+    const c = this.consults[id];
+    if (c) {
+      c.ended = true;
+      c.endedAt = this.tick;
+    }
+  }
+
+  private consultSpot(a: Agent, c: Consult): Tile | null {
+    const target = this.byId.get(c.to)!;
+    const base = target.mode !== "off_duty" && !target.hidden ? target.tile : this.rm.get(`desk:${target.id}`).def.tile;
+    let best: Tile | null = null;
+    let bestD = Infinity;
+    for (let dy = -1; dy <= 1; dy++)
+      for (let dx = -1; dx <= 1; dx++) {
+        if (!dx && !dy) continue;
+        const x = base.x + dx;
+        const y = base.y + dy;
+        if (!this.grid.isWalkable(x, y)) continue;
+        const o = this.occupantAt(x, y);
+        if (o && o !== a) continue;
+        const d = Math.hypot(x - a.tile.x, y - a.tile.y);
+        if (d < bestD) {
+          bestD = d;
+          best = { x, y };
+        }
+      }
+    return best;
+  }
+
+  private updateConsults(): void {
+    for (const c of Object.values(this.consults)) {
+      const a = this.byId.get(c.from)!;
+      const b = this.byId.get(c.to)!;
+      const arrived = a.mode === "task" && a.task?.activity === "consult" && a.task.phase === "performing";
+      // Si l'agent n'arrive pas (absent, bloqué), on joue quand même l'échange réel.
+      const stale = c.ended && this.tick - c.endedAt > 600;
+      if (!arrived && !stale) continue;
+      if (b.mode === "task" && b.task?.activity === "work" && b.task.phase === "performing" && !b.hidden) {
+        b.setAnim("talk", this.tick);
+        b.dir = directionFrom(a.tile.x - b.tile.x, a.tile.y - b.tile.y, b.dir);
+      }
+      if (this.tick < c.playingUntil) continue;
+      const next = c.queue.shift();
+      if (next) {
+        const who = this.byId.get(next.speaker) ?? a;
+        const dur = lineTicks(next.text);
+        who.say(bubbleText(next.text), this.tick, dur);
+        c.playingUntil = this.tick + dur;
+        this.log("social", `${who.name} (consultation) : « ${bubbleText(next.text, 400)} »`, [c.from, c.to]);
+        continue;
+      }
+      if (!c.ended) continue;
+      delete this.consults[c.id];
+      if (arrived) this.completeStep(a);
+      if (b.anim === "talk" && b.task?.activity === "work") b.setAnim("work", this.tick);
+    }
+  }
+
+  private finishMeeting(m: Meeting, why: string): void {
+    const seated = this.seatedIn(m);
+    m.status = "done";
+    m.speaker = null;
+    for (const a of seated) this.completeStep(a);
+    for (const [aid, seat] of Object.entries(m.seats)) this.rm.release(seat, aid, this.tick);
+    for (const id of m.participants) {
+      const a = this.byId.get(id)!;
+      a.needs = applyEffect(a.needs, { social: -0.25, stress: 0.03 });
+    }
+    this.log("meeting", `« ${m.title} » est terminée${why ? ` (${why})` : ""}.`, m.participants);
+  }
+
   // ---------------------------------------------------------------- Réunions
 
   private meetingInfo() {
@@ -888,6 +1069,10 @@ export class World {
   private updateMeetings(): void {
     for (const m of this.meetings) {
       if (m.status === "scheduled" && this.sec >= m.startSec - GATHER_LEAD_SEC) {
+        if (this.meetings.some((o) => o.external && o.status !== "done" && o.status !== "cancelled")) {
+          m.status = "cancelled"; // la salle est prise par une réunion réelle
+          continue;
+        }
         const present = m.participants.filter((id) => this.byId.get(id)!.mode !== "off_duty");
         if (present.length < 2 && this.sec >= m.startSec) {
           m.status = "cancelled";
@@ -896,34 +1081,34 @@ export class World {
         }
         if (present.length < 2) continue;
         m.status = "gathering";
-        this.log("meeting", `Ada convoque « ${m.title} » en salle Atlas (${m.participants.length} participants).`, m.participants);
+        this.log("meeting", `${this.byId.get(m.organizer)?.name ?? "Le CEO"} convoque « ${m.title} » en salle Atlas (${m.participants.length} participants).`, m.participants);
       } else if (m.status === "gathering") {
         const seated = this.seatedIn(m);
         const present = m.participants.filter((id) => this.byId.get(id)!.mode !== "off_duty").length;
         const organizerIn = seated.some((a) => a.id === m.organizer);
-        if ((organizerIn && seated.length >= Math.ceil(present * 0.6)) || this.sec >= m.startSec + START_GRACE_SEC) {
+        const grace = m.external ? 240 : START_GRACE_SEC;
+        if ((organizerIn && seated.length >= Math.ceil(present * 0.6)) || this.sec >= m.startSec + grace) {
           m.status = "in_progress";
           m.startedAtSec = this.sec;
           this.log("meeting", `« ${m.title} » commence (${seated.length}/${m.participants.length} présents).`, m.participants);
         }
       } else if (m.status === "in_progress") {
-        const seated = this.seatedIn(m);
-        if (this.tick % 45 === 0 && seated.length > 0) {
-          const s = this.rng.pick(seated);
-          m.speaker = s.id;
-          s.say(this.rng.pick(MEETING_LINES), this.tick, 40);
+        if (m.external) {
+          // Répliques réellement générées par l'orchestrateur, jouées dans l'ordre.
+          if (this.tick < (m.playingUntil ?? 0)) continue;
+          const next = m.queue?.shift();
+          if (next) {
+            const who = this.byId.get(next.speaker);
+            const dur = lineTicks(next.text);
+            who?.say(bubbleText(next.text), this.tick, dur);
+            m.speaker = next.speaker;
+            m.playingUntil = this.tick + dur;
+            this.log("meeting", `${who?.name ?? next.speaker} : « ${bubbleText(next.text, 400)} »`, [next.speaker]);
+          } else if (m.ended) this.finishMeeting(m, "");
+          else m.speaker = null;
+          continue;
         }
-        if (this.sec >= (m.startedAtSec ?? m.startSec) + m.durationSec) {
-          m.status = "done";
-          m.speaker = null;
-          for (const a of seated) this.completeStep(a);
-          for (const [aid, seat] of Object.entries(m.seats)) this.rm.release(seat, aid, this.tick);
-          for (const id of m.participants) {
-            const a = this.byId.get(id)!;
-            a.needs = applyEffect(a.needs, { social: -0.25, stress: 0.03 });
-          }
-          this.log("meeting", `« ${m.title} » est terminée.`, m.participants);
-        }
+        if (this.sec >= (m.startedAtSec ?? m.startSec) + m.durationSec) this.finishMeeting(m, "");
       }
     }
   }
@@ -943,7 +1128,7 @@ export class World {
       if (clash) continue;
       this.meetings.push(m);
       this.adHocToday = true;
-      this.log("meeting", `Ada sent l'équipe ${DEPARTMENTS[d].label} sous tension et organise « ${m.title} ».`, [ceo.id]);
+      this.log("meeting", `${ceo.name} sent l'équipe ${DEPARTMENTS[d].label} sous tension et organise « ${m.title} ».`, [ceo.id]);
       return;
     }
   }
@@ -1027,11 +1212,79 @@ export class World {
         leaveHour: a.leaveHour,
       })),
       relationships: rels,
+      full: encodeInf(this.fullState()) as FullState,
     };
   }
 
+  /** État complet (tâches en cours, files, réservations, conversations, réunions…) pour une reprise exacte. */
+  private fullState(): FullState {
+    const queues: [string, string[]][] = [];
+    const seen = new Set<string>();
+    for (const r of this.rm.byId.values()) {
+      const key = r.def.queueKey ?? r.def.id;
+      if (seen.has(key) || !r.queue.length) continue;
+      seen.add(key);
+      queues.push([key, [...r.queue]]);
+    }
+    const occ: [number, number][] = [];
+    for (let i = 0; i < this.occ.length; i++) if (this.occ[i]) occ.push([i, this.occ[i]]);
+    return structuredClone({
+      agents: this.agents.map((a) => {
+        const o: Record<string, unknown> = { id: a.id };
+        for (const k of AGENT_KEYS) o[k] = (a as unknown as Record<string, unknown>)[k];
+        o.cooldowns = [...a.cooldowns.entries()];
+        return o;
+      }),
+      resources: [...this.rm.byId.values()].filter((r) => r.occupant || r.reservedBy).map((r) => [r.def.id, r.occupant, r.reservedBy, r.reservedUntil] as [string, string | null, string | null, number]),
+      queues,
+      dynamic: this.grid.dynamicEntries(),
+      occ,
+      meetings: this.meetings,
+      consults: this.consults,
+      lastArrivalDay: [...this.lastArrivalDay],
+      adHocToday: this.adHocToday,
+      stats: this.stats,
+      events: this.events.slice(-150),
+    });
+  }
+
+  private applyFull(f: FullState): void {
+    for (const s of f.agents) {
+      const a = this.byId.get(String(s.id ?? ""));
+      if (!a) continue;
+      for (const k of AGENT_KEYS) if (k in s) (a as unknown as Record<string, unknown>)[k] = s[k];
+      a.cooldowns = new Map((s.cooldowns as [ActivityId, number][]) ?? []);
+    }
+    for (const r of this.rm.byId.values()) {
+      r.occupant = null;
+      r.reservedBy = null;
+      r.reservedUntil = 0;
+      r.queue.length = 0;
+    }
+    for (const [id, occupant, reservedBy, until] of f.resources) {
+      const r = this.rm.byId.get(id);
+      if (!r) continue;
+      r.occupant = occupant;
+      r.reservedBy = reservedBy;
+      r.reservedUntil = until;
+    }
+    for (const [key, ids] of f.queues) {
+      const r = [...this.rm.byId.values()].find((x) => (x.def.queueKey ?? x.def.id) === key);
+      if (r) r.queue.push(...ids);
+    }
+    this.grid.restoreDynamic(f.dynamic);
+    this.occ.fill(0);
+    for (const [i, v] of f.occ) if (i >= 0 && i < this.occ.length) this.occ[i] = v;
+    this.meetings = f.meetings;
+    this.consults = f.consults ?? {};
+    f.lastArrivalDay.forEach((d, i) => (this.lastArrivalDay[i] = d));
+    this.adHocToday = f.adHocToday;
+    this.stats = f.stats;
+    this.events = f.events ?? [];
+  }
+
   static restore(snap: WorldSnapshot, opts: Omit<WorldOptions, "seed" | "startSec"> = {}): World {
-    if (snap.version !== SNAPSHOT_VERSION) throw new Error(`Version de sauvegarde non supportée : ${snap.version}`);
+    if (snap.version !== SNAPSHOT_VERSION && snap.version !== 1) throw new Error(`Version de sauvegarde non supportée : ${snap.version}`);
     const w = new World({ ...opts, seed: snap.seed, startSec: snap.sec });
     w.tick = snap.tick;
     w.day = snap.day;
@@ -1040,6 +1293,13 @@ export class World {
     // Les réunions déjà passées ne sont pas rejouées.
     for (const m of w.meetings) if (m.startSec + m.durationSec < w.sec) m.status = "done";
     for (const [i, j, aff, fam, last] of snap.relationships) w.rel.set(i, j, { affinity: aff, familiarity: fam, lastTalkTick: last });
+    if (snap.full) {
+      w.applyFull(decodeInf(snap.full) as FullState);
+      // Contrôle d'intégrité : toute position invalide est récupérée proprement.
+      for (const a of w.agents) if (a.mode !== "off_duty" && !w.grid.isStaticWalkable(a.tile.x, a.tile.y)) w.recover(a, "position sauvegardée invalide");
+      w.log("system", "Simulation restaurée à l'identique (tâches, files, réunions et conversations).", []);
+      return w;
+    }
     for (const s of snap.agents) {
       const a = w.byId.get(s.id);
       if (!a) continue;
@@ -1069,7 +1329,43 @@ export class World {
   }
 }
 
-export const SNAPSHOT_VERSION = 1;
+export const SNAPSHOT_VERSION = 2;
+
+/** Champs d'agent sauvegardés tels quels (tout l'état mutable). */
+const AGENT_KEYS = [
+  "pos", "prevPos", "tile", "claimed", "dir", "speed", "path", "destination", "needs", "mode", "task", "suspended",
+  "conversationWith", "conversationUntil", "anim", "animStart", "holding", "hidden", "squeezing", "waitTicks", "stuckTicks",
+  "nextDecisionTick", "recentCoffees", "arrivalSec", "leaveHour", "decision", "bubble", "pendingLine", "realWork", "escalatedFor", "history",
+] as const;
+
+export interface FullState {
+  agents: Record<string, unknown>[];
+  resources: [string, string | null, string | null, number][];
+  queues: [string, string[]][];
+  dynamic: [number, number][];
+  occ: [number, number][];
+  meetings: Meeting[];
+  consults: Record<string, Consult>;
+  lastArrivalDay: number[];
+  adHocToday: boolean;
+  stats: WorldStats;
+  events: SimEvent[];
+}
+
+/** JSON ne sait pas représenter ±Infinity : encodage explicite. */
+export function encodeInf(v: unknown): unknown {
+  if (typeof v === "number") return v === Infinity ? "__inf__" : v === -Infinity ? "__-inf__" : v;
+  if (Array.isArray(v)) return v.map(encodeInf);
+  if (v && typeof v === "object") return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, encodeInf(x)]));
+  return v;
+}
+export function decodeInf(v: unknown): unknown {
+  if (v === "__inf__") return Infinity;
+  if (v === "__-inf__") return -Infinity;
+  if (Array.isArray(v)) return v.map(decodeInf);
+  if (v && typeof v === "object") return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, decodeInf(x)]));
+  return v;
+}
 
 export interface WorldSnapshot {
   version: number;
@@ -1091,18 +1387,10 @@ export interface WorldSnapshot {
     leaveHour: number;
   }[];
   relationships: [number, number, number, number, number][];
+  /** v2 : état complet pour une reprise exacte. */
+  full?: FullState;
 }
 
-const MEETING_LINES = [
-  "Point sur les objectifs de la semaine.",
-  "Qui prend ce sujet ?",
-  "On a un risque sur le planning.",
-  "Bonne nouvelle : les chiffres montent.",
-  "Je propose qu'on priorise ça.",
-  "Des questions ?",
-  "On valide et on avance.",
-  "J'ai besoin d'un coup de main là-dessus.",
-];
 
 export function formatClock(sec: number): string {
   const h = Math.floor(sec / 3600) % 24;

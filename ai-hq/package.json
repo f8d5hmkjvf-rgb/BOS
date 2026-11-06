@@ -2,7 +2,7 @@
   "name": "ai-hq",
   "version": "0.1.0",
   "private": true,
-  "description": "AI HQ — simulateur d'entreprise vivante : 29 agents IA autonomes dans un bureau isométrique.",
+  "description": "AI HQ — entreprise d'agents IA : orchestrateur multi-agents (CEO Gaspard) sur l'API Anthropic + QG isométrique vivant de 29 agents.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,15 +10,20 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "bench": "tsx scripts/bench.ts"
+    "bench": "tsx scripts/bench.ts",
+    "worker": "tsx --env-file-if-exists=.env.local scripts/worker.ts",
+    "check:anthropic": "tsx --env-file-if-exists=.env.local scripts/check-anthropic.ts",
+    "test:db": "TEST_DATABASE_URL=${TEST_DATABASE_URL:-postgres://postgres@localhost:5432/aihq_test} vitest run"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^1.6.0",
     "next": "15.5.28",
     "pg": "8.16.3",
     "pixi.js": "8.9.2",
     "react": "19.1.10",
     "react-dom": "19.1.10",
-    "server-only": "^0.0.1"
+    "server-only": "^0.0.1",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@types/node": "22.15.30",
