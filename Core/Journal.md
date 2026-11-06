@@ -24,3 +24,4 @@
 
 ## 2026-11-06
 - Robin : « je me disperse trop sur mes business, ça devient ennuyant, il y a toujours un truc qui bloque ». Méta-problème dispersion noté dans Diagnosis.md.
+- Robin a une agence web + plusieurs projets lancés jamais aboutis. Pattern démarrer/abandonner confirmé. À creuser : état de l'agence, moment d'abandon.
