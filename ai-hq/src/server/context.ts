@@ -33,3 +33,14 @@ export async function readJson<T>(req: Request): Promise<T | null> {
     return null;
   }
 }
+
+/** URL publique de l'application (redirections OAuth). AIHQ_PUBLIC_URL prime sur les en-têtes. */
+export function publicUrl(req: Request): string {
+  if (process.env.AIHQ_PUBLIC_URL) return process.env.AIHQ_PUBLIC_URL.replace(/\/+$/, "");
+  const h = req.headers;
+  const host = h.get("x-forwarded-host") ?? h.get("host") ?? "localhost:3000";
+  const proto = h.get("x-forwarded-proto") ?? (host.startsWith("localhost") || host.startsWith("127.") ? "http" : "https");
+  return `${proto}://${host}`;
+}
+
+export const googleRedirectUri = (req: Request) => `${publicUrl(req)}/api/connectors/google/callback`;

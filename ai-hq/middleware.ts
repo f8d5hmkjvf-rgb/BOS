@@ -14,7 +14,8 @@ export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   if (PUBLIC.some((p) => pathname === p)) return NextResponse.next();
   const auth = authSettings();
-  const isApi = pathname.startsWith("/api/");
+  // Le retour OAuth Google est une navigation du navigateur : redirection vers /login plutôt qu'un JSON.
+  const isApi = pathname.startsWith("/api/") && pathname !== "/api/connectors/google/callback";
   const deny = (status: number, error: string) =>
     isApi ? NextResponse.json({ error }, { status }) : NextResponse.redirect(new URL(`/login?next=${encodeURIComponent(pathname)}`, req.url));
 
@@ -28,8 +29,14 @@ export async function middleware(req: NextRequest) {
 
   if (!["GET", "HEAD", "OPTIONS"].includes(req.method)) {
     const origin = req.headers.get("origin");
-    const host = req.headers.get("x-forwarded-host") ?? req.headers.get("host");
-    if (!origin || new URL(origin).host !== host) return NextResponse.json({ error: "origine refusée" }, { status: 403 });
+    const allowed = new Set([req.headers.get("host"), req.headers.get("x-forwarded-host"), process.env.AIHQ_PUBLIC_URL ? new URL(process.env.AIHQ_PUBLIC_URL).host : null].filter(Boolean));
+    let originHost: string | null = null;
+    try {
+      originHost = origin ? new URL(origin).host : null;
+    } catch {
+      originHost = null;
+    }
+    if (!originHost || !allowed.has(originHost)) return NextResponse.json({ error: "origine refusée" }, { status: 403 });
   }
   return NextResponse.next();
 }

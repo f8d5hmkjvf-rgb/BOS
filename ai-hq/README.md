@@ -9,15 +9,21 @@ Deux moteurs, strictement séparés :
 
 ## Démarrage
 
+**Sur ton ordinateur, sans serveur ni domaine (recommandé)** : suis `docs/HEBERGEMENT.md`. En résumé :
+
 ```bash
-npm install
-cp .env.example .env.local      # renseigner DATABASE_URL et ANTHROPIC_API_KEY
-npm run check:anthropic         # vérifie la clé avec un appel réel (< 0,01 $)
-npm run dev                     # interface + API : http://localhost:3000
-npm run worker                  # dans un 2e terminal : exécute les missions
+cp .env.example .env            # mots de passe, clés (openssl rand…), ANTHROPIC_API_KEY
+docker compose up -d --build    # PostgreSQL + application + worker
+# → http://localhost:3000 ; accès téléphone en HTTPS privé via Tailscale
 ```
 
-Le schéma PostgreSQL (`db/schema.sql`) s'applique automatiquement au démarrage. Tu peux lancer plusieurs workers en parallèle : les tâches sont réservées avec `FOR UPDATE SKIP LOCKED` et un bail renouvelé.
+**Pour développer** : `npm install`, puis `.env.local` avec `DATABASE_URL` et `ANTHROPIC_API_KEY`, puis `npm run dev` et `npm run worker` dans deux terminaux. `npm run check:anthropic` vérifie la clé par un appel réel (moins de 0,01 $).
+
+| Guide | Contenu |
+|---|---|
+| `docs/HEBERGEMENT.md` | Mise en ligne pas à pas : ordinateur + Tailscale (0 €), puis serveur optionnel |
+| `docs/GOOGLE.md` | Projet Google Cloud, écran de consentement OAuth, Gmail, Google Sheets direct |
+| `docs/N8N.md` | n8n Cloud ou auto-hébergé, webhooks signés, workflow Google Sheets fourni |
 
 ## Ce que fait Gaspard
 
@@ -39,7 +45,7 @@ Chaque agent a une personnalité, des compétences, des instructions système, u
 | Clé API | Lue côté serveur uniquement, jamais envoyée au navigateur. L'URL de l'API est explicite (`AIHQ_ANTHROPIC_BASE_URL`, par défaut `https://api.anthropic.com`). |
 | Actions sensibles | `send_webhook` crée une demande de validation. Rien ne part tant que tu n'as pas cliqué « Autoriser » et confirmé. La décision est unique et verrouillée en base, et l'agent reprend ensuite exactement où il en était. |
 | Outils | Liste blanche par agent ; un outil non autorisé est refusé et l'agent en est informé. |
-| Budget | 3 $ maximum par mission (plafond `AIHQ_MAX_MISSION_BUDGET_USD`, même quand on relève le budget à la main) et 20 $ par jour. Vérifié **avant** chaque appel (pire cas). Un dépassement met la mission en pause sans échec ; tu peux reprendre en relevant le budget. Chaque appel est tracé dans `api_usage` (tokens, cache, recherches web, coût). |
+| Budget | Avertissement à 80 % (mission et journée), blocage des appels au plafond. 3 $ maximum par mission (plafond `AIHQ_MAX_MISSION_BUDGET_USD`, même quand on relève le budget à la main) et 20 $ par jour. Vérifié **avant** chaque appel (pire cas). Un dépassement met la mission en pause sans échec ; tu peux reprendre en relevant le budget. Chaque appel est tracé dans `api_usage` (tokens, cache, recherches web, coût). |
 | Erreurs | Les erreurs 429, 5xx et réseau sont retentées avec un backoff exponentiel. Les erreurs 400, 401, un refus du modèle ou un budget dépassé arrêtent la tâche sans réessai, avec un message clair. Si un worker meurt, son bail expire et un autre worker reprend la tâche. |
 | Accès | Mot de passe obligatoire en production (`AIHQ_ADMIN_PASSWORD`), session signée (cookie `httpOnly`, `Secure`, 7 jours), 5 tentatives par 15 min et par IP, protection CSRF par vérification de l'origine, en-têtes de sécurité (CSP stricte, HSTS, anti-iframe). Jeton d'API optionnel (`AIHQ_ADMIN_TOKEN`) pour n8n ou tes scripts. Sans mot de passe configuré, le serveur de production refuse tout accès. |
 | Repli | `fallbacks: "default"` (beta `server-side-fallback-2026-07-01`) : si le modèle décline une requête, l'API la rejoue sur le modèle de repli recommandé. |
@@ -62,34 +68,43 @@ Les besoins physiologiques restent prioritaires (une vessie pleine passe avant t
 
 **Sauvegarde complète** : l'état du QG est sauvegardé dans PostgreSQL toutes les 60 s (ou dans le navigateur, faute de base), puis rechargé au démarrage. Il couvre les positions, les besoins, les relations, les tâches en cours, les files d'attente, les réservations, les conversations, les réunions et les consultations. La reprise est exacte : sauvegarder, recharger et continuer donne la même suite qu'une simulation ininterrompue (testé). Missions, tâches, conversations, validations et coûts vivent dans PostgreSQL.
 
-## Intégrations : n8n, Slack, Gmail
+## Premier workflow : AI HQ → Gaspard → agents → Google Sheets
 
-Les agents n'agissent jamais directement : chaque envoi crée une demande dans l'onglet **Validations**, et rien ne part tant que tu n'as pas cliqué « Autoriser ». Les demandes mal formées (adresse invalide, JSON cassé, domaine interdit) sont renvoyées à l'agent pour correction avant de te solliciter. Chaque intégration n'apparaît que si elle est configurée, et uniquement pour les rôles autorisés.
+1. Tu confies une mission à Gaspard, avec une priorité.
+2. Il planifie, délègue et vérifie ; les agents exécutent les tâches autorisées.
+3. À chaque changement (statut, progression, coût, résultat vérifié), la mission entre dans une file de synchronisation : **une entrée par mission**, version croissante, regroupée sur 3 secondes.
+4. Le worker pousse la dernière version par **une seule voie**, choisie dans Paramètres → Google Sheets :
 
-| Intégration | Configuration | Ce que l'agent peut demander | Rôles autorisés |
-|---|---|---|---|
-| **Slack** | Slack → *Incoming Webhooks* → `AIHQ_SLACK_WEBHOOK_URL` | publier un message (`send_slack_message`) | direction, marketing, ventes, ops, produit |
-| **n8n** | Nœud *Webhook* (POST) → `AIHQ_N8N_WEBHOOK_URL`, et vérifier l'en-tête `x-aihq-secret` = `AIHQ_N8N_SECRET` | déclencher un workflow avec des données JSON (`trigger_n8n_workflow`) : `{source, missionId, workflow, data}` | direction, tech, data, ops, ventes, marketing |
-| **Gmail** | Google Cloud → API Gmail + identifiants OAuth (scope `gmail.compose`) → `GMAIL_CLIENT_ID`, `GMAIL_CLIENT_SECRET`, `GMAIL_REFRESH_TOKEN`, `GMAIL_SENDER` | préparer un e-mail (`send_email`). Crée un **brouillon** par défaut (tu l'envoies depuis Gmail) ; envoi direct seulement avec `GMAIL_MODE=send`. Domaines limitables par `GMAIL_ALLOWED_DOMAINS`. | direction, ventes, marketing, ops |
+| Voie | Quand | Statut affiché |
+|---|---|---|
+| **Démonstration** (par défaut) | aucun identifiant | « MODE DÉMONSTRATION » : tableau local dans AI HQ, clairement marqué |
+| **Via n8n** | n8n connecté (testé) | appel signé HMAC vers ton workflow n8n (modèle fourni : `deploy/n8n/ai-hq-google-sheets.json`) |
+| **Directe** | Google connecté avec l'accès Sheets | API Google Sheets, sans n8n |
 
-Autres : webhook générique (`AIHQ_WEBHOOK_URL`, Make ou Zapier), notification de fin de mission (`AIHQ_NOTIFY_WEBHOOK_URL`), missions récurrentes (onglet Coûts : toutes les heures, chaque jour ou chaque semaine) et API pour n8n en entrée : `POST /api/missions` avec `Authorization: Bearer AIHQ_ADMIN_TOKEN`.
+L'upsert par **ID mission** rend la synchronisation idempotente : la rejouer ne crée jamais de doublon (testé). Colonnes : ID mission, date de création, nom, agent responsable, département, priorité, statut, progression, résultat, coût API, dernière mise à jour. Chaque exécution et chaque erreur sont visibles dans Paramètres → Historique des exécutions, avec reprise automatique (backoff).
+
+## Connecteurs (Paramètres)
+
+Un connecteur n'est affiché **« Connecté (testé) »** qu'après un test réel réussi. C'est aussi seulement à ce moment que ses outils sont proposés aux agents, et uniquement pour les rôles autorisés. Les identifiants sont chiffrés (AES-256-GCM, `AIHQ_ENCRYPTION_KEY`) et ne sont jamais renvoyés au navigateur.
+
+| Connecteur | Ce que les agents peuvent faire | Validation humaine |
+|---|---|---|
+| **Gmail** (OAuth 2.0, jamais de mot de passe) | rechercher et lire **uniquement** les e-mails de ton filtre (`label:ai-hq` par défaut), préparer des brouillons | **envoi** : toujours |
+| **n8n** (Cloud ou auto-hébergé) | demander un workflow de ta liste autorisée | toujours |
+| **Slack** (webhook entrant) | publier un message | toujours |
+
+La connexion Google est révocable en un clic : le jeton est invalidé chez Google et effacé d'AI HQ.
 
 ## Mise en ligne
 
-Sur un serveur (VPS) avec Docker, et un nom de domaine qui pointe vers lui :
+Voir `docs/HEBERGEMENT.md`. Option gratuite : ton ordinateur avec Docker, plus Tailscale pour un accès HTTPS privé depuis ton téléphone. Option serveur, plus tard et à ta décision : `docker compose --profile public up -d --build`, Caddy fournissant le HTTPS automatique. Rien n'est déployé publiquement ni acheté automatiquement.
 
-```bash
-cp .env.example .env    # DOMAIN, POSTGRES_PASSWORD, ANTHROPIC_API_KEY, AIHQ_ADMIN_PASSWORD,
-                        # AIHQ_SESSION_SECRET (openssl rand -base64 48), intégrations…
-docker compose up -d --build
-```
-
-La pile démarre PostgreSQL (volume persistant), l'application, le worker et Caddy, qui obtient automatiquement le certificat HTTPS Let's Encrypt pour `DOMAIN` sans mettre le flux temps réel en tampon. Pour plus de capacité : `docker compose up -d --scale worker=2`. Sauvegarde de la base : `docker compose exec db pg_dump -U aihq aihq > sauvegarde.sql`.
+**QG interactif** : clique sur la machine à café, une cabine ou une fontaine pour voir son état et sa file d'attente. Le voyant de la machine est vert si elle est libre, ambre pendant la préparation, avec de la vapeur. Le bouton « Offrir une pause café » fonctionne en pure simulation, sans aucun appel IA. L'occupant d'une cabine n'est jamais nommé.
 
 ## Tests
 
 ```bash
-npm test                         # 90 tests (les tests PostgreSQL sont ignorés sans base)
+npm test                         # 106 tests (les tests PostgreSQL sont ignorés sans base)
 TEST_DATABASE_URL=postgres://…/aihq_test npm test   # suite complète sur une vraie base
 npm run bench -- 2               # 2 jours simulés, invariants de collision
 ```

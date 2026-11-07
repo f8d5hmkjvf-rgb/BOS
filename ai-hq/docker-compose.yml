@@ -1,6 +1,8 @@
-# Déploiement en ligne : PostgreSQL + application + worker + Caddy (HTTPS automatique Let's Encrypt).
-# 1) cp .env.example .env  et remplir les valeurs (DOMAIN, mots de passe, clés)
-# 2) docker compose up -d --build
+# AI HQ — PostgreSQL + application + worker (+ Caddy en option pour un serveur public).
+#
+#   Sur votre ordinateur (gratuit, aucun achat) :   docker compose up -d --build
+#      → http://localhost:3000 ; accès téléphone en HTTPS via Tailscale (docs/HEBERGEMENT.md)
+#   Plus tard, sur un serveur avec un domaine :       docker compose --profile public up -d --build
 services:
   db:
     image: postgres:16-alpine
@@ -8,7 +10,7 @@ services:
     environment:
       POSTGRES_DB: aihq
       POSTGRES_USER: aihq
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD requis}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD requis dans .env}
     volumes: [pgdata:/var/lib/postgresql/data]
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U aihq -d aihq"]
@@ -21,6 +23,8 @@ services:
     env_file: .env
     environment:
       DATABASE_URL: postgres://aihq:${POSTGRES_PASSWORD}@db:5432/aihq
+    # Exposé uniquement sur la machine elle-même : l'accès distant passe par Tailscale ou Caddy (HTTPS).
+    ports: ["127.0.0.1:3000:3000"]
     depends_on:
       db: { condition: service_healthy }
 
@@ -37,11 +41,12 @@ services:
       db: { condition: service_healthy }
 
   caddy:
+    profiles: ["public"]
     image: caddy:2-alpine
     restart: unless-stopped
     ports: ["80:80", "443:443"]
     environment:
-      DOMAIN: ${DOMAIN:?DOMAIN requis (ex. hq.mondomaine.fr)}
+      DOMAIN: ${DOMAIN:-}
     volumes:
       - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy_data:/data

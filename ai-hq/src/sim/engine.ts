@@ -933,6 +933,22 @@ export class World {
     }
   }
 
+  // ---------------------------------------------------------------- Interaction (sans appel API)
+
+  /**
+   * Invitation lancée depuis l'interface (ex. « offrir un café ») : les agents disponibles les plus
+   * proches de l'équipement y vont. Pure simulation : aucun appel API, aucune action réelle.
+   */
+  invite(activity: ActivityId, near: Tile, count: number): string[] {
+    const free = this.agents
+      .filter((a) => a.mode === "task" && a.task?.activity === "work" && a.task.phase === "performing" && a.realWork.status !== "busy")
+      .sort((a, b) => Math.hypot(a.tile.x - near.x, a.tile.y - near.y) - Math.hypot(b.tile.x - near.x, b.tile.y - near.y) || a.index - b.index)
+      .slice(0, count);
+    for (const a of free) this.startTask(a, activity);
+    if (free.length) this.log("activity", `Pause ${activity === "coffee" ? "café" : activity} offerte : ${free.map((a) => a.name).join(", ")}.`, free.map((a) => a.id));
+    return free.map((a) => a.id);
+  }
+
   // ---------------------------------------------------------------- Orchestrateur réel → animations
 
   /** Gaspard convoque une vraie réunion : les participants quittent leur bureau pour la salle Atlas. */

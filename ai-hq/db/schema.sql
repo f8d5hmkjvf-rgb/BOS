@@ -172,3 +172,60 @@ CREATE TABLE IF NOT EXISTS authorized_intents (
   summary       TEXT NOT NULL,
   authorized_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+-- ---------------------------------------------------------------- Connecteurs (v3)
+ALTER TABLE missions ADD COLUMN IF NOT EXISTS priority TEXT NOT NULL DEFAULT 'normale';
+ALTER TABLE missions ADD COLUMN IF NOT EXISTS budget_warned BOOLEAN NOT NULL DEFAULT false;
+
+-- Configuration des connecteurs : réglages en clair, secrets chiffrés (AES-256-GCM, clé AIHQ_ENCRYPTION_KEY).
+CREATE TABLE IF NOT EXISTS connectors (
+  kind            TEXT PRIMARY KEY CHECK (kind IN ('n8n','google','slack','sheets')),
+  settings        JSONB NOT NULL DEFAULT '{}',
+  secret_enc      TEXT,
+  -- 'connected' uniquement après un test réel réussi.
+  status          TEXT NOT NULL DEFAULT 'not_configured' CHECK (status IN ('not_configured','configured','connected','error')),
+  account         TEXT,
+  last_tested_at  TIMESTAMPTZ,
+  last_error      TEXT,
+  updated_at      TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+-- Anti-CSRF du flux OAuth Google (usage unique, 10 minutes).
+CREATE TABLE IF NOT EXISTS oauth_states (
+  state       TEXT PRIMARY KEY,
+  created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+-- File de synchronisation vers Google Sheets : une ligne par mission (dédoublonnage), version croissante.
+CREATE TABLE IF NOT EXISTS sync_queue (
+  mission_id   TEXT PRIMARY KEY,
+  version      INTEGER NOT NULL DEFAULT 1,
+  synced_version INTEGER NOT NULL DEFAULT 0,
+  attempts     INTEGER NOT NULL DEFAULT 0,
+  next_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
+  last_error   TEXT,
+  updated_at   TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+-- Historique des exécutions et erreurs des connecteurs (n8n, Sheets, Gmail, Slack).
+CREATE TABLE IF NOT EXISTS sync_runs (
+  id              BIGSERIAL PRIMARY KEY,
+  connector       TEXT NOT NULL,
+  action          TEXT NOT NULL,
+  target          TEXT,
+  status          TEXT NOT NULL CHECK (status IN ('ok','error','demo')),
+  http_status     INTEGER,
+  error           TEXT,
+  duration_ms     INTEGER,
+  idempotency_key TEXT,
+  created_at      TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS sync_runs_created_idx ON sync_runs (created_at DESC);
+
+-- Tableau de DÉMONSTRATION (quand aucun Google Sheets réel n'est connecté) : même logique d'upsert.
+CREATE TABLE IF NOT EXISTS sheet_demo_rows (
+  mission_id  TEXT PRIMARY KEY,
+  row         JSONB NOT NULL,
+  version     INTEGER NOT NULL,
+  updated_at  TIMESTAMPTZ NOT NULL DEFAULT now()
+);

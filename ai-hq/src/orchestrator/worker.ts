@@ -8,6 +8,8 @@ import { BudgetExceededError, describeError, isRetryable, MeteredLlm, type LlmCl
 import type { LoopDeps } from "./loop";
 import { runMeeting } from "./meeting";
 import type { Store, Task } from "./store";
+import { ConnectorStore } from "./connectors";
+import { processSyncQueue } from "./sheetsSync";
 
 /**
  * Worker d'exécution longue : réserve des tâches en base (SKIP LOCKED), renouvelle son bail,
@@ -24,8 +26,9 @@ export class Worker {
     llm: LlmClient,
     private cfg: OrchestratorConfig,
     private log: (msg: string) => void = (m) => console.log(m),
+    private fetchImpl: typeof fetch = fetch,
   ) {
-    this.deps = { store, llm: new MeteredLlm(llm, store, cfg), cfg };
+    this.deps = { store, llm: new MeteredLlm(llm, store, cfg), cfg, connectors: new ConnectorStore(store.db), fetchImpl };
   }
 
   /** Une itération : automatisations + remplissage des créneaux libres. Retourne le nombre de tâches lancées. */
@@ -36,6 +39,8 @@ export class Worker {
       await this.store.linkAutomationMission(a.id, m.id);
       this.log(`[auto] mission ${m.id} créée par l'automatisation ${a.id}`);
     }
+    // Synchronisation Google Sheets (démo, n8n ou directe), dédoublonnée et idempotente.
+    await processSyncQueue({ db: this.store.db, connectors: this.deps.connectors!, fetchImpl: this.fetchImpl }).catch((e) => this.log(`[sync] ${describeError(e)}`));
     let started = 0;
     while (this.running.size < this.cfg.workerConcurrency) {
       const t = await this.store.claimTask(this.id, this.cfg.leaseSeconds);

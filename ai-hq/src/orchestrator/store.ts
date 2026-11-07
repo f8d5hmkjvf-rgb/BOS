@@ -1,8 +1,10 @@
 import type { Pool, PoolClient } from "pg";
 import { randomUUID } from "node:crypto";
 import { tx } from "./db";
+import { enqueueSync } from "./sheetsSync";
 
 export type MissionStatus = "planning" | "running" | "reviewing" | "reporting" | "awaiting_approval" | "paused" | "done" | "failed" | "cancelled";
+export type MissionPriority = "basse" | "normale" | "haute" | "urgente";
 export type TaskKind = "plan" | "meeting" | "execute" | "review" | "report";
 export type TaskStatus = "blocked" | "pending" | "running" | "awaiting_approval" | "done" | "failed" | "cancelled";
 
@@ -17,6 +19,8 @@ export interface Mission {
   spent_usd: number;
   review_round: number;
   automation_id: string | null;
+  priority: MissionPriority;
+  budget_warned: boolean;
   created_at: string;
   updated_at: string;
 }
@@ -82,13 +86,14 @@ export class Store {
   }
 
   // ------------------------------------------------------------ Missions
-  async createMission(goal: string, budgetUsd: number, ceoId: string, automationId: string | null = null): Promise<Mission> {
+  async createMission(goal: string, budgetUsd: number, ceoId: string, automationId: string | null = null, priority: MissionPriority = "normale"): Promise<Mission> {
     return tx(this.db, async (c) => {
       const id = newId("m");
       const r = await c.query(
-        "INSERT INTO missions (id, goal, status, budget_usd, automation_id) VALUES ($1,$2,'planning',$3,$4) RETURNING *",
-        [id, goal, budgetUsd, automationId],
+        "INSERT INTO missions (id, goal, status, budget_usd, automation_id, priority) VALUES ($1,$2,'planning',$3,$4,$5) RETURNING *",
+        [id, goal, budgetUsd, automationId, priority],
       );
+      await enqueueSync(c, id);
       await this.insertTasks(id, [{ key: "plan", kind: "plan", title: "Analyse et plan de mission", description: goal, assignee: ceoId }], c);
       await this.emit("mission.created", { missionId: id, goal }, c);
       return toMission(r.rows[0]);
@@ -111,6 +116,7 @@ export class Store {
     const sets = keys.map((k, i) => `${k}=$${i + 2}`).join(", ");
     const vals = keys.map((k) => (k === "plan" ? JSON.stringify(fields[k]) : fields[k]));
     await q.query(`UPDATE missions SET ${sets}, updated_at=now() WHERE id=$1`, [id, ...vals]);
+    await enqueueSync(q, id);
     await this.emit("mission.updated", { missionId: id, ...fields, plan: undefined }, q);
   }
 
@@ -177,6 +183,7 @@ export class Store {
       const t = r.rows[0] as Task;
       await this.emit("task.updated", taskEvent(t), c);
       await this.unblock(t.mission_id, c);
+      await enqueueSync(c, t.mission_id); // progression
       return t;
     });
   }
@@ -342,14 +349,32 @@ export class Store {
     webSearches: number;
     costUsd: number;
     requestId: string | null;
+    /** Plafond quotidien, pour l'avertissement à 80 %. */
+    dailyBudgetUsd?: number;
   }): Promise<void> {
     await tx(this.db, async (c) => {
+      const before = Number((await c.query("SELECT COALESCE(SUM(cost_usd),0) s FROM api_usage WHERE created_at >= date_trunc('day', now())")).rows[0].s);
       await c.query(
         `INSERT INTO api_usage (mission_id, task_id, agent_id, purpose, model, input_tokens, output_tokens, cache_read, cache_write, web_searches, cost_usd, request_id)
          VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)`,
         [u.missionId, u.taskId, u.agentId, u.purpose, u.model, u.input, u.output, u.cacheRead, u.cacheWrite, u.webSearches, u.costUsd, u.requestId],
       );
-      if (u.missionId) await c.query("UPDATE missions SET spent_usd = spent_usd + $2, updated_at=now() WHERE id=$1", [u.missionId, u.costUsd]);
+      if (u.missionId) {
+        // Avertissement unique à 80 % du budget de la mission.
+        const m = (
+          await c.query(
+            `UPDATE missions SET spent_usd = spent_usd + $2, updated_at=now(),
+               budget_warned = budget_warned OR (spent_usd + $2 >= 0.8 * budget_usd)
+             WHERE id=$1 RETURNING spent_usd, budget_usd`,
+            [u.missionId, u.costUsd],
+          )
+        ).rows[0];
+        await enqueueSync(c, u.missionId);
+        const crossed = m && Number(m.spent_usd) >= 0.8 * Number(m.budget_usd) && Number(m.spent_usd) - u.costUsd < 0.8 * Number(m.budget_usd);
+        if (crossed) await this.emit("budget.warning", { scope: "mission", missionId: u.missionId, spentUsd: Number(m.spent_usd), budgetUsd: Number(m.budget_usd) }, c);
+      }
+      if (u.dailyBudgetUsd && before < 0.8 * u.dailyBudgetUsd && before + u.costUsd >= 0.8 * u.dailyBudgetUsd)
+        await this.emit("budget.warning", { scope: "daily", spentUsd: before + u.costUsd, budgetUsd: u.dailyBudgetUsd }, c);
       await this.emit("usage", { missionId: u.missionId, agentId: u.agentId, costUsd: u.costUsd, model: u.model }, c);
     });
   }

@@ -49,11 +49,15 @@ const SKILLS: Record<string, string[]> = {
 };
 
 const WEB_DEPTS = new Set(["direction", "produit", "marketing", "ventes", "data", "tech", "ops"]);
-/** Liste blanche des intégrations par département (toutes soumises à validation humaine). */
+/** Liste blanche des intégrations par département (les actions sensibles exigent en plus une validation humaine). */
+const MAIL = new Set(["direction", "ventes", "marketing", "ops"]);
 const INTEGRATION_DEPTS: Record<IntegrationTool, Set<string>> = {
   send_slack_message: new Set(["direction", "marketing", "ventes", "ops", "produit"]),
   trigger_n8n_workflow: new Set(["direction", "tech", "data", "ops", "ventes", "marketing"]),
-  send_email: new Set(["direction", "ventes", "marketing", "ops"]),
+  send_email: MAIL,
+  create_email_draft: MAIL,
+  search_emails: MAIL,
+  read_email: MAIL,
   send_webhook: new Set(["direction", "marketing", "ventes", "ops"]),
 };
 

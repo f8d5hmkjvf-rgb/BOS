@@ -9,12 +9,19 @@ import { Store } from "../src/orchestrator/store";
 import { Worker } from "../src/orchestrator/worker";
 
 async function main() {
-  const cfg = loadConfig();
-  const missing = missingConfiguration(cfg);
-  if (missing.length) {
-    console.error("Le worker ne peut pas démarrer, configuration requise :\n- " + missing.join("\n- "));
-    process.exit(1);
+  // Sans configuration complète, le worker attend (pas de boucle de redémarrage) et le signale clairement.
+  let cfg = loadConfig();
+  let missing = missingConfiguration(cfg);
+  let stopped = false;
+  process.on("SIGTERM", () => (stopped = true));
+  process.on("SIGINT", () => (stopped = true));
+  if (missing.length) console.error("Worker en attente de configuration (vérification toutes les 60 s) :\n- " + missing.join("\n- "));
+  while (missing.length && !stopped) {
+    await new Promise((r) => setTimeout(r, 60_000));
+    cfg = loadConfig();
+    missing = missingConfiguration(cfg);
   }
+  if (stopped) process.exit(0);
   const store = new Store(await getDb(cfg.databaseUrl!));
   const worker = new Worker(store, new AnthropicLlm(cfg), cfg);
   const stop = () => {

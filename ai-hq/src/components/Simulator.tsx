@@ -9,6 +9,8 @@ import type { OfficeRenderer } from "@/render/renderer";
 import { FallbackSaveAdapter, HttpSaveAdapter, LocalStorageSaveAdapter } from "@/persistence/adapters";
 import type { RealWorkStatus } from "@/sim/types";
 import { OrchestratorSync } from "./sync";
+import { SettingsPanel } from "./Settings";
+import { ResourceCard } from "./ResourceCard";
 import { AgentAiCard, ApprovalsPanel, ConfigBanner, CostsPanel, GaspardPanel, useStatus } from "./Orchestrator";
 
 const NEED_LABELS: [keyof World["agents"][number]["needs"], string, boolean][] = [
@@ -58,15 +60,25 @@ export default function Simulator() {
   const [, force] = useState(0);
   const [toast, setToast] = useState<string | null>(null);
   const [live, setLive] = useState(false);
-  const [tab, setTab] = useState<"qg" | "gaspard" | "validations" | "couts">("gaspard");
+  const [tab, setTab] = useState<"qg" | "gaspard" | "validations" | "couts" | "reglages">("gaspard");
+  const [resourceId, setResourceId] = useState<string | null>(null);
   const [orchTick, setOrchTick] = useState(0);
   const status = useStatus(orchTick);
   const sync = useRef(new OrchestratorSync(() => worldRef.current));
 
-  const notify = (msg: string) => {
+  const notify = useCallback((msg: string) => {
     setToast(msg);
-    setTimeout(() => setToast(null), 3000);
-  };
+    setTimeout(() => setToast(null), 5000);
+  }, []);
+
+  // Retour de la connexion Google (OAuth) : message puis nettoyage de l'URL.
+  useEffect(() => {
+    const g = new URLSearchParams(window.location.search).get("google");
+    if (!g) return;
+    setTab("reglages");
+    notify(g.startsWith("ok:") ? `Google connecté : ${g.slice(3)}` : `Connexion Google : ${g.replace(/^erreur:/, "")}`);
+    window.history.replaceState(null, "", "/");
+  }, [notify]);
 
   const setSpeed = useCallback((s: Speed) => {
     worldRef.current?.setSpeed(s);
@@ -143,7 +155,10 @@ export default function Simulator() {
           const a = r.pick(pickWorld(), e.clientX - rect.left, e.clientY - rect.top);
           opts.current.selected = a?.id ?? null;
           setSelected(a?.id ?? null);
-          if (a) setTab("qg");
+          // Sans agent sous le curseur : équipement cliquable (machine à café, cabines, fontaines…).
+          const res = a ? null : r.pickResource(pickWorld(), e.clientX - rect.left, e.clientY - rect.top);
+          setResourceId(res);
+          if (a || res) setTab("qg");
         }
         drag = null;
       });
@@ -194,6 +209,12 @@ export default function Simulator() {
       clearTimeout(bump);
       bump = setTimeout(() => setOrchTick((n) => n + 1), 400);
     };
+    es.addEventListener("budget.warning", (e) => {
+      const d = JSON.parse((e as MessageEvent).data) as { scope: string; spentUsd: number; budgetUsd: number };
+      notify(`⚠ ${d.scope === "daily" ? "Budget du jour" : "Budget d'une mission"} à 80 % (${d.spentUsd.toFixed(2)} / ${d.budgetUsd} $)`);
+      refresh();
+    });
+    es.addEventListener("sync.run", () => refresh());
     const kinds = ["snapshot", "task.updated", "mission.created", "mission.updated", "meeting.started", "meeting.line", "meeting.ended", "consult.started", "consult.line", "consult.ended", "approval.created", "approval.decided", "usage"];
     for (const k of kinds)
       es.addEventListener(k, (e) => {
@@ -319,6 +340,7 @@ export default function Simulator() {
                 ["validations", "Validations"],
                 ["qg", "QG"],
                 ["couts", "Coûts"],
+                ["reglages", "Paramètres"],
               ] as const
             ).map(([id, label]) => (
               <button key={id} role="tab" aria-selected={tab === id} className={tab === id ? "on" : ""} onClick={() => setTab(id)}>
@@ -330,8 +352,10 @@ export default function Simulator() {
           {tab === "gaspard" && <GaspardPanel status={status} refreshKey={orchTick} nameOf={nameOf} onError={notify} />}
           {tab === "validations" && <ApprovalsPanel refreshKey={orchTick} nameOf={nameOf} onError={notify} />}
           {tab === "couts" && <CostsPanel status={status} refreshKey={orchTick} nameOf={nameOf} onError={notify} />}
+          {tab === "reglages" && <SettingsPanel refreshKey={orchTick} onError={notify} onInfo={notify} />}
           {tab === "qg" && (
             <>
+              {resourceId && !agent && w && <ResourceCard world={w} id={resourceId} onClose={() => setResourceId(null)} notify={notify} />}
           {agent ? (
             <section className="card">
               <div className="row between">

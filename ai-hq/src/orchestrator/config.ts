@@ -24,18 +24,10 @@ export interface OrchestratorConfig {
   maxTasksPerMission: number;
   workerConcurrency: number;
   leaseSeconds: number;
-  integrations: IntegrationsConfig;
+  /** Webhook générique (Make, Zapier…) ; n8n, Google et Slack se configurent dans les Paramètres. */
+  genericWebhookUrl: string | null;
   notifyWebhookUrl: string | null;
   webSearchEnabled: boolean;
-}
-
-/** Intégrations externes : chaque action d'agent vers ces services exige une validation humaine. */
-export interface IntegrationsConfig {
-  /** Webhook générique (Make, Zapier…). */
-  webhookUrl: string | null;
-  slack: { webhookUrl: string } | null;
-  n8n: { webhookUrl: string; secret: string | null } | null;
-  gmail: { clientId: string; clientSecret: string; refreshToken: string; sender: string; mode: "draft" | "send"; allowedDomains: string[] } | null;
 }
 
 const num = (v: string | undefined, d: number) => {
@@ -44,29 +36,6 @@ const num = (v: string | undefined, d: number) => {
 };
 const effort = (v: string | undefined, d: Effort): Effort =>
   v === "low" || v === "medium" || v === "high" || v === "xhigh" || v === "max" ? v : d;
-
-export function loadIntegrations(env: NodeJS.ProcessEnv): IntegrationsConfig {
-  const gm = env.GMAIL_CLIENT_ID && env.GMAIL_CLIENT_SECRET && env.GMAIL_REFRESH_TOKEN && env.GMAIL_SENDER;
-  return {
-    webhookUrl: env.AIHQ_WEBHOOK_URL || null,
-    slack: env.AIHQ_SLACK_WEBHOOK_URL ? { webhookUrl: env.AIHQ_SLACK_WEBHOOK_URL } : null,
-    n8n: env.AIHQ_N8N_WEBHOOK_URL ? { webhookUrl: env.AIHQ_N8N_WEBHOOK_URL, secret: env.AIHQ_N8N_SECRET || null } : null,
-    gmail: gm
-      ? {
-          clientId: env.GMAIL_CLIENT_ID!,
-          clientSecret: env.GMAIL_CLIENT_SECRET!,
-          refreshToken: env.GMAIL_REFRESH_TOKEN!,
-          sender: env.GMAIL_SENDER!,
-          // Par défaut on crée un BROUILLON : tu relis et envoies toi-même depuis Gmail.
-          mode: env.GMAIL_MODE === "send" ? "send" : "draft",
-          allowedDomains: (env.GMAIL_ALLOWED_DOMAINS ?? "")
-            .split(",")
-            .map((d) => d.trim().toLowerCase())
-            .filter(Boolean),
-        }
-      : null,
-  };
-}
 
 export function loadConfig(env: NodeJS.ProcessEnv = process.env): OrchestratorConfig {
   const maxMission = num(env.AIHQ_MAX_MISSION_BUDGET_USD, 3);
@@ -92,7 +61,7 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): OrchestratorCo
     maxTasksPerMission: num(env.AIHQ_MAX_TASKS, 8),
     workerConcurrency: num(env.AIHQ_WORKER_CONCURRENCY, 3),
     leaseSeconds: num(env.AIHQ_LEASE_SECONDS, 300),
-    integrations: loadIntegrations(env),
+    genericWebhookUrl: env.AIHQ_WEBHOOK_URL || null,
     notifyWebhookUrl: env.AIHQ_NOTIFY_WEBHOOK_URL || null,
     webSearchEnabled: env.AIHQ_WEB_SEARCH !== "0",
   };

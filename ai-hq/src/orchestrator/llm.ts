@@ -115,6 +115,7 @@ export class MeteredLlm {
       webSearches: u.server_tool_use?.web_search_requests ?? 0,
       costUsd: costUsd(res.model, u),
       requestId: (res as unknown as { _request_id?: string })._request_id ?? null,
+      dailyBudgetUsd: this.cfg.dailyBudgetUsd,
     });
     if (res.stop_reason === "refusal") {
       const d = res.stop_details;

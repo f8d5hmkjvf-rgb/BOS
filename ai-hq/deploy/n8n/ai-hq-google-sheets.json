@@ -1,0 +1,208 @@
+{
+  "name": "AI HQ → Google Sheets (suivi des missions)",
+  "nodes": [
+    {
+      "id": "1",
+      "name": "Webhook AI HQ",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ai-hq",
+        "responseMode": "responseNode",
+        "options": {}
+      }
+    },
+    {
+      "id": "2",
+      "name": "Vérifier la signature",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "jsCode": "// Vérifie que l'appel vient bien d'AI HQ (signature HMAC + anti-rejeu de 5 minutes).\nconst crypto = require('crypto');\nconst SECRET = 'COLLER_ICI_LE_SECRET_AI_HQ'; // AI HQ → Paramètres → n8n → « Afficher le secret »\nconst item = $input.first().json;\nconst h = item.headers || {};\nconst ts = h['x-aihq-timestamp'];\nconst body = JSON.stringify(item.body);\nconst expected = 'sha256=' + crypto.createHmac('sha256', SECRET).update(ts + '.' + body).digest('hex');\nif (!ts || Math.abs(Date.now() / 1000 - Number(ts)) > 300) throw new Error('Horodatage absent ou trop ancien (rejeu refusé)');\nif (h['x-aihq-signature'] !== expected) throw new Error('Signature AI HQ invalide');\nreturn [{ json: item.body }];\n"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Synchronisation de mission ?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "c1",
+              "leftValue": "={{ $json.type }}",
+              "rightValue": "sync_mission",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "4",
+      "name": "Préparer la ligne",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        -100
+      ],
+      "parameters": {
+        "jsCode": "// Une ligne par mission : la colonne « ID mission » sert de clé (mise à jour sans doublon).\nreturn [{ json: $input.first().json.data.row }];\n"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Google Sheets : ajouter ou mettre à jour",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        880,
+        -100
+      ],
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "COLLER_ICI_L_ID_DU_TABLEUR"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Missions"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "ID mission"
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "6",
+      "name": "Répondre OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1100,
+        -100
+      ],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { \"ok\": true, \"action\": \"sync_mission\" } }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "7",
+      "name": "Répondre (ping / autre)",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        660,
+        120
+      ],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { \"ok\": true, \"type\": $json.type } }}",
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Webhook AI HQ": {
+      "main": [
+        [
+          {
+            "node": "Vérifier la signature",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vérifier la signature": {
+      "main": [
+        [
+          {
+            "node": "Synchronisation de mission ?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Synchronisation de mission ?": {
+      "main": [
+        [
+          {
+            "node": "Préparer la ligne",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Répondre (ping / autre)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Préparer la ligne": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets : ajouter ou mettre à jour",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets : ajouter ou mettre à jour": {
+      "main": [
+        [
+          {
+            "node": "Répondre OK",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

@@ -96,3 +96,15 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 .login { min-height: 100vh; display: grid; place-items: center; padding: 16px; }
 .login form { width: min(380px, 100%); display: grid; gap: 10px; }
 .login h1 { margin: 0; font-size: 22px; }
+
+/* --- Paramètres / connecteurs --- */
+.card label { display: grid; gap: 3px; margin: 6px 0; }
+.card label.check { display: flex; align-items: center; gap: 6px; }
+.card label.check input { width: auto; }
+code { font-family: ui-monospace, monospace; font-size: 11px; background: #11151c; padding: 1px 4px; border-radius: 4px; word-break: break-all; }
+.runs li { padding: 3px 0; border-bottom: 1px solid var(--line); }
+.table-wrap { overflow-x: auto; max-height: 320px; }
+table.demo { border-collapse: collapse; font-size: 11px; white-space: nowrap; }
+table.demo th, table.demo td { border: 1px solid var(--line); padding: 3px 6px; text-align: left; max-width: 240px; overflow: hidden; text-overflow: ellipsis; }
+table.demo th { background: #11151c; position: sticky; top: 0; }
+.warn-text { color: #fbbf24; }

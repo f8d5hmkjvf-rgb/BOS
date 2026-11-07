@@ -1,6 +1,6 @@
 import { agentById, agentSpecs, type AgentSpec } from "./agents";
 import { textOf, type BetaToolUnion } from "./llm";
-import { INTEGRATION_TOOLS, integrationAvailable, integrationSummary, validateIntegrationInput, type IntegrationTool } from "./integrations";
+import { executeSafe, INTEGRATION_TOOLS, integrationAvailable, integrationSummary, SENSITIVE, validateIntegrationInput, type IntegrationContext, type IntegrationTool, type SafeTool } from "./integrations";
 import type { LoopDeps, ToolHandler } from "./loop";
 import type { Task } from "./store";
 
@@ -44,7 +44,12 @@ export const SUBMIT_DELIVERABLE: BetaToolUnion = {
 export const WEB_SEARCH: BetaToolUnion = { type: "web_search_20260209", name: "web_search", max_uses: 5 };
 
 /** Outils effectivement autorisés pour un agent (liste blanche × configuration). */
-export function executionTools(agent: AgentSpec, task: Task, d: LoopDeps): { tools: BetaToolUnion[]; handlers: Record<string, ToolHandler> } {
+export async function integrationContext(d: LoopDeps): Promise<IntegrationContext> {
+  const connectors = d.connectors ? await d.connectors.resolve() : { n8n: null, google: null, slack: null, sheets: { mode: "off" as const, spreadsheetId: "", sheetName: "" } };
+  return { connectors, genericWebhookUrl: d.cfg.genericWebhookUrl };
+}
+
+export async function executionTools(agent: AgentSpec, task: Task, d: LoopDeps): Promise<{ tools: BetaToolUnion[]; handlers: Record<string, ToolHandler> }> {
   const tools: BetaToolUnion[] = [];
   const handlers: Record<string, ToolHandler> = {};
   if (agent.tools.includes("web_search") && d.cfg.webSearchEnabled) tools.push(WEB_SEARCH);
@@ -52,8 +57,8 @@ export function executionTools(agent: AgentSpec, task: Task, d: LoopDeps): { too
     tools.push(consultTool(agent));
     handlers.consult_colleague = (input) => consult(d, task, agent, String(input.colleague), String(input.question));
   }
-  // Intégrations externes autorisées pour cet agent ET configurées par l'entrepreneur.
-  const integ = d.cfg.integrations;
+  // Intégrations : autorisées pour ce rôle ET connectées (testées) par l'entrepreneur.
+  const integ = await integrationContext(d);
   for (const name of Object.keys(INTEGRATION_TOOLS) as IntegrationTool[]) {
     if (!agent.tools.includes(name) || !integrationAvailable(name, integ)) continue;
     tools.push(INTEGRATION_TOOLS[name]);
@@ -61,9 +66,22 @@ export function executionTools(agent: AgentSpec, task: Task, d: LoopDeps): { too
       const existing = (await d.store.approvalsForTask(task.id)).some((a) => a.tool_use_id === toolUseId);
       if (!existing) {
         const err = validateIntegrationInput(name, input, integ);
-        if (err) return { kind: "result", content: `Demande invalide, corrige avant validation humaine : ${err}`, isError: true };
+        if (err) return { kind: "result", content: `Demande invalide, corrige : ${err}`, isError: true };
       }
-      return sensitiveAction(d, task, agent, toolUseId, name, integrationSummary(agent.name, name, input, integ), { ...input, siblings });
+      if (!SENSITIVE.has(name)) {
+        // Lecture filtrée et brouillons : rien ne sort du compte, exécution directe et tracée.
+        const t0 = Date.now();
+        try {
+          const out = await executeSafe(name as SafeTool, input, integ, d.fetchImpl);
+          await d.connectors?.logRun({ connector: "gmail", action: name, target: agent.id, status: "ok", durationMs: Date.now() - t0 });
+          return { kind: "result", content: out };
+        } catch (e) {
+          const msg = e instanceof Error ? e.message : String(e);
+          await d.connectors?.logRun({ connector: "gmail", action: name, target: agent.id, status: "error", error: msg, durationMs: Date.now() - t0 });
+          return { kind: "result", content: `Échec : ${msg}`, isError: true };
+        }
+      }
+      return sensitiveAction(d, task, agent, toolUseId, name, integrationSummary(agent.name, name, input), { ...input, siblings });
     };
   }
   tools.push(SUBMIT_DELIVERABLE);

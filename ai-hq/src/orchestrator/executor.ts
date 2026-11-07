@@ -32,7 +32,7 @@ export async function runExecution(d: LoopDeps, mission: Mission, task: Task, on
   const agent = agentById(task.assignee);
   if (!agent) throw new FatalError(`Agent inconnu : ${task.assignee}`);
   const ctx = await contextFor(d, mission, task);
-  const { tools, handlers } = executionTools(agent, task, d);
+  const { tools, handlers } = await executionTools(agent, task, d);
   const res = await runLoop(d, {
     task,
     agentId: agent.id,

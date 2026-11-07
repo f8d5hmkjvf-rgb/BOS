@@ -32,6 +32,21 @@ export function useStatus(refreshKey: number) {
 
 export function ConfigBanner({ status }: { status: Status | null }) {
   if (!status) return <div className="banner warn">Statut de l&apos;orchestrateur indisponible.</div>;
+  const today = status.usage?.today ?? 0;
+  const daily = status.budgets.dailyUsd;
+  if (today >= daily)
+    return (
+      <div className="banner warn" role="alert">
+        <strong>Plafond quotidien atteint</strong> ({today.toFixed(2)} / {daily} $) : plus aucun appel IA aujourd&apos;hui, le QG continue de vivre.
+      </div>
+    );
+  const budgetWarn =
+    today >= 0.8 * daily ? (
+      <div className="banner warn" role="alert">
+        <strong>Attention :</strong> {Math.round((today / daily) * 100)} % du budget quotidien consommé ({today.toFixed(2)} / {daily} $).
+      </div>
+    ) : null;
+  if (budgetWarn && status.missing.length === 0 && !status.workerWarning) return budgetWarn;
   if (status.missing.length === 0 && !status.workerWarning) return null;
   return (
     <div className="banner warn" role="alert">
@@ -50,6 +65,7 @@ export function ConfigBanner({ status }: { status: Status | null }) {
 export function GaspardPanel({ status, refreshKey, nameOf, onError }: { status: Status | null; refreshKey: number; nameOf: NameOf; onError: (m: string) => void }) {
   const [goal, setGoal] = useState("");
   const [budget, setBudget] = useState<string>("");
+  const [priority, setPriority] = useState("normale");
   const [sending, setSending] = useState(false);
   const [missions, setMissions] = useState<MissionRow[]>([]);
   const [openId, setOpenId] = useState<string | null>(null);
@@ -77,7 +93,7 @@ export function GaspardPanel({ status, refreshKey, nameOf, onError }: { status: 
   const submit = async () => {
     setSending(true);
     try {
-      const m = await api<MissionRow>("/api/missions", { method: "POST", body: JSON.stringify({ goal, budgetUsd: budget ? Number(budget) : undefined }) });
+      const m = await api<MissionRow>("/api/missions", { method: "POST", body: JSON.stringify({ goal, priority, budgetUsd: budget ? Number(budget) : undefined }) });
       setGoal("");
       setOpenId(m.id);
       await load();
@@ -120,6 +136,15 @@ export function GaspardPanel({ status, refreshKey, nameOf, onError }: { status: 
         />
         <div className="row between">
           <label className="small muted">
+            Priorité{" "}
+            <select value={priority} onChange={(e) => setPriority(e.target.value)} disabled={disabled}>
+              <option value="basse">basse</option>
+              <option value="normale">normale</option>
+              <option value="haute">haute</option>
+              <option value="urgente">urgente</option>
+            </select>
+          </label>
+          <label className="small muted">
             Budget (USD){" "}
             <input type="number" min="0.1" step="0.5" max={status?.budgets.maxMissionUsd} value={budget} placeholder={String(status?.budgets.missionUsd ?? "")} onChange={(e) => setBudget(e.target.value)} disabled={disabled} className="num-in" />
           </label>
@@ -141,8 +166,8 @@ export function GaspardPanel({ status, refreshKey, nameOf, onError }: { status: 
                 <button className={`mission ${openId === m.id ? "on" : ""}`} onClick={() => setOpenId(openId === m.id ? null : m.id)}>
                   <span className={`pill s-${m.status}`}>{STATUS_FR[m.status] ?? m.status}</span>
                   <span className="goal">{m.goal}</span>
-                  <span className="small muted">
-                    {m.spent_usd.toFixed(3)} / {m.budget_usd} $
+                  <span className={`small ${m.spent_usd >= 0.8 * m.budget_usd ? "warn-text" : "muted"}`}>
+                    {m.spent_usd.toFixed(3)} / {m.budget_usd} ${m.spent_usd >= 0.8 * m.budget_usd ? " ⚠ 80 % du budget" : ""}
                   </span>
                 </button>
               </li>

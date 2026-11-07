@@ -176,6 +176,26 @@ export class OfficeRenderer {
     return best;
   }
 
+  /** Équipement le plus proche du clic (machine à café, cabine, lavabo, fontaine, comptoir, canapé). */
+  pickResource(w: World, sx: number, sy: number): string | null {
+    const lx = (sx - this.camera.position.x) / this.zoom;
+    const ly = (sy - this.camera.position.y) / this.zoom;
+    const g = toGrid(lx, ly);
+    let best: string | null = null;
+    let bestD = 1.6;
+    for (const r of w.rm.byId.values()) {
+      const t = r.def.type;
+      if (t === "desk" || t === "meeting_seat" || t === "exit" || t === "coffee_spot" || t === "cafeteria_seat") continue;
+      // Le meuble est derrière la case d'interaction : on vise le point médian.
+      const d = Math.hypot(r.def.tile.x - 0.4 - g.x, r.def.tile.y - 0.6 - g.y);
+      if (d < bestD) {
+        best = r.def.id;
+        bestD = d;
+      }
+    }
+    return best;
+  }
+
   private view(a: Agent): AgentView {
     let v = this.views.get(a.id);
     if (v) return v;
@@ -232,6 +252,14 @@ export class OfficeRenderer {
   private drawDoors(w: World): void {
     const g = this.doors;
     g.clear();
+    // Machines à café : voyant (vert libre, ambre en préparation) et vapeur pendant l'utilisation.
+    for (const r of w.rm.ofType("coffee_machine")) {
+      const m = toScreen(r.def.tile.x, r.def.tile.y - 1);
+      const busy = Boolean(r.occupant);
+      g.circle(m.sx + 4, m.sy - 18, 2.2).fill(busy ? 0xf59e0b : 0x22c55e);
+      if (busy && this.time > 0) for (let i = 0; i < 3; i++) g.circle(m.sx - 2 + Math.sin(this.time * 3 + i) * 2, m.sy - 26 - ((this.time * 12 + i * 4) % 12), 1.4).fill({ color: 0xe5e7eb, alpha: 0.6 });
+      if (r.queue.length) g.circle(m.sx + 9, m.sy - 18, 4).fill(0x1f2937).stroke({ width: 1, color: 0xf59e0b });
+    }
     for (const r of w.rm.ofType("toilet_stall")) {
       const d = r.def.doorTile!;
       const closed = w.grid.hasDynamicObstacle(d.x, d.y);

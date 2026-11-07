@@ -2,6 +2,7 @@ import type Anthropic from "@anthropic-ai/sdk";
 import type { Effort, OrchestratorConfig } from "./config";
 import { FatalError, textOf, type BetaMessageParam, type BetaToolUnion, type MeteredLlm } from "./llm";
 import type { Store, Task } from "./store";
+import type { ConnectorStore } from "./connectors";
 
 export type ToolOutcome =
   | { kind: "result"; content: string; isError?: boolean }
@@ -36,6 +37,9 @@ export interface LoopDeps {
   store: Store;
   llm: MeteredLlm;
   cfg: OrchestratorConfig;
+  /** Connecteurs configurés dans les Paramètres (absent : aucune intégration). */
+  connectors?: ConnectorStore;
+  fetchImpl?: typeof fetch;
 }
 
 /**
