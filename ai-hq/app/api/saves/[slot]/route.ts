@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { validateSnapshot } from "@/persistence/schema";
-import { getContext, notConfigured, requireAdmin } from "@/server/context";
+import { getContext, notConfigured } from "@/server/context";
 
 export const runtime = "nodejs";
 const SLOT = /^[a-z0-9_-]{1,40}$/i;
@@ -18,8 +18,6 @@ export async function GET(_req: Request, ctx: { params: Promise<{ slot: string }
 
 /** Sauvegarde complète du QG (positions, besoins, relations, tâches, files, conversations, réunions). */
 export async function PUT(req: Request, ctx: { params: Promise<{ slot: string }> }) {
-  const denied = requireAdmin(req);
-  if (denied) return denied;
   const { slot } = await ctx.params;
   if (!SLOT.test(slot)) return NextResponse.json({ error: "slot invalide" }, { status: 400 });
   const { store, missing } = await getContext();

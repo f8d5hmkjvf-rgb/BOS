@@ -20,7 +20,7 @@ export async function runMeeting(d: LoopDeps, mission: Mission, task: Task, onPr
     const transcript = lines.map((l) => `${l.name} (${l.role}) : ${l.text}`).join("\n\n") || "(la réunion commence)";
     const res = await d.llm.call(
       {
-        model: d.cfg.models.dialogue,
+        model: d.cfg.models.economy,
         effort: d.cfg.effort.dialogue,
         maxTokens: 8000,
         system: `${who.systemPrompt}\n\nTu participes à une réunion d'équipe en salle Atlas. Parle à l'oral, en ton nom, sans titre ni liste à puces, 120 mots maximum. Apporte une contribution utile et concrète liée à ton expertise ; ne répète pas ce qui a déjà été dit.`,

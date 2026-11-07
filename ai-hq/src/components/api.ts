@@ -1,16 +1,6 @@
 "use client";
 
-/** Client HTTP de l'interface : ajoute le jeton d'administration si l'instance en exige un. */
-const TOKEN_KEY = "ai-hq:admin-token";
-
-function token(): string | null {
-  try {
-    return localStorage.getItem(TOKEN_KEY);
-  } catch {
-    return null;
-  }
-}
-
+/** Client HTTP de l'interface (session par cookie ; redirection vers /login si elle a expiré). */
 export class ApiError extends Error {
   constructor(
     message: string,
@@ -24,20 +14,10 @@ export class ApiError extends Error {
 export async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
   const headers = new Headers(init.headers);
   if (init.body) headers.set("content-type", "application/json");
-  const t = token();
-  if (t) headers.set("authorization", `Bearer ${t}`);
-  let r = await fetch(path, { ...init, headers });
+  const r = await fetch(path, { ...init, headers });
   if (r.status === 401) {
-    const entered = window.prompt("Cette instance est protégée. Jeton d'administration (AIHQ_ADMIN_TOKEN) :");
-    if (entered) {
-      try {
-        localStorage.setItem(TOKEN_KEY, entered);
-      } catch {
-        /* stockage indisponible : jeton utilisé pour cette requête seulement */
-      }
-      headers.set("authorization", `Bearer ${entered}`);
-      r = await fetch(path, { ...init, headers });
-    }
+    window.location.href = `/login?next=${encodeURIComponent(window.location.pathname)}`;
+    throw new ApiError("Session expirée", 401);
   }
   const data = await r.json().catch(() => ({}));
   if (!r.ok) throw new ApiError(data.error === "configuration_requise" ? "Configuration requise" : (data.error ?? data.message ?? `HTTP ${r.status}`), r.status, data.missing ?? []);
@@ -51,9 +31,10 @@ export interface Status {
   anthropic: string;
   workers: number;
   workerWarning: string | null;
-  models: { ceo: string; agent: string; dialogue: string };
-  budgets: { missionUsd: number; dailyUsd: number };
-  integrations: { webhook: boolean; notify: boolean; webSearch: boolean };
+  models: { economy: string; advanced: string };
+  budgets: { missionUsd: number; maxMissionUsd: number; dailyUsd: number };
+  integrations: { slack: boolean; n8n: boolean; gmail: string | false; webhook: boolean; notify: boolean; webSearch: boolean };
+  authRequired?: boolean;
   usage: { today: number; total: number; calls: number; byAgent: { agent_id: string; cost: number; calls: number }[] } | null;
 }
 

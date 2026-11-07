@@ -84,6 +84,8 @@ export default function Simulator() {
 
     (async () => {
       const PIXI = await import("pixi.js");
+      // Rendu compatible avec une politique CSP stricte (pas de 'unsafe-eval').
+      await import("pixi.js/unsafe-eval");
       const { OfficeRenderer } = await import("@/render/renderer");
       if (disposed || !host.current) return;
       app = new PIXI.Application();
@@ -295,6 +297,11 @@ export default function Simulator() {
             Debug
           </button>
           <button onClick={save}>Sauvegarder</button>
+          {status?.authRequired && (
+            <button className="link" onClick={() => fetch("/api/auth/logout", { method: "POST" }).then(() => (window.location.href = "/login"))}>
+              Déconnexion
+            </button>
+          )}
           <button onClick={load}>Charger</button>
           <span className={`live ${live ? "ok" : ""}`} title="Flux temps réel des missions">
             {live ? "● orchestrateur en direct" : "○ orchestrateur hors ligne"}

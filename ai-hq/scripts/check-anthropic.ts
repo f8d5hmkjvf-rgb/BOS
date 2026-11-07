@@ -15,7 +15,7 @@ async function main(): Promise<number> {
   try {
     const llm = new AnthropicLlm(cfg);
     const r = await llm.create({
-      model: cfg.models.dialogue,
+      model: cfg.models.economy,
       system: "Tu es Gaspard, CEO d'AI HQ. Réponds en une phrase.",
       messages: [{ role: "user", content: "Confirme que tu es opérationnel." }],
       maxTokens: 2000,

@@ -1,0 +1,52 @@
+# Déploiement en ligne : PostgreSQL + application + worker + Caddy (HTTPS automatique Let's Encrypt).
+# 1) cp .env.example .env  et remplir les valeurs (DOMAIN, mots de passe, clés)
+# 2) docker compose up -d --build
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: aihq
+      POSTGRES_USER: aihq
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD requis}
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aihq -d aihq"]
+      interval: 5s
+      retries: 20
+
+  app:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_URL: postgres://aihq:${POSTGRES_PASSWORD}@db:5432/aihq
+    depends_on:
+      db: { condition: service_healthy }
+
+  worker:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_URL: postgres://aihq:${POSTGRES_PASSWORD}@db:5432/aihq
+    command: ["npx", "tsx", "scripts/worker.ts"]
+    # Le worker ne sert pas HTTP : sa santé est suivie par son battement de cœur en base (/api/status).
+    healthcheck: { disable: true }
+    depends_on:
+      db: { condition: service_healthy }
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports: ["80:80", "443:443"]
+    environment:
+      DOMAIN: ${DOMAIN:?DOMAIN requis (ex. hq.mondomaine.fr)}
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+    depends_on: [app]
+
+volumes:
+  pgdata:
+  caddy_data:

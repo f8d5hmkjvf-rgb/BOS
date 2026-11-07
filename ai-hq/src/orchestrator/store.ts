@@ -32,6 +32,7 @@ export interface Task {
   assignee: string;
   participants: string[];
   depends_on: string[];
+  complexity: "standard" | "complex";
   status: TaskStatus;
   attempts: number;
   max_attempts: number;
@@ -52,6 +53,7 @@ export interface NewTask {
   assignee: string;
   participants?: string[];
   depends_on?: string[];
+  complexity?: "standard" | "complex";
 }
 
 type Q = Pool | PoolClient;
@@ -118,9 +120,9 @@ export class Store {
     for (const t of tasks) {
       const deps = t.depends_on ?? [];
       const r = await q.query(
-        `INSERT INTO tasks (id, mission_id, key, kind, title, description, deliverable, assignee, participants, depends_on, status)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *`,
-        [newId("t"), missionId, t.key, t.kind, t.title, t.description ?? "", t.deliverable ?? "", t.assignee, t.participants ?? [], deps, deps.length ? "blocked" : "pending"],
+        `INSERT INTO tasks (id, mission_id, key, kind, title, description, deliverable, assignee, participants, depends_on, status, complexity)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) RETURNING *`,
+        [newId("t"), missionId, t.key, t.kind, t.title, t.description ?? "", t.deliverable ?? "", t.assignee, t.participants ?? [], deps, deps.length ? "blocked" : "pending", t.complexity ?? "standard"],
       );
       out.push(r.rows[0]);
       await this.emit("task.updated", taskEvent(r.rows[0]), q);

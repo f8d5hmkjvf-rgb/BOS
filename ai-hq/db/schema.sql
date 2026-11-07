@@ -64,6 +64,7 @@ CREATE TABLE IF NOT EXISTS tasks (
   updated_at   TIMESTAMPTZ NOT NULL DEFAULT now(),
   UNIQUE (mission_id, key)
 );
+ALTER TABLE tasks ADD COLUMN IF NOT EXISTS complexity TEXT NOT NULL DEFAULT 'standard';
 CREATE INDEX IF NOT EXISTS tasks_claim_idx ON tasks (status, run_after);
 CREATE INDEX IF NOT EXISTS tasks_mission_idx ON tasks (mission_id);
 

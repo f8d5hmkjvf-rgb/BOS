@@ -1,7 +1,9 @@
 import { buildRoster, DEPARTMENTS, type AgentProfile } from "../sim/roster";
 import type { Personality } from "../sim/types";
 
-export type ToolName = "web_search" | "consult_colleague" | "submit_deliverable" | "send_webhook";
+import type { IntegrationTool } from "./integrations";
+
+export type ToolName = "web_search" | "consult_colleague" | "submit_deliverable" | IntegrationTool;
 
 export interface AgentSpec {
   id: string;
@@ -47,7 +49,13 @@ const SKILLS: Record<string, string[]> = {
 };
 
 const WEB_DEPTS = new Set(["direction", "produit", "marketing", "ventes", "data", "tech", "ops"]);
-const WEBHOOK_DEPTS = new Set(["direction", "marketing", "ventes", "ops"]);
+/** Liste blanche des intégrations par département (toutes soumises à validation humaine). */
+const INTEGRATION_DEPTS: Record<IntegrationTool, Set<string>> = {
+  send_slack_message: new Set(["direction", "marketing", "ventes", "ops", "produit"]),
+  trigger_n8n_workflow: new Set(["direction", "tech", "data", "ops", "ventes", "marketing"]),
+  send_email: new Set(["direction", "ventes", "marketing", "ops"]),
+  send_webhook: new Set(["direction", "marketing", "ventes", "ops"]),
+};
 
 function describePersonality(p: Personality): string {
   const t = (v: number, lo: string, hi: string) => (v > 0.66 ? hi : v < 0.33 ? lo : null);
@@ -89,7 +97,7 @@ export function agentSpecs(seed = 42): AgentSpec[] {
   cache = buildRoster(seed).map((p) => {
     const tools: ToolName[] = ["consult_colleague", "submit_deliverable"];
     if (WEB_DEPTS.has(p.department)) tools.unshift("web_search");
-    if (WEBHOOK_DEPTS.has(p.department)) tools.push("send_webhook");
+    for (const [t, depts] of Object.entries(INTEGRATION_DEPTS) as [IntegrationTool, Set<string>][]) if (depts.has(p.department)) tools.push(t);
     const skills = SKILLS[p.role] ?? [];
     return {
       id: p.id,

@@ -25,8 +25,8 @@ const PLAN = (meeting: boolean): PlanInput => ({
   analysis: "Objectif clair : produire une page de vente et un plan d'acquisition.",
   meeting: { needed: meeting, participants: meeting ? ["mary", "frances"] : [], agenda: "Aligner positionnement et message." },
   tasks: [
-    { key: "positionnement", title: "Positionnement", description: "Définir la cible", deliverable: "1 page", assignee: "mary", depends_on: [] },
-    { key: "page-vente", title: "Page de vente", description: "Rédiger la page", deliverable: "Texte complet", assignee: "rosalind", depends_on: ["positionnement"] },
+    { key: "positionnement", title: "Positionnement", description: "Définir la cible", deliverable: "1 page", assignee: "mary", depends_on: [], complexity: "complex" },
+    { key: "page-vente", title: "Page de vente", description: "Rédiger la page", deliverable: "Texte complet", assignee: "rosalind", depends_on: ["positionnement"], complexity: "standard" },
   ],
 });
 
@@ -94,6 +94,13 @@ describe.skipIf(!TEST_DB)("Orchestrateur Gaspard (PostgreSQL réel, modèle scri
     const kick = tasks.find((t) => t.key === "kickoff")!;
     expect(new Date(page.started_at!).getTime()).toBeGreaterThanOrEqual(new Date(pos.finished_at!).getTime());
     expect(new Date(pos.started_at!).getTime()).toBeGreaterThanOrEqual(new Date(kick.finished_at!).getTime());
+
+    // Routage des modèles : Gaspard et la tâche complexe sur Opus, le reste sur le modèle économique.
+    const model = (pred: (r: (typeof llm.calls)[number]) => boolean) => [...new Set(llm.calls.filter(pred).map((r) => r.model))];
+    expect(model((r) => toolNames(r).includes("submit_plan") || toolNames(r).includes("submit_review"))).toEqual(["claude-opus-5-5"]);
+    expect(model((r) => r.system.includes("Tu es Mary") && toolNames(r).includes("submit_deliverable"))).toEqual(["claude-opus-5-5"]);
+    expect(model((r) => r.system.includes("Tu es Rosalind") && toolNames(r).includes("submit_deliverable"))).toEqual(["claude-sonnet-5-5"]);
+    expect(model((r) => r.system.includes("réunion d'équipe"))).toEqual(["claude-sonnet-5-5"]);
 
     // Chaque appel est tracé et coûte.
     expect((await store.getMission(m.id))!.spent_usd).toBeGreaterThan(0);

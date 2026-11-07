@@ -1,0 +1,8 @@
+# HTTPS automatique (Let's Encrypt) pour le domaine défini dans DOMAIN.
+{$DOMAIN} {
+	encode zstd gzip
+	# Le flux temps réel (SSE) ne doit pas être mis en tampon.
+	reverse_proxy app:3000 {
+		flush_interval -1
+	}
+}

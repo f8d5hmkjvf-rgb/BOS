@@ -1,4 +1,5 @@
 import type { OrchestratorConfig } from "./config";
+import { executeIntegration } from "./integrations";
 import type { Store } from "./store";
 
 /**
@@ -13,31 +14,15 @@ export async function applyDecision(store: Store, cfg: OrchestratorConfig, appro
     return { status: "rejected" as const };
   }
   try {
-    const result = await execute(a.action, a.payload, cfg, fetchImpl);
+    const { siblings: _s, ...payload } = a.payload as Record<string, unknown>;
+    void _s;
+    const result = await executeIntegration(a.action, payload, cfg.integrations, { missionId: a.mission_id }, fetchImpl);
     await store.finishApproval(approvalId, "executed", result);
     return { status: "executed" as const, result };
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
     await store.finishApproval(approvalId, "failed", msg);
     return { status: "failed" as const, result: msg };
-  }
-}
-
-async function execute(action: string, payload: Record<string, unknown>, cfg: OrchestratorConfig, fetchImpl: typeof fetch): Promise<string> {
-  switch (action) {
-    case "send_webhook": {
-      if (!cfg.webhookUrl) throw new Error("AIHQ_WEBHOOK_URL n'est pas configuré.");
-      const r = await fetchImpl(cfg.webhookUrl, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ source: "ai-hq", title: payload.title, text: `*${payload.title}*\n${payload.message}`, message: payload.message }),
-        signal: AbortSignal.timeout(15000),
-      });
-      if (!r.ok) throw new Error(`Le webhook a répondu ${r.status}.`);
-      return `Envoyé (HTTP ${r.status}).`;
-    }
-    default:
-      throw new Error(`Action inconnue : ${action}`);
   }
 }
 

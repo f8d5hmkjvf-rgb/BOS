@@ -39,12 +39,12 @@ Chaque agent a une personnalité, des compétences, des instructions système, u
 | Clé API | Lue côté serveur uniquement, jamais envoyée au navigateur. L'URL de l'API est explicite (`AIHQ_ANTHROPIC_BASE_URL`, par défaut `https://api.anthropic.com`). |
 | Actions sensibles | `send_webhook` crée une demande de validation. Rien ne part tant que tu n'as pas cliqué « Autoriser » et confirmé. La décision est unique et verrouillée en base, et l'agent reprend ensuite exactement où il en était. |
 | Outils | Liste blanche par agent ; un outil non autorisé est refusé et l'agent en est informé. |
-| Budget | Vérifié **avant** chaque appel (pire cas), par mission et par jour. Un dépassement met la mission en pause sans échec ; tu peux reprendre en relevant le budget. Chaque appel est tracé dans `api_usage` (tokens, cache, recherches web, coût). |
+| Budget | 3 $ maximum par mission (plafond `AIHQ_MAX_MISSION_BUDGET_USD`, même quand on relève le budget à la main) et 20 $ par jour. Vérifié **avant** chaque appel (pire cas). Un dépassement met la mission en pause sans échec ; tu peux reprendre en relevant le budget. Chaque appel est tracé dans `api_usage` (tokens, cache, recherches web, coût). |
 | Erreurs | Les erreurs 429, 5xx et réseau sont retentées avec un backoff exponentiel. Les erreurs 400, 401, un refus du modèle ou un budget dépassé arrêtent la tâche sans réessai, avec un message clair. Si un worker meurt, son bail expire et un autre worker reprend la tâche. |
-| Administration | `AIHQ_ADMIN_TOKEN` (optionnel) protège toutes les routes qui dépensent ou agissent. |
+| Accès | Mot de passe obligatoire en production (`AIHQ_ADMIN_PASSWORD`), session signée (cookie `httpOnly`, `Secure`, 7 jours), 5 tentatives par 15 min et par IP, protection CSRF par vérification de l'origine, en-têtes de sécurité (CSP stricte, HSTS, anti-iframe). Jeton d'API optionnel (`AIHQ_ADMIN_TOKEN`) pour n8n ou tes scripts. Sans mot de passe configuré, le serveur de production refuse tout accès. |
 | Repli | `fallbacks: "default"` (beta `server-side-fallback-2026-07-01`) : si le modèle décline une requête, l'API la rejoue sur le modèle de repli recommandé. |
 
-Modèle par défaut : `claude-opus-5-5` pour Gaspard, les agents et les dialogues (effort high / medium / low). Chaque rôle est configurable dans `.env.local`.
+**Modèles** : le modèle économique `claude-sonnet-5-5` sert par défaut (exécution des tâches, réunions, consultations). Le modèle avancé `claude-opus-5-5` est réservé à Gaspard (plan, revue, rapport) et aux tâches qu'il marque `complex` dans son plan. Les deux sont configurables (`AIHQ_MODEL_ECONOMY`, `AIHQ_MODEL_ADVANCED`).
 
 ## Synchronisation missions ↔ QG
 
@@ -62,17 +62,34 @@ Les besoins physiologiques restent prioritaires (une vessie pleine passe avant t
 
 **Sauvegarde complète** : l'état du QG est sauvegardé dans PostgreSQL toutes les 60 s (ou dans le navigateur, faute de base), puis rechargé au démarrage. Il couvre les positions, les besoins, les relations, les tâches en cours, les files d'attente, les réservations, les conversations, les réunions et les consultations. La reprise est exacte : sauvegarder, recharger et continuer donne la même suite qu'une simulation ininterrompue (testé). Missions, tâches, conversations, validations et coûts vivent dans PostgreSQL.
 
-## Automatisations et intégrations
+## Intégrations : n8n, Slack, Gmail
 
-- **Missions récurrentes** (onglet Coûts) : toutes les heures, chaque jour ou chaque semaine, déclenchées par le worker. Chaque exécution respecte son budget et les validations.
-- **Webhook sortant** (`AIHQ_WEBHOOK_URL`) : compatible Slack, Make, Zapier, n8n. Chaque envoi demandé par un agent passe par ta validation.
-- **Notification de fin de mission** (`AIHQ_NOTIFY_WEBHOOK_URL`) : opt-in explicite dans ta configuration.
-- **API publique** : `POST /api/missions {goal, budgetUsd}`, `GET /api/missions/:id`, `POST /api/approvals/:id {decision, humanConfirmed:true}`, `GET /api/status`, `GET /api/events` (SSE).
+Les agents n'agissent jamais directement : chaque envoi crée une demande dans l'onglet **Validations**, et rien ne part tant que tu n'as pas cliqué « Autoriser ». Les demandes mal formées (adresse invalide, JSON cassé, domaine interdit) sont renvoyées à l'agent pour correction avant de te solliciter. Chaque intégration n'apparaît que si elle est configurée, et uniquement pour les rôles autorisés.
+
+| Intégration | Configuration | Ce que l'agent peut demander | Rôles autorisés |
+|---|---|---|---|
+| **Slack** | Slack → *Incoming Webhooks* → `AIHQ_SLACK_WEBHOOK_URL` | publier un message (`send_slack_message`) | direction, marketing, ventes, ops, produit |
+| **n8n** | Nœud *Webhook* (POST) → `AIHQ_N8N_WEBHOOK_URL`, et vérifier l'en-tête `x-aihq-secret` = `AIHQ_N8N_SECRET` | déclencher un workflow avec des données JSON (`trigger_n8n_workflow`) : `{source, missionId, workflow, data}` | direction, tech, data, ops, ventes, marketing |
+| **Gmail** | Google Cloud → API Gmail + identifiants OAuth (scope `gmail.compose`) → `GMAIL_CLIENT_ID`, `GMAIL_CLIENT_SECRET`, `GMAIL_REFRESH_TOKEN`, `GMAIL_SENDER` | préparer un e-mail (`send_email`). Crée un **brouillon** par défaut (tu l'envoies depuis Gmail) ; envoi direct seulement avec `GMAIL_MODE=send`. Domaines limitables par `GMAIL_ALLOWED_DOMAINS`. | direction, ventes, marketing, ops |
+
+Autres : webhook générique (`AIHQ_WEBHOOK_URL`, Make ou Zapier), notification de fin de mission (`AIHQ_NOTIFY_WEBHOOK_URL`), missions récurrentes (onglet Coûts : toutes les heures, chaque jour ou chaque semaine) et API pour n8n en entrée : `POST /api/missions` avec `Authorization: Bearer AIHQ_ADMIN_TOKEN`.
+
+## Mise en ligne
+
+Sur un serveur (VPS) avec Docker, et un nom de domaine qui pointe vers lui :
+
+```bash
+cp .env.example .env    # DOMAIN, POSTGRES_PASSWORD, ANTHROPIC_API_KEY, AIHQ_ADMIN_PASSWORD,
+                        # AIHQ_SESSION_SECRET (openssl rand -base64 48), intégrations…
+docker compose up -d --build
+```
+
+La pile démarre PostgreSQL (volume persistant), l'application, le worker et Caddy, qui obtient automatiquement le certificat HTTPS Let's Encrypt pour `DOMAIN` sans mettre le flux temps réel en tampon. Pour plus de capacité : `docker compose up -d --scale worker=2`. Sauvegarde de la base : `docker compose exec db pg_dump -U aihq aihq > sauvegarde.sql`.
 
 ## Tests
 
 ```bash
-npm test                         # 78 tests (les tests PostgreSQL sont ignorés sans base)
+npm test                         # 90 tests (les tests PostgreSQL sont ignorés sans base)
 TEST_DATABASE_URL=postgres://…/aihq_test npm test   # suite complète sur une vraie base
 npm run bench -- 2               # 2 jours simulés, invariants de collision
 ```

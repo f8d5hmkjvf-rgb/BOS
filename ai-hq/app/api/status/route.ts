@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { getContext } from "@/server/context";
+import { integrationsStatus } from "@/orchestrator/integrations";
+import { authSettings } from "@/server/session";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -17,9 +19,9 @@ export async function GET() {
     workers,
     workerWarning: store && workers === 0 ? "Aucun worker actif : lancez `npm run worker` pour exécuter les missions." : null,
     models: cfg.models,
-    budgets: { missionUsd: cfg.missionBudgetUsd, dailyUsd: cfg.dailyBudgetUsd },
-    integrations: { webhook: Boolean(cfg.webhookUrl), notify: Boolean(cfg.notifyWebhookUrl), webSearch: cfg.webSearchEnabled },
-    adminTokenRequired: Boolean(process.env.AIHQ_ADMIN_TOKEN),
+    budgets: { missionUsd: cfg.missionBudgetUsd, maxMissionUsd: cfg.maxMissionBudgetUsd, dailyUsd: cfg.dailyBudgetUsd },
+    integrations: { ...integrationsStatus(cfg.integrations), notify: Boolean(cfg.notifyWebhookUrl), webSearch: cfg.webSearchEnabled },
+    authRequired: authSettings().required,
     usage,
   });
 }

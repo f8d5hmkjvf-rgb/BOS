@@ -91,3 +91,8 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 .md { white-space: pre-wrap; font-size: 12px; background: #11151c; border-radius: 8px; padding: 8px; margin-top: 4px; max-height: 360px; overflow: auto; }
 .lines li { font-size: 12px; padding: 3px 0; }
 .error { color: #fca5a5; }
+
+/* --- Connexion --- */
+.login { min-height: 100vh; display: grid; place-items: center; padding: 16px; }
+.login form { width: min(380px, 100%); display: grid; gap: 10px; }
+.login h1 { margin: 0; font-size: 22px; }

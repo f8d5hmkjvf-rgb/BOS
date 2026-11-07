@@ -121,7 +121,7 @@ export function GaspardPanel({ status, refreshKey, nameOf, onError }: { status: 
         <div className="row between">
           <label className="small muted">
             Budget (USD){" "}
-            <input type="number" min="0.1" step="0.5" value={budget} placeholder={String(status?.budgets.missionUsd ?? "")} onChange={(e) => setBudget(e.target.value)} disabled={disabled} className="num-in" />
+            <input type="number" min="0.1" step="0.5" max={status?.budgets.maxMissionUsd} value={budget} placeholder={String(status?.budgets.missionUsd ?? "")} onChange={(e) => setBudget(e.target.value)} disabled={disabled} className="num-in" />
           </label>
           <button className="primary" onClick={submit} disabled={disabled || sending || goal.trim().length < 10}>
             {sending ? "Envoi…" : "Confier à Gaspard"}
@@ -301,7 +301,8 @@ export function CostsPanel({ status, nameOf, refreshKey, onError }: { status: St
               ))}
             </ul>
             <p className="small muted">
-              Modèles : CEO {status!.models.ceo}, agents {status!.models.agent}, dialogues {status!.models.dialogue}. Budget par mission par défaut : {status!.budgets.missionUsd} $.
+              Modèle économique (par défaut) : {status!.models.economy} · modèle avancé (Gaspard et tâches complexes) : {status!.models.advanced}. Budget par mission :{" "}
+              {status!.budgets.missionUsd} $ (plafond {status!.budgets.maxMissionUsd} $).
             </p>
           </>
         ) : (
@@ -334,10 +335,13 @@ export function CostsPanel({ status, nameOf, refreshKey, onError }: { status: St
             </li>
           ))}
         </ul>
-        <p className="small muted">
-          Intégrations : webhook {status?.integrations.webhook ? "configuré (envois soumis à validation)" : "non configuré (AIHQ_WEBHOOK_URL)"} · recherche web{" "}
-          {status?.integrations.webSearch ? "active" : "désactivée"}.
-        </p>
+        <ul className="plain small">
+          <li>Slack : {status?.integrations.slack ? "connecté" : "non configuré (AIHQ_SLACK_WEBHOOK_URL)"}</li>
+          <li>n8n : {status?.integrations.n8n ? "connecté" : "non configuré (AIHQ_N8N_WEBHOOK_URL)"}</li>
+          <li>Gmail : {status?.integrations.gmail ? `connecté (${status.integrations.gmail})` : "non configuré (GMAIL_*)"}</li>
+          <li>Recherche web : {status?.integrations.webSearch ? "active" : "désactivée"}</li>
+        </ul>
+        <p className="small muted">Toute action d&apos;un agent vers ces services attend ta validation dans l&apos;onglet Validations.</p>
       </section>
     </>
   );

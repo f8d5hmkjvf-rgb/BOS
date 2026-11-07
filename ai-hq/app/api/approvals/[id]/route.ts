@@ -1,13 +1,11 @@
 import { NextResponse } from "next/server";
 import { applyDecision } from "@/orchestrator/actions";
-import { getContext, notConfigured, readJson, requireAdmin } from "@/server/context";
+import { getContext, notConfigured, readJson } from "@/server/context";
 
 export const runtime = "nodejs";
 
 /** Décision humaine sur une action sensible. Seul chemin par lequel une action externe est exécutée. */
 export async function POST(req: Request, ctx: { params: Promise<{ id: string }> }) {
-  const denied = requireAdmin(req);
-  if (denied) return denied;
   const { id } = await ctx.params;
   const { store, missing, cfg } = await getContext();
   if (!store) return notConfigured(missing);

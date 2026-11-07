@@ -37,8 +37,9 @@ export async function runExecution(d: LoopDeps, mission: Mission, task: Task, on
     task,
     agentId: agent.id,
     purpose: "execute",
-    model: d.cfg.models.agent,
-    effort: d.cfg.effort.agent,
+    // Modèle économique par défaut ; modèle avancé pour les tâches que Gaspard juge complexes.
+    model: task.complexity === "complex" ? d.cfg.models.advanced : d.cfg.models.economy,
+    effort: task.complexity === "complex" ? d.cfg.effort.complex : d.cfg.effort.agent,
     maxTokens: 32000,
     system: agent.systemPrompt,
     kickoff: `Mission de l'entreprise : """${mission.goal}"""\n\nTâche confiée par Gaspard : ${task.title}\n\nInstructions : ${task.description}\n\nLivrable attendu : ${task.deliverable}${ctx ? `\n\nÉléments disponibles :\n\n${ctx}` : ""}\n\nRéalise la tâche puis appelle submit_deliverable.`,

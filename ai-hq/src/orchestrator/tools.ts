@@ -1,5 +1,6 @@
 import { agentById, agentSpecs, type AgentSpec } from "./agents";
 import { textOf, type BetaToolUnion } from "./llm";
+import { INTEGRATION_TOOLS, integrationAvailable, integrationSummary, validateIntegrationInput, type IntegrationTool } from "./integrations";
 import type { LoopDeps, ToolHandler } from "./loop";
 import type { Task } from "./store";
 
@@ -39,18 +40,6 @@ export const SUBMIT_DELIVERABLE: BetaToolUnion = {
   },
 };
 
-export const SEND_WEBHOOK: BetaToolUnion = {
-  name: "send_webhook",
-  description:
-    "Envoie un message vers l'intégration externe configurée par l'entrepreneur (Slack, Make, Zapier, n8n…). ACTION SENSIBLE : elle n'est exécutée qu'après validation humaine explicite. Utilise-la uniquement si la tâche le demande.",
-  strict: true,
-  input_schema: {
-    type: "object",
-    properties: { title: str("Titre court"), message: str("Contenu exact à envoyer") },
-    required: ["title", "message"],
-    additionalProperties: false,
-  },
-};
 
 export const WEB_SEARCH: BetaToolUnion = { type: "web_search_20260209", name: "web_search", max_uses: 5 };
 
@@ -63,9 +52,19 @@ export function executionTools(agent: AgentSpec, task: Task, d: LoopDeps): { too
     tools.push(consultTool(agent));
     handlers.consult_colleague = (input) => consult(d, task, agent, String(input.colleague), String(input.question));
   }
-  if (agent.tools.includes("send_webhook") && d.cfg.webhookUrl) {
-    tools.push(SEND_WEBHOOK);
-    handlers.send_webhook = (input, toolUseId, siblings) => sensitiveAction(d, task, agent, toolUseId, "send_webhook", `${agent.name} veut envoyer « ${String(input.title)} » vers l'intégration externe`, { ...input, siblings });
+  // Intégrations externes autorisées pour cet agent ET configurées par l'entrepreneur.
+  const integ = d.cfg.integrations;
+  for (const name of Object.keys(INTEGRATION_TOOLS) as IntegrationTool[]) {
+    if (!agent.tools.includes(name) || !integrationAvailable(name, integ)) continue;
+    tools.push(INTEGRATION_TOOLS[name]);
+    handlers[name] = async (input, toolUseId, siblings) => {
+      const existing = (await d.store.approvalsForTask(task.id)).some((a) => a.tool_use_id === toolUseId);
+      if (!existing) {
+        const err = validateIntegrationInput(name, input, integ);
+        if (err) return { kind: "result", content: `Demande invalide, corrige avant validation humaine : ${err}`, isError: true };
+      }
+      return sensitiveAction(d, task, agent, toolUseId, name, integrationSummary(agent.name, name, input, integ), { ...input, siblings });
+    };
   }
   tools.push(SUBMIT_DELIVERABLE);
   handlers.submit_deliverable = async (input) => ({ kind: "done", value: input, content: "Livrable reçu par Gaspard." });
@@ -81,7 +80,7 @@ export async function consult(d: LoopDeps, task: Task, from: AgentSpec, colleagu
     await d.store.addLine(convId, "consult", from.id, question);
     const res = await d.llm.call(
       {
-        model: d.cfg.models.dialogue,
+        model: d.cfg.models.economy,
         effort: d.cfg.effort.dialogue,
         maxTokens: 8000,
         system: to.systemPrompt,

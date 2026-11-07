@@ -11,7 +11,7 @@ export const MAX_REVIEW_ROUNDS = 2;
 export interface PlanInput {
   analysis: string;
   meeting: { needed: boolean; participants: string[]; agenda: string };
-  tasks: { key: string; title: string; description: string; deliverable: string; assignee: string; depends_on: string[] }[];
+  tasks: { key: string; title: string; description: string; deliverable: string; assignee: string; depends_on: string[]; complexity: "standard" | "complex" }[];
 }
 
 function planTool(): BetaToolUnion {
@@ -47,8 +47,14 @@ function planTool(): BetaToolUnion {
               deliverable: { type: "string", description: "Livrable attendu et critères d'acceptation" },
               assignee: { type: "string", enum: ids },
               depends_on: { type: "array", items: { type: "string" }, description: "Clés des tâches dont le livrable est nécessaire avant de commencer" },
+              complexity: {
+                type: "string",
+                enum: ["standard", "complex"],
+                description:
+                  "'complex' uniquement si la tâche exige un raisonnement poussé (stratégie, architecture, analyse fine, arbitrages) : elle utilisera le modèle avancé, plus cher. Sinon 'standard' (modèle économique).",
+              },
             },
-            required: ["key", "title", "description", "deliverable", "assignee", "depends_on"],
+            required: ["key", "title", "description", "deliverable", "assignee", "depends_on", "complexity"],
             additionalProperties: false,
           },
         },
@@ -141,6 +147,7 @@ export function planToTasks(p: PlanInput, ceoId: string): NewTask[] {
       deliverable: t.deliverable,
       assignee: t.assignee,
       depends_on: meeting ? [...t.depends_on, "kickoff"] : t.depends_on,
+      complexity: t.complexity === "complex" ? "complex" : "standard",
     });
   return out;
 }
@@ -156,6 +163,7 @@ Règles de délégation :
 - Des tâches petites et vérifiables (une personne, un livrable clair) plutôt qu'une grosse tâche floue.
 - N'ajoute une dépendance que si le livrable amont est réellement nécessaire.
 - Une réunion de lancement coûte plusieurs appels : organise-la seulement si plusieurs spécialistes doivent s'aligner.
+- Budget serré (quelques dollars par mission) : marque 'complex' seulement les tâches qui en ont vraiment besoin.
 - Les actions externes (envoi de messages, publication…) sont toujours soumises à validation humaine.`;
 }
 
@@ -165,7 +173,7 @@ export async function runPlan(d: LoopDeps, mission: Mission, task: Task, onProgr
     task,
     agentId: boss.id,
     purpose: "plan",
-    model: d.cfg.models.ceo,
+    model: d.cfg.models.advanced,
     effort: d.cfg.effort.ceo,
     maxTokens: 32000,
     system: gaspardSystem(),
@@ -211,7 +219,7 @@ export async function runReview(d: LoopDeps, mission: Mission, task: Task, onPro
     task,
     agentId: boss.id,
     purpose: "review",
-    model: d.cfg.models.ceo,
+    model: d.cfg.models.advanced,
     effort: d.cfg.effort.ceo,
     maxTokens: 32000,
     system: gaspardSystem(),
@@ -247,7 +255,7 @@ export async function runReport(d: LoopDeps, mission: Mission, task: Task, onPro
     task,
     agentId: boss.id,
     purpose: "report",
-    model: d.cfg.models.ceo,
+    model: d.cfg.models.advanced,
     effort: d.cfg.effort.ceo,
     maxTokens: 32000,
     system: gaspardSystem(),
