@@ -1,0 +1,68 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:Jost}
+.g{display:grid;grid-template-columns:repeat(3,600px)}
+.c{height:600px;display:flex;align-items:center;justify-content:center;position:relative;flex-direction:column}
+.cr{background:#F3EDE4;color:#161412}.dk{background:#161412;color:#F3EDE4}
+.lab{position:absolute;bottom:18px;width:100%;text-align:center;font-size:13px;letter-spacing:.3em;opacity:.45;text-transform:uppercase}
+.s{font-family:'Cormorant Garamond',serif}
+.rust{color:#A44A22}.dk .rust{color:#C9703F}
+</style></head><body><div class="g">
+
+<!-- A : Maison de couture -->
+<div class="c cr">
+ <div class="s" style="font-size:15px;letter-spacing:.6em;margin-right:-.6em;opacity:.7">TRAITEUR AU FEU</div>
+ <div style="width:40px;height:1px;background:#161412;margin:22px 0"></div>
+ <div class="s" style="font-size:38px;font-weight:400;letter-spacing:.3em;margin-right:-.3em">MAISON BRASÉA</div>
+ <div style="width:40px;height:1px;background:#161412;margin:22px 0"></div>
+ <div class="s" style="font-size:15px;letter-spacing:.6em;margin-right:-.6em;opacity:.7">HAUT-VAR</div>
+ <div class="lab">A · La maison</div>
+</div>
+
+<!-- B : Monogramme sceau -->
+<div class="c dk">
+ <div style="width:190px;height:190px;border:1px solid #F3EDE4;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative">
+  <div style="position:absolute;inset:8px;border:1px solid rgba(243,237,228,.35);border-radius:50%"></div>
+  <div class="s" style="font-size:96px;font-weight:300;line-height:1;letter-spacing:-.06em">M<span class="rust" style="font-style:italic">b</span></div>
+ </div>
+ <div class="s" style="font-size:30px;font-weight:400;letter-spacing:.38em;margin-right:-.38em;margin-top:40px">MAISON BRASÉA</div>
+ <div class="lab">B · Le sceau</div>
+</div>
+
+<!-- C : Braise -->
+<div class="c cr">
+ <div class="s" style="font-size:72px;font-weight:300;letter-spacing:.08em">maison bras<span style="position:relative">e<span style="position:absolute;left:50%;top:.3em;transform:translateX(-50%);width:.12em;height:.12em;border-radius:50%;background:#A44A22"></span></span>a</div>
+ <div style="font-size:14px;letter-spacing:.55em;margin-right:-.55em;margin-top:18px;opacity:.6">TRAITEUR AU FEU DE BOIS</div>
+ <div class="lab">C · La braise</div>
+</div>
+
+<!-- D : Editorial italique -->
+<div class="c dk">
+ <div style="font-size:15px;letter-spacing:.7em;margin-right:-.7em;font-weight:300" class="rust">MAISON</div>
+ <div class="s" style="font-size:130px;font-weight:300;font-style:italic;line-height:1.05;margin-top:4px">Braséa</div>
+ <div class="lab">D · L'italique</div>
+</div>
+
+<!-- E : Anneau de feu -->
+<div class="c cr">
+ <svg width="120" height="120" viewBox="0 0 120 120">
+  <circle cx="60" cy="60" r="56" fill="none" stroke="#161412" stroke-width="1"/>
+  <circle cx="60" cy="60" r="18" fill="none" stroke="#A44A22" stroke-width="1"/>
+  <circle cx="60" cy="60" r="4" fill="#A44A22"/>
+ </svg>
+ <div class="s" style="font-size:34px;font-weight:500;letter-spacing:.4em;margin-right:-.4em;margin-top:38px">MAISON BRASÉA</div>
+ <div class="lab">E · Le brasero vu du ciel</div>
+</div>
+
+<!-- F : Signature + date -->
+<div class="c dk">
+ <div class="s" style="font-size:54px;font-weight:400;letter-spacing:.22em;margin-right:-.22em">BRASÉA</div>
+ <div style="display:flex;align-items:center;gap:18px;margin-top:16px">
+  <div style="width:46px;height:1px;background:#C9703F"></div>
+  <div class="s" style="font-size:18px;font-style:italic;letter-spacing:.12em">Maison fondée en 2027</div>
+  <div style="width:46px;height:1px;background:#C9703F"></div>
+ </div>
+ <div class="lab">F · La signature</div>
+</div>
+</div></body></html>
