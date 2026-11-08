@@ -25,3 +25,6 @@
 ## 2026-11-06
 - Robin : « je me disperse trop sur mes business, ça devient ennuyant, il y a toujours un truc qui bloque ». Méta-problème dispersion noté dans Diagnosis.md.
 - Robin a une agence web + plusieurs projets lancés jamais aboutis. Pattern démarrer/abandonner confirmé. À creuser : état de l'agence, moment d'abandon.
+
+## 2026-11-08
+- Business plan Maison Braséa créé pour présenter le projet à Maxime (cousin, association éventuelle) : https://claude.ai/artifact/MPJ2KrYuxp6NsoUqCXSp1e
