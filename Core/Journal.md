@@ -28,3 +28,5 @@
 
 ## 2026-11-08
 - Business plan Maison Braséa créé pour présenter le projet à Maxime (cousin, association éventuelle) : https://claude.ai/artifact/MPJ2KrYuxp6NsoUqCXSp1e
+- Présentation 14 slides pour Maxime : https://claude.ai/artifact/JrL4TiL8EQ9erD79tCpgqq
+- Nouveau plan : Robin + Maxime (16 ans, fils de la tante Sophie) veulent travailler sous l'entreprise de la tante (La Cuisine de Sophie) : hygiène, assurance, fournisseurs, cuisine quand elle est vide. La tante n'est pas convaincue (âge, « leur truc à eux » sous son nom, délai jusqu'en mars). Proposition BOS : prouver avant de demander (dîner test pour la tante), réduire son risque, offre petits groupes en sous-marque.
