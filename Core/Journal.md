@@ -32,3 +32,4 @@
 - Nouveau plan : Robin + Maxime (16 ans, fils de la tante Sophie) veulent travailler sous l'entreprise de la tante (La Cuisine de Sophie) : hygiène, assurance, fournisseurs, cuisine quand elle est vide. La tante n'est pas convaincue (âge, « leur truc à eux » sous son nom, délai jusqu'en mars). Proposition BOS : prouver avant de demander (dîner test pour la tante), réduire son risque, offre petits groupes en sous-marque.
 - Présentation « Proposition à Sophie » (12 slides) : https://claude.ai/artifact/TGQB5gzbxkv9KYXYe3mqaq — hypothèses à valider : 20 % pour la tante, matériel ~4 650 € financé par Robin et Maxime.
 - Accord Maison Braséa × La Cuisine de Sophie rédigé (8 articles, à compléter et faire relire) : https://claude.ai/artifact/VzqyvjNmEwp4DrjwB1XWb2
+- Liste matériel complète pour 2 (≈ 6 120 € tout, ≈ 5 355 € pour démarrer) : https://claude.ai/artifact/5RLHb7fGvJtHBWFks7GNgR. Robin enverra les liens.
