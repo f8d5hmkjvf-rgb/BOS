@@ -34,3 +34,4 @@
 - Accord Maison Braséa × La Cuisine de Sophie rédigé (8 articles, à compléter et faire relire) : https://claude.ai/artifact/VzqyvjNmEwp4DrjwB1XWb2
 - Liste matériel complète pour 2 (≈ 6 120 € tout, ≈ 5 355 € pour démarrer) : https://claude.ai/artifact/5RLHb7fGvJtHBWFks7GNgR. Robin enverra les liens.
 - Calendrier d'achat en 6 étapes ajouté à la liste matériel (nov → mai, ≈ 6 450 € + 600 € formation ; rien de gros avant le oui de Sophie ; brasero en février si transport trouvé).
+- Logo validé : symbole S2 (M | B) + logo A. Kit SVG vectorisé (12 fichiers) livré.
