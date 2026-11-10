@@ -244,3 +244,4 @@ Répondre dans la même langue que l'entrepreneur utilise. Par défaut en franç
 
 ## Règles apprises
 - **Voix off / TTS :** toujours générer la narration d'un seul trait (ou en très gros blocs), jamais phrase par phrase. Le découpage casse l'intonation et ajoute des blancs, et ça fait décrocher. Privilégier une voix expressive (ex. fr-FR-RemyMultilingualNeural) et faire valider un extrait de 20 s avant le rendu complet.
+- **Vidéos courtes (TikTok/Reels) :** toujours ouvrir sur le choc ou la promesse la plus forte dès la 1re seconde (chiffre, conséquence, question), jamais sur une date ou un contexte. La toute première image doit déjà être percutante (pas de fondu depuis le noir).

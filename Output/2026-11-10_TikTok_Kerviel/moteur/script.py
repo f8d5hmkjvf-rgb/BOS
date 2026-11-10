@@ -1,6 +1,7 @@
 # (scene, text)
 P1 = [
- ("hook",     "Janvier 2008. Paris, La Défense. Dans une tour de verre, un trader de trente et un ans cache un secret que personne ne soupçonne."),
+ ("cold",     "Cet homme a fait perdre près de cinq milliards d'euros à sa banque. Seul, derrière un écran. Et personne n'a rien vu venir."),
+ ("hook",     "Janvier 2008. Paris, La Défense. Dans une tour de verre, un trader de trente et un ans cache un secret."),
  ("fifty",    "Sur ses écrans : cinquante milliards d'euros. Plus que la valeur en bourse de toute sa banque."),
  ("reveal",   "Il s'appelle Jérôme Kerviel. Un trader parmi des centaines. Discret. Inconnu. Pour l'instant."),
  ("forge",    "Retour en arrière. Bretagne. Un père forgeron, une mère coiffeuse. Rien ne le destine à la finance."),
@@ -17,8 +18,8 @@ P1 = [
  ("bomb",     "La banque vient de découvrir la bombe. La suite, dans la partie deux."),
 ]
 P2 = [
- ("p2title",  "Partie deux. Week-end du 19 janvier 2008."),
- ("interro",  "Jérôme Kerviel est interrogé pendant des heures. La direction découvre l'ampleur du désastre : cinquante milliards d'euros engagés."),
+ ("p2title",  "Cinquante milliards d'euros cachés. La banque vient de les découvrir. Et le pire reste à venir. Partie deux."),
+ ("interro",  "Week-end du 19 janvier. Jérôme Kerviel est interrogé pendant des heures. La direction découvre l'ampleur du désastre : cinquante milliards d'euros engagés."),
  ("sell",     "Il faut tout vendre. Vite. Et en secret."),
  ("krach",    "Lundi 21 janvier, les bourses mondiales plongent. Et la banque solde ses positions en plein krach. Trois jours. Chaque minute coûte des millions."),
  ("loss",     "Le 24 janvier, l'annonce tombe : quatre virgule neuf milliards d'euros de perte. Du jamais vu."),

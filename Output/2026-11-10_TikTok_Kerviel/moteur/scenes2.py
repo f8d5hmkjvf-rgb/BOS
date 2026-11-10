@@ -435,3 +435,49 @@ def s_walk(c, t, seg):
 
 for _n in ("forge", "ambition", "tower", "desk", "fake", "alerts", "interro", "sell", "trial", "walk"):
     SCENES[_n] = globals()["s_" + _n]
+
+
+# ============================================================ HOOKS
+def s_cold(c, t, seg):
+    c.alpha_composite(monitor_wall("red", 14))
+    c.alpha_composite(Image.new("RGBA", (W, H), (0, 0, 0, 165)))
+    c.alpha_composite(radial(W, H, W // 2, 900, 700, (170, 20, 10), 1.6))
+    ch = CHAR.render(key=(255, 90, 70), k=1.1, rimL=(255, 60, 40), rimR=GOLD, eye=(255, 80, 60), ambient=0.22)
+    sc = 1.35 + 0.05 * t / seg.dur
+    char_paste(c, ch, y=int(900 - 580 * sc / 1.35 * 1.0), scale=sc)
+    tm = WT(seg, "milliards")
+    p = ease_out(t / max(0.6, tm + 0.25))
+    sz = fit_size("−4 900 000 000 €", FONT_MONO, 104, 1000)
+    text(c, "−" + fmt_int(lerp(1.37e9, 4.9e9, p)) + " €", W / 2, 400, FONT_MONO, sz, RED, glow=24, stroke=3,
+         scale=1 + 0.08 * math.exp(-max(0, t - tm - 0.25) * 6) * (t > tm + 0.25))
+    text(c, "PERDUS PAR UN SEUL HOMME", W / 2, 500, FONT_MONO, 34, CREAM, tracking=6, alpha=appear(t, tm + 0.2))
+    ts, tp = WT(seg, "seul"), WT(seg, "personne")
+    a, s = slam(t, ts, 0.22, 2.2)
+    text(c, "SEUL.", W / 2, 1190, FONT_BLACK, 170, CREAM, stroke=8, alpha=a * (1 - appear(t, tp - 0.1, 0.15)), scale=s)
+    a2, s2 = slam(t, tp, 0.22, 2.2)
+    text(c, "INVISIBLE.", W / 2, 1190, FONT_BLACK, 150, GOLD_L, stroke=8, glow=16, alpha=a2, scale=s2)
+    glitch = 8 if t < 0.25 or abs(t - ts) < 0.1 or abs(t - tp) < 0.1 else 0
+    return dict(shake=impact(t, 0.0, 22) + impact(t, tm + 0.25, 14) + impact(t, ts, 12) + impact(t, tp, 12), chroma=glitch,
+                flash=(RED, 0.35 * math.exp(-t * 6)))
+
+
+def s_p2title(c, t, seg):
+    c.alpha_composite(monitor_wall("red", 16))
+    c.alpha_composite(Image.new("RGBA", (W, H), (0, 0, 0, 185)))
+    dust(c, t, color=RED, alpha=0.4)
+    a, s = slam(t, -0.2, 0.25, 1.8)
+    sz = fit_size("50 000 000 000 €", FONT_MONO, 104, 1000)
+    text(c, "50 000 000 000 €", W / 2, 520, FONT_MONO, sz, RED, glow=22, alpha=a, scale=s)
+    text(c, "CACHÉS", W / 2, 630, FONT_BLACK, 80, CREAM, alpha=appear(t, WT(seg, "cachés")))
+    td = WT(seg, "découvrir")
+    sh = stamp(c, "DÉCOUVERTS", W / 2, 800, t, td, 100, RED, -6)
+    tp = WT(seg, "pire")
+    text(c, "le pire reste à venir…", W / 2, 960, FONT_SERIF_I, 58, GOLD_L, glow=10, alpha=appear(t, tp))
+    tpa = WT(seg, "partie")
+    a3, s3 = slam(t, tpa, 0.3, 2.0)
+    text(c, "PARTIE 2", W / 2, 1150, FONT_BLACK, 150, GOLD_L, glow=20, alpha=a3, scale=s3)
+    return dict(shake=impact(t, 0.0, 18) + sh + impact(t, tpa, 16), chroma=6 if t < 0.2 else 0)
+
+
+SCENES["cold"] = s_cold
+SCENES["p2title"] = s_p2title

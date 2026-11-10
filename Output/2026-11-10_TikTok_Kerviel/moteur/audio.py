@@ -129,7 +129,8 @@ SFX = {"boom": boom, "whoosh": whoosh, "tick": tick, "beep": beep, "clang": clan
 
 # scene -> list of (anchor, kind, gain); anchor: float seconds (speech-relative) or word key
 CUES = {
-    "hook": [(-0.3, "big", 0.9), (0.0, "whoosh", 0.4)],
+    "cold": [(-0.3, "big", 1.0), ("cinq", "boom", 0.9), ("seul", "glitch", 0.6), ("seul", "soft", 0.8), ("personne", "riser", 0.4, -0.6), ("personne", "boom", 0.8)],
+    "hook": [(0.0, "whoosh", 0.5)],
     "fifty": [(0, "whoosh", 0.5), ("milliards", "boom", 0.9)],
     "reveal": [("jérôme", "glitch", 0.6), ("kerviel", "big", 0.9)],
     "forge": [("forgeron", "clang", 0.5, 0.9 * i) for i in range(6)] + [("coiffeuse", "tick", 0.5, 0.2 * i) for i in range(8)],
@@ -144,7 +145,7 @@ CUES = {
     "drop": [(0.1, "big", 1.0), (0.1, "glitch", 0.5)],
     "ghost": [("n'existe", "glitch", 0.7, -0.25), ("n'existe", "stamp", 0.9)],
     "bomb": [("bombe", "big", 1.0), ("suite", "whoosh", 0.5), ("partie", "boom", 0.9, 0.2)],
-    "p2title": [(-0.3, "big", 0.9)],
+    "p2title": [(-0.3, "big", 0.9), ("découvrir", "boom", 0.8), ("partie", "big", 0.9)],
     "interro": [("cinquante", "boom", 0.7), ("cinquante", "gavel", 0.6, -0.05)],
     "sell": [("vendre", "soft", 1.0), ("vite", "soft", 1.0), ("secret", "boom", 0.8)],
     "krach": [("plongent", "big", 1.0), ("plongent", "glitch", 0.4), ("trois", "soft", 0.6)],
@@ -159,7 +160,7 @@ CUES = {
     "cta": [(0, "whoosh", 0.4), ("abonne", "ding", 0.8), ("__end", "stamp", 1.0)],
 }
 SFX["riser"] = riser
-TENSION = {"hook": .4, "fifty": .7, "reveal": .5, "forge": .2, "ambition": .4, "tower": .4, "scan": .5, "desk": .6,
+TENSION = {"cold": .8, "hook": .4, "fifty": .7, "reveal": .5, "forge": .2, "ambition": .4, "tower": .4, "scan": .5, "desk": .6,
            "fake": .8, "alerts": .9, "gain": .7, "bet": 1, "drop": 1, "ghost": .8, "bomb": .0,
            "p2title": .3, "interro": .5, "sell": .9, "krach": 1, "loss": .5, "news": .7, "versions": .5,
            "trial": .6, "debt": .5, "walk": .3, "twist": .6, "question": .2, "cta": .4}

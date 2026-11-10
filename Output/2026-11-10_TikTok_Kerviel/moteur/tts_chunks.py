@@ -18,7 +18,7 @@ async def gen(text,path):
                     async for ch in c.stream():
                         if ch["type"]=="audio": f.write(ch["data"])
                         elif ch["type"]=="WordBoundary": words.append([ch["offset"]/1e7,ch["duration"]/1e7,ch["text"]])
-            await asyncio.wait_for(run(),45); return words
+            await asyncio.wait_for(run(),150); return words
         except Exception as e: print("retry",attempt,type(e).__name__,flush=True)
     raise SystemExit("tts failed")
 def pcm(path):

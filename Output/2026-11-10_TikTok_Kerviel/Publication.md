@@ -5,8 +5,8 @@ Les vidéos font plus d'une minute, ce qui les rend éligibles au Creator Reward
 
 | Fichier | Durée | Contenu |
 |---|---|---|
-| `Kerviel_Partie1.mp4` | ~1:35 | De la Bretagne à la bombe des 50 Md€ (cliffhanger) |
-| `Kerviel_Partie2.mp4` | ~1:26 | Le krach, les 4,9 Md€, le procès, le retournement de 2016, la question finale |
+| `Kerviel_Partie1.mp4` | ~1:42 | De la Bretagne à la bombe des 50 Md€ (cliffhanger) |
+| `Kerviel_Partie2.mp4` | ~1:31 | Le krach, les 4,9 Md€, le procès, le retournement de 2016, la question finale |
 
 ## Légende Partie 1
 L'homme qui a caché 50 milliards d'euros à sa propre banque 😳 Partie 1/2 : l'histoire vraie de Jérôme Kerviel. La suite est sur le profil.
