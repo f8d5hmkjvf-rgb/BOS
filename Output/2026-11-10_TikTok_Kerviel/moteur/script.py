@@ -1,0 +1,33 @@
+# (scene, text)
+P1 = [
+ ("hook",     "Janvier 2008. Paris, La Défense. Dans une tour de verre, un trader de trente et un ans cache un secret que personne ne soupçonne."),
+ ("fifty",    "Sur ses écrans : cinquante milliards d'euros. Plus que la valeur en bourse de toute sa banque."),
+ ("reveal",   "Il s'appelle Jérôme Kerviel. Un trader parmi des centaines. Discret. Inconnu. Pour l'instant."),
+ ("forge",    "Retour en arrière. Bretagne. Un père forgeron, une mère coiffeuse. Rien ne le destine à la finance."),
+ ("ambition", "Pas de grande école, pas de réseau. Juste une obsession : réussir."),
+ ("tower",    "En 2000, il entre à la Société Générale. Au middle office : là où l'on contrôle les traders."),
+ ("scan",     "Il y apprend tout. Les contrôles. Les failles. Les angles morts."),
+ ("desk",     "En 2005, il passe de l'autre côté. Trader junior au desk Delta One : des paris sur les indices boursiers, censés être couverts."),
+ ("fake",     "Mais Jérôme ne couvre plus rien. Il prend des positions énormes, et les masque avec des opérations fictives. Il ne prend presque jamais de vacances : personne ne doit regarder ses comptes à sa place."),
+ ("alerts",   "Des dizaines d'alertes sonnent. À chaque fois, il a une explication."),
+ ("gain",     "Fin 2007, il cache un gain de près d'un milliard et demi. Lui gagne moins de cent mille euros par an."),
+ ("bet",      "Et début 2008, il mise tout. Cinquante milliards, sur la hausse des marchés européens. Un pari plus gros que la banque elle-même."),
+ ("drop",     "Sauf que les marchés commencent à chuter."),
+ ("ghost",    "Le vendredi 18 janvier, une opération intrigue la banque. Sa contrepartie n'existe pas."),
+ ("bomb",     "La banque vient de découvrir la bombe. La suite, dans la partie deux."),
+]
+P2 = [
+ ("p2title",  "Partie deux. Week-end du 19 janvier 2008."),
+ ("interro",  "Jérôme Kerviel est interrogé pendant des heures. La direction découvre l'ampleur du désastre : cinquante milliards d'euros engagés."),
+ ("sell",     "Il faut tout vendre. Vite. Et en secret."),
+ ("krach",    "Lundi 21 janvier, les bourses mondiales plongent. Et la banque solde ses positions en plein krach. Trois jours. Chaque minute coûte des millions."),
+ ("loss",     "Le 24 janvier, l'annonce tombe : quatre virgule neuf milliards d'euros de perte. Du jamais vu."),
+ ("news",     "Un seul nom fait la une du monde entier. Partout, on parle du rogue trader français."),
+ ("versions", "Pour la banque, il a agi seul, en trompant tout le monde. Lui affirme que sa hiérarchie fermait les yeux, tant qu'il gagnait."),
+ ("trial",    "Octobre 2010, toute la France suit le procès. Le verdict tombe : coupable. Cinq ans de prison, dont trois ferme."),
+ ("debt",     "Et une dette de quatre virgule neuf milliards d'euros. Soit près de cinquante mille ans de son salaire."),
+ ("walk",     "En 2014, après avoir croisé le pape François à Rome, il rentre vers la France à pied, puis se présente à la police, à la frontière. Moins de quatre mois de prison, puis le bracelet électronique."),
+ ("twist",    "Et en 2016, coup de théâtre. La cour d'appel de Versailles ramène sa dette à un million d'euros, en pointant les failles de contrôle de la banque."),
+ ("question", "Alors, Jérôme Kerviel : escroc solitaire, ou bouc émissaire d'un système qui fermait les yeux ?"),
+ ("cta",      "Dis-le-moi en commentaire. Et abonne-toi pour la prochaine histoire vraie."),
+]
