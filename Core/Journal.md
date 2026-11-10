@@ -38,5 +38,6 @@
 
 ## 2026-11-10
 - Mission agence (client) : série TikTok « histoires vraies » en noir et or. Dossier N°01 : l'affaire Kerviel en 2 parties de ~1 min 30. Voix IA, personnage illustré, sous-titres, sound design → Output/2026-11-10_TikTok_Kerviel/
+- V2 : voix trop hachée (générée phrase par phrase) → refaite d'un seul trait avec la voix Rémy, script enrichi (pape François, vacances, rogue trader).
 - Rappel : monétisation TikTok réservée aux 18+ → le compte monétisé doit être celui du client.
 - Vigilance dispersion : c'est du revenu agence (OK), mais le traiteur reste le focus. L'entraînement côte de bœuf n'est toujours pas fait.

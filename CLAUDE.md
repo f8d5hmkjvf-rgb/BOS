@@ -241,3 +241,6 @@ Le flow de session quotidien (scan → check-in → mise à jour → proposer �
 ## Langue
 
 Répondre dans la même langue que l'entrepreneur utilise. Par défaut en français si pas clair. Être conversationnel, pas corporate — comme un ami intelligent qui se trouve être un expert business.
+
+## Règles apprises
+- **Voix off / TTS :** toujours générer la narration d'un seul trait (ou en très gros blocs), jamais phrase par phrase. Le découpage casse l'intonation et ajoute des blancs, et ça fait décrocher. Privilégier une voix expressive (ex. fr-FR-RemyMultilingualNeural) et faire valider un extrait de 20 s avant le rendu complet.
