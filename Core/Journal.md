@@ -35,3 +35,8 @@
 - Liste matériel complète pour 2 (≈ 6 120 € tout, ≈ 5 355 € pour démarrer) : https://claude.ai/artifact/5RLHb7fGvJtHBWFks7GNgR. Robin enverra les liens.
 - Calendrier d'achat en 6 étapes ajouté à la liste matériel (nov → mai, ≈ 6 450 € + 600 € formation ; rien de gros avant le oui de Sophie ; brasero en février si transport trouvé).
 - Logo validé : symbole S2 (M | B) + logo A. Kit SVG vectorisé (12 fichiers) livré.
+
+## 2026-11-10
+- Mission agence (client) : série TikTok « histoires vraies » en noir et or. Dossier N°01 : l'affaire Kerviel en 2 parties de ~1 min 30. Voix IA, personnage illustré, sous-titres, sound design → Output/2026-11-10_TikTok_Kerviel/
+- Rappel : monétisation TikTok réservée aux 18+ → le compte monétisé doit être celui du client.
+- Vigilance dispersion : c'est du revenu agence (OK), mais le traiteur reste le focus. L'entraînement côte de bœuf n'est toujours pas fait.
