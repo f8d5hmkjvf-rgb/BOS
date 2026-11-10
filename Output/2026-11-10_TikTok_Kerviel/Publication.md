@@ -9,12 +9,16 @@ Les vidéos font plus d'une minute, ce qui les rend éligibles au Creator Reward
 | `Kerviel_Partie2.mp4` | ~1:31 | Le krach, les 4,9 Md€, le procès, le retournement de 2016, la question finale |
 
 ## Légende Partie 1
-L'homme qui a caché 50 milliards d'euros à sa propre banque 😳 Partie 1/2 : l'histoire vraie de Jérôme Kerviel. La suite est sur le profil.
-#kerviel #histoirevraie #finance #trader #scandale #bourse #storytime #apprendresurtiktok
+Il a fait perdre 4,9 milliards d'euros à sa banque… seul, derrière un écran 😳 L'histoire vraie de Jérôme Kerviel, partie 1/2. La suite est sur mon profil 👀
+#kerviel #histoirevraie #trader #finance #scandale #bourse #storytime #argent #faitdivers #apprendresurtiktok
+
+Commentaire à épingler : « La partie 2 est en ligne 👉 le krach, le procès… et un énorme retournement en 2016 »
 
 ## Légende Partie 2
-4,9 milliards d'euros de perte, et une seule question : escroc ou bouc émissaire ? Dis ton verdict en commentaire 👇 Partie 2/2.
-#kerviel #histoirevraie #finance #trader #justice #scandale #storytime #apprendresurtiktok
+50 milliards cachés, 4,9 milliards perdus, une dette de 49 000 ans de salaire… Escroc ou bouc émissaire ? Donne ton verdict en commentaire 👇 (partie 2/2)
+#kerviel #histoirevraie #trader #finance #justice #scandale #storytime #argent #faitdivers #apprendresurtiktok
+
+Commentaire à épingler : « Team ESCROC 🔴 ou team BOUC ÉMISSAIRE 🟡 ? »
 
 ## Checklist publication
 1. Publier la Partie 1, puis la Partie 2 environ 24 h après. Épingler un commentaire « Partie 2 dispo sur le profil » sous la Partie 1.
